@@ -40,8 +40,20 @@ cap dev deploy:setup
 cap dev deploy
 ```
 
-TODO
+Dev
+===
+
+If you contribute to this project, I advise you to catch emails through [mailcatcher](http://mailcatcher.me/).
+You need to update your parameters.yml file as following:
+```yml
+parameters:
+    ...
+    mailer_host: 127.0.0.1:1025
+```
+
+
+Todo
 ====
 
-Migrate blog to Kimsufi/VPS
-Enable Cloudflare for blog
+* Migrate blog to Kimsufi/VPS
+* Enable Cloudflare for blog
