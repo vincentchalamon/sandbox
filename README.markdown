@@ -6,7 +6,6 @@ Install [Composer](http://getcomposer.org/) and run the following command:
 php composer.phar create-project vince/sandbox path/
 ```
 
-***
 Configuration
 =============
 
@@ -22,7 +21,6 @@ php app/console doctrine:schema:update --force
 php app/console doctrine:fixtures:load -n
 ```
 
-***
 Deploy
 ======
 
@@ -42,7 +40,6 @@ cap dev deploy:setup
 cap dev deploy
 ```
 
-***
 TODO
 ====
 
