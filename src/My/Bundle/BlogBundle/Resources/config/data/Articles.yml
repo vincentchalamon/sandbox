@@ -1,0 +1,205 @@
+Vince\Bundle\CmsBundle\Entity\Category:
+    realisation:
+        name: Realisation
+
+Vince\Bundle\CmsBundle\Entity\Article:
+    homepage:
+        title: Homepage
+        slug: homepage
+        summary: Welcome on my blog
+        categories: [realisation]
+        url: /
+        template:
+            title: Homepage
+            path: MyBlogBundle:Templates:homepage.html.twig
+        metas:
+            og-type:
+                content: article
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-type
+            og-url:
+                content: /
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-url
+            twitter-card:
+                content: summary
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-card
+            language:
+                content: fr
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-language
+            robots:
+                content: index, follow
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
+            title:
+                content: Homepage
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-title
+            og-title:
+                content: Homepage
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-title
+            twitter-title:
+                content: Homepage
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-title
+    search:
+        title: Search
+        slug: search
+        summary: Search query on my blog
+        url: /search
+        template:
+            title: Search
+            path: MyBlogBundle:Templates:search.html.twig
+        metas:
+            og-url:
+                content: /search
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-url
+            title:
+                content: Search
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-title
+            og-title:
+                content: Search
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-title
+            twitter-title:
+                content: Search
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-title
+            og-type:
+                content: article
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-type
+            twitter-card:
+                content: summary
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-card
+            language:
+                content: fr
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-language
+            robots:
+                content: noindex, nofollow
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
+    realisation:
+        title: Realisation
+        summary: This article is a realisation
+        url: /realisations/realisation
+        template:
+            title: Realisation
+            path: MyBlogBundle:Templates:realisation.html.twig
+            areas:
+                required:
+                    title: Required area
+                    name: required
+                    type: text
+                    required: true
+                thumbnail:
+                    title: Thumbnail
+                    name: thumbnail
+                    type: image
+                    required: true
+                description:
+                    title: Description
+                    name: description
+                    type: wysiwyg
+                    required: true
+                optional:
+                    title: Optional file area
+                    name: optional
+                    type: image
+        tags: ['custom', 'tag']
+        metas:
+            og-url:
+                content: /realisations/realisation
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-url
+            title:
+                content: Realisation
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-title
+            og-title:
+                content: Realisation
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-title
+            twitter-title:
+                content: Realisation
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-title
+            og-type:
+                content: article
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-type
+            twitter-card:
+                content: summary
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-card
+            language:
+                content: fr
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-language
+            robots:
+                content: index, follow
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
+        categories: [realisation]
+        contents:
+            required:
+                area: required
+                contents: This area is required
+            thumbnail:
+                area: thumbnail
+                contents: '/path/to/file.jpg'
+            description:
+                area: description
+                contents: |
+                    <p>This description is required.</p>
+                    <p>It allows <strong>HTML</strong> text.</p>
+    page:
+        title: Post
+        summary: This is a post
+        template:
+            title: Default
+            path: MyBlogBundle:Templates:page.html.twig
+        metas:
+            og-url:
+                content: /article-de-test
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-url
+            title:
+                content: Article de test
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-title
+            og-title:
+                content: Article de test
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-title
+            twitter-title:
+                content: Article de test
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-title
+            og-type:
+                content: article
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-type
+            twitter-card:
+                content: summary
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-card
+            language:
+                content: fr
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-language
+            robots:
+                content: index, follow
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
+        contents:
+            contents:
+                area: contents
+                contents: Plop
+    contact:
+        title: Contact
+        summary: Contact me
+        url: /contact
+        template:
+            title: Contact
+            path: MyBlogBundle:Templates:contact.html.twig
+        metas:
+            og-url:
+                content: /contact
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-url
+            title:
+                content: Contact
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-title
+            og-title:
+                content: Contact
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-title
+            twitter-title:
+                content: Contact
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-title
+            og-type:
+                content: article
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-type
+            twitter-card:
+                content: summary
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-card
+            language:
+                content: fr
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-language
+            robots:
+                content: index, follow
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-robots

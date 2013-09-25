@@ -1,0 +1,28 @@
+$(document).ready(function() {
+    $('#jquery-timeline').timeline([
+        {% for i, skill in skills %}
+            {
+                start: '{{ skill.fromDate|date('Y-m-d') }}',
+                {% if skill.toDate %}
+                    end: '{{ skill.toDate|date('Y-m-d') }}',
+                {% endif %}
+                {% if skill.type == 'Formation' %}
+                    css: 'jquery-timeline-item-formation',
+                {% endif %}
+                label: '{{ skill.title }}'
+            }{% if i < skills|length-1 %}, {% endif %}
+        {% endfor %}
+    ], {
+        onSelect: function(event, index){
+            if (!$('.skill:eq(' + index + '):visible').length) {
+                if ($('.skill:visible').length) {
+                    $('.skill:visible').fadeOut('fast', function() {
+                        $('.skill:eq(' + index + ')').fadeIn('fast');
+                    });
+                } else {
+                    $('.skill:eq(' + index + ')').fadeIn('fast');
+                }
+            }
+        }
+    });
+});

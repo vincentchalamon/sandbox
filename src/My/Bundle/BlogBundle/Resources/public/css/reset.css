@@ -1,0 +1,66 @@
+.right {
+    float: right;
+}
+.left {
+    float: left;
+}
+.clear {
+    clear: both;
+}
+.hidden {
+    display: none;
+}
+label {
+    cursor: pointer;
+    font-weight: bold;
+}
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+img {
+    border: none;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+a {
+    text-decoration: none;
+}
+li {
+    line-height: 18px;
+}
+p {
+    text-align: justify;
+    margin: 0;
+    padding: 0;
+    line-height: 18px;
+}
+input[type="submit"] {
+    cursor: pointer;
+}
+textarea {
+    vertical-align: top;
+    transition: height 0.2s;
+    -webkit-transition: height 0.2s;
+    -moz-transition: height 0.2s;
+}
+.error {
+    font-weight: bold;
+    color: red;
+}
+input.error, textarea.error, select.error {
+    color: black;
+    border-color: red;
+    background-color: #faffbd;
+}
+.success, .notice {
+    font-weight: bold;
+    color: green;
+}
+:required {
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}

@@ -1,0 +1,28 @@
+{% extends 'VinceCmsBundle::base.html.twig' %}
+
+{% block body %}
+    <h1>{{ block('title') }}</h1>
+
+    {% for realisation in realisations %}
+        <div class="block">
+            <h2><a href="{{ path(realisation.routeName) }}" title="{{ realisation.title }}">{{ realisation.title }}</a></h2>
+            <div class="chapo">
+                <div class="thumbnail">
+                    <img src="{{ realisation.content('thumbnail') }}" alt="{{ realisation.title }}" title="{{ realisation.title }}" />
+                </div>
+                {{ realisation.chapo|raw }}
+                <a href="{{ path(realisation.routeName) }}" title="Lire la suite" class="linked gradient">Lire la suite</a>
+            </div>
+            <p class="infos">
+                {% if realisation.tags|length %}
+                    <span class="tags">
+                    {% for i, tag in realisation.tags %}
+                        <a href="{{ path('search', {'query': tag}) }}" title="{{ tag }}" class="tag">{{ tag }}</a>{% if i < realisation.tags|length-1 %}, {% endif %}
+                    {% endfor %}
+                </span>
+                {% endif %}
+            </p>
+            <div class="clear"></div>
+        </div>
+    {% endfor %}
+{% endblock %}
