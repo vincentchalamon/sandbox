@@ -3,7 +3,7 @@ Installation
 
 Install [Composer](http://getcomposer.org/) and run the following command:
 ```shell
-php composer.phar create-project vince/sandbox path/
+php composer.phar create-project vince/sandbox path/ -s dev
 ```
 
 Configuration
@@ -14,7 +14,7 @@ Run the following command to launch elasticsearch:
 elasticsearch/bin/elasticsearch -f
 ```
 
-Then, after creating your database, run the following commands to build database with default fixtures:
+Once you've created your database, run the following commands to build database with default fixtures:
 ```shell
 php app/console doctrine:database:create
 php app/console doctrine:schema:update --force
