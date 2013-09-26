@@ -6,6 +6,18 @@
     "autoload": {
         "psr-0": { "": "src/" }
     },
+    "repositores": {
+        "type": "package",
+        "package": {
+            "name": "elasticsearch/elasticsearch",
+            "version": "dev-master",
+            "source": {
+                "url": "git@github.com:elasticsearch/elasticsearch.git",
+                "type": "git",
+                "reference": "master"
+            }
+        }
+    },
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.3.*",
@@ -23,7 +35,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "vince/cms-admin-bundle": "dev-master",
         "knplabs/knp-snappy-bundle": "dev-master",
-        "liip/imagine-bundle": "dev-master"
+        "liip/imagine-bundle": "dev-master",
+        "elasticsearch/elasticsearch": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
