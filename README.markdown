@@ -11,7 +11,7 @@ Configuration
 
 Run the following command to launch elasticsearch:
 ```shell
-elasticsearch/bin/elasticsearch -f
+vendor/elasticsearch/binaries/bin/elasticsearch -f
 ```
 
 Once you've created your database, run the following commands to build database with default fixtures:
