@@ -1,0 +1,32 @@
+.header {
+    background-color: #AEFFF2;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    margin:0 0 20px 0;
+    padding: 10px 0;
+}
+.menu {
+    background-color: #C2E7E8;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    margin: 20px 0;
+    padding: 10px 0;
+}
+.content_page {
+    background-color: #BAF1FF;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    margin: 20px 0;
+    padding: 10px 0;
+}
+.article{
+    margin:20px 0;
+    border-bottom: 1px solid #808080;
+}
+.footer {
+    background-color: #9ECDE8;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    margin: 20px 0;
+    padding: 10px 0;
+}

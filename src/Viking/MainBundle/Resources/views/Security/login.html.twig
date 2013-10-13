@@ -1,0 +1,18 @@
+{% extends "VikingMainBundle::admin_layout.html.twig" %}
+{% block title %}{{ parent() }} - Administration{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="col-md-12">
+            Page login
+            <form action="{{ path('login_check') }}" method="post">
+                <input type="text" name="_username" value="{{ last_username }}"/>
+                <input type="password" name="_password"/>
+                <input type="submit" value="ok"/>
+            </form>
+            {% if error %}
+                <span class="error">Votre Nom de compte ou votre mot de passe est invalide.</span>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

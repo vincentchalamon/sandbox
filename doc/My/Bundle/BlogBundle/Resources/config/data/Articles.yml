@@ -1,0 +1,308 @@
+Vince\Bundle\CmsBundle\Entity\Category:
+    realisation:
+        name: Réalisation
+    test:
+        name: Test
+
+Vince\Bundle\CmsBundle\Entity\Article:
+    homepage:
+        title: Accueil
+        slug: homepage
+        summary: Vincent Chalamon
+        categories: [realisation, test]
+        url: /
+        template:
+            title: Accueil
+            path: MyBlogBundle:Templates:homepage.html.twig
+        metas:
+            og-type:
+                content: article
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-type
+            og-url:
+                content: /
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-url
+            twitter-card:
+                content: summary
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-card
+            language:
+                content: fr
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-language
+            robots:
+                content: index, follow
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
+            title:
+                content: Accueil
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-title
+            og-title:
+                content: Accueil
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-title
+            twitter-title:
+                content: Accueil
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-title
+    search:
+        title: Rechercher
+        slug: search
+        summary: Vincent Chalamon
+        url: /rechercher
+        template:
+            title: Rechercher
+            path: MyBlogBundle:Templates:search.html.twig
+        metas:
+            og-url:
+                content: /rechercher
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-url
+            title:
+                content: Rechercher
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-title
+            og-title:
+                content: Rechercher
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-title
+            twitter-title:
+                content: Rechercher
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-title
+            og-type:
+                content: article
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-type
+            twitter-card:
+                content: summary
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-card
+            language:
+                content: fr
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-language
+            robots:
+                content: noindex, nofollow
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
+    realisations:
+        title: Réalisations
+        summary: Liste des réalisations
+        url: /liste-des-realisations
+        template:
+            title: Réalisations
+            path: MyBlogBundle:Templates:realisations.html.twig
+        metas:
+            og-url:
+                content: /liste-des-realisations
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-url
+            title:
+                content: Liste des réalisations
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-title
+            og-title:
+                content: Liste des réalisations
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-title
+            twitter-title:
+                content: Liste des réalisations
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-title
+            og-type:
+                content: article
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-type
+            twitter-card:
+                content: summary
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-card
+            language:
+                content: fr
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-language
+            robots:
+                content: index, follow
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
+    burkina:
+        title: Consulat du Burkina Faso de Nice
+        summary: |
+            <p>Le site du <a href="http://www.burkinafaso-cotedazur.org" title="Consulat du Burkina Faso de Nice" target="_blank">Consulat du Burkina Faso de Nice</a>
+                constitue un relais de l'ambassade du Burkina Faso à Paris, afin de
+                délivrer toutes les informations relatives au projet d'un voyage au Burkina Faso.</p>
+            <p>Grâce à de nombreux articles et à une communication importante, nous contribuons
+                à de multiples oeuvres humanitaires en faveur du Burkina Faso.</p>
+        url: /liste-des-realisations/consulat-du-burkina-faso-de-nice
+        template:
+            title: Réalisation
+            path: MyBlogBundle:Templates:realisation.html.twig
+            areas:
+                address:
+                    title: Adresse
+                    name: url
+                    type: text
+                    required: true
+                thumbnail:
+                    title: Aperçu
+                    name: thumbnail
+                    type: image
+                    required: true
+                description:
+                    title: Description
+                    name: description
+                    type: wysiwyg
+                    required: true
+        tags: ['symfony', 'burkina', 'php']
+        metas:
+            og-url:
+                content: /liste-des-realisations/consulat-du-burkina-faso-de-nice
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-url
+            title:
+                content: Consulat du Burkina Faso de Nice
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-title
+            og-title:
+                content: Consulat du Burkina Faso de Nice
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-title
+            twitter-title:
+                content: Consulat du Burkina Faso de Nice
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-title
+            og-type:
+                content: article
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-type
+            twitter-card:
+                content: summary
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-card
+            language:
+                content: fr
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-language
+            robots:
+                content: index, follow
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
+        categories: [realisation]
+        contents:
+            address:
+                area: address
+                contents: http://www.burkinafaso-cotedazur.org
+            thumbnail:
+                area: thumbnail
+                contents: '/uploads/burkina.jpg'
+            description:
+                area: description
+                contents: |
+                    <p>Ce site officiel est un relais de l'ambassade du Burkina Faso à Paris. Il a pour objectif de
+                    délivrer toutes les informations relatives au projet d'un voyage au Burkina Faso.</p>
+    page:
+        title: Article de test
+        summary: Ceci est un article de test
+        template:
+            title: Page
+            path: MyBlogBundle:Templates:page.html.twig
+            areas:
+                picture:
+                    title: Aperçu
+                    name: picture
+                    type: image
+                contents:
+                    title: Contenu
+                    name: contents
+                    type: wysiwyg
+                    required: true
+        metas:
+            og-url:
+                content: /article-de-test
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-url
+            title:
+                content: Article de test
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-title
+            og-title:
+                content: Article de test
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-title
+            twitter-title:
+                content: Article de test
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-title
+            og-type:
+                content: article
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-type
+            twitter-card:
+                content: summary
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-card
+            language:
+                content: fr
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-language
+            robots:
+                content: index, follow
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
+        contents:
+            contents:
+                area: contents
+                contents: Plop
+    cv:
+        title: Curriculum Vitae
+        summary: <strong>Samuel</strong>
+        url: /curriculum-vitae
+        template:
+            title: Curriculum Vitae
+            path: MyBlogBundle:Templates:cv.html.twig
+            areas:
+                file:
+                    title: Fichier PDF
+                    name: file
+                    type: file
+                    required: true
+                hobbies:
+                    title: Hobbies
+                    name: hobbies
+                    type: wysiwyg
+                    required: true
+        tags: ['monTag', 'cv']
+        metas:
+            og-url:
+                content: /curriculum-vitae
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-url
+            title:
+                content: Curriculum Vitae
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-title
+            og-title:
+                content: Curriculum Vitae
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-title
+            twitter-title:
+                content: Curriculum Vitae
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-title
+            og-type:
+                content: article
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-type
+            twitter-card:
+                content: summary
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-card
+            language:
+                content: fr
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-language
+            robots:
+                content: index, follow
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
+        contents:
+            file:
+                area: file
+                contents: '/uploads/cv.pdf'
+            hobbies:
+                area: hobbies
+                contents: |
+                    <strong>testoto</strong>
+                    <ul>
+                        <li>Pâtisserie</li>
+                        <li>Voyage</li>
+                        <li>Cinéma</li>
+                        <li>Musique</li>
+                    </ul>
+    contact:
+        title: Contact
+        summary: Contact
+        url: /contact
+        template:
+            title: Contact
+            path: MyBlogBundle:Templates:contact.html.twig
+        metas:
+            og-url:
+                content: /contact
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-url
+            title:
+                content: Contact
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-title
+            og-title:
+                content: Contact
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-title
+            twitter-title:
+                content: Contact
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-title
+            og-type:
+                content: article
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-og-type
+            twitter-card:
+                content: summary
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-twitter-card
+            language:
+                content: fr
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-language
+            robots:
+                content: index, follow
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-robots

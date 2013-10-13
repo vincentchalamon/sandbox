@@ -1,0 +1,45 @@
+{% extends 'MyBlogBundle:Templates:search.html.twig' %}
+
+{% block search_title %}{% endblock %}
+
+{% block body %}
+    <form method="post">
+        {{ form_widget(plop) }}
+        <input type="submit" />
+    </form>
+    {{ parent() }}
+{% endblock %}
+
+{% block head %}
+    {% if realisations|length %}
+        <div id="slides">
+            <div class="slides_container">
+                {% for realisation in realisations %}
+                    <div class="slide">
+                        <div class="thumbnail">
+                            <a href="{{ path(realisation.routeName) }}" title="{{ realisation.title }}">
+                                <img src="{{ realisation.content('thumbnail') }}" alt="{{ realisation.title }}" title="{{ realisation.title }}" />
+                            </a>
+                        </div>
+                        <h3><a href="{{ path(realisation.routeName) }}" title="{{ realisation.title }}">{{ realisation.title }}</a></h3>
+                        {{ realisation.summary|raw }}
+                        <a href="{{ path(realisation.routeName) }}" title="Lire la suite" class="linked gradient">Lire la suite</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/myblog/js/slide/global.css') }}" media="all" />
+    {{ parent() }}
+    {{ form_stylesheets(plop) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/myblog/js/slide/slides.min.jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/myblog/js/slider.js') }}"></script>
+    {{ form_javascripts(plop) }}
+{% endblock %}

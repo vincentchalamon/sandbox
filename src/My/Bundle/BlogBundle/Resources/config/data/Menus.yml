@@ -1,4 +1,4 @@
-Vince\Bundle\CmsBundle\Entity\Menu:
+My\Bundle\BlogBundle\Entity\Menu:
     root:
         title: Main menu
         slug: root
@@ -8,9 +8,9 @@ Vince\Bundle\CmsBundle\Entity\Menu:
                 title: Homepage
                 article: homepage
                 startedAt: '2013-01-01'
-            realisations:
-                title: Realisations
-                article: realisation
+            page-2:
+                title: Page 2
+                article: page2
                 startedAt: '2013-01-01'
             contact:
                 title: Contact

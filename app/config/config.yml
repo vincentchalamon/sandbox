@@ -5,7 +5,8 @@ imports:
 
 framework:
     #esi:             ~
-    translator:      { fallback: %locale% }
+    translator:      ~
+    #{ fallback: %locale% }
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -76,3 +77,7 @@ vince_cms:
     contact:
         noreply: noreply@example.fr
         recipient: contact@example.com
+    class:
+        article: My\Bundle\BlogBundle\Entity\Article
+        block: My\Bundle\BlogBundle\Entity\Block
+        menu: My\Bundle\BlogBundle\Entity\Menu

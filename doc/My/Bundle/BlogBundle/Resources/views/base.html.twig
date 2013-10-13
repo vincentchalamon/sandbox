@@ -1,0 +1,109 @@
+{% use 'VinceCmsBundle::metas.html.twig' %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" xmlns:fb="http://ogp.me/ns/fb#">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{% block title %}{{ article.title }}{% endblock %}</title>
+        {% block metas %}
+            {% for meta in article.metas %}
+                {{ block('meta') }}
+            {% endfor %}
+        {% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('bundles/myblog/css/loader.css') }}" type="text/css" media="screen" />
+            <link rel="stylesheet" href="{{ asset('bundles/myblog/js/modal/modal.css') }}" type="text/css" media="screen" />
+            <link rel="stylesheet" href="{{ asset('bundles/myblog/js/notifyBar/notifyBar.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset('bundles/myblog/css/reset.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset('bundles/myblog/css/main.css') }}" type="text/css" media="all" />
+            <!--[if IE 8]>
+            <link rel="stylesheet" href="{{ asset('bundles/myblog/css/ie8.css') }}" type="text/css" media="screen" />
+            <![endif]-->
+            <!--[if IE]>
+            <link rel="stylesheet" href="{{ asset('bundles/myblog/css/iesucks.css') }}" type="text/css" media="screen" />
+            <![endif]-->
+        {% endblock %}
+        <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ path('cms_sitemap') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/myblog/favicon.ico') }}" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="header">
+                <a href="{{ path('homepage') }}" title="Vincent Chalamon">Vincent Chalamon</a>
+                <span class="accroche">Développeur multimédia</span>
+                {{ menu('root', 'MyBlogBundle:Menu:root.html.twig', {'current': article}) }}
+                {% block head %}{% endblock %}
+                <div class="clear"></div>
+            </div>
+            <div class="content left">
+                <div class="content_top"></div>
+                <div class="container">
+                    {% for class, messages in app.session.flashbag.all %}
+                        {% for message in messages %}
+                            <p class="{{ class }}">{{ message }}</p>
+                        {% endfor %}
+                    {% endfor %}
+                    {% block body %}{% endblock %}
+                </div>
+                <div class="content_bottom"></div>
+            </div>
+            <div class="column right">
+                <form action="{{ path('cms_search') }}" method="get">
+                    <input type="search" id="query" name="query" placeholder="Saisissez votre recherche..." value="{{ query is defined ? query : '' }}" />
+                    <input type="submit" value="" />
+                </form>
+                {% block right %}{% endblock %}
+                <div class="social">
+                    <h3>Suivez-moi</h3>
+                    {{ menu('follow', 'MyBlogBundle:Menu:follow.html.twig') }}
+                </div>
+                <div class="contact">
+                    <h3>A propos</h3>
+                    {{ menu('about', 'MyBlogBundle:Menu:about.html.twig') }}
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="footer">
+            Copyright &copy; {{ 'now'|date('Y') }} Vincent CHALAMON -
+            Graphisme <a href="https://www.facebook.com/oxymorecreation" target="_blank" title="Oxymore Création">Oxymore Création</a> -
+            Tous droits réservés
+        </div>
+        <div class="fork">
+            <a href="https://github.com/vincentchalamon" title="Fork me on GitHub !" target="_blank">Fork me on GitHub !</a>
+        </div>
+        <div class="fractal"></div>
+        <div class="md-modal md-effect-7" id="modal-1">
+            <div class="md-content">
+                <div class="md-title">
+                    <h3>Contact</h3>
+                </div>
+                <div>
+                    {{ render(controller('MyBlogBundle:Default:contact', {'form': form})) }}
+                </div>
+            </div>
+        </div>
+        <div class="md-overlay"></div>
+        <div class="loader">
+            <div class="ball"></div>
+            <div class="ball1"></div>
+        </div>
+        {% block javascripts %}
+            <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.1.min.js"></script>
+            <script type="text/javascript" src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/minified/jquery-ui.min.js"></script>
+            <script type="text/javascript" src="{{ asset('bundles/myblog/js/jquery.autosize.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/myblog/js/modal/modernizr.custom.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/myblog/js/modal/classie.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/myblog/js/modal/modalEffects.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/myblog/js/modal/cssParser.js') }}"></script>
+            <script type="text/javascript">
+                var polyfilter_scriptpath = '{{ asset('bundles/myblog/js/modal/') }}';
+            </script>
+            <script type="text/javascript" src="{{ asset('bundles/myblog/js/modal/css-filters-polyfill.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/myblog/js/jquery.emoticons.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/myblog/js/notifyBar/notifyBar.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/myblog/js/main.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="col-md-12">
+    <p>Menu</p>
+        <ul class="nav nav-pills">
+            <li class="{% if app.request.requestUri == path('viking_main_homepage') %}active{% endif %}" ><a href="{{ path('viking_main_homepage') }}">Home</a></li>
+        </ul>
+    </div>
+</div>
+

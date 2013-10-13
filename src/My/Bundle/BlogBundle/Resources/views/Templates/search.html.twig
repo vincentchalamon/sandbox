@@ -1,13 +1,7 @@
-{% extends 'VinceCmsBundle::base.html.twig' %}
-
-{% block title %}
-    {{ parent() }}{% if query is defined and query %} : {{ query }}{% endif %}
-{% endblock %}
+{% extends 'MyBlogBundle::base.html.twig' %}
 
 {% block body %}
-    {% block search_title %}
-        <h1>Recherche : <span>{{ query }}</span></h1>
-    {% endblock %}
+    <h1>{{ block('title') }}</h1>
 
     <div class="contents">{{ article.content('contents')|raw }}</div>
 
@@ -16,11 +10,6 @@
             <div class="block">
                 <h2><a href="{{ path(result.routeName) }}" title="{{ result.title }}">{{ result.title }}</a></h2>
                 <div class="chapo">
-                    {% if result.content('thumbnail') %}
-                        <div class="thumbnail">
-                            <img src="{{ result.content('thumbnail') }}" alt="{{ result.title }}" title="{{ result.title }}" />
-                        </div>
-                    {% endif %}
                     {{ result.summary|raw }}
                     <a href="{{ path(result.routeName) }}" title="Lire la suite" class="linked gradient">Lire la suite</a>
                 </div>

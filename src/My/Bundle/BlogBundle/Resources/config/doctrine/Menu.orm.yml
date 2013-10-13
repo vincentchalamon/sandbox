@@ -1,0 +1,33 @@
+My\Bundle\BlogBundle\Entity\Menu:
+    type: entity
+    table: menu
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    manyToOne:
+        parent:
+            targetEntity: My\Bundle\BlogBundle\Entity\Menu
+            inversedBy: children
+            joinColumn:
+                name: parent_id
+                referencedColumnName: id
+                nullable: true
+                onDelete: CASCADE
+            gedmo:
+                - treeParent
+        article:
+            targetEntity: My\Bundle\BlogBundle\Entity\Article
+            inversedBy: menus
+            joinColumn:
+                name: article_id
+                referencedColumnName: id
+                nullable: true
+                onDelete: SET NULL
+    oneToMany:
+        children:
+            targetEntity: My\Bundle\BlogBundle\Entity\Menu
+            mappedBy: parent
+            orderBy:
+                lft: ASC

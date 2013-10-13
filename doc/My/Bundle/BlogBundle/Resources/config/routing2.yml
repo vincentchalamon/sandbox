@@ -1,0 +1,5 @@
+timeline:
+    pattern: /timeline.js
+    defaults: { _controller: MyBlogBundle:Default:timeline, _format: js }
+    requirements:
+        _method: GET

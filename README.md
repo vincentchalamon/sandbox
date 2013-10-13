@@ -1,13 +1,18 @@
-Installation
-============
+Sandbox for VinceCms
+====================
+
+<!--[![Build Status](https://secure.travis-ci.org/FriendsOfSymfony/FOSUserBundle.png?branch=master)](http://travis-ci.org/FriendsOfSymfony/FOSUserBundle)-->
+[![Total Downloads](https://poser.pugx.org/vince/sandbox/downloads.png)](https://packagist.org/packages/vince/sandbox)
+[![Latest Stable Version](https://poser.pugx.org/vince/sandbox/v/stable.png)](https://packagist.org/packages/vince/sandbox)
+
+## Installation
 
 Install [Composer](http://getcomposer.org/) and run the following command:
 ```shell
 php composer.phar create-project vince/sandbox path/ -s dev
 ```
 
-Configuration
-=============
+## Configuration
 
 Run the following command to launch elasticsearch:
 ```shell
@@ -21,8 +26,7 @@ php app/console doctrine:schema:update --force
 php app/console doctrine:fixtures:load -n
 ```
 
-Deploy
-======
+## Deploy
 
 This sandbox has already been capified for 2 env : _dev_ (default) & _prod_. Update configuration file:
 ```ruby
@@ -40,8 +44,7 @@ cap dev deploy:setup
 cap dev deploy
 ```
 
-Dev
-===
+## Contribute
 
 If you contribute to this project, I advise you to catch emails through [mailcatcher](http://mailcatcher.me/).
 You need to update your parameters.yml file as following:
@@ -51,9 +54,23 @@ parameters:
     mailer_host: 127.0.0.1:1025
 ```
 
+## Todo
 
-Todo
-====
-
+* Add FOSUserBundle
+* Create admin for Block & User
+* Documentation:
+    * Installation:
+        * Install sandbox with composer
+        * Run elasticsearch
+        * Load fixtures
+    * Configuration:
+        * Contact: noreply, recipient
+        * Entities:
+            * Ready for use
+            * Adding properties & associations
+    * Deployment:
+        * Capifony
+    * Developers:
+        * Mailcatcher
 * Migrate blog to Kimsufi/VPS
 * Enable Cloudflare for blog

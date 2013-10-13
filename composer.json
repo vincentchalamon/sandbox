@@ -38,7 +38,8 @@
         "vince/cms-admin-bundle": "dev-master",
         "knplabs/knp-snappy-bundle": "dev-master",
         "liip/imagine-bundle": "dev-master",
-        "elasticsearch/binaries": "*"
+        "elasticsearch/binaries": "*",
+        "friendsofsymfony/user-bundle": "2.0.*@dev"
     },
     "scripts": {
         "post-install-cmd": [

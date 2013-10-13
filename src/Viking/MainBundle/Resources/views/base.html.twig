@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Viking Lab par Salomé Fize et Yannick Lecesne{% endblock %}</title>
+    {% block stylesheets %}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="DESCRIPTION" content="{% block description %}Site portfolio communautaire{% endblock %}"/>
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/vikingmain/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/vikingmain/css/base.css') }}" media="all" />
+
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+{% block page %}
+    <body>
+        <div class="row header">
+            {% block header %}{% endblock %}
+        </div>
+        <div class="row menu">
+            {% block menu %}{% endblock %}
+        </div>
+        <div class="row content_page">
+            {% block body %}{% endblock %}
+        </div>
+        <div class="row footer">
+            {% block footer %}{% endblock %}
+        </div>
+    </body>
+{% endblock %}
+{% block javascripts %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    {# <script src="{{ asset('bundles/vikingmain/js/bootstrap.min.js') }}"></script> #}
+    <script src="{{ asset('bundles/vikingmain/js/base.js') }}"></script>
+{% endblock %}
+</html>

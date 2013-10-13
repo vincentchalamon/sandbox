@@ -1,0 +1,20 @@
+My\Bundle\BlogBundle\Entity\QuoteContent:
+    type: entity
+    table: quote_content
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        description:
+            type: text
+        price:
+            type: float
+    manyToOne:
+        quote:
+            targetEntity: My\Bundle\BlogBundle\Entity\Quote
+            inversedBy: contents
+            joinColumn:
+                name: quote_id
+                referencedColumnName: id

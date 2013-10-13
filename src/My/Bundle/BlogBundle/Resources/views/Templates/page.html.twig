@@ -1,7 +1,6 @@
-{% extends 'MyBlogBundle:Templates:realisation.html.twig' %}
+{% extends 'MyBlogBundle::base.html.twig' %}
 
 {% block body %}
-    <div id="fb-root"></div>
     <h1>{{ block('title') }}</h1>
 
     <div class="infos">
@@ -21,40 +20,4 @@
     {% endif %}
 
     <div class="contents">{{ article.content('contents')|raw }}</div>
-
-    <div class="social">
-        <fb:like send="true" layout="button_count" show_faces="false"></fb:like>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-lang="fr">Tweeter</a>
-        <script type="IN/Share" data-counter="right"></script>
-        <div class="viadeo-share-button">
-            <div class="viadeo-share" data-display="btnlight" data-count="right" data-partner-id="uouDroVovEigEflIwbAOxVgjto"></div>
-        </div>
-        <g:plusone></g:plusone>
-    </div>
 {% endblock %}
-
-{#% block body %}
-    {{ parent() }}
-
-    {<div id="commentaires">
-        <h4>{{ "{0}Soyez le premier à commenter cet article !|{1}%count% commentaire|]1,Inf]%count% commentaires"|transchoice(article.activecomments|length) }}</h4>
-        {% if post.activecomments|length %}
-            {% include 'VincentBlogBundle:Pager:comments.html.twig' with {'pager': pager, 'post': post} %}
-        {% endif %}
-    </div>
-    <h4>Laissez un commentaire</h4>
-    {% render "VincentBlogBundle:Post:commentForm" with {'post': post, 'form': form} %}
-{% endblock %}
-
-{% block right %}
-    {% if article.siblings|length %}
-        <div class="recents">
-            <h3>Sur le même sujet</h3>
-            <ul>
-                {% for sibling in post.siblings %}
-                    <li><a href="{{ path(post.routeName) }}" title="{{ sibling.title }}">{{ sibling.title|truncate(25, true, '...') }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-    {% endif %}
-{% endblock %#}
