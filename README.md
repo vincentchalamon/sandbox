@@ -72,5 +72,4 @@ parameters:
         * Capifony
     * Developers:
         * Mailcatcher
-* Migrate blog to Kimsufi/VPS
 * Enable Cloudflare for blog

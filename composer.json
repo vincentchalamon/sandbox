@@ -38,6 +38,7 @@
         "vince/cms-admin-bundle": "dev-master",
         "knplabs/knp-snappy-bundle": "dev-master",
         "liip/imagine-bundle": "dev-master",
+        "friendsofsymfony/elastica-bundle": "3.0.*@dev",
         "elasticsearch/binaries": "*",
         "friendsofsymfony/user-bundle": "2.0.*@dev"
     },
