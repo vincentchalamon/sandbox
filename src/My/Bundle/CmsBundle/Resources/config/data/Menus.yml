@@ -1,0 +1,27 @@
+My\Bundle\CmsBundle\Entity\Menu:
+    root:
+        title: Main menu
+        slug: root
+        startedAt: '2013-01-01'
+        children:
+            homepage:
+                title: Homepage
+                article: homepage
+                startedAt: '2013-01-01'
+            page-2:
+                title: Page 2
+                article: page2
+                startedAt: '2013-01-01'
+            contact:
+                title: Contact
+                article: contact
+                startedAt: '2013-01-01'
+    about:
+        title: About
+        slug: about
+        startedAt: '2013-01-01'
+        children:
+            page:
+                title: Post
+                article: page
+                startedAt: '2013-01-01'

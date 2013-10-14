@@ -56,7 +56,6 @@ parameters:
 
 ## Todo
 
-* Add FOSUserBundle
 * Create admin for Block & User
 * Documentation:
     * Installation:

@@ -1,0 +1,8 @@
+My\Bundle\CmsBundle\Entity\Block:
+    type: entity
+    table: block
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO

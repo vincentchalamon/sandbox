@@ -19,12 +19,13 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\ElasticaBundle\FOSElasticaBundle(),
-            //new FOS\UserBundle\FOSUserBundle(),
             new Vince\Bundle\AdminBundle\VinceAdminBundle(),
             new Vince\Bundle\TypeBundle\VinceTypeBundle(),
             new Vince\Bundle\CmsBundle\VinceCmsBundle(),
             new Vince\Bundle\CmsAdminBundle\VinceCmsAdminBundle(),
-            new My\Bundle\BlogBundle\MyBlogBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new My\Bundle\UserBundle\MyUserBundle(),
+            new My\Bundle\CmsBundle\MyCmsBundle(),
             //new Viking\MainBundle\VikingMainBundle(),
         );
 

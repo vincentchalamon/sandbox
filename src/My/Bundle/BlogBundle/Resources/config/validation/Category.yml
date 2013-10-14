@@ -1,4 +1,0 @@
-My\Bundle\BlogBundle\Entity\Category:
-    properties:
-        name:
-            - NotBlank: ~

@@ -1,0 +1,24 @@
+My\Bundle\CmsBundle\Entity\ArticleMeta:
+    type: entity
+    table: article_meta
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    manyToOne:
+        article:
+            targetEntity: My\Bundle\CmsBundle\Entity\Article
+            inversedBy: metas
+            joinColumn:
+                name: article_id
+                referencedColumnName: id
+                nullable: false
+                onDelete: CASCADE
+        meta:
+            targetEntity: Vince\Bundle\CmsBundle\Entity\Meta
+            joinColumn:
+                name: meta_id
+                referencedColumnName: id
+                nullable: false
+                onDelete: CASCADE

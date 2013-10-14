@@ -1,0 +1,9 @@
+{% extends 'MyCmsBundle::base.html.twig' %}
+
+{% block body %}
+    <h1>{{ block('title') }}</h1>
+
+    <div class="contents">{{ article.content('main')|raw }}</div>
+
+    {{ render_block('homepage') }}
+{% endblock %}
