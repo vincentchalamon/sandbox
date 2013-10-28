@@ -16,3 +16,5 @@
 /nbproject/
 /composer.phar
 /composer.lock
+
+/doc/landing/vendor

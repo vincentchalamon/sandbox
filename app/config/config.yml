@@ -80,6 +80,12 @@ fos_user:
     group:
         group_class: My\Bundle\UserBundle\Entity\Group
 
+knp_snappy:
+    pdf:
+        enabled: true
+        binary:  /Applications/wkhtmltopdf.app/Contents/MacOS/wkhtmltopdf
+        options: []
+
 vince_cms:
     contact:
         noreply: noreply@example.fr

@@ -21,9 +21,13 @@ vendor/elasticsearch/binaries/bin/elasticsearch -f
 
 Once you've created your database, run the following commands to build database with default fixtures:
 ```shell
-php app/console doctrine:database:create
 php app/console doctrine:schema:update --force
 php app/console doctrine:fixtures:load -n
+```
+
+You sould index your articles to elasticsearch:
+```shell
+php app/console fos:elastica:populate
 ```
 
 ## Deploy
@@ -44,31 +48,69 @@ cap dev deploy:setup
 cap dev deploy
 ```
 
-## Contribute
+## Developers
 
-If you contribute to this project, I advise you to catch emails through [mailcatcher](http://mailcatcher.me/).
+For local use, you should catch emails through [mailcatcher](http://mailcatcher.me/).
 You need to update your parameters.yml file as following:
 ```yml
 parameters:
     ...
-    mailer_host: 127.0.0.1:1025
+    mailer_host: localhost:1025
 ```
 
 ## Todo
 
-* Create admin for Block & User
+* Templates:
+    X Mail: http://templates.indextwo.com/e-mail/elegance/
+    X Devis
+    * Default
+    * Documentation: http://mojotech.github.io/stickymojo/
+    * Admin
+* Admin:
+    * Article
+    * Menu
+    * Block
+    * User
+    * Devis
+* Search:
+    * Configuration
+    * Tests
+    * Pager: KnpPaginatorBundle + ajax
+* Blog:
+    * Comments:
+        * Front: Disqus
+        * Admin: count (link to Disqus)
+    * Images:
+        * Resize: LiipImageBundle
+        * Loader: http://luis-almeida.github.io/unveil/
+    * Social: http://www.hongkiat.com/blog/optimizing-social-button/
+    * Admin:
+        * Article (realisation) (ajax screen-shot: http://html2canvas.hertzen.com/screenshots.html): KnpSnappyBundle ?
+        X Devis PDF generator: KnpSnappyBundle
+* Submit buttons: http://msurguy.github.io/ladda-bootstrap/
+* Unit/functional tests: https://travis-ci.org/
+* Enable CloudFlare for blog
+* Cache CMS
+* Types:
+    * jQuery Chosen (http://davidwalsh.name/jquery-chosen)
+    * Switch (http://www.inserthtml.com/demos/css/radio-buttons/)
+    * Autosize (https://github.com/jackmoore/autosize)
+    * FileUpload (http://blueimp.github.io/jQuery-File-Upload/basic.html)
+    * TokenInput (http://loopj.com/jquery-tokeninput/)
+    * Dropzone (http://www.dropzonejs.com/)
+    * Autocomplete (http://jqueryui.com/autocomplete/)
+    * jQuery image cropper (http://tympanus.net/codrops/2009/11/04/jquery-image-cropper-with-uploader-v1-1/)
 * Documentation:
     * Installation:
         * Install sandbox with composer
-        * Run elasticsearch
+        * Run elasticSearch
         * Load fixtures
     * Configuration:
-        * Contact: noreply, recipient
+        * Contact: no-reply, recipient
         * Entities:
             * Ready for use
             * Adding properties & associations
     * Deployment:
         * Capifony
     * Developers:
-        * Mailcatcher
-* Enable Cloudflare for blog
+        * MailCatcher
