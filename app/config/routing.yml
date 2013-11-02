@@ -5,9 +5,6 @@
 type:
     resource: "@VinceTypeBundle/Resources/config/routing.yml"
 
-#viking:
-    #resource: "@VikingMainBundle/Resources/config/routing.yml"
-
 cms:
     resource: "@VinceCmsBundle/Resources/config/routing.yml"
 

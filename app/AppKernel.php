@@ -27,7 +27,6 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new My\Bundle\UserBundle\MyUserBundle(),
             new My\Bundle\CmsBundle\MyCmsBundle(),
-            //new Viking\MainBundle\VikingMainBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
