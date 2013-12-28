@@ -60,57 +60,101 @@ parameters:
 
 ## Todo
 
-* Templates:
-    X Mail: http://templates.indextwo.com/e-mail/elegance/
-    X Devis
-    * Default
-    * Documentation: http://mojotech.github.io/stickymojo/
-    * Admin
-* Admin:
+* Search:
+    * Configuration
+    * Pager: KnpPaginatorBundle + ajax
+* Tests: https://travis-ci.org/
+* Google Analytics tracking code
+* Add compulsory metas on Article create
+* Install Bootstrap + Less + YUI Compressor (update composer.json with hooks)
+* Twig helper `render_metas`
+* Admin
     * Article
     * Menu
     * Block
     * User
-    * Devis
-* Search:
-    * Configuration
-    * Tests
-    * Pager: KnpPaginatorBundle + ajax
-* Blog:
-    * Comments:
-        * Front: Disqus
-        * Admin: count (link to Disqus)
-    * Images:
-        * Resize: LiipImageBundle
-        * Loader: http://luis-almeida.github.io/unveil/
-    * Social: http://www.hongkiat.com/blog/optimizing-social-button/
-    * Admin:
-        * Article (realisation) (ajax screen-shot: http://html2canvas.hertzen.com/screenshots.html): KnpSnappyBundle ?
-        X Devis PDF generator: KnpSnappyBundle
-* Submit buttons: http://msurguy.github.io/ladda-bootstrap/
-* Unit/functional tests: https://travis-ci.org/
-* Enable CloudFlare for blog
-* Cache CMS
-* Types:
-    * jQuery Chosen (http://davidwalsh.name/jquery-chosen)
-    * Switch (http://www.inserthtml.com/demos/css/radio-buttons/)
-    * Autosize (https://github.com/jackmoore/autosize)
-    * FileUpload (http://blueimp.github.io/jQuery-File-Upload/basic.html)
-    * TokenInput (http://loopj.com/jquery-tokeninput/)
-    * Dropzone (http://www.dropzonejs.com/)
-    * Autocomplete (http://jqueryui.com/autocomplete/)
-    * jQuery image cropper (http://tympanus.net/codrops/2009/11/04/jquery-image-cropper-with-uploader-v1-1/)
+* Themes
+    * Default theme
+    * Admin theme
+    * Documentation theme: http://mojotech.github.io/stickymojo/
+    * Mail theme: http://templates.indextwo.com/e-mail/elegance/
+* Check each theme responsive (mail include)
 * Documentation:
-    * Installation:
-        * Install sandbox with composer
-        * Run elasticSearch
+    * Install sandbox:
+        * Download with composer
+        * Launch elastic search
+        * Create database
         * Load fixtures
-    * Configuration:
+    * Configure sandbox:
         * Contact: no-reply, recipient
-        * Entities:
-            * Ready for use
-            * Adding properties & associations
-    * Deployment:
-        * Capifony
-    * Developers:
-        * MailCatcher
+        * Analytics:
+            * Sitemap url
+            * Configure Google Analytics tracking code
+* How to:
+    * For developers:
+        * Catch mail on dev (Mailcatcher)
+        * Deploy
+        * Override entities
+        * Override controller
+        * Inject object in template (loader)
+        * Create forms:
+            * Types (link to VinceTypeBundle documentation)
+            * Processor
+        * Create fixtures:
+            * Fixtures in YAML
+            * Create Template & Areas (link to designer documentation)
+            * Create Article:
+                * Link Contents through Template areas
+                * Add Metas
+            * Menus:
+                * Article or url
+                * Tree (parent, children)
+        * PHPDoc
+    * For designers:
+        * Create theme
+            * Create template:
+                * Create twig file
+                * Register template & its areas in fixtures (link to developer documentation)
+            * Assetic:
+                * Bootstrap installed with Less
+                * YUI compressor installer
+            * Twig helpers:
+                * render_menu
+                * render_block
+                * render_metas
+                * localizeddate
+
+
+## Nice to have
+
+* Image loader: http://luis-almeida.github.io/unveil/
+* Image resizer: LiipImageBundle
+* Cache
+* Newsletter
+
+
+## Type
+
+* jQuery Chosen (http://davidwalsh.name/jquery-chosen)
+* Switch (http://www.inserthtml.com/demos/css/radio-buttons/)
+* Autosize (https://github.com/jackmoore/autosize)
+* FileUpload (http://blueimp.github.io/jQuery-File-Upload/basic.html)
+* TokenInput (http://loopj.com/jquery-tokeninput/)
+* Dropzone (http://www.dropzonejs.com/)
+* Autocomplete (http://jqueryui.com/autocomplete/)
+* jQuery image cropper (http://tympanus.net/codrops/2009/11/04/jquery-image-cropper-with-uploader-v1-1/)
+
+
+## Blog
+
+* Devis
+    * Theme
+    * Admin
+    * PDF generator: KnpSnappyBundle
+* Comments:
+    * Front: Disqus
+    * Admin: count (link to Disqus)
+* Social: http://www.hongkiat.com/blog/optimizing-social-button/
+* Admin article (realisation) (ajax screen-shot: http://html2canvas.hertzen.com/screenshots.html): KnpSnappyBundle ?
+* Submit buttons: http://msurguy.github.io/ladda-bootstrap/
+* Enable CloudFlare
