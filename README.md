@@ -68,6 +68,7 @@ parameters:
 * Add compulsory metas on Article create
 * Install Bootstrap + Less + YUI Compressor (update composer.json with hooks)
 * Twig helper `render_metas`
+* Override default User bundle (cf. Antargaz)
 * Admin
     * Article
     * Menu

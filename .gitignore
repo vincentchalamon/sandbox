@@ -10,6 +10,9 @@
 /build/
 /vendor/
 /web/bundles/
+/web/css/
+/web/fonts/
+/web/js/
 /web/uploads/
 /.idea/
 .DS_Store

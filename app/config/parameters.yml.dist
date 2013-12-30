@@ -1,14 +1,24 @@
 parameters:
-    database_driver:   pdo_mysql
-    database_host:     127.0.0.1
-    database_port:     ~
-    database_name:     blog
-    database_user:     root
-    database_password: ~
-    mailer_transport:  smtp
-    mailer_host:       localhost
-    mailer_user:       ~
-    mailer_password:   ~
-    locale:            fr
-    secret:            ThisTokenIsNotSoSecretChangeIt
-    database_path:     ~
+    database_driver:        pdo_mysql
+    database_host:          127.0.0.1
+    database_port:          ~
+    database_name:          blog
+    database_user:          root
+    database_password:      ~
+    database_path:          ~
+
+    database_test_driver:   pdo_mysql
+    database_test_host:     localhost
+    database_test_port:     null
+    database_test_name:     blog-test
+    database_test_user:     root
+    database_test_password: null
+    database_test_path:     ~
+
+    mailer_transport:       smtp
+    mailer_host:            localhost
+    mailer_user:            ~
+    mailer_password:        ~
+
+    locale:                 fr
+    secret:                 ThisTokenIsNotSoSecretChangeIt

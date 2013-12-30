@@ -16,17 +16,31 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+
+            // CMS
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\ElasticaBundle\FOSElasticaBundle(),
-            new Vince\Bundle\AdminBundle\VinceAdminBundle(),
-            new Vince\Bundle\TypeBundle\VinceTypeBundle(),
             new Vince\Bundle\CmsBundle\VinceCmsBundle(),
-            new Vince\Bundle\CmsAdminBundle\VinceCmsAdminBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
-            new My\Bundle\UserBundle\MyUserBundle(),
+            new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new My\Bundle\CmsBundle\MyCmsBundle(),
+
+            // Admin
+            new Sonata\CoreBundle\SonataCoreBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Sonata\jQueryBundle\SonatajQueryBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new Sonata\AdminBundle\SonataAdminBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+
+            // Blog
+            //new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            //new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            //new Vince\Bundle\AdminBundle\VinceAdminBundle(),
+            //new Vince\Bundle\TypeBundle\VinceTypeBundle(),
+            //new Vince\Bundle\CmsAdminBundle\VinceCmsAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

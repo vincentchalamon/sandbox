@@ -10,12 +10,54 @@
         {
             "type": "package",
             "package": {
+                "name": "jquery/jquery",
+                "version": "1.10.2",
+                "dist": {
+                    "url": "http://code.jquery.com/jquery-1.10.2.min.js",
+                    "type": "file"
+                },
+                "require": {
+                    "jquery/jquery-map": "1.10.2"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery-map",
+                "version": "1.10.2",
+                "dist": {
+                    "url": "http://code.jquery.com/jquery-1.10.2.min.map",
+                    "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery-ui",
+                "version": "1.10.3",
+                "dist": {
+                    "url": "http://code.jquery.com/ui/1.10.3/jquery-ui.min.js",
+                    "type": "file"
+                },
+                "require": {
+                    "jquery/jquery": "1.10.*"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
                 "name": "elasticsearch/binaries",
                 "version": "dev-master",
                 "source": {
                     "url": "git@github.com:elasticsearch/elasticsearch.git",
                     "type": "git",
                     "reference": "master"
+                },
+                "require": {
+                    "friendsofsymfony/elastica-bundle": "3.0.*@dev"
                 }
             }
         }
@@ -35,12 +77,24 @@
         "sensio/framework-extra-bundle": "2.3.*",
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
-        "vince/cms-admin-bundle": "dev-master",
-        "knplabs/knp-snappy-bundle": "dev-master",
-        "liip/imagine-bundle": "dev-master",
-        "friendsofsymfony/elastica-bundle": "3.0.*@dev",
+
+        "vince/cms-bundle": "dev-master",
         "elasticsearch/binaries": "*",
-        "friendsofsymfony/user-bundle": "2.0.*@dev"
+
+        "jquery/jquery": "1.10.*",
+        "braincrafted/bootstrap-bundle": "~2.0@alpha",
+        "leafo/lessphp": "0.4.0",
+        "twbs/bootstrap": "3.0.0",
+        "nervo/yuicompressor": "dev-master",
+
+        "friendsofsymfony/user-bundle": "1.3.*@dev",
+        "sonata-project/core-bundle": "~2.2@dev",
+        "sonata-project/admin-bundle": "dev-master",
+        "sonata-project/user-bundle": "dev-master",
+        "sonata-project/doctrine-orm-admin-bundle": "dev-master",
+
+        "liip/imagine-bundle": "dev-master",
+        "knplabs/knp-snappy-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
@@ -48,14 +102,18 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Braincrafted\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::install",
+            "Vince\\Bundle\\CmsBundle\\Composer\\ScriptHandler::installJavaScripts"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Braincrafted\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::install",
+            "Vince\\Bundle\\CmsBundle\\Composer\\ScriptHandler::installJavaScripts"
         ]
     },
     "config": {
@@ -64,10 +122,14 @@
     "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
+        "symfony-assets-install": "symlink",
         "symfony-web-dir": "web",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         },
+        "javascripts": [
+            "vendor/jquery/jquery-map/jquery-1.10.2.min.map"
+        ],
         "branch-alias": {
             "dev-master": "2.3-dev"
         }

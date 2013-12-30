@@ -1,4 +1,0 @@
-My\Bundle\CmsBundle\Entity\Category:
-    properties:
-        name:
-            - NotBlank: ~
