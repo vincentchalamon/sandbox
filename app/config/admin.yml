@@ -11,30 +11,27 @@ sonata_user:
     security_acl: false
     manager_type: orm
     class:
-        user: Sonata\UserBundle\Entity\BaseUser
+        user: Vince\Bundle\CmsSonataAdminBundle\Entity\User
+        group: Vince\Bundle\CmsSonataAdminBundle\Entity\Group
     admin:
         user:
-            class:       Sonata\UserBundle\Admin\Entity\UserAdmin
+            class:       Vince\Bundle\CmsSonataAdminBundle\Admin\Entity\UserAdmin
+            controller:  SonataAdminBundle:CRUD
+            translation: SonataUserBundle
+        group:
+            class:       Vince\Bundle\CmsSonataAdminBundle\Admin\Entity\GroupAdmin
             controller:  SonataAdminBundle:CRUD
             translation: SonataUserBundle
 
-#sonata_doctrine_orm_admin:
-    #templates:
-        #types:
-            #list:
-                #localizeddate: AGUserBundle:Admin:localizeddate.html.twig
-                #editable: AGUserBundle:Admin:editable.html.twig
-            #show:
-                #localizeddate: AGUserBundle:Admin:localizeddate.html.twig
+sonata_doctrine_orm_admin:
+    templates:
+        types:
+            list:
+                localizeddate: VinceCmsSonataAdminBundle:List:localizeddate.html.twig
+            show:
+                localizeddate: VinceCmsSonataAdminBundle:Show:localizeddate.html.twig
 
 sonata_admin:
     title: Vince CMS
-    #templates:
-        #layout: AGUserBundle:Admin:layout.html.twig
-    #dashboard:
-        #blocks:
-            #- { position: left, type: sonata.admin.block.admin_list }
-        #groups:
-            #admin.groups.user: ~
-            #admin.groups.email: ~
-            #admin.groups.configuration: ~
+    templates:
+        layout: VinceCmsSonataAdminBundle::standard_layout.html.twig

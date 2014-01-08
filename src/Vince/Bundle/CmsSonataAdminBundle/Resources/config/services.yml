@@ -1,0 +1,24 @@
+services:
+    vince.admin.article:
+        class: Vince\Bundle\CmsSonataAdminBundle\Admin\Entity\ArticleAdmin
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: cms
+              label_catalogue: SonataAdminBundle
+              label: Articles
+        arguments: [ ~, %vince.class.article%, ~ ]
+        calls:
+            - [ setTranslationDomain, [ 'SonataAdminBundle' ] ]
+
+    vince.admin.menu:
+        class: Vince\Bundle\CmsSonataAdminBundle\Admin\Entity\MenuAdmin
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: cms
+              label_catalogue: SonataAdminBundle
+              label: Menus
+        arguments: [ ~, %vince.class.menu%, ~ ]
+        calls:
+            - [ setTranslationDomain, [ 'SonataAdminBundle' ] ]

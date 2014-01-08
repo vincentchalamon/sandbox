@@ -24,6 +24,10 @@ class AppKernel extends Kernel
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new My\Bundle\CmsBundle\MyCmsBundle(),
 
+            // User
+            new FOS\UserBundle\FOSUserBundle(),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+
             // Admin
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
@@ -31,15 +35,14 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
-            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+            new Vince\Bundle\CmsSonataAdminBundle\VinceCmsSonataAdminBundle(),
+            new Vince\Bundle\TypeBundle\VinceTypeBundle(),
 
             // Blog
             //new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             //new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             //new Vince\Bundle\AdminBundle\VinceAdminBundle(),
-            //new Vince\Bundle\TypeBundle\VinceTypeBundle(),
             //new Vince\Bundle\CmsAdminBundle\VinceCmsAdminBundle(),
         );
 

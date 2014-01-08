@@ -15,9 +15,6 @@
                 "dist": {
                     "url": "http://code.jquery.com/jquery-1.10.2.min.js",
                     "type": "file"
-                },
-                "require": {
-                    "jquery/jquery-map": "1.10.2"
                 }
             }
         },
@@ -40,9 +37,6 @@
                 "dist": {
                     "url": "http://code.jquery.com/ui/1.10.3/jquery-ui.min.js",
                     "type": "file"
-                },
-                "require": {
-                    "jquery/jquery": "1.10.*"
                 }
             }
         },
@@ -82,6 +76,7 @@
         "elasticsearch/binaries": "*",
 
         "jquery/jquery": "1.10.*",
+        "jquery/jquery-map": "1.10.*",
         "braincrafted/bootstrap-bundle": "~2.0@alpha",
         "leafo/lessphp": "0.4.0",
         "twbs/bootstrap": "3.0.0",
@@ -92,6 +87,7 @@
         "sonata-project/admin-bundle": "dev-master",
         "sonata-project/user-bundle": "dev-master",
         "sonata-project/doctrine-orm-admin-bundle": "dev-master",
+        "vince/type-bundle": "dev-master",
 
         "liip/imagine-bundle": "dev-master",
         "knplabs/knp-snappy-bundle": "dev-master"

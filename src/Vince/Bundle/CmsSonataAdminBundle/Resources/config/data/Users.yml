@@ -1,0 +1,16 @@
+Vince\Bundle\CmsSonataAdminBundle\Entity\User:
+    admin:
+        enabled: true
+        plainPassword: 4dm1n
+        groups:
+            admin:
+                name: Admin
+                roles: [ROLE_ADMIN]
+        username: admin
+        email: admin@example.fr
+    god:
+        enabled: true
+        plainPassword: 4dm1n
+        roles: [ROLE_SUPER_ADMIN]
+        username: god
+        email: god@example.fr
