@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Symfony package.
+ * This file is part of the VinceCmsSonataAdmin bundle.
  *
  * (c) Vincent Chalamon <vincentchalamon@gmail.com>
  *
@@ -24,10 +24,7 @@ class UserData extends AbstractFixture implements OrderedFixtureInterface
 {
     
     /**
-     * Load fixtures files
-     * 
-     * @author Vincent CHALAMON <vincentchalamon@gmail.com>
-     * @param ObjectManager $manager
+     * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
@@ -35,7 +32,10 @@ class UserData extends AbstractFixture implements OrderedFixtureInterface
         $loader->addDirectory(__DIR__.'/../../Resources/config/data');
         $loader->load($manager, null, $this);
     }
-    
+
+    /**
+     * {@inheritdoc}
+     */
     public function getOrder()
     {
         return 2;

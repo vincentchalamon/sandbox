@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the VinceCmsBundle.
+ * This file is part of the Sandbox package.
  *
  * (c) Vincent Chalamon <vincentchalamon@gmail.com>
  *
@@ -9,8 +9,6 @@
  * file that was distributed with this source code.
  */
 namespace My\Bundle\CmsBundle\Entity;
-
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * This entity provides features to manage a Category.

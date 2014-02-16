@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the VinceCmsSonataAdmin bundle.
+ *
+ * (c) Vincent Chalamon <vincentchalamon@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace Vince\Bundle\CmsSonataAdminBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -7,6 +15,8 @@ use Sonata\UserBundle\Entity\BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * User
+ *
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
  */
@@ -28,6 +38,9 @@ class User extends BaseUser
      */
     protected $groups;
 
+    /**
+     * {@inheritdoc}
+     */
     public function __construct()
     {
         parent::__construct();

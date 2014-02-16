@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the VinceCmsSonataAdmin bundle.
+ *
+ * (c) Vincent Chalamon <vincentchalamon@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace Vince\Bundle\CmsSonataAdminBundle\Admin\Entity;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -16,16 +24,12 @@ class MenuAdmin extends Admin
 {
 
     /**
-     * Route pattern
-     *
-     * @var string
+     * {@inheritdoc}
      */
     protected $baseRoutePattern = 'menus';
 
     /**
-     * Default DataGrid values
-     *
-     * @var array
+     * {@inheritdoc}
      */
     protected $datagridValues = array(
         '_page'       => 1,
@@ -34,11 +38,7 @@ class MenuAdmin extends Admin
     );
 
     /**
-     * Configure list
-     *
-     * @author Vincent Chalamon <vincent@ylly.fr>
-     *
-     * @param ListMapper $mapper
+     * {@inheritdoc}
      */
     protected function configureListFields(ListMapper $mapper)
     {
@@ -48,11 +48,7 @@ class MenuAdmin extends Admin
     }
 
     /**
-     * Configure filters
-     *
-     * @author Vincent Chalamon <vincent@ylly.fr>
-     *
-     * @param DatagridMapper $mapper
+     * {@inheritdoc}
      */
     protected function configureDatagridFilters(DatagridMapper $mapper)
     {
@@ -60,11 +56,7 @@ class MenuAdmin extends Admin
     }
 
     /**
-     * Configure filters
-     *
-     * @author Vincent Chalamon <vincent@ylly.fr>
-     *
-     * @param FormMapper $mapper
+     * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $mapper)
     {

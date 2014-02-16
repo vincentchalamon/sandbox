@@ -18,13 +18,13 @@ security:
     firewalls:
         admin:
             pattern:            ^/admin/
-            context:            userback
+            switch_user:        true
+            context:            user
             form_login:
                 provider:       fos_userbundle
                 login_path:     sonata_user_admin_security_login
-                use_forward:    false
-                always_use_default_target_path: true
                 default_target_path: sonata_admin_dashboard
+                use_forward:    false
                 check_path:     sonata_user_admin_security_check
                 failure_path:   null
             logout:
@@ -37,20 +37,21 @@ security:
             security: false
 
         main:
-            pattern: ^/
+            pattern:            ^/
+            switch_user:        true
+            context:            user
             form_login:
-                provider: fos_userbundle
-                csrf_provider: form.csrf_provider
-                login_path: fos_user_security_login
-                check_path: fos_user_security_check
-                #remember_me: true
-                always_use_default_target_path: true
+                provider:       fos_userbundle
+                csrf_provider:  form.csrf_provider
+                login_path:     fos_user_security_login
                 default_target_path: homepage
-                use_referer: true
+                check_path:     fos_user_security_check
+                always_use_default_target_path: true
+                use_referer:    true
             logout:
-                path: fos_user_security_logout
-                target: homepage
-            anonymous: true
+                path:           fos_user_security_logout
+                target:         homepage
+            anonymous:          true
 
     access_control:
         - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

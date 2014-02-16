@@ -14,8 +14,6 @@
 /web/fonts/
 /web/js/
 /web/uploads/
-/.idea/
-.DS_Store
-/nbproject/
+!web/uploads/.gitkeep
 /composer.phar
 /composer.lock

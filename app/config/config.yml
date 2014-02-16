@@ -114,7 +114,9 @@ vince_cms:
     contact:
         noreply: noreply@example.fr
         recipient: contact@example.com
-    class:
-        article: My\Bundle\CmsBundle\Entity\Article
-        block: My\Bundle\CmsBundle\Entity\Block
-        menu: My\Bundle\CmsBundle\Entity\Menu
+    article:
+        class: My\Bundle\CmsBundle\Entity\Article
+    block:
+        class: My\Bundle\CmsBundle\Entity\Block
+    menu:
+        class: My\Bundle\CmsBundle\Entity\Menu

@@ -1,19 +1,19 @@
-Article List: Articles
-User List: Utilisateurs
-Menu List: Menus
-
 cms: CMS
 sonata_user: Utilisateurs
 
-Categories: Catégories
-Ended At: Fin de publication
-General: Général
-Is Image: Lien image
-Path: Image
-Publication: Publication
-Target: Destination
-Template: Mise en page
+Article List: Articles
 Title: Titre
 Url: Url personnalisée
+Publication: Publication
+General: Général
 Started At: Début de publication
+Ended At: Fin de publication
+Template: Mise en page
 Summary: Résumé
+
+User List: Utilisateurs
+
+Menu List: Menus
+Is Image: Lien image
+Path: Image
+Target: Destination

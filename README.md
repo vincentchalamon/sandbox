@@ -58,12 +58,23 @@ parameters:
     mailer_host: localhost:1025
 ```
 
+## Tests
+
+=> travis-ci.org
+* DefaultController:
+    * Homepage
+    * Search
+    * Contact
+    * RSS.{_format}
+    * Sitemap.xml
+* Entity
+* Repository
+
 ## Todo
 
 * Search:
     * Configuration
     * Pager: KnpPaginatorBundle + ajax
-* Tests: https://travis-ci.org/
 * Google Analytics tracking code
 * Add compulsory metas on Article create
 * Install Bootstrap + Less + YUI Compressor (update composer.json with hooks)
@@ -125,14 +136,12 @@ parameters:
                 * render_metas
                 * localizeddate
 
-
 ## Nice to have
 
 * Image loader: http://luis-almeida.github.io/unveil/
 * Image resizer: LiipImageBundle
 * Cache
 * Newsletter
-
 
 ## Type
 
@@ -144,7 +153,6 @@ parameters:
 * Dropzone (http://www.dropzonejs.com/)
 * Autocomplete (http://jqueryui.com/autocomplete/)
 * jQuery image cropper (http://tympanus.net/codrops/2009/11/04/jquery-image-cropper-with-uploader-v1-1/)
-
 
 ## Blog
 

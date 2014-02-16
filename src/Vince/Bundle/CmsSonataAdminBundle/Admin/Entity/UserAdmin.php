@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the VinceCmsSonataAdmin bundle.
+ *
+ * (c) Vincent Chalamon <vincentchalamon@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace Vince\Bundle\CmsSonataAdminBundle\Admin\Entity;
 
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -16,9 +24,7 @@ class UserAdmin extends BaseAdmin
 {
 
     /**
-     * Route pattern
-     *
-     * @var string
+     * {@inheritdoc}
      */
     protected $baseRoutePattern = 'utilisateurs';
 
@@ -52,6 +58,5 @@ class UserAdmin extends BaseAdmin
                    ->with('Profile')
                        ->add('dateOfBirth', 'localizeddate')
                    ->end();
-        //$showMapper->get('dateOfBirth')->setType('localizeddate');
     }
 }

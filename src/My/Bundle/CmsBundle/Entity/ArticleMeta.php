@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the VinceCmsBundle.
+ * This file is part of the Sandbox package.
  *
  * (c) Vincent Chalamon <vincentchalamon@gmail.com>
  *

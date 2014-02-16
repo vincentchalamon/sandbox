@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the VinceCmsSonataAdmin bundle.
+ *
+ * (c) Vincent Chalamon <vincentchalamon@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace Vince\Bundle\CmsSonataAdminBundle\Admin\Entity;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -16,16 +24,12 @@ class ArticleAdmin extends Admin
 {
 
     /**
-     * Route pattern
-     *
-     * @var string
+     * {@inheritdoc}
      */
     protected $baseRoutePattern = 'articles';
 
     /**
-     * Default DataGrid values
-     *
-     * @var array
+     * {@inheritdoc}
      */
     protected $datagridValues = array(
         '_page'       => 1,
@@ -34,11 +38,25 @@ class ArticleAdmin extends Admin
     );
 
     /**
-     * Configure list
-     *
-     * @author Vincent Chalamon <vincent@ylly.fr>
-     *
-     * @param ListMapper $mapper
+     * {@inheritdoc}
+     */
+    public function getTemplate($name)
+    {
+        switch ($name) {
+            case 'inner_list_row':
+                return 'VinceCmsSonataAdminBundle:Article:list_inner_row.html.twig';
+                break;
+            case 'edit':
+                return 'VinceCmsSonataAdminBundle:Article:edit.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
+
+    /**
+     * {@inheritdoc}
      */
     protected function configureListFields(ListMapper $mapper)
     {
@@ -50,11 +68,7 @@ class ArticleAdmin extends Admin
     }
 
     /**
-     * Configure filters
-     *
-     * @author Vincent Chalamon <vincent@ylly.fr>
-     *
-     * @param DatagridMapper $mapper
+     * {@inheritdoc}
      */
     protected function configureDatagridFilters(DatagridMapper $mapper)
     {
@@ -109,21 +123,17 @@ class ArticleAdmin extends Admin
                         }
                 ), 'choice', array(
                     'choices' => array(
-                        'Never published' => 'Never published',
-                        'Published' => 'Published',
-                        'Pre-published' => 'Pre-published',
-                        'Post-published' => 'Post-published',
-                        'Published temp' => 'Published temp'
+                        'Never published' => $this->trans('Never published', array(), 'VinceCms'),
+                        'Published' => $this->trans('Published', array(), 'VinceCms'),
+                        'Pre-published' => $this->trans('Pre-published', array(), 'VinceCms'),
+                        'Post-published' => $this->trans('Post-published', array(), 'VinceCms'),
+                        'Published temp' => $this->trans('Published temp', array(), 'VinceCms')
                     )
                 ));
     }
 
     /**
-     * Configure filters
-     *
-     * @author Vincent Chalamon <vincent@ylly.fr>
-     *
-     * @param FormMapper $mapper
+     * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $mapper)
     {
@@ -132,7 +142,7 @@ class ArticleAdmin extends Admin
                 ->add('title')
                 ->add('summary', null, array('required' => false))
                 ->add('tags', null, array('required' => false))
-                ->add('categories')
+                //->add('categories')
                 //->add('metas')
             ;
         if ($this->getSubject()->getSlug() != 'homepage') {

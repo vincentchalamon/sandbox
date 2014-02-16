@@ -44,14 +44,14 @@
             "type": "package",
             "package": {
                 "name": "elasticsearch/binaries",
-                "version": "dev-master",
+                "version": "1.0",
                 "source": {
                     "url": "git@github.com:elasticsearch/elasticsearch.git",
                     "type": "git",
                     "reference": "master"
                 },
                 "require": {
-                    "friendsofsymfony/elastica-bundle": "3.0.*@dev"
+                    "friendsofsymfony/elastica-bundle": "3.0.*"
                 }
             }
         }
@@ -61,8 +61,7 @@
         "symfony/symfony": "2.3.*",
         "doctrine/orm": ">=2.2.3,<2.4-dev",
         "doctrine/doctrine-bundle": "1.2.*",
-        "doctrine/doctrine-fixtures-bundle": "2.1.*@dev",
-        "doctrine/doctrine-migrations-bundle": "dev-master",
+        "doctrine/doctrine-fixtures-bundle": "v2.2.0",
         "twig/extensions": "1.0.*",
         "symfony/assetic-bundle": "2.3.*",
         "symfony/swiftmailer-bundle": "2.3.*",
@@ -73,24 +72,24 @@
         "incenteev/composer-parameter-handler": "~2.0",
 
         "vince/cms-bundle": "dev-master",
-        "elasticsearch/binaries": "*",
+        "elasticsearch/binaries": "1.0",
 
         "jquery/jquery": "1.10.*",
         "jquery/jquery-map": "1.10.*",
-        "braincrafted/bootstrap-bundle": "~2.0@alpha",
+        "braincrafted/bootstrap-bundle": "v2.0.0",
         "leafo/lessphp": "0.4.0",
         "twbs/bootstrap": "3.0.0",
-        "nervo/yuicompressor": "dev-master",
+        "nervo/yuicompressor": "2.4.8",
 
-        "friendsofsymfony/user-bundle": "1.3.*@dev",
-        "sonata-project/core-bundle": "~2.2@dev",
-        "sonata-project/admin-bundle": "dev-master",
-        "sonata-project/user-bundle": "dev-master",
-        "sonata-project/doctrine-orm-admin-bundle": "dev-master",
+        "friendsofsymfony/user-bundle": "1.3.3",
+        "sonata-project/core-bundle": "2.2.4",
+        "sonata-project/admin-bundle": "2.2.9",
+        "sonata-project/user-bundle": "2.2.3",
+        "sonata-project/doctrine-orm-admin-bundle": "2.2.6",
         "vince/type-bundle": "dev-master",
 
-        "liip/imagine-bundle": "dev-master",
-        "knplabs/knp-snappy-bundle": "dev-master"
+        "liip/imagine-bundle": "v0.20.1",
+        "knplabs/knp-snappy-bundle": "v1.1"
     },
     "scripts": {
         "post-install-cmd": [
@@ -124,6 +123,7 @@
             "file": "app/config/parameters.yml"
         },
         "javascripts": [
+            "vendor/jquery/jquery/jquery-1.10.2.min.js",
             "vendor/jquery/jquery-map/jquery-1.10.2.min.map"
         ],
         "branch-alias": {
