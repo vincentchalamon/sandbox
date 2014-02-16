@@ -14,6 +14,7 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Vince\Bundle\CmsBundle\Component\YamlFixturesLoader as Loader;
+use Vince\Bundle\CmsSonataAdminBundle\Entity\User;
 
 /**
  * Load fixtures from yml
@@ -30,7 +31,9 @@ class UserData extends AbstractFixture implements OrderedFixtureInterface
     {
         $loader = new Loader();
         $loader->addDirectory(__DIR__.'/../../Resources/config/data');
-        $loader->load($manager, null, $this);
+        $loader->load($manager, function ($name, User $user) {
+                $user->setUsername($name);
+            }, $this);
     }
 
     /**

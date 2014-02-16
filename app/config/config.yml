@@ -1,7 +1,6 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: admin.yml }
     - { resource: "@VinceCmsBundle/Resources/config/config.yml" }
 
 framework:
@@ -104,11 +103,44 @@ fos_user:
         address: no-reply@vincent-chalamon.fr
         sender_name: Blog
 
-#knp_snappy:
-    #pdf:
-        #enabled: true
-        #binary:  /Applications/wkhtmltopdf.app/Contents/MacOS/wkhtmltopdf
-        #options: []
+# Admin
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:  [admin]
+        sonata.block.service.text:
+        sonata.block.service.action:
+        sonata.block.service.rss:
+
+sonata_user:
+    security_acl: false
+    manager_type: orm
+    class:
+        user: Vince\Bundle\CmsSonataAdminBundle\Entity\User
+        group: Vince\Bundle\CmsSonataAdminBundle\Entity\Group
+    admin:
+        user:
+            class:       Vince\Bundle\CmsSonataAdminBundle\Admin\Entity\UserAdmin
+            controller:  SonataAdminBundle:CRUD
+            translation: SonataUserBundle
+        group:
+            class:       Vince\Bundle\CmsSonataAdminBundle\Admin\Entity\GroupAdmin
+            controller:  SonataAdminBundle:CRUD
+            translation: SonataUserBundle
+
+sonata_doctrine_orm_admin:
+    templates:
+        types:
+            list:
+                localizeddate: VinceCmsSonataAdminBundle:List:localizeddate.html.twig
+            show:
+                localizeddate: VinceCmsSonataAdminBundle:Show:localizeddate.html.twig
+
+sonata_admin:
+    title: Vince CMS
+    templates:
+        layout: VinceCmsSonataAdminBundle::standard_layout.html.twig
 
 vince_cms:
     contact:
@@ -120,3 +152,9 @@ vince_cms:
         class: My\Bundle\CmsBundle\Entity\Block
     menu:
         class: My\Bundle\CmsBundle\Entity\Menu
+
+#knp_snappy:
+    #pdf:
+        #enabled: true
+        #binary:  /Applications/wkhtmltopdf.app/Contents/MacOS/wkhtmltopdf
+        #options: []

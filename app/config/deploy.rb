@@ -15,7 +15,7 @@ set :permission_method, :acl
 ssh_options[:port] = 22
 
 # Multistaging
-set :stages,      %w(dev prod)
+set :stages,      %w(dev)
 set :default_stage, "dev"
 set :stage_dir,   "app/config/deploy"
 require 'capistrano/ext/multistage'
