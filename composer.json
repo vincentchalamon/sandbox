@@ -3,6 +3,7 @@
     "license": "MIT",
     "type": "project",
     "description": "The \"Vince Cms\" sandbox",
+    "version": "1.0-dev",
     "autoload": {
         "psr-0": { "": "src/" }
     },
@@ -51,7 +52,7 @@
                     "reference": "master"
                 },
                 "require": {
-                    "friendsofsymfony/elastica-bundle": "3.0.*"
+                    "friendsofsymfony/elastica-bundle": "2.1.*"
                 }
             }
         }
@@ -127,7 +128,7 @@
             "vendor/jquery/jquery-map/jquery-1.10.2.min.map"
         ],
         "branch-alias": {
-            "dev-master": "2.3-dev"
+            "dev-master": "1.0-dev"
         }
     }
 }
