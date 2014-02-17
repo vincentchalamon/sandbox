@@ -64,7 +64,7 @@ class MenuAdmin extends Admin
             ->with('General')
                 ->add('parent')
                 ->add('title')
-                ->add('isImage')
+                ->add('image')
                 ->add('path')
             ->end()
             ->with('Publication')
