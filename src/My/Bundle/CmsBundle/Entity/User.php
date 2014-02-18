@@ -1,14 +1,14 @@
 <?php
 
 /*
- * This file is part of the VinceCmsSonataAdmin bundle.
+ * This file is part of the Sandbox package.
  *
  * (c) Vincent Chalamon <vincentchalamon@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Vince\Bundle\CmsSonataAdminBundle\Entity;
+namespace My\Bundle\CmsBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Sonata\UserBundle\Entity\BaseUser;
@@ -30,7 +30,7 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Vince\Bundle\CmsSonataAdminBundle\Entity\Group")
+     * @ORM\ManyToMany(targetEntity="My\Bundle\CmsBundle\Entity\Group")
      * @ORM\JoinTable(name="fos_user_group",
      *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}

@@ -18,7 +18,10 @@ framework:
         #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trusted_proxies: ~
-    session:         ~
+    session:
+        handler_id: session.handler.native_file
+        save_path: "%kernel.root_dir%/sessions"
+        name: SF2VINCECMS
     fragments:       ~
     http_method_override: true
 
@@ -117,15 +120,15 @@ sonata_user:
     security_acl: false
     manager_type: orm
     class:
-        user: Vince\Bundle\CmsSonataAdminBundle\Entity\User
-        group: Vince\Bundle\CmsSonataAdminBundle\Entity\Group
+        user: My\Bundle\CmsBundle\Entity\User
+        group: My\Bundle\CmsBundle\Entity\Group
     admin:
         user:
-            class:       Vince\Bundle\CmsSonataAdminBundle\Admin\Entity\UserAdmin
+            class:       My\Bundle\CmsBundle\Admin\Entity\UserAdmin
             controller:  SonataAdminBundle:CRUD
             translation: SonataUserBundle
         group:
-            class:       Vince\Bundle\CmsSonataAdminBundle\Admin\Entity\GroupAdmin
+            class:       My\Bundle\CmsBundle\Admin\Entity\GroupAdmin
             controller:  SonataAdminBundle:CRUD
             translation: SonataUserBundle
 

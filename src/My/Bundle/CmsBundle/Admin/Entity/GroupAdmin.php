@@ -1,14 +1,14 @@
 <?php
 
 /*
- * This file is part of the VinceCmsSonataAdmin bundle.
+ * This file is part of the Sandbox package.
  *
  * (c) Vincent Chalamon <vincentchalamon@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Vince\Bundle\CmsSonataAdminBundle\Admin\Entity;
+namespace My\Bundle\CmsBundle\Admin\Entity;
 
 use Sonata\UserBundle\Admin\Entity\GroupAdmin as BaseAdmin;
 

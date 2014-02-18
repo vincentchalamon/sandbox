@@ -1,10 +1,12 @@
 /app/bootstrap.php.cache
-/app/cache/*
+/app/cache/
 !app/cache/.gitkeep
 /app/config/parameters.yml
-/app/logs/*
+/app/logs/
 !app/logs/.gitkeep
-/app/spool/*
+/app/sessions/
+!app/sessions/.gitkeep
+/app/spool/
 !app/spool/.gitkeep
 /bin/
 /build/

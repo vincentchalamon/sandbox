@@ -1,4 +1,4 @@
-Vince\Bundle\CmsSonataAdminBundle\Entity\User:
+My\Bundle\CmsBundle\Entity\User:
     admin:
         enabled: true
         plainPassword: 4dm1n

@@ -1,5 +1,4 @@
 cms: CMS
-sonata_user: Utilisateurs
 
 Article List: Articles
 Title: Titre
@@ -10,8 +9,6 @@ Started At: Début de publication
 Ended At: Fin de publication
 Template: Mise en page
 Summary: Résumé
-
-User List: Utilisateurs
 
 Menu List: Menus
 Is Image: Lien image
