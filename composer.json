@@ -72,7 +72,7 @@
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
 
-        "vince/cms-bundle": "dev-master",
+        "vince/cms-bundle": "v1.0.0",
         "elasticsearch/binaries": "1.0",
 
         "jquery/jquery": "1.10.*",
@@ -87,7 +87,7 @@
         "sonata-project/admin-bundle": "2.2.9",
         "sonata-project/user-bundle": "2.2.3",
         "sonata-project/doctrine-orm-admin-bundle": "2.2.6",
-        "vince/type-bundle": "dev-master",
+        "vince/type-bundle": "v1.0.0",
 
         "liip/imagine-bundle": "v0.20.1",
         "knplabs/knp-snappy-bundle": "v1.1",
