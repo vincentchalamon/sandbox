@@ -78,9 +78,6 @@ doctrine:
         types:
             json: Sonata\Doctrine\Types\JsonType
     orm:
-        metadata:
-            driver_chain:
-                class: Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
         mappings:
