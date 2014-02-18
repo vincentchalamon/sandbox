@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace My\Bundle\CmsBundle\DataFixtures\ORM;
+namespace My\Bundle\UserBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -16,13 +16,14 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Vince\Bundle\CmsBundle\Component\YamlFixturesLoader as Loader;
+use My\Bundle\UserBundle\Entity\User;
 
 /**
  * Load fixtures from yml
  * 
  * @author Vincent CHALAMON <vincentchalamon@gmail.com>
  */
-class CmsData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
+class UserData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
 
     /**
@@ -50,7 +51,15 @@ class CmsData extends AbstractFixture implements OrderedFixtureInterface, Contai
     {
         $loader = new Loader();
         $loader->addDirectory(__DIR__.'/../../Resources/config/data');
-        $loader->load($manager, null, $this, $this->container->get('validator'));
+        $loader->load($manager, function ($class, array $users) {
+                if ($class == 'My\Bundle\UserBundle\Entity\User') {
+                    foreach ($users as $name => $user) {
+                        /** @var User $user */
+                        $user->setUsername($name);
+                        $user->setUsernameCanonical($name);
+                    }
+                }
+            }, $this, $this->container->get('validator'));
     }
 
     /**

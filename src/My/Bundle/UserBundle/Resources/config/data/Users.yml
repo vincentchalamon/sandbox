@@ -1,4 +1,4 @@
-My\Bundle\CmsBundle\Entity\User:
+My\Bundle\UserBundle\Entity\User:
     admin:
         enabled: true
         plainPassword: 4dm1n

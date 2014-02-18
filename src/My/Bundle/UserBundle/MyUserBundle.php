@@ -8,20 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace My\Bundle\CmsBundle\Admin\Entity;
+namespace My\Bundle\UserBundle;
 
-use Sonata\UserBundle\Admin\Entity\GroupAdmin as BaseAdmin;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Group admin
+ * This bundle provides user for Sandbox.
  *
  * @author Vincent Chalamon <vincent@ylly.fr>
  */
-class GroupAdmin extends BaseAdmin
+class MyUserBundle extends Bundle
 {
 
     /**
      * {@inheritdoc}
      */
-    protected $baseRoutePattern = 'groupes';
+    public function getParent()
+    {
+        return 'SonataUserBundle';
+    }
 }

@@ -99,9 +99,9 @@ swiftmailer:
 fos_user:
     db_driver: orm
     firewall_name: main
-    user_class: My\Bundle\CmsBundle\Entity\User
+    user_class: My\Bundle\UserBundle\Entity\User
     group:
-        group_class: My\Bundle\CmsBundle\Entity\Group
+        group_class: My\Bundle\UserBundle\Entity\Group
     from_email:
         address: no-reply@vincent-chalamon.fr
         sender_name: Blog
@@ -120,15 +120,15 @@ sonata_user:
     security_acl: false
     manager_type: orm
     class:
-        user: My\Bundle\CmsBundle\Entity\User
-        group: My\Bundle\CmsBundle\Entity\Group
+        user: My\Bundle\UserBundle\Entity\User
+        group: My\Bundle\UserBundle\Entity\Group
     admin:
         user:
-            class:       My\Bundle\CmsBundle\Admin\Entity\UserAdmin
+            class:       My\Bundle\UserBundle\Admin\Entity\UserAdmin
             controller:  SonataAdminBundle:CRUD
             translation: SonataUserBundle
         group:
-            class:       My\Bundle\CmsBundle\Admin\Entity\GroupAdmin
+            class:       My\Bundle\UserBundle\Admin\Entity\GroupAdmin
             controller:  SonataAdminBundle:CRUD
             translation: SonataUserBundle
 

@@ -44,6 +44,7 @@ class AppKernel extends Kernel
             //new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             //new Vince\Bundle\AdminBundle\VinceAdminBundle(),
             //new Vince\Bundle\CmsAdminBundle\VinceCmsAdminBundle(),
+            new My\Bundle\UserBundle\MyUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
