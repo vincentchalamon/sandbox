@@ -99,9 +99,9 @@ swiftmailer:
 fos_user:
     db_driver: orm
     firewall_name: main
-    user_class: Vince\Bundle\CmsSonataAdminBundle\Entity\User
+    user_class: My\Bundle\CmsBundle\Entity\User
     group:
-        group_class: Vince\Bundle\CmsSonataAdminBundle\Entity\Group
+        group_class: My\Bundle\CmsBundle\Entity\Group
     from_email:
         address: no-reply@vincent-chalamon.fr
         sender_name: Blog
