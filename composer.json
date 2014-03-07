@@ -1,12 +1,20 @@
 {
     "name": "vince/sandbox",
-    "license": "MIT",
     "type": "project",
+    "license": "MIT",
     "description": "The \"Vince Cms\" sandbox",
     "version": "1.0-dev",
+    "keywords": ["CMS", "Vince"],
+    "homepage": "http://vincentchalamon.github.io/sandbox/",
     "autoload": {
         "psr-0": { "": "src/" }
     },
+    "authors": [
+        {
+            "name": "Vincent CHALAMON",
+            "email": "vincentchalamon@gmail.com"
+        }
+    ],
     "repositories": [
         {
             "type": "package",
@@ -45,11 +53,10 @@
             "type": "package",
             "package": {
                 "name": "elasticsearch/binaries",
-                "version": "1.0",
-                "source": {
-                    "url": "git@github.com:elasticsearch/elasticsearch.git",
-                    "type": "git",
-                    "reference": "master"
+                "version": "1.0.0",
+                "dist": {
+                    "url": "https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.0.0.zip",
+                    "type": "zip"
                 },
                 "require": {
                     "friendsofsymfony/elastica-bundle": "2.1.*"
@@ -57,6 +64,11 @@
             }
         }
     ],
+    "require-dev": {
+        "ext-xsl": "*",
+        "phpdocumentor/phpdocumentor": "2.*",
+        "phpunit/phpunit": "4.*"
+    },
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "~2.4",
@@ -70,10 +82,9 @@
         "sensio/framework-extra-bundle": "~2.3",
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
-        "doctrine/doctrine-fixtures-bundle": "v2.2.0",
 
-        "vince/cms-bundle": "v1.0.0",
-        "elasticsearch/binaries": "1.0",
+        "vince/cms-bundle": "1.*",
+        "elasticsearch/binaries": "1.0.0",
 
         "jquery/jquery": "1.10.*",
         "jquery/jquery-map": "1.10.*",
@@ -87,7 +98,7 @@
         "sonata-project/admin-bundle": "2.2.9",
         "sonata-project/user-bundle": "2.2.3",
         "sonata-project/doctrine-orm-admin-bundle": "2.2.6",
-        "vince/type-bundle": "v1.0.0",
+        "vince/type-bundle": "1.*",
 
         "liip/imagine-bundle": "v0.20.1",
         "knplabs/knp-snappy-bundle": "v1.1",

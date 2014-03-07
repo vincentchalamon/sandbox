@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             // User
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+            new My\Bundle\UserBundle\MyUserBundle(),
 
             // Admin
             new Sonata\CoreBundle\SonataCoreBundle(),
@@ -44,7 +45,6 @@ class AppKernel extends Kernel
             //new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             //new Vince\Bundle\AdminBundle\VinceAdminBundle(),
             //new Vince\Bundle\CmsAdminBundle\VinceCmsAdminBundle(),
-            new My\Bundle\UserBundle\MyUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

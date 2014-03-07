@@ -10,6 +10,7 @@
  */
 namespace My\Bundle\UserBundle\Admin\Entity;
 
+use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\UserBundle\Admin\Entity\GroupAdmin as BaseAdmin;
 
 /**
@@ -24,4 +25,13 @@ class GroupAdmin extends BaseAdmin
      * {@inheritdoc}
      */
     protected $baseRoutePattern = 'groupes';
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureListFields(ListMapper $mapper)
+    {
+        parent::configureListFields($mapper);
+        $mapper->get('roles')->setType('array');
+    }
 }

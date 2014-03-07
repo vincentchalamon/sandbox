@@ -10,6 +10,7 @@ services:
         arguments: [ ~, %vince.class.article%, ~ ]
         calls:
             - [ setTranslationDomain, [ 'SonataAdminBundle' ] ]
+            - [ setEntityManager, [ @doctrine.orm.default_entity_manager ] ]
 
     vince.admin.menu:
         class: Vince\Bundle\CmsSonataAdminBundle\Admin\Entity\MenuAdmin

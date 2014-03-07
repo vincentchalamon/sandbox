@@ -1,9 +1,0 @@
-{% if 'batch' in admin.list.elements|keys and not app.request.isXmlHttpRequest %}
-    {{ object|render_list_element(admin.list.elements.batch) }}
-{% endif %}
-
-<td colspan="{{ admin.list.elements|length - ('batch' in admin.list.elements|keys and not app.request.isXmlHttpRequest ? 1 : 0) }}">
-    <h2><a href="{{ path('admin_my_cms_article_edit', {'id': object.id}) }}" title="{{ object.title }}">{{ object.title }}</a></h2>
-    <a href="{{ path(object.routeName) }}" title="{{ object.title }}">{{ path(object.routeName) }}</a>
-    <em>{{ object.publication|trans({}, 'VinceCms') }}</em>
-</td>

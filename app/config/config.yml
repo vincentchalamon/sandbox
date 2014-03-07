@@ -119,6 +119,8 @@ sonata_block:
 sonata_user:
     security_acl: false
     manager_type: orm
+    impersonating:
+        route: homepage
     class:
         user: My\Bundle\UserBundle\Entity\User
         group: My\Bundle\UserBundle\Entity\Group
@@ -137,8 +139,12 @@ sonata_doctrine_orm_admin:
         types:
             list:
                 localizeddate: VinceCmsSonataAdminBundle:List:localizeddate.html.twig
+                array: VinceCmsSonataAdminBundle:List:array.html.twig
+                url: VinceCmsSonataAdminBundle:List:url.html.twig
             show:
                 localizeddate: VinceCmsSonataAdminBundle:Show:localizeddate.html.twig
+                array: VinceCmsSonataAdminBundle:Show:array.html.twig
+                url: VinceCmsSonataAdminBundle:Show:url.html.twig
 
 sonata_admin:
     title: Vince CMS

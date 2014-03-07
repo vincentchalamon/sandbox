@@ -1,5 +1,6 @@
 My\Bundle\CmsBundle\Entity\Category:
     type: entity
+    repositoryClass: Vince\Bundle\TypeBundle\Entity\Repository\SearchRepository
     table: category
     id:
         id:

@@ -12,3 +12,8 @@ My\Bundle\UserBundle\Entity\User:
         plainPassword: 4dm1n
         roles: [ROLE_SUPER_ADMIN]
         email: god@example.fr
+    user:
+        enabled: true
+        plainPassword: 4dm1n
+        roles: [ROLE_USER]
+        email: user@example.fr

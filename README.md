@@ -51,12 +51,18 @@ cap dev deploy
 
 ## Developers
 
-For local use, you should catch emails through [mailcatcher](http://mailcatcher.me/).
-You need to update your parameters.yml file as following:
+For local use, you should catch emails through [mailcatcher](http://mailcatcher.me/). You need to update your
+parameters.yml file as following:
 ```yml
 parameters:
     ...
     mailer_host: localhost:1025
+```
+
+PHPUnit & PHPdoc are also available in vendors. Call them as following:
+```shell
+sh bin/phpunit -c app
+sh bin/phpdoc.php -d ./src -t ./build/api --template=responsive-twig
 ```
 
 ## Tests
@@ -150,7 +156,6 @@ parameters:
 * Switch (http://www.inserthtml.com/demos/css/radio-buttons/)
 * Autosize (https://github.com/jackmoore/autosize)
 * FileUpload (http://blueimp.github.io/jQuery-File-Upload/basic.html)
-* TokenInput (http://loopj.com/jquery-tokeninput/)
 * Dropzone (http://www.dropzonejs.com/)
 * Autocomplete (http://jqueryui.com/autocomplete/)
 * jQuery image cropper (http://tympanus.net/codrops/2009/11/04/jquery-image-cropper-with-uploader-v1-1/)

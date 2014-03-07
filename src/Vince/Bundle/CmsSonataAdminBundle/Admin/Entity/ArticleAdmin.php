@@ -10,6 +10,7 @@
  */
 namespace Vince\Bundle\CmsSonataAdminBundle\Admin\Entity;
 
+use Doctrine\ORM\EntityManager;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -38,21 +39,35 @@ class ArticleAdmin extends Admin
     );
 
     /**
+     * Entity manager
+     *
+     * @var EntityManager
+     */
+    protected $em;
+
+    /**
+     * Set entity manager
+     *
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
+     *
+     * @param EntityManager $em
+     */
+    public function setEntityManager(EntityManager $em)
+    {
+        $this->em = $em;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getTemplate($name)
     {
         switch ($name) {
-            case 'inner_list_row':
-                return 'VinceCmsSonataAdminBundle:Article:list_inner_row.html.twig';
-                break;
             case 'edit':
                 return 'VinceCmsSonataAdminBundle:Article:edit.html.twig';
-                break;
-            default:
-                return parent::getTemplate($name);
-                break;
         }
+
+        return parent::getTemplate($name);
     }
 
     /**
@@ -61,9 +76,19 @@ class ArticleAdmin extends Admin
     protected function configureListFields(ListMapper $mapper)
     {
         $mapper
-            ->addIdentifier('title')
-            ->add('url')
-            ->add('publication')
+            ->addIdentifier('title', null, array(
+                    'label' => 'article.field.title'
+                )
+            )
+            ->add('url', 'url', array(
+                    'label' => 'article.field.url'
+                )
+            )
+            ->add('publication', 'trans', array(
+                    'label' => 'article.field.publication',
+                    'catalogue' => 'VinceCms'
+                )
+            )
         ;
     }
 
@@ -73,8 +98,12 @@ class ArticleAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $mapper)
     {
         $mapper
-            ->add('title')
+            ->add('title', null, array(
+                    'label' => 'article.field.title'
+                )
+            )
             ->add('publication', 'doctrine_orm_callback', array(
+                    'label' => 'article.field.publication',
                     'callback' => function ($queryBuilder, $alias, $field, $value) {
                             if (!$value) {
                                 return;
@@ -129,7 +158,8 @@ class ArticleAdmin extends Admin
                         'Post-published' => $this->trans('Post-published', array(), 'VinceCms'),
                         'Published temp' => $this->trans('Published temp', array(), 'VinceCms')
                     )
-                ));
+                )
+            );
     }
 
     /**
@@ -138,26 +168,60 @@ class ArticleAdmin extends Admin
     protected function configureFormFields(FormMapper $mapper)
     {
         $mapper
-            ->with('General')
-                ->add('title')
-                ->add('summary', null, array('required' => false))
-                ->add('tags', null, array('required' => false))
-                //->add('categories')
+            ->with('article.group.general')
+                ->add('title', null, array(
+                        'label' => 'article.field.title'
+                    )
+                )
+                ->add('summary', null, array(
+                        'label' => 'article.field.summary',
+                        'required' => false
+                    )
+                )
+                ->add('tags', 'list', array(
+                        'label'    => 'article.field.tags',
+                        'required' => false
+                    )
+                )
+                ->add('categories', 'token', array(
+                        'em' => $this->em,
+                        'entity' => 'MyCmsBundle:Category'
+                    )
+                )
                 //->add('metas')
             ;
         if ($this->getSubject()->getSlug() != 'homepage') {
             $mapper
-                    ->add('url', null, array('required' => false))
+                    ->add('url', null, array(
+                            'label' => 'article.field.customUrl',
+                            'required' => false,
+                            'attr' => array(
+                                'placeholder' => $this->getSubject()->getRoutePattern()
+                            )
+                        )
+                    )
                 ->end()
-                ->with('Publication')
-                    ->add('startedAt', null, array('required' => false))
-                    ->add('endedAt', null, array('required' => false))
+                ->with('article.group.publication')
+                    ->add('startedAt', 'datepicker', array(
+                            'label' => 'article.field.startedAt',
+                            'required' => false
+                        )
+                    )
+                    ->add('endedAt', 'datepicker', array(
+                            'label' => 'article.field.endedAt',
+                            'required' => false
+                        )
+                    )
             ;
         }
         $mapper
             ->end()
-            ->with('Template')
-                ->add('template', null, array('required' => false))
+            ->with('article.group.template')
+                ->add('template', null, array(
+                        'label' => 'article.field.template',
+                        'required' => false
+                    )
+                )
                 //->add('contents')
             ->end()
         ;

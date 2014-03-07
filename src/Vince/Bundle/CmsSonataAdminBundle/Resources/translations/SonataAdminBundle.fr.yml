@@ -1,16 +1,28 @@
 cms: CMS
 
 Article List: Articles
-Title: Titre
-Url: Url personnalisée
-Publication: Publication
-General: Général
-Started At: Début de publication
-Ended At: Fin de publication
-Template: Mise en page
-Summary: Résumé
+article:
+    group:
+        general: Général
+        publication: Publication
+        template: Mise en page
+    field:
+        url: Url
+        title: Titre
+        summary: Résumé
+        tags: Tags
+        customUrl: Url personnalisée
+        startedAt: Début de publication
+        endedAt: Fin de publication
+        template: Gabarit
+        publication: Publication
 
 Menu List: Menus
-Is Image: Lien image
-Path: Image
-Target: Destination
+menu:
+    field:
+        title: Titre
+        url: Url
+        article: Article
+        image: Lien image
+        path: Image
+        target: Destination

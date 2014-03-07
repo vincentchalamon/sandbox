@@ -96,7 +96,10 @@ class UserAdmin extends BaseAdmin
                 )
             ->end()
             ->with('Profile')
-                ->add('dateOfBirth', 'datepicker')
+                ->add('dateOfBirth', 'datepicker', array(
+                        'required' => false
+                    )
+                )
                 ->add('gender', 'sonata_user_gender', array(
                         'required' => true,
                         'expanded' => true,
