@@ -41,7 +41,7 @@ set :domain, "1.2.3.4"
 set :user,   "user"
 ```
 
-Note : it's not recommended to set user password, prefer use [RSA key](http://www.caxy.com/blog/2008/04/getting-authorized_keys-to-work-logging-in-without-a-password-in-linux/).
+Note : it's not recommended to set user password, prefer use [RSA key](https://help.github.com/articles/generating-ssh-keys).
 
 You can now deploy through the following commands:
 ```shell
