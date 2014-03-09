@@ -18,8 +18,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Vince\Bundle\CmsBundle\Component\YamlFixturesLoader as Loader;
 
 /**
- * Load fixtures from yml
- * 
+ * Load fixtures from yml files
+ *
  * @author Vincent CHALAMON <vincentchalamon@gmail.com>
  */
 class CmsData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
@@ -50,7 +50,7 @@ class CmsData extends AbstractFixture implements OrderedFixtureInterface, Contai
     {
         $loader = new Loader();
         $loader->addDirectory(__DIR__.'/../../Resources/config/data');
-        $loader->load($manager, null, $this, $this->container->get('validator'));
+        $loader->load($manager, null, $this);
     }
 
     /**

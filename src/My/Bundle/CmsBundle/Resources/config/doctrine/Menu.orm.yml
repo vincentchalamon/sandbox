@@ -10,6 +10,7 @@ My\Bundle\CmsBundle\Entity\Menu:
         parent:
             targetEntity: My\Bundle\CmsBundle\Entity\Menu
             inversedBy: children
+            cascade: [persist]
             joinColumn:
                 name: parent_id
                 referencedColumnName: id
@@ -20,6 +21,7 @@ My\Bundle\CmsBundle\Entity\Menu:
         article:
             targetEntity: My\Bundle\CmsBundle\Entity\Article
             inversedBy: menus
+            cascade: [persist]
             joinColumn:
                 name: article_id
                 referencedColumnName: id
@@ -29,5 +31,6 @@ My\Bundle\CmsBundle\Entity\Menu:
         children:
             targetEntity: My\Bundle\CmsBundle\Entity\Menu
             mappedBy: parent
+            cascade: [all]
             orderBy:
                 lft: ASC

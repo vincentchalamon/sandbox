@@ -10,12 +10,3 @@ String.prototype.slugify = function () {
 
     return str.toLowerCase().replace(/-{2,}/, '').replace(/^-?(.*)-?$/, '$1');
 };
-
-$(function () {
-    var $url = $('input:text[id$=_url]');
-    if ($url.length) {
-        $('input:text[id$=_title]').on('change keyup', function () {
-            $url.attr('placeholder', '/' + $(this).val().slugify());
-        });
-    }
-});

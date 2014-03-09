@@ -1,5 +1,6 @@
 My\Bundle\CmsBundle\Entity\Block:
     homepage:
+        title: Test
         name: homepage
         startedAt: "2013-09-01 10:00:00"
         contents: Test
@@ -140,6 +141,16 @@ My\Bundle\CmsBundle\Entity\Article:
         template:
             title: Contact
             path: MyCmsBundle:Templates:contact.html.twig
+            areas:
+                main:
+                    title: Zone principale
+                    name: main
+                    type: redactor
+                    required: true
+        contents:
+            test:
+                area: main
+                contents: This is my contents
         metas:
             og-url:
                 contents: /contact

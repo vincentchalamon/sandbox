@@ -10,6 +10,7 @@ My\Bundle\CmsBundle\Entity\ArticleMeta:
         article:
             targetEntity: My\Bundle\CmsBundle\Entity\Article
             inversedBy: metas
+            cascade: [all]
             joinColumn:
                 name: article_id
                 referencedColumnName: id
@@ -17,6 +18,7 @@ My\Bundle\CmsBundle\Entity\ArticleMeta:
                 onDelete: CASCADE
         meta:
             targetEntity: Vince\Bundle\CmsBundle\Entity\Meta
+            cascade: [all]
             joinColumn:
                 name: meta_id
                 referencedColumnName: id

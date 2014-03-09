@@ -10,6 +10,7 @@ My\Bundle\CmsBundle\Entity\Content:
         article:
             targetEntity: My\Bundle\CmsBundle\Entity\Article
             inversedBy: contents
+            cascade: [all]
             joinColumn:
                 name: article_id
                 referencedColumnName: id
@@ -17,6 +18,7 @@ My\Bundle\CmsBundle\Entity\Content:
                 onDelete: CASCADE
         area:
             targetEntity: Vince\Bundle\CmsBundle\Entity\Area
+            cascade: [all]
             joinColumn:
                 name: area_id
                 referencedColumnName: id

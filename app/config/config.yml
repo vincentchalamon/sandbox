@@ -141,10 +141,14 @@ sonata_doctrine_orm_admin:
                 localizeddate: VinceCmsSonataAdminBundle:List:localizeddate.html.twig
                 array: VinceCmsSonataAdminBundle:List:array.html.twig
                 url: VinceCmsSonataAdminBundle:List:url.html.twig
+                html: VinceCmsSonataAdminBundle:List:html.html.twig
+                field_tree_up: VinceCmsSonataAdminBundle:List:field_tree_up.html.twig
+                field_tree_down: VinceCmsSonataAdminBundle:List:field_tree_down.html.twig
             show:
                 localizeddate: VinceCmsSonataAdminBundle:Show:localizeddate.html.twig
                 array: VinceCmsSonataAdminBundle:Show:array.html.twig
                 url: VinceCmsSonataAdminBundle:Show:url.html.twig
+                html: VinceCmsSonataAdminBundle:Show:html.html.twig
 
 sonata_admin:
     title: Vince CMS

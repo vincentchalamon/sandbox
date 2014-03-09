@@ -23,6 +23,9 @@ cms:
     #prefix:   /profile
 
 # Admin
+vince_admin:
+    resource: "@VinceCmsSonataAdminBundle/Resources/config/routing.yml"
+
 vince_type:
     resource: "@VinceTypeBundle/Resources/config/routing.yml"
 

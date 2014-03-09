@@ -10,10 +10,14 @@
  */
 namespace Vince\Bundle\CmsSonataAdminBundle\Admin\Entity;
 
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Vince\Bundle\CmsBundle\Entity\Menu;
+use Vince\Bundle\CmsBundle\Entity\Repository\MenuRepository;
 
 /**
  * Menu admin
@@ -29,13 +33,112 @@ class MenuAdmin extends Admin
     protected $baseRoutePattern = 'menus';
 
     /**
+     * Menu repository
+     *
+     * @var MenuRepository
+     */
+    protected $menuRepository;
+
+    /**
+     * Entity manager
+     *
+     * @var EntityManager
+     */
+    protected $em;
+
+    /**
+     * Public path
+     *
+     * @var string
+     */
+    protected $publicPath;
+
+    /**
+     * Upload directory name
+     *
+     * @var string
+     */
+    protected $uploadDirName;
+
+    /**
+     * Set entity manager
+     *
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
+     *
+     * @param EntityManager $em
+     *
+     * @return MenuAdmin
+     */
+    public function setEntityManager(EntityManager $em)
+    {
+        $this->em = $em;
+
+        return $this;
+    }
+
+    /**
+     * Set Menu repository
+     *
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
+     *
+     * @param MenuRepository $menuRepository
+     *
+     * @return MenuAdmin
+     */
+    public function setMenuRepository(MenuRepository $menuRepository)
+    {
+        $this->menuRepository = $menuRepository;
+
+        return $this;
+    }
+
+    /**
+     * Set public path
+     *
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
+     *
+     * @param string $publicPath
+     *
+     * @return MenuAdmin
+     */
+    public function setPublicPath($publicPath)
+    {
+        $this->publicPath = $publicPath;
+
+        return $this;
+    }
+
+    /**
+     * Set upload directory name
+     *
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
+     *
+     * @param string $uploadDirName
+     *
+     * @return MenuAdmin
+     */
+    public function setUploadDirName($uploadDirName)
+    {
+        $this->uploadDirName = $uploadDirName;
+
+        return $this;
+    }
+
+    /**
+     * Need to override createQuery method because or list order & joins
+     *
      * {@inheritdoc}
      */
-    protected $datagridValues = array(
-        '_page'       => 1,
-        '_sort_order' => 'ASC',
-        '_sort_by'    => 'title'
-    );
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        $query->leftJoin($query->getRootAlias().'.article', 'article')->addSelect('article')
+              ->leftJoin($query->getRootAlias().'.parent', 'parent')->addSelect('parent')
+              ->leftJoin($query->getRootAlias().'.children', 'children')->addSelect('children')
+              ->orderBy($query->getRootAlias().'.root, '.$query->getRootAlias().'.lft', 'ASC');
+
+        return $query;
+    }
 
     /**
      * {@inheritdoc}
@@ -43,8 +146,23 @@ class MenuAdmin extends Admin
     protected function configureListFields(ListMapper $mapper)
     {
         $mapper
-            ->addIdentifier('title')
-            ->add('route');
+            ->add('up', 'field_tree_up', array(
+                    'label'=> 'menu.field.up'
+                )
+            )
+            ->add('down', 'field_tree_down', array(
+                    'label'=> 'menu.field.down'
+                )
+            )
+            ->addIdentifier('adminListTitle', 'html', array(
+                    'label' => 'menu.field.title'
+                )
+            )
+            ->add('route', 'url', array(
+                    'label' => 'menu.field.url'
+                )
+            )
+        ;
     }
 
     /**
@@ -58,29 +176,127 @@ class MenuAdmin extends Admin
     /**
      * {@inheritdoc}
      */
+    public function getFormTheme()
+    {
+        return array_merge(parent::getFormTheme(), array('VinceCmsSonataAdminBundle:Form:form_theme.html.twig'));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function configureFormFields(FormMapper $mapper)
     {
+        $id = $this->getSubject()->getId();
         $mapper
-            ->with('General')
-                ->add('parent')
-                ->add('title')
-                ->add('image')
-                ->add('path')
+            ->with('menu.group.general')
+                ->add('parent', null, array(
+                        'label' => 'menu.field.parent',
+                        'property' => 'adminListTitle',
+                        'query_builder' => function (EntityRepository $entityRepository) use ($id) {
+                            $builder = $entityRepository->createQueryBuilder('p')->orderBy('p.root, p.lft', 'ASC');
+                            if ($id) {
+                                $builder->andWhere('p.id != :id')->setParameter('id', $id);
+                            }
+
+                            return $builder;
+                        }
+                    )
+                )
+                ->add('title', null, array(
+                        'label' => 'menu.field.title'
+                    )
+                )
+                ->add('image', null, array(
+                        'label' => 'menu.field.image',
+                        'required' => false
+                    )
+                )
+                ->add('file', 'file', array(
+                        'label' => 'menu.field.path',
+                        'required' => false,
+                        'filename' => $this->getSubject()->getPath()
+                    )
+                )
             ->end()
-            ->with('Publication')
-                ->add('startedAt', 'datepicker', array('required' => false))
-                ->add('endedAt', 'datepicker', array('required' => false))
+            ->with('menu.group.publication')
+                ->add('startedAt', 'datepicker', array(
+                        'label' => 'menu.field.startedAt',
+                        'required' => false
+                    )
+                )
+                ->add('endedAt', 'datepicker', array(
+                        'label' => 'menu.field.endedAt',
+                        'required' => false
+                    )
+                )
             ->end();
-        if (!$this->getSubject() || $this->getSubject()->getParent()) {
+        if (!$this->getSubject()->getId() || $this->getSubject()->getParent()) {
             $mapper
-                ->with('Url')
-                    ->add('url', null, array('required' => false))
-                    ->add('article', null, array('required' => false))
-                    ->add('target', 'choice', array('required' => false, 'choices' => array(
-                        '_blank' => 'Nouvelle fenêtre',
-                        '_self' => 'Même fenêtre'
-                    )))
+                ->with('menu.group.url')
+                    ->add('url', null, array(
+                            'label' => 'menu.field.url',
+                            'help' => 'menu.help.url',
+                            'required' => false
+                        )
+                    )
+                    ->add('article', null, array(
+                            'label' => 'menu.field.article',
+                            'help' => 'menu.help.article',
+                            'required' => false
+                        )
+                    )
+                    ->add('target', 'choice', array(
+                            'label' => 'menu.field.target',
+                            'required' => false,
+                            'choices' => array(
+                                '_blank' => 'Nouvelle fenêtre',
+                                '_self' => 'Même fenêtre'
+                            )
+                        )
+                    )
                 ->end();
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function postRemove($object)
+    {
+        /** @var Menu $object */
+        if ($object->isImage() && is_file($this->publicPath.$object->getPath())) {
+            unlink($this->publicPath.$object->getPath());
+        }
+        $this->menuRepository->verify();
+        $this->menuRepository->recover();
+        $this->em->flush();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function postPersist($object)
+    {
+        /** @var Menu $object */
+        if ($object->isImage()) {
+            $object->upload($this->publicPath, $this->uploadDirName);
+        }
+        $this->menuRepository->verify();
+        $this->menuRepository->recover();
+        $this->em->flush();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function postUpdate($object)
+    {
+        /** @var Menu $object */
+        if ($object->isImage()) {
+            $object->upload($this->publicPath, $this->uploadDirName);
+        }
+        $this->menuRepository->verify();
+        $this->menuRepository->recover();
+        $this->em->flush();
     }
 }

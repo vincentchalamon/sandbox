@@ -9,6 +9,7 @@ My\Bundle\UserBundle\Entity\User:
     manyToMany:
         groups:
             targetEntity: My\Bundle\UserBundle\Entity\Group
+            cascade: [all]
             joinTable:
                 name: fos_user_group
                 joinColumns:

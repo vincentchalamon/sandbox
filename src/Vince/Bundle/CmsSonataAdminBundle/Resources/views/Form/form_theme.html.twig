@@ -1,0 +1,75 @@
+{% use 'SonataAdminBundle:Form:form_admin_fields.html.twig' %}
+
+{% block vince_admin_article_title_text_javascript %}
+    {% spaceless %}
+        <script type="text/javascript">
+            $(function () {
+                $('#{{ id }}').on('change keyup', function () {
+                    $(':input[id$=_url]', $(this).closest('form')).attr('placeholder', '/' + $(this).val().slugify());
+                }).trigger('change');
+            });
+        </script>
+    {% endspaceless %}
+{% endblock %}
+
+{% block vince_admin_menu_title_text_javascript %}
+    {% spaceless %}
+        {{ block('vince_admin_article_title_text_javascript') }}
+    {% endspaceless %}
+{% endblock %}
+
+{% block vince_admin_menu_image_checkbox_javascript %}
+    {% spaceless %}
+        <script type="text/javascript">
+            $(function () {
+                $('#{{ id }}').on('change', function () {
+                    if ($(this).is(':checked')) {
+                        $(':input[id$=_file]', $(this).closest('form')).closest('.control-group').show();
+                    } else {
+                        $(':input[id$=_file]', $(this).closest('form')).closest('.control-group').hide();
+                    }
+                }).trigger('change');
+            });
+        </script>
+    {% endspaceless %}
+{% endblock %}
+
+{% block vince_admin_menu_file_file_widget %}
+    {% spaceless %}
+        {% if filename is defined and filename %}
+            <a href="{{ filename }}" target="_blank">
+                <img src="{{ filename }}" style="max-height:200px;max-width:200px;" />
+            </a><br />
+        {% endif %}
+        {{ block('form_widget_simple') }}
+    {% endspaceless %}
+{% endblock %}
+
+{% block vince_admin_menu_parent_entity_widget %}
+    {% spaceless %}
+        <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+            {% if empty_value is not none %}
+                <option value="">
+                    {% if not sonata_admin.admin %}
+                        {{- empty_value|trans({}, translation_domain) -}}
+                    {% else %}
+                        {{- empty_value|trans({}, sonata_admin.field_description.translationDomain) -}}
+                    {% endif%}
+                </option>
+            {% endif %}
+            {% if preferred_choices|length > 0 %}
+                {% set options = preferred_choices %}
+                {% for group_label, choice in options %}
+                    <option value="{{ choice.value }}"{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ choice.label|trans({}, translation_domain)|raw }}</option>
+                {% endfor %}
+                {% if choices|length > 0 %}
+                    <option disabled="disabled">{{ separator }}</option>
+                {% endif %}
+            {% endif %}
+            {% set options = choices %}
+            {% for group_label, choice in choices %}
+                <option value="{{ choice.value }}"{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ choice.label|trans({}, translation_domain)|raw }}</option>
+            {% endfor %}
+        </select>
+    {% endspaceless %}
+{% endblock %}

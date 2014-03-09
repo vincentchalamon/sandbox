@@ -5,7 +5,7 @@
         {%- if value is empty -%}
             &nbsp;
         {%- else -%}
-            {{ value|join(', ') }}
+            {{ value|raw }}
         {%- endif -%}
     {% endspaceless %}
 {% endblock %}

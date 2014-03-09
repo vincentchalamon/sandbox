@@ -18,14 +18,17 @@
     {{ parent() }}
     {% if form is defined %}
         <script type="text/javascript" src="{{ asset('bundles/vincetype/datepicker/bootstrap-datepicker.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('bundles/vincetype/masked/jquery.maskedinput.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('bundles/vincetype/redactor/redactor.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('bundles/vincetype/token/jquery.tokeninput.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('bundles/vincetype/list/listInput.js') }}"></script>
         {% if app.request.locale != 'en' %}
             <script type="text/javascript" src="{{ asset('bundles/vincetype/datepicker/langs/bootstrap-datepicker.' ~ app.request.locale ~ '.js') }}"></script>
+        {% endif %}
+        <script type="text/javascript" src="{{ asset('bundles/vincetype/redactor/redactor.js') }}"></script>
+        {% if app.request.locale != 'en' %}
             <script type="text/javascript" src="{{ asset('bundles/vincetype/redactor/langs/' ~ app.request.locale ~ '.js') }}"></script>
         {% endif %}
+        <script type="text/javascript" src="{{ asset('bundles/vincecmssonataadmin/js/url.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/vincetype/masked/jquery.maskedinput.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/vincetype/token/jquery.tokeninput.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/vincetype/list/listInput.js') }}"></script>
         {{ form_javascripts(form) }}
     {% endif %}
 {% endblock %}

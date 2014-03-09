@@ -60,14 +60,9 @@ class ArticleAdmin extends Admin
     /**
      * {@inheritdoc}
      */
-    public function getTemplate($name)
+    public function getFormTheme()
     {
-        switch ($name) {
-            case 'edit':
-                return 'VinceCmsSonataAdminBundle:Article:edit.html.twig';
-        }
-
-        return parent::getTemplate($name);
+        return array_merge(parent::getFormTheme(), array('VinceCmsSonataAdminBundle:Form:form_theme.html.twig'));
     }
 
     /**
@@ -175,26 +170,28 @@ class ArticleAdmin extends Admin
                 )
                 ->add('summary', null, array(
                         'label' => 'article.field.summary',
-                        'required' => false
+                        'required' => false,
+                        'help' => 'article.help.summary'
                     )
                 )
                 ->add('tags', 'list', array(
                         'label'    => 'article.field.tags',
-                        'required' => false
+                        'required' => false,
+                        'help' => 'article.help.tags'
                     )
                 )
-                ->add('categories', 'token', array(
+                /*->add('categories', 'token', array(
                         'em' => $this->em,
                         'entity' => 'MyCmsBundle:Category'
                     )
-                )
-                //->add('metas')
+                )*/
             ;
         if ($this->getSubject()->getSlug() != 'homepage') {
             $mapper
                     ->add('url', null, array(
                             'label' => 'article.field.customUrl',
                             'required' => false,
+                            'help' => 'article.help.customUrl',
                             'attr' => array(
                                 'placeholder' => $this->getSubject()->getRoutePattern()
                             )
@@ -216,13 +213,20 @@ class ArticleAdmin extends Admin
         }
         $mapper
             ->end()
+            ->with('article.group.metas')
+                // todo-vince Manage metas limited from metas list
+                // todo-vince Auto-create metas from article fields (title, summary, etc…)
+                ->add('metas')
+            ->end()
             ->with('article.group.template')
                 ->add('template', null, array(
                         'label' => 'article.field.template',
                         'required' => false
                     )
                 )
-                //->add('contents')
+                // todo-vince Manage contents from template areas list
+                // todo-vince Change areas list in ajax if template changes
+                ->add('contents')
             ->end()
         ;
     }

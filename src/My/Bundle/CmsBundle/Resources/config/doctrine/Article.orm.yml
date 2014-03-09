@@ -10,15 +10,19 @@ My\Bundle\CmsBundle\Entity\Article:
         metas:
             targetEntity: My\Bundle\CmsBundle\Entity\ArticleMeta
             mappedBy: article
+            cascade: [all]
         contents:
             targetEntity: My\Bundle\CmsBundle\Entity\Content
             mappedBy: article
+            cascade: [all]
         menus:
             targetEntity: My\Bundle\CmsBundle\Entity\Menu
             mappedBy: article
+            cascade: [persist]
     manyToMany:
         categories:
             targetEntity: My\Bundle\CmsBundle\Entity\Category
+            cascade: [persist]
             joinTable:
                 name: article_category
                 joinColumns:

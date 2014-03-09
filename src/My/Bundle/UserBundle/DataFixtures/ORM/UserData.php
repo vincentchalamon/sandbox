@@ -51,15 +51,12 @@ class UserData extends AbstractFixture implements OrderedFixtureInterface, Conta
     {
         $loader = new Loader();
         $loader->addDirectory(__DIR__.'/../../Resources/config/data');
-        $loader->load($manager, function ($class, array $users) {
-                if ($class == 'My\Bundle\UserBundle\Entity\User') {
-                    foreach ($users as $name => $user) {
-                        /** @var User $user */
-                        $user->setUsername($name);
-                        $user->setUsernameCanonical($name);
-                    }
+        $loader->load($manager, function ($name, $object) {
+                if ($object instanceof User) {
+                    $object->setUsername($name);
+                    $object->setUsernameCanonical($name);
                 }
-            }, $this, $this->container->get('validator'));
+            });
     }
 
     /**

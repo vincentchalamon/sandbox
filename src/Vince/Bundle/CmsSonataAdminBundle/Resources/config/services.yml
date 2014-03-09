@@ -12,6 +12,18 @@ services:
             - [ setTranslationDomain, [ 'SonataAdminBundle' ] ]
             - [ setEntityManager, [ @doctrine.orm.default_entity_manager ] ]
 
+    vince.admin.block:
+        class: Vince\Bundle\CmsSonataAdminBundle\Admin\Entity\BlockAdmin
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: cms
+              label_catalogue: SonataAdminBundle
+              label: Blocks
+        arguments: [ ~, %vince.class.block%, ~ ]
+        calls:
+            - [ setTranslationDomain, [ 'SonataAdminBundle' ] ]
+
     vince.admin.menu:
         class: Vince\Bundle\CmsSonataAdminBundle\Admin\Entity\MenuAdmin
         tags:
@@ -23,3 +35,12 @@ services:
         arguments: [ ~, %vince.class.menu%, ~ ]
         calls:
             - [ setTranslationDomain, [ 'SonataAdminBundle' ] ]
+            - [ setMenuRepository, [ @vince.repository.menu ] ]
+            - [ setEntityManager, [ @doctrine.orm.default_entity_manager ] ]
+            - [ setPublicPath, [ %kernel.web_dir% ] ]
+            - [ setUploadDirName, [ %kernel.uploads_path% ] ]
+
+    form.type_extension.filename:
+        class: Vince\Bundle\CmsSonataAdminBundle\Form\Extension\FilenameTypeExtension
+        tags:
+            - { name: form.type_extension, alias: form }
