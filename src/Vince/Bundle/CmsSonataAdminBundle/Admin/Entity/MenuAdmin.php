@@ -10,7 +10,7 @@
  */
 namespace Vince\Bundle\CmsSonataAdminBundle\Admin\Entity;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -40,9 +40,9 @@ class MenuAdmin extends Admin
     protected $menuRepository;
 
     /**
-     * Entity manager
+     * Object manager
      *
-     * @var EntityManager
+     * @var ObjectManager
      */
     protected $em;
 
@@ -65,11 +65,11 @@ class MenuAdmin extends Admin
      *
      * @author Vincent Chalamon <vincentchalamon@gmail.com>
      *
-     * @param EntityManager $em
+     * @param ObjectManager $em
      *
      * @return MenuAdmin
      */
-    public function setEntityManager(EntityManager $em)
+    public function setObjectManager(ObjectManager $em)
     {
         $this->em = $em;
 

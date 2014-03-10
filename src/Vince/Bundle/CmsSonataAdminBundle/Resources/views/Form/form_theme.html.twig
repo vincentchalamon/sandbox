@@ -48,27 +48,10 @@
 {% block vince_admin_menu_parent_entity_widget %}
     {% spaceless %}
         <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
-            {% if empty_value is not none %}
-                <option value="">
-                    {% if not sonata_admin.admin %}
-                        {{- empty_value|trans({}, translation_domain) -}}
-                    {% else %}
-                        {{- empty_value|trans({}, sonata_admin.field_description.translationDomain) -}}
-                    {% endif%}
-                </option>
-            {% endif %}
-            {% if preferred_choices|length > 0 %}
-                {% set options = preferred_choices %}
-                {% for group_label, choice in options %}
-                    <option value="{{ choice.value }}"{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ choice.label|trans({}, translation_domain)|raw }}</option>
-                {% endfor %}
-                {% if choices|length > 0 %}
-                    <option disabled="disabled">{{ separator }}</option>
-                {% endif %}
-            {% endif %}
-            {% set options = choices %}
             {% for group_label, choice in choices %}
-                <option value="{{ choice.value }}"{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ choice.label|trans({}, translation_domain)|raw }}</option>
+                <option value="{{ choice.value }}"{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>
+                    {% autoescape 'html' %}{{ choice.label|trans({}, translation_domain)|raw }}{% endautoescape %}
+                </option>
             {% endfor %}
         </select>
     {% endspaceless %}

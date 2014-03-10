@@ -10,7 +10,7 @@ services:
         arguments: [ ~, %vince.class.article%, ~ ]
         calls:
             - [ setTranslationDomain, [ 'SonataAdminBundle' ] ]
-            - [ setEntityManager, [ @doctrine.orm.default_entity_manager ] ]
+            - [ setObjectManager, [ @doctrine.orm.default_entity_manager ] ]
 
     vince.admin.block:
         class: Vince\Bundle\CmsSonataAdminBundle\Admin\Entity\BlockAdmin
@@ -36,7 +36,7 @@ services:
         calls:
             - [ setTranslationDomain, [ 'SonataAdminBundle' ] ]
             - [ setMenuRepository, [ @vince.repository.menu ] ]
-            - [ setEntityManager, [ @doctrine.orm.default_entity_manager ] ]
+            - [ setObjectManager, [ @doctrine.orm.default_entity_manager ] ]
             - [ setPublicPath, [ %kernel.web_dir% ] ]
             - [ setUploadDirName, [ %kernel.uploads_path% ] ]
 

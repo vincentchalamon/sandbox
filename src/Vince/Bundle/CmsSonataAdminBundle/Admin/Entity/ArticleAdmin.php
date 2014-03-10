@@ -10,7 +10,7 @@
  */
 namespace Vince\Bundle\CmsSonataAdminBundle\Admin\Entity;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Persistence\ObjectManager;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -39,9 +39,9 @@ class ArticleAdmin extends Admin
     );
 
     /**
-     * Entity manager
+     * Object manager
      *
-     * @var EntityManager
+     * @var ObjectManager
      */
     protected $em;
 
@@ -50,9 +50,9 @@ class ArticleAdmin extends Admin
      *
      * @author Vincent Chalamon <vincentchalamon@gmail.com>
      *
-     * @param EntityManager $em
+     * @param ObjectManager $em
      */
-    public function setEntityManager(EntityManager $em)
+    public function setObjectManager(ObjectManager $em)
     {
         $this->em = $em;
     }
