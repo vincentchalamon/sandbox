@@ -19,7 +19,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 /**
  * Article admin
  *
- * @author Vincent Chalamon <vincent@ylly.fr>
+ * @author Vincent Chalamon <vincentchalamon@gmail.com>
  */
 class ArticleAdmin extends Admin
 {
@@ -180,11 +180,6 @@ class ArticleAdmin extends Admin
                         'help' => 'article.help.tags'
                     )
                 )
-                /*->add('categories', 'token', array(
-                        'em' => $this->em,
-                        'entity' => 'MyCmsBundle:Category'
-                    )
-                )*/
             ;
         if ($this->getSubject()->getSlug() != 'homepage') {
             $mapper
@@ -214,9 +209,10 @@ class ArticleAdmin extends Admin
         $mapper
             ->end()
             ->with('article.group.metas')
-                // todo-vince Manage metas limited from metas list
-                // todo-vince Auto-create metas from article fields (title, summary, etc…)
-                ->add('metas')
+                ->add('metas', 'metagroup', array(
+                        'label' => false
+                    )
+                )
             ->end()
             ->with('article.group.template')
                 ->add('template', null, array(

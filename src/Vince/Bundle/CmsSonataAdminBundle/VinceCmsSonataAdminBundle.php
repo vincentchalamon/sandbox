@@ -15,7 +15,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 /**
  * This bundle provides admin for VinceCmsBundle.
  *
- * @author Vincent Chalamon <vincent@ylly.fr>
+ * @author Vincent Chalamon <vincentchalamon@gmail.com>
  */
 class VinceCmsSonataAdminBundle extends Bundle
 {

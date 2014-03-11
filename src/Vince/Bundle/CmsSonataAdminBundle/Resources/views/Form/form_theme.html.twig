@@ -1,5 +1,3 @@
-{% use 'SonataAdminBundle:Form:form_admin_fields.html.twig' %}
-
 {% block vince_admin_article_title_text_javascript %}
     {% spaceless %}
         <script type="text/javascript">
@@ -7,6 +5,55 @@
                 $('#{{ id }}').on('change keyup', function () {
                     $(':input[id$=_url]', $(this).closest('form')).attr('placeholder', '/' + $(this).val().slugify());
                 }).trigger('change');
+            });
+        </script>
+    {% endspaceless %}
+{% endblock %}
+
+{% block metagroup_row %}
+    {% spaceless %}
+        <div id="{{ id }}">
+            {% for group in form %}
+                <fieldset>
+                    {% if group.vars.label|length > 0 %}
+                        <legend>{{ group.vars.label }}</legend>
+                    {% endif %}
+
+                    {% for meta in group if meta != group.select %}
+                        {{ form_row(meta) }}
+                    {% endfor %}
+
+                    <div class="well well-small">
+                        {{ form_widget(group.select) }}
+                        &nbsp;
+                        <a class="btn" href="#">
+                            <i class="icon-plus"></i>{{ 'article.field.add'|trans({}, 'SonataAdminBundle') }}
+                        </a>
+                    </div>
+                </fieldset>
+            {% endfor %}
+        </div>
+    {% endspaceless %}
+{% endblock %}
+
+{% block metagroup_javascript %}
+    {% spaceless %}
+        <script type="text/javascript">
+            $(function () {
+                {% for group in form %}
+                    {% for meta in group if meta != group.select and meta.vars.value is empty %}
+                        $('#{{ meta.vars.id }}').closest('.control-group').hide();
+                    {% endfor %}
+                    $('#{{ id }} .well select option').each(function () {
+                        if ($('#{{ group.vars.id }}_' + $(this).attr('value') + ':visible').length) {
+                            $(this).hide();
+                        }
+                    });
+                {% endfor %}
+                $('#{{ id }} .well a').on('click', function (event) {
+                    event.preventDefault();
+                    console.log($(this).siblings('select').val());
+                });
             });
         </script>
     {% endspaceless %}

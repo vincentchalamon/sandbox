@@ -19,7 +19,7 @@ use Sonata\UserBundle\Admin\Entity\UserAdmin as BaseAdmin;
 /**
  * User admin
  *
- * @author Vincent Chalamon <vincent@ylly.fr>
+ * @author Vincent Chalamon <vincentchalamon@gmail.com>
  */
 class UserAdmin extends BaseAdmin
 {

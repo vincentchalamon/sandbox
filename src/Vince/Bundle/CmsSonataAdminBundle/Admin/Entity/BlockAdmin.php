@@ -19,7 +19,7 @@ use Sonata\AdminBundle\Route\RouteCollection;
 /**
  * Bock admin
  *
- * @author Vincent Chalamon <vincent@ylly.fr>
+ * @author Vincent Chalamon <vincentchalamon@gmail.com>
  */
 class BlockAdmin extends Admin
 {
@@ -41,7 +41,7 @@ class BlockAdmin extends Admin
     /**
      * Configure routes
      *
-     * @author Vincent Chalamon <vincent@ylly.fr>
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
      *
      * @param RouteCollection $collection
      */

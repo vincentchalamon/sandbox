@@ -44,3 +44,15 @@ services:
         class: Vince\Bundle\CmsSonataAdminBundle\Form\Extension\FilenameTypeExtension
         tags:
             - { name: form.type_extension, alias: form }
+
+    form.type.metagroup:
+        class: Vince\Bundle\CmsSonataAdminBundle\Form\Type\MetaGroupType
+        tags:
+            - { name: form.type, alias: metagroup }
+        calls:
+            - [ setObjectManager, [ @doctrine.orm.default_entity_manager ] ]
+
+    form.type.meta:
+        class: Vince\Bundle\CmsSonataAdminBundle\Form\Type\MetaType
+        tags:
+            - { name: form.type, alias: meta }

@@ -22,7 +22,7 @@ use Vince\Bundle\CmsBundle\Entity\Repository\MenuRepository;
 /**
  * Menu admin
  *
- * @author Vincent Chalamon <vincent@ylly.fr>
+ * @author Vincent Chalamon <vincentchalamon@gmail.com>
  */
 class MenuAdmin extends Admin
 {

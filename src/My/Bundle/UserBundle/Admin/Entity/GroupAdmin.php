@@ -16,7 +16,7 @@ use Sonata\UserBundle\Admin\Entity\GroupAdmin as BaseAdmin;
 /**
  * Group admin
  *
- * @author Vincent Chalamon <vincent@ylly.fr>
+ * @author Vincent Chalamon <vincentchalamon@gmail.com>
  */
 class GroupAdmin extends BaseAdmin
 {

@@ -19,6 +19,7 @@ article:
         metas: SEO
         template: Gabarit
         contents: Contenus
+        add: Ajouter
     help:
         summary: Le résumé présente de façon succincte votre article dans le moteur de recherche interne.
         tags: Les tags permettent de lier les articles entre eux.
