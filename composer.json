@@ -67,7 +67,9 @@
     "require-dev": {
         "ext-xsl": "*",
         "phpdocumentor/phpdocumentor": "2.*",
-        "phpunit/phpunit": "4.*"
+        "phpunit/phpunit": "4.*",
+        "doctrine/doctrine-fixtures-bundle": "v2.2.0",
+        "liip/functional-test-bundle": "1.0.0"
     },
     "require": {
         "php": ">=5.3.3",
