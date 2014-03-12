@@ -11,10 +11,15 @@
 namespace Vince\Bundle\CmsSonataAdminBundle\Admin\Entity;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use My\Bundle\CmsBundle\Entity\ArticleMeta;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Security\Core\SecurityContext;
+use Vince\Bundle\CmsBundle\Entity\Article;
+use Vince\Bundle\TypeBundle\Listener\LocaleListener;
+use Sonata\UserBundle\Entity\BaseUser;
 
 /**
  * Article admin
@@ -46,6 +51,20 @@ class ArticleAdmin extends Admin
     protected $em;
 
     /**
+     * Locale
+     *
+     * @var string
+     */
+    protected $locale;
+
+    /**
+     * User
+     *
+     * @var BaseUser
+     */
+    protected $user;
+
+    /**
      * Set entity manager
      *
      * @author Vincent Chalamon <vincentchalamon@gmail.com>
@@ -58,11 +77,76 @@ class ArticleAdmin extends Admin
     }
 
     /**
+     * Set locale
+     *
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
+     *
+     * @param LocaleListener $listener
+     */
+    public function setLocale(LocaleListener $listener)
+    {
+        $this->locale = $listener->getLocale();
+    }
+
+    /**
+     * Set user
+     *
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
+     *
+     * @param SecurityContext $context
+     */
+    public function setUser(SecurityContext $context)
+    {
+        $this->user = $context->getToken() ? $context->getToken()->getUser() : null;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getFormTheme()
     {
         return array_merge(parent::getFormTheme(), array('VinceCmsSonataAdminBundle:Form:form_theme.html.twig'));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getNewInstance()
+    {
+        /** @var Article $article */
+        $article = parent::getNewInstance();
+        $meta    = new ArticleMeta();
+        $meta->setMeta($this->em->getRepository('VinceCmsBundle:Meta')->findOneByName('language'));
+        $meta->setContents($this->locale);
+        $article->addMeta($meta);
+        $meta = new ArticleMeta();
+        $meta->setMeta($this->em->getRepository('VinceCmsBundle:Meta')->findOneByName('og:type'));
+        $meta->setContents('article');
+        $article->addMeta($meta);
+        $meta = new ArticleMeta();
+        $meta->setMeta($this->em->getRepository('VinceCmsBundle:Meta')->findOneByName('twitter:card'));
+        $meta->setContents('summary');
+        $article->addMeta($meta);
+        if ($this->user) {
+            $meta = new ArticleMeta();
+            $meta->setMeta($this->em->getRepository('VinceCmsBundle:Meta')->findOneByName('author'));
+            $meta->setContents(trim($this->user->getFirstname().' '.$this->user->getLastname()) ?: $this->user->getUsername());
+            $article->addMeta($meta);
+            if ($this->user->getGplusName()) {
+                $meta = new ArticleMeta();
+                $meta->setMeta($this->em->getRepository('VinceCmsBundle:Meta')->findOneByName('publisher'));
+                $meta->setContents($this->user->getGplusName());
+                $article->addMeta($meta);
+            }
+            if ($this->user->getTwitterName()) {
+                $meta = new ArticleMeta();
+                $meta->setMeta($this->em->getRepository('VinceCmsBundle:Meta')->findOneByName('twitter:creator'));
+                $meta->setContents('@'.$this->user->getTwitterName());
+                $article->addMeta($meta);
+            }
+        }
+
+        return $article;
     }
 
     /**
@@ -220,9 +304,10 @@ class ArticleAdmin extends Admin
                         'required' => false
                     )
                 )
-                // todo-vince Manage contents from template areas list
-                // todo-vince Change areas list in ajax if template changes
-                ->add('contents')
+                ->add('contents', 'template', array(
+                        'label' => false
+                    )
+                )
             ->end()
         ;
     }

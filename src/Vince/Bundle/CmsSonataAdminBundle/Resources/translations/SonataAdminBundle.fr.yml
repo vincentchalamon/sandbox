@@ -22,7 +22,7 @@ article:
         add: Ajouter
     help:
         summary: Le résumé présente de façon succincte votre article dans le moteur de recherche interne.
-        tags: Les tags permettent de lier les articles entre eux.
+        tags: Les tags permettent de créer des liens entre les articles dans le moteur de recherche interne.
         customUrl: Celle-ci doit commencer par /. Préférez un tiret (-) comme séparateur.
 
 Menu List: Menus
@@ -47,7 +47,7 @@ menu:
         url: Celle-ci doit commencer par /. Préférez un tiret (-) comme séparateur.
         article: Si vous liez ce menu à un article, l'url du menu sera ignorée.
 
-Block List: Blocks
+Block List: Blocs
 block:
     group:
         general: Général

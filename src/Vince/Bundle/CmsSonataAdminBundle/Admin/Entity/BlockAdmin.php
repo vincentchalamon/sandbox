@@ -27,7 +27,7 @@ class BlockAdmin extends Admin
     /**
      * {@inheritdoc}
      */
-    protected $baseRoutePattern = 'blocks';
+    protected $baseRoutePattern = 'blocs';
 
     /**
      * {@inheritdoc}

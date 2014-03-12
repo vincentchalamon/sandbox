@@ -13,15 +13,15 @@ namespace Vince\Bundle\CmsSonataAdminBundle\Form\Type;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Vince\Bundle\CmsBundle\Entity\Meta;
-use Vince\Bundle\CmsSonataAdminBundle\Form\Transformer\MetaTransformer;
+use Vince\Bundle\CmsBundle\Entity\Template;
+use Vince\Bundle\CmsSonataAdminBundle\Form\Transformer\ContentsTransformer;
 
 /**
- * MetaGroupType manage grouped meta list
+ * TemplateType manage contents list grouped by template name
  *
  * @author Vincent Chalamon <vincentchalamon@gmail.com>
  */
-class MetaGroupType extends AbstractType
+class TemplateType extends AbstractType
 {
 
     /**
@@ -32,7 +32,7 @@ class MetaGroupType extends AbstractType
     protected $em;
 
     /**
-     * ArticleMeta class name
+     * Contents class name
      *
      * @var string
      */
@@ -55,7 +55,7 @@ class MetaGroupType extends AbstractType
     }
 
     /**
-     * Set ArticleMeta class name
+     * Set Contents class name
      *
      * @author Vincent Chalamon <vincentchalamon@gmail.com>
      *
@@ -63,7 +63,7 @@ class MetaGroupType extends AbstractType
      *
      * @return MetaGroupType
      */
-    public function setArticleMetaClassName($class)
+    public function setContentsClassName($class)
     {
         $this->class = $class;
 
@@ -75,20 +75,14 @@ class MetaGroupType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->addViewTransformer(new MetaTransformer($this->em, $this->class));
-        $list   = $this->em->getRepository('VinceCmsBundle:Meta')->findAll();
-        $groups = array();
-        foreach ($list as $meta) {
-            /** @var Meta $meta */
-            if (!isset($groups[$meta->getGroup()])) {
-                $groups[$meta->getGroup()] = array();
-            }
-            $groups[$meta->getGroup()][] = $meta;
-        }
-        foreach ($groups as $name => $metas) {
-            $builder->add($name ?: 'general', 'meta', array(
-                    'label' => $name,
-                    'metas' => $metas
+        $builder->addViewTransformer(new ContentsTransformer($this->em, $this->class));
+        $list = $this->em->getRepository('VinceCmsBundle:Template')->findAll();
+        foreach ($list as $template) {
+            /** @var Template $template */
+            $builder->add($template->getSlug(), 'area', array(
+                    'label' => false,
+                    'areas' => $template->getAreas(),
+                    'attr'  => array('template_id' => $template->getId())
                 )
             );
         }
@@ -99,7 +93,7 @@ class MetaGroupType extends AbstractType
      */
     public function getName()
     {
-        return 'metagroup';
+        return 'template';
     }
 
     /**

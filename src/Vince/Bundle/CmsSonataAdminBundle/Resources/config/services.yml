@@ -11,6 +11,8 @@ services:
         calls:
             - [ setTranslationDomain, [ 'SonataAdminBundle' ] ]
             - [ setObjectManager, [ @doctrine.orm.default_entity_manager ] ]
+            - [ setLocale, [ @form.type_extension.locale_listener ] ]
+            - [ setUser, [ @security.context ] ]
 
     vince.admin.block:
         class: Vince\Bundle\CmsSonataAdminBundle\Admin\Entity\BlockAdmin
@@ -19,7 +21,7 @@ services:
               manager_type: orm
               group: cms
               label_catalogue: SonataAdminBundle
-              label: Blocks
+              label: Blocs
         arguments: [ ~, %vince.class.block%, ~ ]
         calls:
             - [ setTranslationDomain, [ 'SonataAdminBundle' ] ]
@@ -51,8 +53,22 @@ services:
             - { name: form.type, alias: metagroup }
         calls:
             - [ setObjectManager, [ @doctrine.orm.default_entity_manager ] ]
+            - [ setArticleMetaClassName, [ %vince.class.articleMeta% ] ]
 
     form.type.meta:
         class: Vince\Bundle\CmsSonataAdminBundle\Form\Type\MetaType
         tags:
             - { name: form.type, alias: meta }
+
+    form.type.template:
+        class: Vince\Bundle\CmsSonataAdminBundle\Form\Type\TemplateType
+        tags:
+            - { name: form.type, alias: template }
+        calls:
+            - [ setObjectManager, [ @doctrine.orm.default_entity_manager ] ]
+            - [ setContentsClassName, [ %vince.class.contents% ] ]
+
+    form.type.area:
+        class: Vince\Bundle\CmsSonataAdminBundle\Form\Type\AreaType
+        tags:
+            - { name: form.type, alias: area }

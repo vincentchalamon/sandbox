@@ -1,9 +1,22 @@
-{% block vince_admin_article_title_text_javascript %}
+{% block template_row %}
+    {% spaceless %}
+        {% for template in form if template|length > 0 %}
+            <div class="template-container" id="template-container-{{ template.vars.attr.template_id }}">
+                {% for area in template %}
+                    {{ form_row(area) }}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    {% endspaceless %}
+{% endblock %}
+
+{% block vince_admin_article_template_entity_javascript %}
     {% spaceless %}
         <script type="text/javascript">
             $(function () {
-                $('#{{ id }}').on('change keyup', function () {
-                    $(':input[id$=_url]', $(this).closest('form')).attr('placeholder', '/' + $(this).val().slugify());
+                $('#{{ id }}').on('change', function () {
+                    $('.template-container:not(#template-container-' + $(this).val() + ')').hide();
+                    $('#template-container-' + $(this).val()).show();
                 }).trigger('change');
             });
         </script>
@@ -12,47 +25,68 @@
 
 {% block metagroup_row %}
     {% spaceless %}
-        <div id="{{ id }}">
-            {% for group in form %}
-                <fieldset>
-                    {% if group.vars.label|length > 0 %}
-                        <legend>{{ group.vars.label }}</legend>
-                    {% endif %}
+        {% for group in form %}
+            {% if group.vars.label|length > 0 %}
+                <h3>{{ group.vars.label }}</h3>
+            {% endif %}
 
-                    {% for meta in group if meta != group.select %}
-                        {{ form_row(meta) }}
-                    {% endfor %}
-
-                    <div class="well well-small">
-                        {{ form_widget(group.select) }}
-                        &nbsp;
-                        <a class="btn" href="#">
-                            <i class="icon-plus"></i>{{ 'article.field.add'|trans({}, 'SonataAdminBundle') }}
-                        </a>
-                    </div>
-                </fieldset>
+            {% for meta in group %}
+                {{ form_row(meta) }}
             {% endfor %}
-        </div>
+        {% endfor %}
     {% endspaceless %}
 {% endblock %}
 
-{% block metagroup_javascript %}
+{% block vince_admin_article_title_text_javascript %}
     {% spaceless %}
         <script type="text/javascript">
             $(function () {
-                {% for group in form %}
-                    {% for meta in group if meta != group.select and meta.vars.value is empty %}
-                        $('#{{ meta.vars.id }}').closest('.control-group').hide();
-                    {% endfor %}
-                    $('#{{ id }} .well select option').each(function () {
-                        if ($('#{{ group.vars.id }}_' + $(this).attr('value') + ':visible').length) {
-                            $(this).hide();
+                $('#{{ id }}').on('keydown', function (event) {
+                    // Update custom url
+                    $(':input[id$=url]', $(this).closest('fieldset')).attr('placeholder', '/' + $(this).val().slugify()).trigger('keydown');
+
+                    // Update related metas
+                    $(':input[id$=title]', $(this).closest('form')).not($(this)).each(function () {
+                        if ($.trim($(this).val()).length == 0 || $.trim($(this).val()) == $(event.target).val()) {
+                            $(this).val($(event.target).val());
                         }
                     });
-                {% endfor %}
-                $('#{{ id }} .well a').on('click', function (event) {
-                    event.preventDefault();
-                    console.log($(this).siblings('select').val());
+                }).trigger('keydown');
+            });
+        </script>
+    {% endspaceless %}
+{% endblock %}
+
+{% block vince_admin_article_summary_textarea_javascript %}
+    {% spaceless %}
+        <script type="text/javascript">
+            $(function () {
+                $('#{{ id }}').on('keydown', function (event) {
+                    // Update related metas
+                    $(':input[id$=description]', $(this).closest('form')).not($(this)).each(function () {
+                        if ($.trim($(this).val()).length == 0 || $.trim($(this).val()) == $(event.target).val()) {
+                            $(this).val($(event.target).val());
+                        }
+                    });
+                }).trigger('keydown');
+            });
+        </script>
+    {% endspaceless %}
+{% endblock %}
+
+{% block vince_admin_article_url_text_javascript %}
+    {% spaceless %}
+        <script type="text/javascript">
+            $(function () {
+                $('#{{ id }}').on('keydown', function (event) {
+                    var value = $.trim($(this).val()) ? $.trim($(this).val()) : $(this).attr('placeholder');
+
+                    // Update related metas
+                    $(':input[id$=url]', $(this).closest('form')).not($(this)).each(function () {
+                        if ($.trim($(this).val()).length == 0 || $.trim($(this).val()) == value) {
+                            $(this).val(value);
+                        }
+                    });
                 });
             });
         </script>

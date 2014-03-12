@@ -12,18 +12,19 @@ namespace Vince\Bundle\CmsSonataAdminBundle\Form\Transformer;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Form\DataTransformerInterface;
-use Vince\Bundle\CmsBundle\Entity\ArticleMeta;
+use Vince\Bundle\CmsBundle\Entity\Content;
+use Vince\Bundle\CmsBundle\Entity\Template;
 
 /**
- * Meta transformer
+ * Contents transformer
  *
  * @author Vincent Chalamon <vincentchalamon@gmail.com>
  */
-class MetaTransformer implements DataTransformerInterface
+class ContentsTransformer implements DataTransformerInterface
 {
 
     /**
-     * ArticleMeta class name
+     * Contents class name
      *
      * @var string
      */
@@ -38,7 +39,7 @@ class MetaTransformer implements DataTransformerInterface
 
     /**
      * @param ObjectManager $em    ObjectManager
-     * @param string        $class ArticleMeta class name
+     * @param string        $class Contents class name
      */
     public function __construct(ObjectManager $em, $class)
     {
@@ -62,17 +63,16 @@ class MetaTransformer implements DataTransformerInterface
         }
 
         // Build array values for view
-        $groups = array();
-        foreach ($value as $articleMeta) {
-            /** @var ArticleMeta $articleMeta */
-            $group = $articleMeta->getMeta()->getGroup() ?: 'general';
-            if (!isset($groups[$group])) {
-                $groups[$group] = array();
+        $contents = array();
+        foreach ($value as $content) {
+            /** @var Content $content */
+            if (!isset($contents[$content->getArea()->getTemplate()->getSlug()])) {
+                $contents[$content->getArea()->getTemplate()->getSlug()] = array();
             }
-            $groups[$group][$articleMeta->getMeta()->getName()] = $articleMeta->getContents();
+            $contents[$content->getArea()->getTemplate()->getSlug()][$content->getArea()->getName()] = $content->getContents();
         }
 
-        return $groups;
+        return $contents;
     }
 
     /**
@@ -84,22 +84,25 @@ class MetaTransformer implements DataTransformerInterface
             return array();
         }
 
-        // todo-vince Update ArticleMeta instead of delete/create
+        // todo-vince Update Content instead of delete/create
         $results = array();
-        foreach ($value as $group => $metas) {
-            foreach ($metas as $name => $contents) {
-                if (trim($contents) &&
-                    $meta = $this->em->getRepository('VinceCmsBundle:Meta')->findOneBy(array(
-                            'name' => $name,
-                            'group' => $group == 'general' ? null : $group
+        foreach ($value as $template => $contents) {
+            /** @var Template $template */
+            if ($template = $this->em->getRepository('VinceCmsBundle:Template')->findOneBy(array('slug' => $template))) {
+                foreach ($contents as $name => $content) {
+                    if (trim($content) &&
+                        $area = $this->em->getRepository('VinceCmsBundle:Area')->findOneBy(array(
+                                'template' => $template->getId(),
+                                'name' => $name
+                            )
                         )
-                    )
-                ) {
-                    /** @var ArticleMeta $articleMeta */
-                    $articleMeta = new $this->class();
-                    $articleMeta->setMeta($meta);
-                    $articleMeta->setContents(trim($contents));
-                    $results[] = $articleMeta;
+                    ) {
+                        /** @var Content $articleContent */
+                        $articleContent = new $this->class();
+                        $articleContent->setArea($area);
+                        $articleContent->setContents(trim($content));
+                        $results[] = $articleContent;
+                    }
                 }
             }
         }

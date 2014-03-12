@@ -13,14 +13,14 @@ namespace Vince\Bundle\CmsSonataAdminBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Vince\Bundle\CmsBundle\Entity\Meta;
+use Vince\Bundle\CmsBundle\Entity\Area;
 
 /**
- * MetaType manage meta list for a specific group
+ * AreaType manage areas list for a specific template
  *
  * @author Vincent Chalamon <vincentchalamon@gmail.com>
  */
-class MetaType extends AbstractType
+class AreaType extends AbstractType
 {
 
     /**
@@ -28,11 +28,11 @@ class MetaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        foreach ($options['metas'] as $meta) {
-            /** @var Meta $meta */
-            $builder->add($meta->getName(), $meta->getType(), array(
-                    'label'    => $meta->getTitle(),
-                    'required' => false
+        foreach ($options['areas'] as $area) {
+            /** @var Area $area */
+            $builder->add($area->getName(), $area->getType(), array(
+                    'label'    => $area->getTitle(),
+                    'required' => $area->isRequired()
                 )
             );
         }
@@ -43,7 +43,7 @@ class MetaType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setRequired(array('metas'));
+        $resolver->setRequired(array('areas'));
     }
 
     /**
@@ -51,7 +51,7 @@ class MetaType extends AbstractType
      */
     public function getName()
     {
-        return 'meta';
+        return 'area';
     }
 
     /**

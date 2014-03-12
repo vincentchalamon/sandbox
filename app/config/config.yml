@@ -163,6 +163,10 @@ vince_cms:
         class: My\Bundle\CmsBundle\Entity\Article
     block:
         class: My\Bundle\CmsBundle\Entity\Block
+    articleMeta:
+        class: My\Bundle\CmsBundle\Entity\ArticleMeta
+    contents:
+        class: My\Bundle\CmsBundle\Entity\Content
     menu:
         class: My\Bundle\CmsBundle\Entity\Menu
 
