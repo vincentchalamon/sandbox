@@ -165,7 +165,7 @@ vince_cms:
         class: My\Bundle\CmsBundle\Entity\Block
     articleMeta:
         class: My\Bundle\CmsBundle\Entity\ArticleMeta
-    contents:
+    content:
         class: My\Bundle\CmsBundle\Entity\Content
     menu:
         class: My\Bundle\CmsBundle\Entity\Menu

@@ -2,15 +2,15 @@ My\Bundle\CmsBundle\Entity\Content:
     type: entity
     table: content
     id:
-        id:
-            type: integer
-            generator:
-                strategy: AUTO
+        article:
+          associationKey: true
+        area:
+          associationKey: true
     manyToOne:
         article:
             targetEntity: My\Bundle\CmsBundle\Entity\Article
             inversedBy: contents
-            cascade: [all]
+            cascade: [persist]
             joinColumn:
                 name: article_id
                 referencedColumnName: id
@@ -18,7 +18,7 @@ My\Bundle\CmsBundle\Entity\Content:
                 onDelete: CASCADE
         area:
             targetEntity: Vince\Bundle\CmsBundle\Entity\Area
-            cascade: [all]
+            cascade: [persist]
             joinColumn:
                 name: area_id
                 referencedColumnName: id

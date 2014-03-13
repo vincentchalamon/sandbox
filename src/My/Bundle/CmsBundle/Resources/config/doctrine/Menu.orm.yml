@@ -31,6 +31,6 @@ My\Bundle\CmsBundle\Entity\Menu:
         children:
             targetEntity: My\Bundle\CmsBundle\Entity\Menu
             mappedBy: parent
-            cascade: [all]
+            cascade: [persist]
             orderBy:
                 lft: ASC

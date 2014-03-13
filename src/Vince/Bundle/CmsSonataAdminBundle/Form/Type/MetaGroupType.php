@@ -11,6 +11,7 @@
 namespace Vince\Bundle\CmsSonataAdminBundle\Form\Type;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Vince\Bundle\CmsBundle\Entity\Meta;
@@ -25,11 +26,11 @@ class MetaGroupType extends AbstractType
 {
 
     /**
-     * Object manager
+     * Meta repository
      *
-     * @var ObjectManager
+     * @var EntityRepository
      */
-    protected $em;
+    protected $repository;
 
     /**
      * ArticleMeta class name
@@ -39,17 +40,17 @@ class MetaGroupType extends AbstractType
     protected $class;
 
     /**
-     * Set object manager
+     * Set Meta repository
      *
      * @author Vincent Chalamon <vincentchalamon@gmail.com>
      *
-     * @param ObjectManager $objectManager
+     * @param EntityRepository $repository
      *
      * @return MetaGroupType
      */
-    public function setObjectManager(ObjectManager $objectManager)
+    public function setMetaRepository(EntityRepository $repository)
     {
-        $this->em = $objectManager;
+        $this->repository = $repository;
 
         return $this;
     }
@@ -75,8 +76,8 @@ class MetaGroupType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->addViewTransformer(new MetaTransformer($this->em, $this->class));
-        $list   = $this->em->getRepository('VinceCmsBundle:Meta')->findAll();
+        $builder->addViewTransformer(new MetaTransformer($this->repository, $this->class));
+        $list   = $this->repository->findAll();
         $groups = array();
         foreach ($list as $meta) {
             /** @var Meta $meta */

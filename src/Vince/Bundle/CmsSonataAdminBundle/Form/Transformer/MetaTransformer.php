@@ -11,8 +11,10 @@
 namespace Vince\Bundle\CmsSonataAdminBundle\Form\Transformer;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\DataTransformerInterface;
 use Vince\Bundle\CmsBundle\Entity\ArticleMeta;
+use Vince\Bundle\CmsBundle\Entity\Meta;
 
 /**
  * Meta transformer
@@ -37,13 +39,20 @@ class MetaTransformer implements DataTransformerInterface
     protected $em;
 
     /**
-     * @param ObjectManager $em    ObjectManager
-     * @param string        $class ArticleMeta class name
+     * Existing values
+     *
+     * @var \Traversable
      */
-    public function __construct(ObjectManager $em, $class)
+    protected $metas;
+
+    /**
+     * @param EntityRepository $repository Meta repository
+     * @param string           $class      ArticleMeta class name
+     */
+    public function __construct(EntityRepository $repository, $class)
     {
-        $this->em    = $em;
-        $this->class = $class;
+        $this->repository = $repository;
+        $this->class      = $class;
     }
 
     /**
@@ -60,6 +69,9 @@ class MetaTransformer implements DataTransformerInterface
         if (!is_array($value) && !$value instanceof \Traversable) {
             throw new \InvalidArgumentException(sprintf('Meta form type only accept array or \Traversable objects, %s sent.', is_object($value) ? 'instance of '.get_class($value) : gettype($value)));
         }
+
+        // Keep existing values in memory for diff in reverseTransform
+        $this->metas = $value;
 
         // Build array values for view
         $groups = array();
@@ -84,20 +96,23 @@ class MetaTransformer implements DataTransformerInterface
             return array();
         }
 
-        // todo-vince Update ArticleMeta instead of delete/create
         $results = array();
         foreach ($value as $group => $metas) {
             foreach ($metas as $name => $contents) {
-                if (trim($contents) &&
-                    $meta = $this->em->getRepository('VinceCmsBundle:Meta')->findOneBy(array(
-                            'name' => $name,
-                            'group' => $group == 'general' ? null : $group
-                        )
-                    )
-                ) {
+                /** @var Meta $meta */
+                $meta = $this->repository->findOneBy(array('name'  => $name, 'group' => $group == 'general' ? null : $group));
+                if (trim($contents) && $meta) {
                     /** @var ArticleMeta $articleMeta */
                     $articleMeta = new $this->class();
                     $articleMeta->setMeta($meta);
+
+                    // Check existing object
+                    foreach ($this->metas as $object) {
+                        /** @var ArticleMeta $object */
+                        if ($object->getMeta()->getId() == $meta->getId()) {
+                            $articleMeta = $object;
+                        }
+                    }
                     $articleMeta->setContents(trim($contents));
                     $results[] = $articleMeta;
                 }

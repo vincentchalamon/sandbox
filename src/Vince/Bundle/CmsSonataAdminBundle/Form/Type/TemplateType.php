@@ -10,7 +10,7 @@
  */
 namespace Vince\Bundle\CmsSonataAdminBundle\Form\Type;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Vince\Bundle\CmsBundle\Entity\Template;
@@ -25,11 +25,11 @@ class TemplateType extends AbstractType
 {
 
     /**
-     * Object manager
+     * Template repository
      *
-     * @var ObjectManager
+     * @var EntityRepository
      */
-    protected $em;
+    protected $repository;
 
     /**
      * Contents class name
@@ -39,23 +39,23 @@ class TemplateType extends AbstractType
     protected $class;
 
     /**
-     * Set object manager
+     * Set Template repository
      *
      * @author Vincent Chalamon <vincentchalamon@gmail.com>
      *
-     * @param ObjectManager $objectManager
+     * @param EntityRepository $repository
      *
      * @return MetaGroupType
      */
-    public function setObjectManager(ObjectManager $objectManager)
+    public function setTemplateRepository(EntityRepository $repository)
     {
-        $this->em = $objectManager;
+        $this->repository = $repository;
 
         return $this;
     }
 
     /**
-     * Set Contents class name
+     * Set Content class name
      *
      * @author Vincent Chalamon <vincentchalamon@gmail.com>
      *
@@ -63,7 +63,7 @@ class TemplateType extends AbstractType
      *
      * @return MetaGroupType
      */
-    public function setContentsClassName($class)
+    public function setContentClassName($class)
     {
         $this->class = $class;
 
@@ -75,8 +75,10 @@ class TemplateType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->addViewTransformer(new ContentsTransformer($this->em, $this->class));
-        $list = $this->em->getRepository('VinceCmsBundle:Template')->findAll();
+        $builder->addViewTransformer(new ContentsTransformer($this->repository, $this->class));
+        $list = $this->repository->createQueryBuilder('t')
+                                 ->innerJoin('t.areas', 'a')->addSelect('a')
+                                 ->getQuery()->execute();
         foreach ($list as $template) {
             /** @var Template $template */
             $builder->add($template->getSlug(), 'area', array(

@@ -10,7 +10,7 @@
  */
 namespace Vince\Bundle\CmsSonataAdminBundle\Form\Transformer;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\DataTransformerInterface;
 use Vince\Bundle\CmsBundle\Entity\Content;
 use Vince\Bundle\CmsBundle\Entity\Template;
@@ -31,20 +31,27 @@ class ContentsTransformer implements DataTransformerInterface
     protected $class;
 
     /**
-     * Object manager
+     * Template repository
      *
-     * @var ObjectManager
+     * @var EntityRepository
      */
-    protected $em;
+    protected $repository;
 
     /**
-     * @param ObjectManager $em    ObjectManager
-     * @param string        $class Contents class name
+     * Existing values
+     *
+     * @var \Traversable
      */
-    public function __construct(ObjectManager $em, $class)
+    protected $contents;
+
+    /**
+     * @param EntityRepository $repository Template repository
+     * @param string           $class      Contents class name
+     */
+    public function __construct(EntityRepository $repository, $class)
     {
-        $this->em    = $em;
-        $this->class = $class;
+        $this->repository = $repository;
+        $this->class      = $class;
     }
 
     /**
@@ -61,6 +68,9 @@ class ContentsTransformer implements DataTransformerInterface
         if (!is_array($value) && !$value instanceof \Traversable) {
             throw new \InvalidArgumentException(sprintf('Meta form type only accept array or \Traversable objects, %s sent.', is_object($value) ? 'instance of '.get_class($value) : gettype($value)));
         }
+
+        // Keep existing values in memory for diff in reverseTransform
+        $this->contents = $value;
 
         // Build array values for view
         $contents = array();
@@ -84,22 +94,28 @@ class ContentsTransformer implements DataTransformerInterface
             return array();
         }
 
-        // todo-vince Update Content instead of delete/create
         $results = array();
         foreach ($value as $template => $contents) {
             /** @var Template $template */
-            if ($template = $this->em->getRepository('VinceCmsBundle:Template')->findOneBy(array('slug' => $template))) {
+            $template = $this->repository->createQueryBuilder('t')
+                             ->innerJoin('t.areas', 'area')->addSelect('area')
+                             ->where('t.slug = :slug')->setParameter('slug', $template)
+                             ->setMaxResults(1)
+                             ->getQuery()->getOneOrNullResult();
+            if ($template) {
                 foreach ($contents as $name => $content) {
-                    if (trim($content) &&
-                        $area = $this->em->getRepository('VinceCmsBundle:Area')->findOneBy(array(
-                                'template' => $template->getId(),
-                                'name' => $name
-                            )
-                        )
-                    ) {
+                    if (trim($content) && $area = $template->getArea($name)) {
                         /** @var Content $articleContent */
                         $articleContent = new $this->class();
                         $articleContent->setArea($area);
+
+                        // Check existing object
+                        foreach ($this->contents as $object) {
+                            /** @var Content $object */
+                            if ($object->getArea()->getId() == $area->getId()) {
+                                $articleContent = $object;
+                            }
+                        }
                         $articleContent->setContents(trim($content));
                         $results[] = $articleContent;
                     }

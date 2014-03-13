@@ -8,10 +8,6 @@ My\Bundle\CmsBundle\Entity\Menu:
                 title: Homepage
                 article: homepage
                 startedAt: '2013-01-01'
-            page-2:
-                title: Page 2
-                article: page2
-                startedAt: '2013-01-01'
             contact:
                 title: Contact
                 article: contact
@@ -23,5 +19,5 @@ My\Bundle\CmsBundle\Entity\Menu:
         children:
             page:
                 title: Post
-                article: page
+                article: homepage
                 startedAt: '2013-01-01'

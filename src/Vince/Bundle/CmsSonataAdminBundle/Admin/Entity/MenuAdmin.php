@@ -10,7 +10,6 @@
  */
 namespace Vince\Bundle\CmsSonataAdminBundle\Admin\Entity;
 
-use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -40,13 +39,6 @@ class MenuAdmin extends Admin
     protected $menuRepository;
 
     /**
-     * Object manager
-     *
-     * @var ObjectManager
-     */
-    protected $em;
-
-    /**
      * Public path
      *
      * @var string
@@ -59,22 +51,6 @@ class MenuAdmin extends Admin
      * @var string
      */
     protected $uploadDirName;
-
-    /**
-     * Set entity manager
-     *
-     * @author Vincent Chalamon <vincentchalamon@gmail.com>
-     *
-     * @param ObjectManager $em
-     *
-     * @return MenuAdmin
-     */
-    public function setObjectManager(ObjectManager $em)
-    {
-        $this->em = $em;
-
-        return $this;
-    }
 
     /**
      * Set Menu repository
@@ -261,7 +237,7 @@ class MenuAdmin extends Admin
     /**
      * {@inheritdoc}
      */
-    public function postRemove($object)
+    public function preRemove($object)
     {
         /** @var Menu $object */
         if ($object->isImage() && is_file($this->publicPath.$object->getPath())) {
@@ -269,13 +245,12 @@ class MenuAdmin extends Admin
         }
         $this->menuRepository->verify();
         $this->menuRepository->recover();
-        $this->em->flush();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function postPersist($object)
+    public function prePersist($object)
     {
         /** @var Menu $object */
         if ($object->isImage()) {
@@ -283,13 +258,12 @@ class MenuAdmin extends Admin
         }
         $this->menuRepository->verify();
         $this->menuRepository->recover();
-        $this->em->flush();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function postUpdate($object)
+    public function preUpdate($object)
     {
         /** @var Menu $object */
         if ($object->isImage()) {
@@ -297,6 +271,5 @@ class MenuAdmin extends Admin
         }
         $this->menuRepository->verify();
         $this->menuRepository->recover();
-        $this->em->flush();
     }
 }

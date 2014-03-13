@@ -2,15 +2,15 @@ My\Bundle\CmsBundle\Entity\ArticleMeta:
     type: entity
     table: article_meta
     id:
-        id:
-            type: integer
-            generator:
-                strategy: AUTO
+        article:
+          associationKey: true
+        meta:
+          associationKey: true
     manyToOne:
         article:
             targetEntity: My\Bundle\CmsBundle\Entity\Article
             inversedBy: metas
-            cascade: [all]
+            cascade: [persist]
             joinColumn:
                 name: article_id
                 referencedColumnName: id
@@ -18,7 +18,7 @@ My\Bundle\CmsBundle\Entity\ArticleMeta:
                 onDelete: CASCADE
         meta:
             targetEntity: Vince\Bundle\CmsBundle\Entity\Meta
-            cascade: [all]
+            cascade: [persist]
             joinColumn:
                 name: meta_id
                 referencedColumnName: id

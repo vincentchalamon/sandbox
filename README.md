@@ -59,12 +59,6 @@ parameters:
     mailer_host: localhost:1025
 ```
 
-PHPUnit & PHPdoc are also available in vendors. Call them as following:
-```shell
-sh bin/phpunit -c app
-sh bin/phpdoc.php -d ./src -t ./build/api --template=responsive-twig
-```
-
 ## Tests
 
 => travis-ci.org

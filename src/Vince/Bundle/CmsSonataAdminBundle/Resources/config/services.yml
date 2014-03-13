@@ -10,9 +10,10 @@ services:
         arguments: [ ~, %vince.class.article%, ~ ]
         calls:
             - [ setTranslationDomain, [ 'SonataAdminBundle' ] ]
-            - [ setObjectManager, [ @doctrine.orm.default_entity_manager ] ]
+            - [ setMetaRepository, [ @vince.repository.meta ] ]
             - [ setLocale, [ @form.type_extension.locale_listener ] ]
             - [ setUser, [ @security.context ] ]
+            - [ setObjectManager, [ @doctrine.orm.default_entity_manager ] ]
 
     vince.admin.block:
         class: Vince\Bundle\CmsSonataAdminBundle\Admin\Entity\BlockAdmin
@@ -38,7 +39,6 @@ services:
         calls:
             - [ setTranslationDomain, [ 'SonataAdminBundle' ] ]
             - [ setMenuRepository, [ @vince.repository.menu ] ]
-            - [ setObjectManager, [ @doctrine.orm.default_entity_manager ] ]
             - [ setPublicPath, [ %kernel.web_dir% ] ]
             - [ setUploadDirName, [ %kernel.uploads_path% ] ]
 
@@ -52,7 +52,7 @@ services:
         tags:
             - { name: form.type, alias: metagroup }
         calls:
-            - [ setObjectManager, [ @doctrine.orm.default_entity_manager ] ]
+            - [ setMetaRepository, [ @vince.repository.meta ] ]
             - [ setArticleMetaClassName, [ %vince.class.articleMeta% ] ]
 
     form.type.meta:
@@ -65,8 +65,8 @@ services:
         tags:
             - { name: form.type, alias: template }
         calls:
-            - [ setObjectManager, [ @doctrine.orm.default_entity_manager ] ]
-            - [ setContentsClassName, [ %vince.class.contents% ] ]
+            - [ setTemplateRepository, [ @vince.repository.template ] ]
+            - [ setContentClassName, [ %vince.class.content% ] ]
 
     form.type.area:
         class: Vince\Bundle\CmsSonataAdminBundle\Form\Type\AreaType

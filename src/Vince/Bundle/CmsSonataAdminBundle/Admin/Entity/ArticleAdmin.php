@@ -11,6 +11,7 @@
 namespace Vince\Bundle\CmsSonataAdminBundle\Admin\Entity;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityRepository;
 use My\Bundle\CmsBundle\Entity\ArticleMeta;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -18,6 +19,8 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Security\Core\SecurityContext;
 use Vince\Bundle\CmsBundle\Entity\Article;
+use Vince\Bundle\CmsBundle\Entity\Content;
+use Vince\Bundle\CmsBundle\Entity\Meta;
 use Vince\Bundle\TypeBundle\Listener\LocaleListener;
 use Sonata\UserBundle\Entity\BaseUser;
 
@@ -44,11 +47,11 @@ class ArticleAdmin extends Admin
     );
 
     /**
-     * Object manager
+     * Meta repository
      *
-     * @var ObjectManager
+     * @var EntityRepository
      */
-    protected $em;
+    protected $repository;
 
     /**
      * Locale
@@ -65,7 +68,26 @@ class ArticleAdmin extends Admin
     protected $user;
 
     /**
-     * Set entity manager
+     * Object manager
+     *
+     * @var ObjectManager
+     */
+    protected $em;
+
+    /**
+     * Set Meta repository
+     *
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
+     *
+     * @param EntityRepository $repository
+     */
+    public function setMetaRepository(EntityRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    /**
+     * Set ObjectManager
      *
      * @author Vincent Chalamon <vincentchalamon@gmail.com>
      *
@@ -101,6 +123,22 @@ class ArticleAdmin extends Admin
     }
 
     /**
+     * Need to override createQuery method because or list order & joins
+     *
+     * {@inheritdoc}
+     */
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        $query->leftJoin($query->getRootAlias().'.template', 'template')->addSelect('template')
+              ->leftJoin('template.areas', 'area')->addSelect('area')
+              ->leftJoin($query->getRootAlias().'.metas', 'articleMeta')->addSelect('articleMeta')
+              ->leftJoin('articleMeta.meta', 'meta')->addSelect('meta');
+
+        return $query;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getFormTheme()
@@ -115,34 +153,42 @@ class ArticleAdmin extends Admin
     {
         /** @var Article $article */
         $article = parent::getNewInstance();
-        $meta    = new ArticleMeta();
-        $meta->setMeta($this->em->getRepository('VinceCmsBundle:Meta')->findOneByName('language'));
-        $meta->setContents($this->locale);
-        $article->addMeta($meta);
-        $meta = new ArticleMeta();
-        $meta->setMeta($this->em->getRepository('VinceCmsBundle:Meta')->findOneByName('og:type'));
-        $meta->setContents('article');
-        $article->addMeta($meta);
-        $meta = new ArticleMeta();
-        $meta->setMeta($this->em->getRepository('VinceCmsBundle:Meta')->findOneByName('twitter:card'));
-        $meta->setContents('summary');
-        $article->addMeta($meta);
-        if ($this->user) {
-            $meta = new ArticleMeta();
-            $meta->setMeta($this->em->getRepository('VinceCmsBundle:Meta')->findOneByName('author'));
-            $meta->setContents(trim($this->user->getFirstname().' '.$this->user->getLastname()) ?: $this->user->getUsername());
-            $article->addMeta($meta);
-            if ($this->user->getGplusName()) {
-                $meta = new ArticleMeta();
-                $meta->setMeta($this->em->getRepository('VinceCmsBundle:Meta')->findOneByName('publisher'));
-                $meta->setContents($this->user->getGplusName());
-                $article->addMeta($meta);
+        $builder = $this->repository->createQueryBuilder('m');
+        $metas   = $builder->where(
+            $builder->expr()->in('m.name', array('language', 'og:type', 'twitter:card', 'author', 'publisher', 'twitter:creator'))
+        )->getQuery()->execute();
+        foreach ($metas as $meta) {
+            /** @var Meta $meta */
+            $articleMeta = new ArticleMeta();
+            $articleMeta->setMeta($meta);
+            switch ($meta->getName()) {
+                case 'language':
+                    $articleMeta->setContents($this->locale);
+                    break;
+                case 'og:type':
+                    $articleMeta->setContents('article');
+                    break;
+                case 'twitter:card':
+                    $articleMeta->setContents('summary');
+                    break;
+                case 'twitter:author':
+                    if ($this->user && $this->user->getTwitterName()) {
+                        $articleMeta->setContents('@'.$this->user->getTwitterName());
+                    }
+                    break;
+                case 'author':
+                    if ($this->user) {
+                        $articleMeta->setContents(trim($this->user->getFirstname().' '.$this->user->getLastname()) ?: $this->user->getUsername());
+                    }
+                    break;
+                case 'publisher':
+                    if ($this->user && $this->user->getGplusName()) {
+                        $articleMeta->setContents($this->user->getGplusName());
+                    }
+                    break;
             }
-            if ($this->user->getTwitterName()) {
-                $meta = new ArticleMeta();
-                $meta->setMeta($this->em->getRepository('VinceCmsBundle:Meta')->findOneByName('twitter:creator'));
-                $meta->setContents('@'.$this->user->getTwitterName());
-                $article->addMeta($meta);
+            if ($articleMeta->getContents()) {
+                $article->addMeta($articleMeta);
             }
         }
 
@@ -310,5 +356,51 @@ class ArticleAdmin extends Admin
                 )
             ->end()
         ;
+    }
+
+    /**
+     * Need to remove contents for other templates.
+     * Force relation because of doctrine2 bug on cascade persist for OneToMany association.
+     *
+     * {@inheritdoc}
+     */
+    public function prePersist($object)
+    {
+        /** @var Article $object */
+        foreach ($object->getMetas() as $meta) {
+            /** @var ArticleMeta $meta */
+            $meta->setArticle($object);
+        }
+        foreach ($object->getContents() as $content) {
+            /** @var Content $content */
+            $content->setArticle($object);
+            if ($content->getArea()->getTemplate()->getId() != $object->getTemplate()->getId()) {
+                $object->removeContent($content);
+                $this->em->remove($content);
+            }
+        }
+    }
+
+    /**
+     * Need to remove contents for other templates.
+     * Force relation because of doctrine2 bug on cascade persist for OneToMany association.
+     *
+     * {@inheritdoc}
+     */
+    public function preUpdate($object)
+    {
+        /** @var Article $object */
+        foreach ($object->getMetas() as $meta) {
+            /** @var ArticleMeta $meta */
+            $meta->setArticle($object);
+        }
+        foreach ($object->getContents() as $content) {
+            /** @var Content $content */
+            $content->setArticle($object);
+            if ($content->getArea()->getTemplate()->getId() != $object->getTemplate()->getId()) {
+                $object->removeContent($content);
+                $this->em->remove($content);
+            }
+        }
     }
 }
