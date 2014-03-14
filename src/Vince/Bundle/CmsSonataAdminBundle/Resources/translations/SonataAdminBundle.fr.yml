@@ -46,6 +46,9 @@ menu:
     help:
         url: Celle-ci doit commencer par /. Préférez un tiret (-) comme séparateur.
         article: Si vous liez ce menu à un article, l'url du menu sera ignorée.
+        target:
+            blank: Nouvelle fenêtre
+            self: Même fenêtre
 
 Block List: Blocs
 block:

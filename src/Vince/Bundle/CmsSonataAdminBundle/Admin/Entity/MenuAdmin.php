@@ -225,8 +225,8 @@ class MenuAdmin extends Admin
                             'label' => 'menu.field.target',
                             'required' => false,
                             'choices' => array(
-                                '_blank' => 'Nouvelle fenêtre',
-                                '_self' => 'Même fenêtre'
+                                '_blank' => $this->trans('menu.help.target.blank', array(), 'SonataAdminBundle'),
+                                '_self'  => $this->trans('menu.help.target.self', array(), 'SonataAdminBundle')
                             )
                         )
                     )

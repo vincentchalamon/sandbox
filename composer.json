@@ -64,13 +64,8 @@
             }
         }
     ],
-    "require-dev": {
-        "ext-xsl": "*",
-        "doctrine/doctrine-fixtures-bundle": "v2.2.0",
-        "liip/functional-test-bundle": "1.0.0"
-    },
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.3.2",
         "symfony/symfony": "~2.4",
         "doctrine/orm": "~2.2,>=2.2.3",
         "doctrine/doctrine-bundle": "~1.2",

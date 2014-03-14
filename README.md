@@ -59,33 +59,13 @@ parameters:
     mailer_host: localhost:1025
 ```
 
-## Tests
-
-=> travis-ci.org
-* DefaultController:
-    * Homepage
-    * Search
-    * Contact
-    * RSS.{_format}
-    * Sitemap.xml
-* Entity
-* Repository
-
 ## Todo
 
 * Search:
     * Configuration
     * Pager: KnpPaginatorBundle + ajax
 * Google Analytics tracking code
-* Add compulsory metas on Article create
 * Install Bootstrap + Less + YUI Compressor (update composer.json with hooks)
-* Twig helper `render_metas`
-* Override default User bundle (cf. Antargaz)
-* Admin
-    * Article
-    * Menu
-    * Block
-    * User
 * Themes
     * Default theme
     * Admin theme
