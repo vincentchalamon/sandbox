@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<project name="Lazyprojet" default="build">
+<project name="Sandbox" default="build">
     <property name="sourcedir" value="${basedir}/src"/>
     <property name="builddir" value="${basedir}/app/build"/>
     <property name="composer.path" value="${basedir}/composer.phar"/>
@@ -118,7 +117,12 @@
 
     <target name="phpdoc" description="Generate API documentation using phpDoc">
         <exec executable="phpdoc">
-            <arg line="-d '${sourcedir}' -t '${builddir}/api' --template=responsive --title='Sandbox'"/>
+            <arg value="-d"/>
+            <arg path="${sourcedir}"/>
+            <arg value="-t"/>
+            <arg path="${builddir}/api"/>
+            <arg value="--template=responsive"/>
+            <arg value="--title=Sandbox"/>
         </exec>
     </target>
 
@@ -152,7 +156,7 @@
         </exec>
         <exec executable="${composer.path}" failonerror="true">
             <arg value="install"/>
-            <arg value="--no-scripts"/>
+            <arg value="--no-interaction"/>
             <arg value="--verbose"/>
             <arg value="--prefer-dist"/>
             <arg value="--optimize-autoloader"/>
