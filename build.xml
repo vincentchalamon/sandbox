@@ -141,8 +141,8 @@
     </target>
 
     <target name="composer" unless="composer.exists">
-        <exec executable="curl">
-            <arg line="-sS https://getcomposer.org/installer | php"/>
+        <exec executable="wget">
+            <arg path="https://getcomposer.org/composer.phar"/>
         </exec>
         <exec executable="chmod">
             <arg value="755"/>
