@@ -141,13 +141,8 @@
     </target>
 
     <target name="composer" unless="composer.exists">
-        <exec executable="wget">
-            <arg path="https://getcomposer.org/composer.phar"/>
-        </exec>
-        <exec executable="chmod">
-            <arg value="755"/>
-            <arg path="${composer.path}"/>
-        </exec>
+        <get src="http://getcomposer.org/composer.phar" dest="${composer.path}" />
+        <chmod file="${composer.path}" perm="755" />
     </target>
 
     <target name="vendors" depends="composer" description="Install vendors">
