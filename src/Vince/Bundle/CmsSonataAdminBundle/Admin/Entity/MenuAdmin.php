@@ -163,8 +163,9 @@ class MenuAdmin extends Admin
     protected function configureFormFields(FormMapper $mapper)
     {
         $id = $this->getSubject()->getId();
-        $mapper
-            ->with('menu.group.general')
+        $mapper->with('menu.group.general');
+        if (!$id || $this->getSubject()->getLvl()) {
+            $mapper
                 ->add('parent', null, array(
                         'label' => 'menu.field.parent',
                         'property' => 'adminListTitle',
@@ -177,8 +178,9 @@ class MenuAdmin extends Admin
                             return $builder;
                         }
                     )
-                )
-                ->add('title', null, array(
+                );
+        }
+        $mapper->add('title', null, array(
                         'label' => 'menu.field.title'
                     )
                 )
@@ -206,7 +208,7 @@ class MenuAdmin extends Admin
                     )
                 )
             ->end();
-        if (!$this->getSubject()->getId() || $this->getSubject()->getParent()) {
+        if (!$id || $this->getSubject()->getParent()) {
             $mapper
                 ->with('menu.group.url')
                     ->add('url', null, array(

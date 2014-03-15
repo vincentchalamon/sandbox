@@ -2,7 +2,7 @@
 
 <project name="Lazyprojet" default="build">
     <property name="sourcedir" value="${basedir}/src"/>
-    <property name="builddir" value="${basedir}/build"/>
+    <property name="builddir" value="${basedir}/app/build"/>
     <property name="composer.path" value="${basedir}/composer.phar"/>
     <available property="composer.exists" file="${composer.path}"/>
 

@@ -112,9 +112,10 @@ sonata_block:
     blocks:
         sonata.admin.block.admin_list:
             contexts:  [admin]
-        sonata.block.service.text:
-        sonata.block.service.action:
-        sonata.block.service.rss:
+        sonata.block.service.text: ~
+        sonata.block.service.action: ~
+        sonata.block.service.rss: ~
+        sonata.admin.block.search_result: ~
 
 sonata_user:
     security_acl: false

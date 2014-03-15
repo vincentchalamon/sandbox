@@ -82,12 +82,11 @@ class BlockAdmin extends Admin
     protected function configureFormFields(FormMapper $mapper)
     {
         $mapper
-            ->with('block.group.general')
+            ->with('block.field.contents')
                 ->add('contents', 'redactor', array(
-                        'label' => 'block.field.contents'
+                        'label' => false
                     )
                 )
-            ->end()
-            ;
+            ->end();
     }
 }

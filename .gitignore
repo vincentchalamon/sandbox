@@ -1,4 +1,5 @@
 /app/bootstrap*
+/app/build/
 /app/cache/
 !app/cache/.gitkeep
 /app/config/parameters.yml
@@ -9,7 +10,6 @@
 /app/spool/
 !app/spool/.gitkeep
 /bin/
-/build/
 /vendor/
 /web/bundles/
 /web/css/

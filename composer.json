@@ -24,6 +24,9 @@
                 "dist": {
                     "url": "http://code.jquery.com/jquery-1.10.2.min.js",
                     "type": "file"
+                },
+                "require": {
+                    "jquery/jquery-map": "1.*"
                 }
             }
         },
@@ -46,6 +49,9 @@
                 "dist": {
                     "url": "http://code.jquery.com/ui/1.10.3/jquery-ui.min.js",
                     "type": "file"
+                },
+                "require": {
+                    "jquery/jquery": "1.*"
                 }
             }
         },
@@ -81,8 +87,7 @@
         "vince/cms-bundle": "1.*",
         "elasticsearch/binaries": "1.0.0",
 
-        "jquery/jquery": "1.10.*",
-        "jquery/jquery-map": "1.10.*",
+        "jquery/jquery-ui": "1.*",
         "braincrafted/bootstrap-bundle": "v2.0.0",
         "leafo/lessphp": "0.4.0",
         "twbs/bootstrap": "3.0.0",
