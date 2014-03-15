@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "b308a2d18a8e60530279eaaa33dab3d4",
+    "hash": "a2639c61c4025a2fe986953ead1cbfc9",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -1472,13 +1472,16 @@
             "type": "library"
         },
         {
-            "name": "jquery/jquery-map",
-            "version": "1.10.2",
+            "name": "jquery/jquery-ui",
+            "version": "1.10.3",
             "dist": {
                 "type": "file",
-                "url": "http://code.jquery.com/jquery-1.10.2.min.map",
+                "url": "http://code.jquery.com/ui/1.10.3/jquery-ui.min.js",
                 "reference": null,
                 "shasum": null
+            },
+            "require": {
+                "jquery/jquery": "1.*"
             },
             "type": "library"
         },
@@ -1931,63 +1934,6 @@
             "description": "lessphp is a compiler for LESS written in PHP.",
             "homepage": "http://leafo.net/lessphp/",
             "time": "2013-08-09 17:09:19"
-        },
-        {
-            "name": "liip/functional-test-bundle",
-            "version": "1.0.0",
-            "target-dir": "Liip/FunctionalTestBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/liip/LiipFunctionalTestBundle.git",
-                "reference": "6054badcd590b63162ed7fdbd0d9391db88eff85"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/6054badcd590b63162ed7fdbd0d9391db88eff85",
-                "reference": "6054badcd590b63162ed7fdbd0d9391db88eff85",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/common": "2.*",
-                "php": ">=5.3.2",
-                "symfony/browser-kit": "~2.0",
-                "symfony/framework-bundle": "~2.0"
-            },
-            "suggest": {
-                "doctrine/dbal": "Required when using the fixture loading functionality with an ORM and SQLite",
-                "doctrine/doctrine-fixtures-bundle": "Required when using the fixture loading functionality",
-                "doctrine/orm": "Required when using the fixture loading functionality with an ORM and SQLite"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Liip\\FunctionalTestBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Liip AG",
-                    "homepage": "http://www.liip.ch/"
-                },
-                {
-                    "name": "Community contributions",
-                    "homepage": "https://github.com/liip/LiipFunctionalTestBundle/contributors"
-                }
-            ],
-            "description": "This bundles provides additional functional test-cases for Symfony2 applications",
-            "keywords": [
-                "Symfony2"
-            ],
-            "time": "2013-10-08 12:57:10"
         },
         {
             "name": "liip/imagine-bundle",
@@ -3658,22 +3604,29 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vincentchalamon/VinceCmsBundle.git",
-                "reference": "ace484d12e586f5ce3329419bc42dea7dacd6739"
+                "reference": "152d59fba50df0a6f9364a2eee91bdd8a177ff3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsBundle/zipball/ace484d12e586f5ce3329419bc42dea7dacd6739",
-                "reference": "ace484d12e586f5ce3329419bc42dea7dacd6739",
+                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsBundle/zipball/152d59fba50df0a6f9364a2eee91bdd8a177ff3d",
+                "reference": "152d59fba50df0a6f9364a2eee91bdd8a177ff3d",
                 "shasum": ""
             },
             "require": {
+                "doctrine/doctrine-bundle": "~1.2",
                 "doctrine/doctrine-fixtures-bundle": "v2.2.0",
+                "doctrine/orm": "~2.2,>=2.2.3",
                 "gedmo/doctrine-extensions": "v2.3.9",
                 "jms/serializer-bundle": "0.13.0",
                 "knplabs/knp-paginator-bundle": "2.4.0",
-                "liip/functional-test-bundle": "1.0.0",
                 "php": ">=5.3.2",
-                "symfony/framework-bundle": "~2.1"
+                "sensio/framework-extra-bundle": ">=2.3",
+                "symfony/swiftmailer-bundle": "~2.3",
+                "symfony/symfony": ">=2.3"
+            },
+            "require-dev": {
+                "jquery/jquery": "1.*",
+                "liip/functional-test-bundle": "1.0.0"
             },
             "suggest": {
                 "friendsofsymfony/elastica-bundle": "Use elastisearch",
@@ -3697,13 +3650,13 @@
                     "homepage": "http://www.vincentchalamon.fr"
                 }
             ],
-            "description": "Basic CMS features for Symfony 2.3",
+            "description": "Basic CMS features for Symfony 2.3+",
             "homepage": "http://vincentchalamon.github.io/VinceCmsBundle/",
             "keywords": [
                 "Vince",
                 "cms"
             ],
-            "time": "2014-03-14 10:38:55"
+            "time": "2014-03-15 16:51:17"
         },
         {
             "name": "vince/type-bundle",
@@ -3712,17 +3665,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vincentchalamon/VinceTypeBundle.git",
-                "reference": "9f660a446de230b8e9a149acf6d8ce12496107c9"
+                "reference": "78c66a443605e917fb84d5368f2b8f4886211239"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vincentchalamon/VinceTypeBundle/zipball/9f660a446de230b8e9a149acf6d8ce12496107c9",
-                "reference": "9f660a446de230b8e9a149acf6d8ce12496107c9",
+                "url": "https://api.github.com/repos/vincentchalamon/VinceTypeBundle/zipball/78c66a443605e917fb84d5368f2b8f4886211239",
+                "reference": "78c66a443605e917fb84d5368f2b8f4886211239",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "symfony/framework-bundle": "~2.1"
+                "sensio/framework-extra-bundle": "~2.3",
+                "symfony/symfony": ">=2.3"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -3746,7 +3700,7 @@
             "keywords": [
                 "form"
             ],
-            "time": "2014-03-14 10:39:45"
+            "time": "2014-03-14 15:53:15"
         }
     ],
     "packages-dev": [
