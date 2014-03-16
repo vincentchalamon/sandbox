@@ -5,13 +5,6 @@ set :webserver_user, "www-data"
 set :use_set_permissions, true
 ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
-
-set :domain, "0.0.0.0"
-set :user, "user"
-role :web, domain
-role :app, domain, :primary => true
-role :db, domain
-set :permission_method, :acl
 ssh_options[:port] = 22
 
 # Multistaging
@@ -53,11 +46,14 @@ set :app_path,    "app"
 set :web_path,    "web"
 set :model_manager, "doctrine"
 set :shared_files, ["#{app_path}/config/parameters.yml"]
-set :shared_children, ["#{app_path}/logs", "#{web_path}/uploads", "vendor"]
+set :shared_children, ["#{app_path}/logs", "#{app_path}/sessions", "#{web_path}/uploads", "vendor"]
 set :interactive_mode, false
 
 # Run deployment
-after "deploy",   "deploy:cleanup" # Clean old releases at the end
+after "deploy", "deploy:cleanup" # Clean old releases at the end
 after "deploy:setup", "upload_parameters" # Upload parameters file on setup server
+before "symfony:cache:warmup", "database:dump:remote" # Backup remote database to local
+before "symfony:cache:warmup", "symfony:doctrine:migrations:migrate" # Execute migrations
+#before "symfony:cache:warmup", "symfony:doctrine:schema:update" # Update remote database
 
 logger.level = Logger::MAX_LEVEL

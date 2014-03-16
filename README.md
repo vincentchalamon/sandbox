@@ -33,9 +33,9 @@ php app/console fos:elastica:populate
 
 ## Deploy
 
-This sandbox has already been capified for 2 env : _dev_ (default) & _prod_. Update configuration file:
+This sandbox has already been capified. Before your first deploy, you must update configuration file:
 ```ruby
-# File: app/config/deploy.rb
+# File: app/config/deploy/dev.rb
 ...
 set :domain, "1.2.3.4"
 set :user,   "user"

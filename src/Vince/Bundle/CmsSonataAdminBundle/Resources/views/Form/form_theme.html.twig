@@ -131,7 +131,7 @@
         <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
             {% for group_label, choice in choices %}
                 <option value="{{ choice.value }}"{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>
-                    {% autoescape 'html' %}{{ choice.label|trans({}, translation_domain)|raw }}{% endautoescape %}
+                    {% autoescape false %}{{ choice.label|trans({}, translation_domain)|raw }}{% endautoescape %}
                 </option>
             {% endfor %}
         </select>
