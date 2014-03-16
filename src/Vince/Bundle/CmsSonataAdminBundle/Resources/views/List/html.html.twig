@@ -5,7 +5,7 @@
         {%- if value is empty -%}
             &nbsp;
         {%- else -%}
-            {% autoescape false %}{{ value|raw }}{% endautoescape %}
+            {{ value|raw }}
         {%- endif -%}
     {% endspaceless %}
 {% endblock %}

@@ -78,7 +78,7 @@
     {% spaceless %}
         <script type="text/javascript">
             $(function () {
-                $('#{{ id }}').on('keydown', function (event) {
+                $('#{{ id }}').on('keydown', function () {
                     var value = $.trim($(this).val()) ? $.trim($(this).val()) : $(this).attr('placeholder');
 
                     // Update related metas
@@ -131,7 +131,7 @@
         <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
             {% for group_label, choice in choices %}
                 <option value="{{ choice.value }}"{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>
-                    {% autoescape false %}{{ choice.label|trans({}, translation_domain)|raw }}{% endautoescape %}
+                    {{ choice.label|trans({}, translation_domain)|raw }}
                 </option>
             {% endfor %}
         </select>
