@@ -96,11 +96,7 @@
         "sonata-project/admin-bundle": "2.2.*",
         "sonata-project/user-bundle": "2.2.*",
         "sonata-project/doctrine-orm-admin-bundle": "2.2.*",
-        "vince/cms-sonata-admin-bundle": "1.*",
-
-        "liip/imagine-bundle": "v0.20.1",
-        "knplabs/knp-snappy-bundle": "v1.1",
-        "h4cc/wkhtmltopdf-amd64": "0.11.0-RC1"
+        "vince/cms-sonata-admin-bundle": "1.*"
     },
     "scripts": {
         "post-install-cmd": [
