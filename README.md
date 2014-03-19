@@ -65,7 +65,6 @@ parameters:
     * Configuration
     * Pager: KnpPaginatorBundle + ajax
 * Google Analytics tracking code
-* Install Bootstrap + Less + YUI Compressor (update composer.json with hooks)
 * Themes
     * Default theme
     * Admin theme
@@ -121,7 +120,10 @@ parameters:
 
 * Image loader: http://luis-almeida.github.io/unveil/
 * Image resizer: LiipImageBundle
-* Cache
+* Cache:
+    * Doctrine
+    * HTTP
+    * APC
 * Newsletter
 
 ## Type
