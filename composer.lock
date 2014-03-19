@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "4667353a8dcdcbfee296801cdf9c27b5",
+    "hash": "1d54e8d307e72f7cdf61d5488a214630",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -3873,6 +3873,51 @@
                 "cms"
             ],
             "time": "2014-03-15 16:51:17"
+        },
+        {
+            "name": "vince/cms-sonata-admin-bundle",
+            "version": "1.0.0",
+            "target-dir": "Vince/Bundle/CmsSonataAdminBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vincentchalamon/VinceCmsSonataAdminBundle.git",
+                "reference": "8454379012fd9efe96912f87735c91b9f9cebddd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsSonataAdminBundle/zipball/8454379012fd9efe96912f87735c91b9f9cebddd",
+                "reference": "8454379012fd9efe96912f87735c91b9f9cebddd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "vince/cms-bundle": "1.*",
+                "vince/type-bundle": "1.*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Vince\\Bundle\\CmsSonataAdminBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vincent CHALAMON",
+                    "email": "vincentchalamon@gmail.com",
+                    "homepage": "http://www.vincentchalamon.fr"
+                }
+            ],
+            "description": "Manage VinceCmsBundle with Sonata Admin",
+            "homepage": "http://vincentchalamon.github.io/VinceCmsSonataAdminBundle/",
+            "keywords": [
+                "Vince",
+                "cms"
+            ],
+            "time": "2014-03-19 11:14:55"
         },
         {
             "name": "vince/type-bundle",
