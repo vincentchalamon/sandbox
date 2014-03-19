@@ -1,0 +1,11 @@
+download_quote:
+    pattern: /devis-{id}.pdf
+    defaults: { _controller: MyQuoteBundle:Download:quote }
+    requirements:
+        _method: GET
+
+download_bill:
+    pattern: /facture-{id}.pdf
+    defaults: { _controller: MyQuoteBundle:Download:bill }
+    requirements:
+        _method: GET

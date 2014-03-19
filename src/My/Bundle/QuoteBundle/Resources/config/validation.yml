@@ -1,0 +1,36 @@
+My\Bundle\QuoteBundle\Entity\Quote:
+    properties:
+        notes:
+            - NotBlank: ~
+        deadline:
+            - NotBlank: ~
+            - Date: ~
+        customer:
+            - NotNull: ~
+            - Valid: ~
+        deliveries:
+            - Count:
+                min: 1
+                max: 999
+            - Collection:
+                fields:
+                    contents:
+                        - NotBlank: ~
+                    price:
+                        - NotBlank: ~
+                        - Type:
+                            type: float
+
+My\Bundle\QuoteBundle\Entity\Customer:
+    properties:
+        name:
+            - NotBlank: ~
+        address:
+            - NotBlank: ~
+        zipcode:
+            - NotBlank: ~
+            - Length:
+                min: 5
+                max: 5
+        city:
+            - NotBlank: ~

@@ -1,0 +1,9 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    {% spaceless %}
+        <a href="{{ path('download_bill', {'id': object.id}) }}">
+            Télécharger la facture
+        </a>
+    {% endspaceless %}
+{% endblock %}

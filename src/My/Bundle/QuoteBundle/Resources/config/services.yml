@@ -1,0 +1,18 @@
+services:
+    my.admin.quote:
+        class: My\Bundle\QuoteBundle\Admin\Entity\QuoteAdmin
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: cms
+              label_catalogue: SonataAdminBundle
+              label: Devis
+        arguments: [ ~, My\Bundle\QuoteBundle\Entity\Quote, ~ ]
+        calls:
+            - [ setTranslationDomain, [ 'SonataAdminBundle' ] ]
+
+    my.repository.quote:
+        class: Doctrine\ORM\EntityRepository
+        arguments: [ My\Bundle\QuoteBundle\Entity\Quote ]
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository

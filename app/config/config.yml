@@ -36,16 +36,17 @@ assetic:
     use_controller: false
     bundles:        [MyCmsBundle]
     assets:
-        jquery:
-            inputs:
-                - %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.10.2.min.js
-        bootstrap_css:
-            inputs:
-                - %kernel.root_dir%/../vendor/twbs/bootstrap/less/bootstrap.less
-            filters:
-                - yui_css
-                - cssrewrite
-                - lessphp
+        #jquery:
+            #inputs:
+                #- %kernel.root_dir%/../vendor/components/jquery/jquery.min.js
+                #- %kernel.root_dir%/../vendor/components/jqueryui/ui/minified/jquery-ui.min.js
+        #bootstrap_css:
+            #inputs:
+                #- %kernel.root_dir%/../vendor/twbs/bootstrap/less/bootstrap.less
+            #filters:
+                #- yui_css
+                #- cssrewrite
+                #- lessphp
     filters:
         lessphp:
             file: %kernel.root_dir%/../vendor/leafo/lessphp/lessc.inc.php
@@ -56,11 +57,11 @@ assetic:
         yui_js:
             jar: %kernel.root_dir%/../vendor/nervo/yuicompressor/yuicompressor.jar
 
-braincrafted_bootstrap:
-    less_filter: lessphp
-    jquery_path: %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.10.2.min.js
-    auto_configure:
-        twig: false
+#braincrafted_bootstrap:
+    #less_filter: lessphp
+    #jquery_path: %kernel.root_dir%/../vendor/components/jquery/jquery.min.js
+    #auto_configure:
+        #twig: false
 
 # Doctrine Configuration
 doctrine:
@@ -171,8 +172,8 @@ vince_cms:
     menu:
         class: My\Bundle\CmsBundle\Entity\Menu
 
-#knp_snappy:
-    #pdf:
-        #enabled: true
-        #binary:  /Applications/wkhtmltopdf.app/Contents/MacOS/wkhtmltopdf
-        #options: []
+knp_snappy:
+    pdf:
+        enabled: true
+        binary:  %kernel.root_dir%/../bin/wkhtmltopdf
+        options: []

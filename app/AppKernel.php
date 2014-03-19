@@ -39,6 +39,11 @@ class AppKernel extends Kernel
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new Vince\Bundle\CmsSonataAdminBundle\VinceCmsSonataAdminBundle(),
             new Vince\Bundle\TypeBundle\VinceTypeBundle(),
+
+            // Blog
+            new Liip\ImagineBundle\LiipImagineBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new My\Bundle\QuoteBundle\MyQuoteBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

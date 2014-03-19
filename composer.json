@@ -19,50 +19,16 @@
         {
             "type": "package",
             "package": {
-                "name": "jquery/jquery",
-                "version": "1.10.2",
-                "dist": {
-                    "url": "http://code.jquery.com/jquery-1.10.2.min.js",
-                    "type": "file"
-                },
-                "require": {
-                    "jquery/jquery-map": "1.*"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "jquery/jquery-map",
-                "version": "1.10.2",
-                "dist": {
-                    "url": "http://code.jquery.com/jquery-1.10.2.min.map",
-                    "type": "file"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "jquery/jquery-ui",
-                "version": "1.10.3",
-                "dist": {
-                    "url": "http://code.jquery.com/ui/1.10.3/jquery-ui.min.js",
-                    "type": "file"
-                },
-                "require": {
-                    "jquery/jquery": "1.*"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
                 "name": "elasticsearch/binaries",
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "dist": {
-                    "url": "https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.0.0.zip",
+                    "url": "https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.0.1.zip",
                     "type": "zip"
+                },
+                "source": {
+                    "url": "https://github.com/elasticsearch/elasticsearch.git",
+                    "type": "git",
+                    "reference": "v1.0.1"
                 },
                 "require": {
                     "friendsofsymfony/elastica-bundle": "2.1.*"
@@ -85,7 +51,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
 
         "elasticsearch/binaries": "1.*",
-        "jquery/jquery-ui": "1.*",
+        "components/jquery": "1.11.*",
+        "components/jqueryui": "1.10.*",
         "braincrafted/bootstrap-bundle": "v2.0.0",
         "leafo/lessphp": "0.4.0",
         "twbs/bootstrap": "3.0.0",
@@ -96,7 +63,11 @@
         "sonata-project/admin-bundle": "2.2.*",
         "sonata-project/user-bundle": "2.2.*",
         "sonata-project/doctrine-orm-admin-bundle": "2.2.*",
-        "vince/cms-sonata-admin-bundle": "1.*"
+        "vince/cms-sonata-admin-bundle": "1.*",
+
+        "liip/imagine-bundle": "v0.20.1",
+        "knplabs/knp-snappy-bundle": "v1.1",
+        "h4cc/wkhtmltopdf-amd64": "0.11.0-RC1"
     },
     "scripts": {
         "post-install-cmd": [
@@ -105,8 +76,12 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Braincrafted\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::install",
-            "Vince\\Bundle\\CmsBundle\\Composer\\ScriptHandler::installJavaScripts"
+            "mkdir -p web/js web/css",
+            "cp vendor/components/jquery/jquery.min.js web/js/jquery.min.js",
+            "cp vendor/components/jquery/jquery.min.map web/js/jquery.min.map",
+            "cp vendor/components/jqueryui/ui/minified/jquery-ui.min.js web/js/jquery-ui.min.js",
+            "cp -r vendor/components/jqueryui/ui/i18n web/js/i18n",
+            "cp -r vendor/components/jqueryui/themes/smoothness web/css/jqueryui"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
@@ -114,8 +89,12 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Braincrafted\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::install",
-            "Vince\\Bundle\\CmsBundle\\Composer\\ScriptHandler::installJavaScripts"
+            "mkdir -p web/js web/css",
+            "cp vendor/components/jquery/jquery.min.js web/js/jquery.min.js",
+            "cp vendor/components/jquery/jquery.min.map web/js/jquery.min.map",
+            "cp vendor/components/jqueryui/ui/minified/jquery-ui.min.js web/js/jquery-ui.min.js",
+            "cp -r vendor/components/jqueryui/ui/i18n web/js/i18n",
+            "cp -r vendor/components/jqueryui/themes/smoothness web/css/jqueryui"
         ]
     },
     "config": {
@@ -129,10 +108,6 @@
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         },
-        "javascripts": [
-            "vendor/jquery/jquery/jquery-1.10.2.min.js",
-            "vendor/jquery/jquery-map/jquery-1.10.2.min.map"
-        ],
         "branch-alias": {
             "dev-master": "1.0-dev"
         }

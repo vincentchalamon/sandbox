@@ -1,0 +1,33 @@
+{% block my_admin_quote_customer_zipcode_mask_javascript %}
+    {% spaceless %}
+        <script type="text/javascript" src="{{ asset('') }}"></script>
+        <script type="text/javascript">
+            $(function () {
+                {{ block('masked_input') }}
+                $('#{{ id }}').autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: "http://ws.geonames.org/searchJSON?&country=DE",
+                            dataType: "jsonp",
+                            data: {
+                                featureClass: "P",
+                                style: "full",
+                                maxRows: 12,
+                                name_startsWith: request.term,
+                                countryName: "Germany"
+                            },
+                            success: function (data) {
+                                response($.map(data.geonames, function (item) {
+                                    return {
+                                        label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
+                                        value: item.name
+                                    }
+                                }));
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
+    {% endspaceless %}
+{% endblock %}

@@ -1,0 +1,52 @@
+My\Bundle\QuoteBundle\Entity\Quote:
+    type: entity
+    table: null
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        createdAt:
+            type: datetime
+            column: created_at
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            column: updated_at
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            column: deleted_at
+            nullable: true
+        notes:
+            type: text
+        deadline:
+            type: date
+        billedAt:
+            type: date
+            nullable: true
+    oneToMany:
+        deliveries:
+            targetEntity: My\Bundle\QuoteBundle\Entity\Delivery
+            mappedBy: quote
+            cascade: [all]
+    manyToOne:
+        customer:
+            targetEntity: My\Bundle\QuoteBundle\Entity\Customer
+            inversedBy: quotes
+            cascade: [all]
+            joinColumn:
+                name: customer_id
+                referencedColumnName: id
+                nullable: false
+                onDelete: CASCADE

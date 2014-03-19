@@ -34,12 +34,7 @@ class UserAdmin extends BaseAdmin
      */
     public function getTemplate($name)
     {
-        switch ($name) {
-            case 'base_show_field':
-                return 'SonataAdminBundle:CRUD:base_show_field.html.twig';
-            default:
-                return parent::getTemplate($name);
-        }
+        return $name == 'base_show_field' ? 'SonataAdminBundle:CRUD:base_show_field.html.twig' : parent::getTemplate($name);
     }
 
     /**

@@ -1,0 +1,9 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    {% spaceless %}
+        <a href="{{ path('download_quote', {'id': object.id}) }}">
+            Télécharger le devis
+        </a>
+    {% endspaceless %}
+{% endblock %}
