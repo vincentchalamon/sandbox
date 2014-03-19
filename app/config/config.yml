@@ -35,18 +35,6 @@ assetic:
     debug:          %kernel.debug%
     use_controller: false
     bundles:        [MyCmsBundle]
-    assets:
-        #jquery:
-            #inputs:
-                #- %kernel.root_dir%/../vendor/components/jquery/jquery.min.js
-                #- %kernel.root_dir%/../vendor/components/jqueryui/ui/minified/jquery-ui.min.js
-        #bootstrap_css:
-            #inputs:
-                #- %kernel.root_dir%/../vendor/twbs/bootstrap/less/bootstrap.less
-            #filters:
-                #- yui_css
-                #- cssrewrite
-                #- lessphp
     filters:
         lessphp:
             file: %kernel.root_dir%/../vendor/leafo/lessphp/lessc.inc.php
@@ -56,12 +44,29 @@ assetic:
             jar: %kernel.root_dir%/../vendor/nervo/yuicompressor/yuicompressor.jar
         yui_js:
             jar: %kernel.root_dir%/../vendor/nervo/yuicompressor/yuicompressor.jar
+    assets:
+        jquery:
+            inputs:
+                - %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.11.0.min.js
+            output: js/jquery.min.js
+        jquery_ui:
+            inputs:
+                - %kernel.root_dir%/../vendor/jquery/jquery-ui/jquery-ui.min.js
+            output: js/jquery-ui.min.js
+        bootstrap_css:
+            inputs:
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/less/bootstrap.less
+                - %kernel.root_dir%/../vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/Resources/less/form.less
+            filters:
+                - lessphp
+                - cssrewrite
+                - yui_css
+            output: css/bootstrap.css
 
-#braincrafted_bootstrap:
-    #less_filter: lessphp
-    #jquery_path: %kernel.root_dir%/../vendor/components/jquery/jquery.min.js
-    #auto_configure:
-        #twig: false
+braincrafted_bootstrap:
+    less_filter: lessphp
+    auto_configure:
+        assetic: false
 
 # Doctrine Configuration
 doctrine:
