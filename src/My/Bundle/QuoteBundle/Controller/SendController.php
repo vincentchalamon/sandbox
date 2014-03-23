@@ -48,7 +48,15 @@ class SendController extends Controller
                             '%account%' => number_format($quote->getAmount()/2, 2, ',', ' '),
                             '%date%' => \IntlDateFormatter::create($request->getLocale(), \IntlDateFormatter::FULL,
                                         \IntlDateFormatter::NONE, $quote->getDeadline()->getTimezone()->getName(),
-                                        \IntlDateFormatter::GREGORIAN)->format($quote->getDeadline()->getTimestamp())
+                                        \IntlDateFormatter::GREGORIAN)->format($quote->getDeadline()->getTimestamp()),
+                            '%user.firstname%' => $this->getUser()->getFirstname(),
+                            '%user.lastname%' => $this->getUser()->getLastname(),
+                            '%user.address%' => $this->getUser()->getAddress(),
+                            '%user.zipcode%' => $this->getUser()->getZipcode(),
+                            '%user.city%' => $this->getUser()->getCity(),
+                            '%user.phone%' => $this->getUser()->getPhone(),
+                            '%user.email%' => $this->getUser()->getEmail(),
+                            '%homepage%' => $this->get('router')->generate('homepage', array(), true)
                         ), 'SonataAdminBundle')
             )
         );
@@ -156,7 +164,15 @@ class SendController extends Controller
                             '%account%' => number_format($quote->getAmount()/2, 2, ',', ' '),
                             '%date%' => \IntlDateFormatter::create($request->getLocale(), \IntlDateFormatter::FULL,
                                         \IntlDateFormatter::NONE, $quote->getDeadline()->getTimezone()->getName(),
-                                        \IntlDateFormatter::GREGORIAN)->format($quote->getBill()->getCreatedAt()->add(\DateInterval::createFromDateString('+30 days')))
+                                        \IntlDateFormatter::GREGORIAN)->format($quote->getBill()->getCreatedAt()->add(\DateInterval::createFromDateString('+30 days'))),
+                            '%user.firstname%' => $this->getUser()->getFirstname(),
+                            '%user.lastname%' => $this->getUser()->getLastname(),
+                            '%user.address%' => $this->getUser()->getAddress(),
+                            '%user.zipcode%' => $this->getUser()->getZipcode(),
+                            '%user.city%' => $this->getUser()->getCity(),
+                            '%user.phone%' => $this->getUser()->getPhone(),
+                            '%user.email%' => $this->getUser()->getEmail(),
+                            '%homepage%' => $this->get('router')->generate('homepage', array(), true)
                         ), 'SonataAdminBundle')
             )
         );
