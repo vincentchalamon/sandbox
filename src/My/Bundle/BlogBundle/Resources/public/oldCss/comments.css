@@ -1,0 +1,11 @@
+.fancy {
+    border-top: none;
+}
+.fancy .container {
+    margin-top: 0;
+    margin-bottom: 0;
+    border: none;
+}
+.fancy .container:before {
+    display: none;
+}

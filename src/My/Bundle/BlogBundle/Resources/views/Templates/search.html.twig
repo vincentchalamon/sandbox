@@ -1,0 +1,46 @@
+{% extends 'VinceCmsBundle::base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}{% if query is defined and query %} : {{ query }}{% endif %}
+{% endblock %}
+
+{% block body %}
+    {% block search_title %}
+        <h1>Recherche : <span>{{ query }}</span></h1>
+    {% endblock %}
+
+    <div class="contents">{{ article.content('contents')|raw }}</div>
+
+    {% if results|length %}
+        {% for result in results %}
+            <div class="block">
+                <h2><a href="{{ path(result.routeName) }}" title="{{ result.title }}">{{ result.title }}</a></h2>
+                <div class="chapo">
+                    {% if result.content('thumbnail') %}
+                        <div class="thumbnail">
+                            <img src="{{ result.content('thumbnail') }}" alt="{{ result.title }}" title="{{ result.title }}" />
+                        </div>
+                    {% endif %}
+                    {{ result.summary|raw }}
+                    <a href="{{ path(result.routeName) }}" title="Lire la suite" class="linked gradient">Lire la suite</a>
+                </div>
+                <p class="infos">
+                    <span class="date">{{ result.startedAt|localizeddate('long', 'none') }}</span>
+                    {#<a href="{{ path(article.routeName) }}#commentaires" title="{{ "{0} Aucun commentaire|{1} 1 commentaire|]1,Inf] %count% commentaires"|transchoice(article.activecomments.count) }}" class="comments">
+                        {{ "{0} Aucun commentaire|{1} 1 commentaire|]1,Inf] %count% commentaires"|transchoice(post.activecomments.count) }}
+                    </a>#}
+                    {% if result.tags|length %}
+                        <span class="tags">
+                            {% for i, tag in result.tags %}
+                                <a href="{{ path('cms_search', {'query': tag}) }}" title="{{ tag }}" class="tag">{{ tag }}</a>{% if i < result.tags|length-1 %}, {% endif %}
+                            {% endfor %}
+                        </span>
+                    {% endif %}
+                </p>
+                <div class="clear"></div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="empty">Votre recherche n'a donné aucun résultat.</p>
+    {% endif %}
+{% endblock %}

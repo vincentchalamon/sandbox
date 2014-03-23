@@ -1,0 +1,145 @@
+@font-face{
+    font-family: 'Glyphicons Halflings';
+    src: url('fonts/glyphicons-halflings-regular.eot');
+    src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('fonts/glyphicons-halflings-regular.woff') format('woff'), url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
+.jquery-timeline {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.jquery-timeline-next, .jquery-timeline-prev {
+    font-family: 'Glyphicons Halflings';
+    z-index: 1;
+    position: absolute;
+    bottom: 3px;
+    width: 30px;
+    height: 30px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    display: block;
+    text-align: center;
+    border: 1px solid #5f9600;
+    border-radius: 50px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -khtml-border-radius: 50px;
+    box-shadow: 1px 2px 4px #555;
+    -moz-box-shadow: 1px 2px 4px #555;
+    -webkit-box-shadow: 1px 2px 4px #555;
+    -o-box-shadow: 1px 2px 4px #555;
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=#555, Direction=224, Strength=4);
+    zoom: 1;
+    background: rgba(196,214,0,1);
+    background: -moz-linear-gradient(top, rgba(196,214,0,1) 0%, rgba(109,176,0,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(196,214,0,1)), color-stop(100%, rgba(109,176,0,1)));
+    background: -webkit-linear-gradient(top, rgba(196,214,0,1) 0%, rgba(109,176,0,1) 100%);
+    background: -o-linear-gradient(top, rgba(196,214,0,1) 0%, rgba(109,176,0,1) 100%);
+    background: -ms-linear-gradient(top, rgba(196,214,0,1) 0%, rgba(109,176,0,1) 100%);
+    background: linear-gradient(to bottom, rgba(196,214,0,1) 0%, rgba(109,176,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c4d600', endColorstr='#6db000', GradientType=0 );
+}
+
+.jquery-timeline-prev {
+    left: 3px;
+}
+
+.jquery-timeline-next {
+    right: 3px;
+}
+
+.jquery-timeline-next:before, .jquery-timeline-prev:before {
+    font-size: 15px;
+    font-weight: normal;
+    text-shadow: 0.1em 0.1em 0.1em #666;
+    color: white;
+    line-height: 25px;
+}
+
+.jquery-timeline-next:before {
+    content: "\e080";
+}
+
+.jquery-timeline-prev:before {
+    content: "\e079";
+}
+
+.jquery-timeline-container {
+    position: absolute;
+    margin: 0 auto;
+    top: 0;
+}
+
+.jquery-timeline-grid {
+    position: absolute;
+    right: 0;
+    height: 100%;
+}
+
+.jquery-timeline-grid-item {
+    width: 99px;
+    height: 100%;
+    float: left;
+    position: relative;
+    cursor: default;
+    border-right: 1px solid #E1EAF1;
+}
+
+.jquery-timeline-grid-item:last-child {
+    width: 100px;
+    border-right: none;
+}
+
+.jquery-timeline-grid-date {
+    border-top: 1px solid #e1eaf1;
+    position: absolute;
+    width: 115px;
+    height: 18px;
+    bottom: 0;
+    left: -15px;
+}
+
+.jquery-timeline-item {
+    position: absolute;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    word-wrap: normal;
+    text-shadow: 0.1em 0.1em 0.1em #666;
+    padding: 0 10px;
+    line-height: 30px;
+    color: white;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 1px solid #a4b426;
+    background-color: #eaf58b;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#eaf58b), to(#a4b426));
+    background-image: -webkit-linear-gradient(top, #eaf58b, #a4b426);
+    background-image: -moz-linear-gradient(top, #eaf58b, #a4b426);
+    background-image: -ms-linear-gradient(top, #eaf58b, #a4b426);
+    background-image: -o-linear-gradient(top, #eaf58b, #a4b426);
+    background-image: linear-gradient(to bottom, #eaf58b, #a4b426);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#eaf58b', endColorstr='#a4b426');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#eaf58b', endColorstr='#a4b426')";
+}
+
+.jquery-timeline-item.active, .jquery-timeline-item:hover {
+    border-color: #9ab72d;
+    background-color: #c6d92d;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#c6d92d), to(#9ab72d));
+    background-image: -webkit-linear-gradient(top, #c6d92d, #9ab72d);
+    background-image: -moz-linear-gradient(top, #c6d92d, #9ab72d);
+    background-image: -ms-linear-gradient(top, #c6d92d, #9ab72d);
+    background-image: -o-linear-gradient(top, #c6d92d, #9ab72d);
+    background-image: linear-gradient(to bottom, #c6d92d, #9ab72d);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#c6d92d', endColorstr='#9ab72d');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#c6d92d', endColorstr='#9ab72d')";
+}

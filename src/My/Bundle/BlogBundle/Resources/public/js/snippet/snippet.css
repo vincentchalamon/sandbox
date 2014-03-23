@@ -1,0 +1,312 @@
+.sh_print {
+    background:none;
+    padding:0;
+    margin:0;
+    border:0 none;
+}
+.sh_print .sh_sourceCode {
+    background-color:#fff;
+    color:#000;
+    font-weight:normal;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_keyword {
+    color:#000;
+    font-weight:bold;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_type {
+    color:#000;
+    font-weight:bold;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_string {
+    color:#000;
+    font-weight:normal;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_regexp {
+    color:#000;
+    font-weight:normal;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_specialchar {
+    color:#000;
+    font-weight:normal;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_comment {
+    color:#666;
+    font-weight:normal;
+    font-style:italic;
+}
+.sh_print .sh_sourceCode .sh_number {
+    color:#000;
+    font-weight:normal;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_preproc {
+    color:#000;
+    font-weight:bold;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_symbol {
+    color:#000;
+    font-weight:bold;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_cbracket {
+    color:#000;
+    font-weight:bold;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_url {
+    color:#000;
+    font-weight:normal;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_date {
+    color:#000;
+    font-weight:bold;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_time {
+    color:#000;
+    font-weight:bold;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_file {
+    color:#000;
+    font-weight:bold;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_ip {
+    color:#000;
+    font-weight:normal;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_name {
+    color:#000;
+    font-weight:normal;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_variable {
+    color:#000;
+    font-weight:bold;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_oldfile {
+    color:#000;
+    font-weight:normal;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_newfile {
+    color:#000;
+    font-weight:normal;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_difflines {
+    color:#000;
+    font-weight:bold;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_selector {
+    color:#000;
+    font-weight:bold;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_property {
+    color:#000;
+    font-weight:bold;
+    font-style:normal;
+}
+.sh_print .sh_sourceCode .sh_value {
+    color:#000;
+    font-weight:normal;
+    font-style:normal;
+}
+.snippet-wrap  {
+    position:relative;
+}
+*:first-child+html .snippet-wrap  {
+    display:inline-block;
+}
+* html .snippet-wrap  {
+    display:inline-block;
+}
+.snippet-reveal {
+    text-decoration:underline;
+}
+.snippet-wrap .snippet-menu, .snippet-wrap .snippet-hide  {
+    position:absolute;
+    top:10px;
+    right:15px;
+    font-size:.9em;
+    z-index:1;
+    background-color:transparent;
+}
+.snippet-wrap .snippet-hide  {
+    top:auto;
+    bottom:10px;
+}
+*:first-child+html .snippet-wrap .snippet-hide  {
+    bottom:25px;
+}
+* html .snippet-wrap .snippet-hide  {
+    bottom:25px;
+}
+.snippet-wrap .snippet-menu pre, .snippet-wrap .snippet-hide pre  {
+    background-color:transparent;
+    margin:0;
+    padding:0;
+}
+.snippet-wrap .snippet-menu a, .snippet-wrap .snippet-hide a  {
+    padding:0 5px;
+    text-decoration:underline;
+}
+pre {
+    padding: 5px 10px;
+    overflow:auto;
+    position:relative;
+    background: #2B2B2B;
+    color: #E6E1DC;
+    text-shadow: 1px 1px 0 #222;
+    line-height: 20px;
+    font-family: Monaco,"Bitstream Vera Sans Mono","Lucida Console",Terminal,monospace;
+    font-size: 11px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    behavior: url(/bundles/vinceadmin/css/border-radius.htc);
+    box-shadow: inset 0 0 10px #000;
+    -moz-box-shadow: inset 0 0 10px #000;
+    -webkit-box-shadow: inset 0 0 10px #000;
+}
+pre.sh_sh ol {
+    padding-left: 0 !important;
+}
+pre.sh_sh ol li {
+    list-style: none !important;
+    padding-left: 0 !important;
+}
+pre.sh_sh ol li:before {
+    content: "$ ";
+}
+.snippet-wrap pre.sh_sourceCode {
+    padding: 0;
+    overflow:auto;
+    position:relative;
+    background: #2B2B2B;
+    color: #E6E1DC;
+    text-shadow: 1px 1px 0 #222;
+    line-height: 20px;
+    font-family: Monaco,"Bitstream Vera Sans Mono","Lucida Console",Terminal,monospace;
+    font-size: 11px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    behavior: url(/bundles/vinceadmin/css/border-radius.htc);
+    box-shadow: inset 0 0 10px #000;
+    -moz-box-shadow: inset 0 0 10px #000;
+    -webkit-box-shadow: inset 0 0 10px #000;
+}
+.snippet-wrap pre.snippet-textonly  {
+    padding:2em;
+}
+*:first-child+html .snippet-wrap pre.snippet-formatted  {
+    padding:2em 1em;
+}
+* html .snippet-wrap pre.snippet-formatted  {
+    padding:2em 1em;
+}
+.snippet-reveal pre.sh_sourceCode  {
+    padding:.5em 1em;
+    text-align:right;
+}
+.snippet-wrap .snippet-num li {
+    padding-left:0;
+}
+.snippet-wrap .snippet-no-num {
+    list-style:none;
+    padding:.6em 1em;
+    margin:0;
+}
+.snippet-wrap .snippet-no-num li  {
+    list-style:none;
+    padding-left:0;
+}
+.snippet-wrap .snippet-num  {
+    margin:1em 0 1em 1em;
+    padding-left:3em;
+}
+.snippet-wrap .snippet-num li  {
+    list-style:decimal-leading-zero outside none;
+}
+.snippet-wrap .snippet-no-num li.box  {
+    padding:0 6px;
+    margin-left:-6px;
+}
+.snippet-wrap .snippet-num li.box  {
+    border:1px solid;
+    list-style-position:inside;
+    margin-left:-3em;
+    padding-left:6px;
+}
+*:first-child+html .snippet-wrap .snippet-num li.box  {
+    margin-left:-2.4em;
+}
+* html .snippet-wrap .snippet-num li.box  {
+    margin-left:-2.4em;
+}
+.snippet-wrap li.box-top  {
+    border-width:1px 1px 0 !important;
+}
+.snippet-wrap li.box-bot  {
+    border-width:0 1px 1px !important;
+}
+.snippet-wrap li.box-mid  {
+    border-width:0 1px !important;
+}
+.snippet-wrap .snippet-num li .box-sp  {
+    width:18px;
+    display:inline-block;
+}
+*:first-child+html .snippet-wrap .snippet-num li .box-sp  {
+    width:27px;
+}
+* html .snippet-wrap .snippet-num li .box-sp  {
+    width:27px;
+}
+.snippet-wrap .snippet-no-num li.box  {
+    border:1px solid;
+}
+.snippet-wrap .snippet-no-num li .box-sp  {
+    display:none;
+}
+
+/** CSS **/
+.sh_css .sh_selector {
+    color: #4BDD4B !important;
+}
+.sh_css .sh_property {
+    color: #8F8FFF !important;
+}
+.sh_css .sh_value, .sh_css .sh_cbracket {
+    color: #E6E1DC !important;
+}
+/** FIN CSS **/
+
+/** JS **/
+.sh_javascript .sh_string {
+    color: #DA0 !important;
+}
+.sh_javascript .sh_symbol, .sh_javascript .sh_function,
+.sh_javascript .sh_cbracket {
+    color: #E6E1DC !important;
+}
+.sh_javascript .sh_keyword {
+    color: #8F8FFF !important;
+}
+/** FIN JS **/

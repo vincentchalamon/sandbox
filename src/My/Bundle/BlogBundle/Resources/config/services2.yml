@@ -1,0 +1,28 @@
+services:
+    my.blog.contact.load.listener:
+        class: Vince\Bundle\CmsBundle\Listener\ContactListener
+        tags:
+            - { name: kernel.event_listener, event: vince.cms.load, method: onLoad }
+        calls:
+            - [setFormFactory, [@form.factory]]
+    my.blog.load.homepage.listener:
+        class: My\Bundle\BlogBundle\Listener\CmsListener
+        tags:
+            - { name: kernel.event_listener, event: vince.cms.homepage.load, method: onHomepageLoad }
+            - { name: kernel.event_listener, event: vince.cms.cv.load, method: onCvLoad }
+            - { name: kernel.event_listener, event: vince.cms.realisations.load, method: onRealisationsLoad }
+        calls:
+            - [setEntityManager, [@doctrine.orm.entity_manager]]
+            - [setFormFactory, [@form.factory]]
+
+    vince.processor.test:
+        class: My\Bundle\BlogBundle\TestProcessor
+        parent: vince.processor
+        tags:
+            -  { name: vince.processor, alias: test }
+        calls:
+            - [setMailer, [@mailer]]
+            - [setTranslator, [@translator]]
+            - [setTemplating, [@templating]]
+            - [setSession, [@session]]
+            - [setConfiguration, ["%vince.contact%"]]
