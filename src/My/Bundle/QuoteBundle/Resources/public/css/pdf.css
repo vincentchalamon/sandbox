@@ -1,0 +1,18 @@
+body.sonata-bc {
+    padding: 40px;
+}
+
+.right {
+    text-align: right;
+}
+
+.sonata-bc .row-fluid .span6 {
+    display: block;
+    width: 48.717948717948715%;
+    min-height: 30px;
+    float: left;
+    margin-left: 2.564102564102564%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}

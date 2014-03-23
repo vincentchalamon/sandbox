@@ -1,0 +1,62 @@
+{% extends 'SonataAdminBundle:CRUD:list.html.twig' %}
+
+{% block stylesheets %}
+    {% spaceless %}
+        {{ parent() }}
+        {% stylesheets '@vince_type_css' 'bundles/myquote/css/quote.css' filter="cssrewrite,?yui_css" %}
+            <link type="text/css" rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endspaceless %}
+{% endblock %}
+
+{% block footer %}
+    {% spaceless %}
+        {{ parent() }}
+        {% javascripts 'bundles/fosjsrouting/js/router.js'
+                       'js/fos_js_routes.js'
+                       '@vince_type_js'
+                       '@VinceTypeBundle/Resources/public/redactor/langs/fr.js'
+                       '@MyQuoteBundle/Resources/public/js/jquery.loader.js'
+                       'bundles/myquote/js/list.js' filter='?yui_js' %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endspaceless %}
+{% endblock %}
+
+{% block list_footer %}
+    {% spaceless %}
+        {{ parent() }}
+        {% for object in admin.datagrid.results %}
+            <div id="sendQuote{{ object.id }}" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-body">
+                    <form action="{{ path('send_quote', {'numero': object.numero}) }}" method="post">
+                        {{ render(path('send_quote', {'numero': object.numero})) }}
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a href="{{ path('download_quote', {'numero': object.numero}) }}" target="_blank">
+                        <i class="icon-file"></i>
+                        {{ object.numero }}.pdf
+                    </a>
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+                    <button class="btn btn-primary">Envoyer</button>
+                </div>
+            </div>
+            <div id="sendBill{{ object.id }}" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-body">
+                    <form action="{{ path('send_bill', {'numero': object.numero|slice(0, -1)}) }}" method="post">
+                        {{ render(path('send_bill', {'numero': object.numero|slice(0, -1)})) }}
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a href="{{ path('download_bill', {'numero': object.numero|slice(0, -1)}) }}" target="_blank">
+                        <i class="icon-file"></i>
+                        {{ object.numero|slice(0, -1) }}.pdf
+                    </a>
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+                    <button class="btn btn-primary">Envoyer</button>
+                </div>
+            </div>
+        {% endfor %}
+    {% endspaceless %}
+{% endblock %}

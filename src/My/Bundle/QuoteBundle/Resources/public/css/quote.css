@@ -1,0 +1,52 @@
+#quote {
+    font-size: 1.1em;
+    width: 707px;
+    margin: 0 auto 20px auto;
+    border: thin solid #efefef;
+    padding: 60px 60px 20px 60px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,.1);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,.1);
+    -o-box-shadow: 0px 0px 10px 0px rgba(0,0,0,.1);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,.1);
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#cfcfcf, Direction=NaN, Strength=10);
+}
+
+#quote .sonata-ba-form-error {
+    width: auto;
+}
+
+#quote .sonata-ba-form-error ul {
+    list-style: none;
+}
+
+.modal .modal-footer a {
+    display: inline-block;
+    background-color: #eaeaea;
+    border: thin solid #dcdcdc;
+    float: left;
+    padding: 4px;
+    width: 345px;
+    text-align: left;
+}
+
+.jquery-loader-overlay, .jquery-loader-spinner {
+    position: fixed;
+    z-index: 99999;
+}
+
+.jquery-loader-overlay {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.jquery-loader-spinner {
+    width: 32px;
+    height: 32px;
+    background: url('../img/loading.gif') no-repeat;
+}

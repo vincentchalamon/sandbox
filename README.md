@@ -142,6 +142,7 @@ parameters:
     * Theme
     * Admin
     * PDF generator: KnpSnappyBundle
+    * Envoyer par e-mail (mailto)
 * Comments:
     * Front: Disqus
     * Admin: count (link to Disqus)

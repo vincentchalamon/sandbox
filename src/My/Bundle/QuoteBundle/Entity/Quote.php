@@ -34,11 +34,6 @@ class Quote
     private $updatedAt;
 
     /**
-     * @var \DateTime
-     */
-    private $deletedAt;
-
-    /**
      * @var string
      */
     private $notes;
@@ -49,11 +44,6 @@ class Quote
     private $deadline;
 
     /**
-     * @var \DateTime
-     */
-    private $billedAt;
-
-    /**
      * @var Collection
      */
     private $deliveries;
@@ -62,6 +52,11 @@ class Quote
      * @var Customer
      */
     private $customer;
+
+    /**
+     * @var Bill
+     */
+    private $bill;
 
     /**
      * Constructor
@@ -78,7 +73,7 @@ class Quote
      */
     public function __toString()
     {
-        return $this->getNumero() ?: '-';
+        return sprintf('Devis %s', $this->getId() ? $this->getNumero() : '-');
     }
 
     /**
@@ -88,7 +83,7 @@ class Quote
      */
     public function getNumero()
     {
-        return $this->id ? str_pad($this->id, 5, 0, STR_PAD_LEFT) : null;
+        return sprintf('%s-%sD', $this->getCreatedAt()->format('y'), str_pad($this->id, 5, 0, STR_PAD_LEFT));
     }
 
     /**
@@ -133,7 +128,7 @@ class Quote
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -161,29 +156,6 @@ class Quote
     public function getUpdatedAt()
     {
         return $this->updatedAt;
-    }
-
-    /**
-     * Set deletedAt
-     *
-     * @param \DateTime $deletedAt
-     * @return Quote
-     */
-    public function setDeletedAt($deletedAt)
-    {
-        $this->deletedAt = $deletedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get deletedAt
-     *
-     * @return \DateTime 
-     */
-    public function getDeletedAt()
-    {
-        return $this->deletedAt;
     }
 
     /**
@@ -289,25 +261,25 @@ class Quote
     }
 
     /**
-     * Set billedAt
+     * Set bill
      *
-     * @param \DateTime $billedAt
+     * @param Bill $bill
      * @return Quote
      */
-    public function setBilledAt($billedAt)
+    public function setBill(Bill $bill)
     {
-        $this->billedAt = $billedAt;
+        $this->bill = $bill;
 
         return $this;
     }
 
     /**
-     * Get billedAt
+     * Get bill
      *
-     * @return \DateTime 
+     * @return Bill
      */
-    public function getBilledAt()
+    public function getBill()
     {
-        return $this->billedAt;
+        return $this->bill;
     }
 }

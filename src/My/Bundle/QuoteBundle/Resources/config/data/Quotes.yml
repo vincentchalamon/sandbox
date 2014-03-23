@@ -11,6 +11,7 @@ My\Bundle\QuoteBundle\Entity\Quote:
             address: 112 rue de Vaugirard
             zipcode: 75006
             city: Paris
+            email: test@yopmail.com
         deliveries:
             delivery-1:
                 contents: |

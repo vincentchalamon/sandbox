@@ -12,16 +12,11 @@ My\Bundle\QuoteBundle\Entity\Quote:
             - Count:
                 min: 1
                 max: 999
-            - Collection:
-                fields:
-                    contents:
-                        - NotBlank: ~
-                    price:
-                        - NotBlank: ~
-                        - Type:
-                            type: float
+            - Valid: ~
 
 My\Bundle\QuoteBundle\Entity\Customer:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
     properties:
         name:
             - NotBlank: ~
@@ -34,3 +29,15 @@ My\Bundle\QuoteBundle\Entity\Customer:
                 max: 5
         city:
             - NotBlank: ~
+        email:
+            - NotBlank: ~
+            - Email: ~
+
+My\Bundle\QuoteBundle\Entity\Delivery:
+    properties:
+        contents:
+            - NotBlank: ~
+        price:
+            - NotBlank: ~
+            - Type:
+                type: float

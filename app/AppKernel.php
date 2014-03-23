@@ -41,6 +41,7 @@ class AppKernel extends Kernel
             new Vince\Bundle\TypeBundle\VinceTypeBundle(),
 
             // Blog
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new My\Bundle\QuoteBundle\MyQuoteBundle(),

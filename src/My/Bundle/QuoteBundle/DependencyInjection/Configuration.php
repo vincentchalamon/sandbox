@@ -26,11 +26,26 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('my_quote');
-
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $treeBuilder->root('my_quote')
+            /*->children()
+                ->scalarNode('siret')
+                    ->isRequired()
+                ->end()
+                ->scalarNode('ape')
+                    ->isRequired()
+                ->end()
+                ->arrayNode('google')
+                    ->isRequired()
+                    ->children()
+                        ->scalarNode('applicationName')
+                            ->isRequired()
+                        ->end()
+                        ->scalarNode('developerKey')
+                            ->isRequired()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()*/;
 
         return $treeBuilder;
     }

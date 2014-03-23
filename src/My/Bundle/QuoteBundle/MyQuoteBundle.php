@@ -12,6 +12,11 @@ namespace My\Bundle\QuoteBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/**
+ * This bundle manage Quotes
+ *
+ * @author Vincent Chalamon <vincentchalamon@gmail.com>
+ */
 class MyQuoteBundle extends Bundle
 {
 }

@@ -5,7 +5,7 @@
         {%- if value is empty -%}
             &nbsp;
         {%- else -%}
-            {{ value|number_format(2, ',', ' ') }}€
+            {{ value|number_format(2, ',', ' ') }} €
         {%- endif -%}
     {% endspaceless %}
 {% endblock %}

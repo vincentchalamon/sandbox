@@ -1,10 +1,6 @@
 My\Bundle\QuoteBundle\Entity\Quote:
     type: entity
     table: null
-    gedmo:
-        soft_deleteable:
-            field_name: deletedAt
-            time_aware: false
     id:
         id:
             type: integer
@@ -24,17 +20,10 @@ My\Bundle\QuoteBundle\Entity\Quote:
             gedmo:
                 timestampable:
                     on: update
-        deletedAt:
-            type: datetime
-            column: deleted_at
-            nullable: true
         notes:
             type: text
         deadline:
             type: date
-        billedAt:
-            type: date
-            nullable: true
     oneToMany:
         deliveries:
             targetEntity: My\Bundle\QuoteBundle\Entity\Delivery
@@ -50,3 +39,8 @@ My\Bundle\QuoteBundle\Entity\Quote:
                 referencedColumnName: id
                 nullable: false
                 onDelete: CASCADE
+    oneToOne:
+        bill:
+            targetEntity: My\Bundle\QuoteBundle\Entity\Bill
+            mappedBy: quote
+            cascade: [all]

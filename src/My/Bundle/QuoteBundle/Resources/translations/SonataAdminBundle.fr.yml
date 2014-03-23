@@ -1,0 +1,18 @@
+Quote List: Devis
+gender:
+    m: M.
+    f: Mme
+    u:
+email:
+    quote:
+        contents: |
+            <p>Veuillez trouver ci-joint ma proposition commerciale pour votre projet.<br />
+               Afin de démarrer le projet rapidement, et comme précisé dans ce devis, je vous demande un acompte de
+               50% du prix final (%account% €), réglable de préférence avant le %date%.</p>
+        confirmation: Le devis n°%number% a bien été envoyé à %customer.name% (%customer.email%).
+    bill:
+        contents: |
+            <p>Veuillez trouver ci-joint la facture n°%bill.number% du devis n°%quote.number%.<br />
+               Un acompte de 50% (%account% €) ayant déjà été versé, veuillez me régler le solde de la facture d'un
+               montant de %account% € avant le %date%.</p>
+        confirmation: La facture n°%number% a bien été envoyée à %customer.name% (%customer.email%).

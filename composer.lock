@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "6147d586e30d36d265f0e17d8b890be2",
+    "hash": "68988b5d15f15c7843f7e0246541e6f2",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -901,6 +901,63 @@
             "time": "2013-10-31 22:16:27"
         },
         {
+            "name": "friendsofsymfony/jsrouting-bundle",
+            "version": "1.5.3",
+            "target-dir": "FOS/JsRoutingBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle.git",
+                "reference": "dade3bb0b21007e5c0fb40f203ed197841eb913c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSJsRoutingBundle/zipball/dade3bb0b21007e5c0fb40f203ed197841eb913c",
+                "reference": "dade3bb0b21007e5c0fb40f203ed197841eb913c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/console": "~2.0",
+                "symfony/framework-bundle": "~2.0",
+                "symfony/serializer": "~2.0",
+                "willdurand/jsonp-callback-validator": "~1.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "FOS\\JsRoutingBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "William Durand",
+                    "email": "william.durand1@gmail.com",
+                    "homepage": "http://www.willdurand.fr"
+                },
+                {
+                    "name": "FriendsOfSymfony Community",
+                    "homepage": "https://github.com/friendsofsymfony/FOSJsRoutingBundle/contributors"
+                }
+            ],
+            "description": "A pretty nice way to expose your Symfony2 routing to client applications.",
+            "homepage": "http://friendsofsymfony.github.com",
+            "keywords": [
+                "Js Routing",
+                "javascript",
+                "routing"
+            ],
+            "time": "2014-01-23 21:25:39"
+        },
+        {
             "name": "friendsofsymfony/rest-bundle",
             "version": "1.3.1",
             "target-dir": "FOS/RestBundle",
@@ -1125,6 +1182,90 @@
                 "uploadable"
             ],
             "time": "2014-01-12 16:34:06"
+        },
+        {
+            "name": "h4cc/wkhtmltopdf-amd64",
+            "version": "0.11.0-RC1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/h4cc/wkhtmltopdf-amd64.git",
+                "reference": "de1ed65ae2e50b9802cba61bd515fefc33b5a457"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/h4cc/wkhtmltopdf-amd64/zipball/de1ed65ae2e50b9802cba61bd515fefc33b5a457",
+                "reference": "de1ed65ae2e50b9802cba61bd515fefc33b5a457",
+                "shasum": ""
+            },
+            "bin": [
+                "bin/wkhtmltopdf-amd64"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL Version 3"
+            ],
+            "authors": [
+                {
+                    "name": "Julius Beckmann",
+                    "email": "github@h4cc.de"
+                }
+            ],
+            "description": "Convert html to pdf using webkit (qtwebkit)",
+            "homepage": "https://code.google.com/p/wkhtmltopdf/",
+            "time": "2013-09-06 12:54:18"
+        },
+        {
+            "name": "imagine/imagine",
+            "version": "v0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/avalanche123/Imagine.git",
+                "reference": "f64ec666baaa800edcbf237db41121a569230709"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/avalanche123/Imagine/zipball/f64ec666baaa800edcbf237db41121a569230709",
+                "reference": "f64ec666baaa800edcbf237db41121a569230709",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "sami/sami": "dev-master"
+            },
+            "suggest": {
+                "ext-gd": "to use the GD implementation",
+                "ext-gmagick": "to use the Gmagick implementation",
+                "ext-imagick": "to use the Imagick implementation"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Imagine": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bulat Shakirzyanov",
+                    "email": "mallluhuct@gmail.com",
+                    "homepage": "http://avalanche123.com"
+                }
+            ],
+            "description": "Image processing for PHP 5.3",
+            "homepage": "http://imagine.readthedocs.org/",
+            "keywords": [
+                "drawing",
+                "graphics",
+                "image manipulation",
+                "image processing"
+            ],
+            "time": "2013-07-10 17:25:36"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1728,6 +1869,116 @@
             "time": "2014-01-21 07:26:00"
         },
         {
+            "name": "knplabs/knp-snappy",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/snappy.git",
+                "reference": "4bc7af878a003a2c1ef3c4d8b08851537cb07486"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/snappy/zipball/4bc7af878a003a2c1ef3c4d8b08851537cb07486",
+                "reference": "4bc7af878a003a2c1ef3c4d8b08851537cb07486",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "suggest": {
+                "google/wkhtmltopdf-amd64": "Provide wkhtmltopdf-amd64 binary, use version `0.11.0-RC1` as dependency",
+                "google/wkhtmltopdf-i386": "Provide wkhtmltopdf-i386 binary, use version `0.11.0-RC1` as dependency",
+                "symfony/process": "Process Component of Symfony2."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Knp\\Snappy": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://github.com/KnpLabs/snappy/contributors"
+                }
+            ],
+            "description": "PHP5 library allowing thumbnail, snapshot or PDF generation from a url or a html page. Wrapper for wkhtmltopdf/wkhtmltoimage.",
+            "homepage": "http://github.com/KnpLabs/snappy",
+            "keywords": [
+                "knp",
+                "knplabs",
+                "pdf",
+                "snapshot",
+                "thumbnail",
+                "wkhtmltopdf"
+            ],
+            "time": "2014-03-20 15:05:12"
+        },
+        {
+            "name": "knplabs/knp-snappy-bundle",
+            "version": "v1.1",
+            "target-dir": "Knp/Bundle/SnappyBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/KnpSnappyBundle.git",
+                "reference": "9915a8d7b7e7fa4c6037259afc2b2947c352e307"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/KnpSnappyBundle/zipball/9915a8d7b7e7fa4c6037259afc2b2947c352e307",
+                "reference": "9915a8d7b7e7fa4c6037259afc2b2947c352e307",
+                "shasum": ""
+            },
+            "require": {
+                "knplabs/knp-snappy": "*",
+                "php": ">=5.3.2",
+                "symfony/framework-bundle": ">=2.0.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Knp\\Bundle\\SnappyBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://github.com/KnpLabs/KnpSnappyBundle/contributors"
+                }
+            ],
+            "description": "Easily create PDF and images in Symfony2 by converting Twig/HTML templates.",
+            "homepage": "http://github.com/KnpLabs/KnpSnappyBundle",
+            "keywords": [
+                "bundle",
+                "knp",
+                "knplabs",
+                "pdf",
+                "snappy"
+            ],
+            "time": "2013-02-19 21:24:36"
+        },
+        {
             "name": "kriswallsmith/assetic",
             "version": "v1.1.2",
             "source": {
@@ -1838,6 +2089,61 @@
             "description": "lessphp is a compiler for LESS written in PHP.",
             "homepage": "http://leafo.net/lessphp/",
             "time": "2013-08-09 17:09:19"
+        },
+        {
+            "name": "liip/imagine-bundle",
+            "version": "v0.20.1",
+            "target-dir": "Liip/ImagineBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/liip/LiipImagineBundle.git",
+                "reference": "07587dd937ece47e9ad6d3ea03aea1676e13a336"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/07587dd937ece47e9ad6d3ea03aea1676e13a336",
+                "reference": "07587dd937ece47e9ad6d3ea03aea1676e13a336",
+                "shasum": ""
+            },
+            "require": {
+                "imagine/imagine": "0.5.*",
+                "php": ">=5.3.2",
+                "symfony/filesystem": ">=2.0.16,~2.0",
+                "symfony/finder": ">=2.0.16,~2.0",
+                "symfony/framework-bundle": ">=2.0.16,~2.0",
+                "symfony/options-resolver": ">=2.0.16,~2.0"
+            },
+            "require-dev": {
+                "doctrine/cache": "~1.1",
+                "symfony/yaml": ">=2.0.16,~2.0",
+                "twig/twig": ">=1.0,<2.0-dev"
+            },
+            "suggest": {
+                "twig/twig": ">=1.0,<2.0-dev"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Liip\\ImagineBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Liip and other contributors",
+                    "homepage": "https://github.com/liip/LiipImagineBundle/contributors"
+                }
+            ],
+            "description": "This Bundle assists in imagine manipulation using the imagine library",
+            "homepage": "http://liip.ch",
+            "keywords": [
+                "image",
+                "imagine"
+            ],
+            "time": "2014-02-10 06:53:52"
         },
         {
             "name": "michelf/php-markdown",
@@ -3161,17 +3467,17 @@
         },
         {
             "name": "symfony/icu",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "target-dir": "Symfony/Component/Icu",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Icu.git",
-                "reference": "7299cd3d8d6602103d1ebff5d0a9917b7bc6de72"
+                "reference": "98e197da54df1f966dd5e8a4992135703569c987"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Icu/zipball/7299cd3d8d6602103d1ebff5d0a9917b7bc6de72",
-                "reference": "7299cd3d8d6602103d1ebff5d0a9917b7bc6de72",
+                "url": "https://api.github.com/repos/symfony/Icu/zipball/98e197da54df1f966dd5e8a4992135703569c987",
+                "reference": "98e197da54df1f966dd5e8a4992135703569c987",
                 "shasum": ""
             },
             "require": {
@@ -3205,7 +3511,7 @@
                 "icu",
                 "intl"
             ],
-            "time": "2013-06-03 18:32:58"
+            "time": "2013-10-04 10:06:38"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -3591,12 +3897,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vincentchalamon/VinceCmsBundle.git",
-                "reference": "152d59fba50df0a6f9364a2eee91bdd8a177ff3d"
+                "reference": "570a2a442559f40bc8a8ae0219cd7c269b9b94ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsBundle/zipball/152d59fba50df0a6f9364a2eee91bdd8a177ff3d",
-                "reference": "152d59fba50df0a6f9364a2eee91bdd8a177ff3d",
+                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsBundle/zipball/570a2a442559f40bc8a8ae0219cd7c269b9b94ca",
+                "reference": "570a2a442559f40bc8a8ae0219cd7c269b9b94ca",
                 "shasum": ""
             },
             "require": {
@@ -3643,7 +3949,7 @@
                 "Vince",
                 "cms"
             ],
-            "time": "2014-03-15 16:51:17"
+            "time": "2014-03-20 14:01:27"
         },
         {
             "name": "vince/cms-sonata-admin-bundle",
@@ -3652,12 +3958,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vincentchalamon/VinceCmsSonataAdminBundle.git",
-                "reference": "8454379012fd9efe96912f87735c91b9f9cebddd"
+                "reference": "84865d6a33fc2318e5c6af08098f06471435a94b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsSonataAdminBundle/zipball/8454379012fd9efe96912f87735c91b9f9cebddd",
-                "reference": "8454379012fd9efe96912f87735c91b9f9cebddd",
+                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsSonataAdminBundle/zipball/84865d6a33fc2318e5c6af08098f06471435a94b",
+                "reference": "84865d6a33fc2318e5c6af08098f06471435a94b",
                 "shasum": ""
             },
             "require": {
@@ -3688,7 +3994,7 @@
                 "Vince",
                 "cms"
             ],
-            "time": "2014-03-19 11:14:55"
+            "time": "2014-03-20 14:02:02"
         },
         {
             "name": "vince/type-bundle",
@@ -3697,12 +4003,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vincentchalamon/VinceTypeBundle.git",
-                "reference": "78c66a443605e917fb84d5368f2b8f4886211239"
+                "reference": "484d9ab80554a91b9a4cdf940346c92c9f2f657b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vincentchalamon/VinceTypeBundle/zipball/78c66a443605e917fb84d5368f2b8f4886211239",
-                "reference": "78c66a443605e917fb84d5368f2b8f4886211239",
+                "url": "https://api.github.com/repos/vincentchalamon/VinceTypeBundle/zipball/484d9ab80554a91b9a4cdf940346c92c9f2f657b",
+                "reference": "484d9ab80554a91b9a4cdf940346c92c9f2f657b",
                 "shasum": ""
             },
             "require": {
@@ -3732,7 +4038,7 @@
             "keywords": [
                 "form"
             ],
-            "time": "2014-03-14 15:53:15"
+            "time": "2014-03-20 13:59:06"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
@@ -3832,9 +4138,9 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": {
+        "h4cc/wkhtmltopdf-amd64": 5
+    },
     "platform": {
         "php": ">=5.3.2"
     },

@@ -1,11 +1,33 @@
 download_quote:
-    pattern: /devis-{id}.pdf
+    pattern: /admin/devis/{numero}.pdf
     defaults: { _controller: MyQuoteBundle:Download:quote }
     requirements:
         _method: GET
+        numero: \d{2}-\d{5}D
 
 download_bill:
-    pattern: /facture-{id}.pdf
+    pattern: /admin/devis/{numero}.pdf
     defaults: { _controller: MyQuoteBundle:Download:bill }
     requirements:
         _method: GET
+        numero: \d{2}-\d{5}
+
+send_quote:
+    pattern: /admin/devis/{numero}/envoyer
+    defaults: { _controller: MyQuoteBundle:Send:quote }
+    requirements:
+        _method: GET|POST
+        numero: \d{2}-\d{5}D
+
+send_bill:
+    pattern: /admin/devis/{numero}/envoyer
+    defaults: { _controller: MyQuoteBundle:Send:bill }
+    requirements:
+        _method: GET|POST
+        numero: \d{2}-\d{5}
+
+customer_search:
+    pattern: /admin/devis/recherche-client
+    defaults: { _controller: MyQuoteBundle:Customer:search }
+    requirements:
+        _method: POST

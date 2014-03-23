@@ -4,7 +4,7 @@
     <h1>{{ block('title') }}</h1>
 
     <div class="infos">
-        Posté le {{ article.updatedAt|localizeddate('full', 'none') }}
+        Posté le {{ article.updatedAt|localizeddate('full', 'none')|capitalize }}
         {% if article.tags|length %}
             - Tags :
             {% for i, tag in article.tags %}

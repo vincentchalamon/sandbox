@@ -6,14 +6,13 @@ My\Bundle\UserBundle\Entity\User:
             admin:
                 name: Admin
                 roles: [ROLE_ADMIN]
-        email: admin@example.fr
-    god:
-        enabled: true
-        plainPassword: 4dm1n
-        roles: [ROLE_SUPER_ADMIN]
-        email: god@example.fr
-    user:
-        enabled: true
-        plainPassword: 4dm1n
-        roles: [ROLE_USER]
-        email: user@example.fr
+        email: vincentchalamon@gmail.com
+        gender: m
+        firstname: Vincent
+        lastname: CHALAMON
+        phone: +33 (0)7 51 69 06 46
+        address: 38 rue Jules Guesde
+        zipcode: 59000
+        city: Lille
+        siret: 79512765300017
+        ape: 6201Z

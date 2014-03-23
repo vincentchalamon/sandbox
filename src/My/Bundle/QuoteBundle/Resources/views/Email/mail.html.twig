@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{{ title }}</title>
+    </head>
+    <body>
+        <p>Bonjour,</p>
+        {{ contents|raw }}
+        <p>Cordialement,</p>
+        <p>
+            {{ app.user.firstname }} {{ app.user.lastname|upper }}<br />
+            {{ app.user.address }}<br />
+            {{ app.user.zipcode }} {{ app.user.city }}<br />
+            {{ app.user.phone }}<br />
+            <a href="mailto:{{ app.user.email }}">{{ app.user.email }}</a><br />
+            <a href="{{ url('homepage') }}">{{ url('homepage') }}</a><br />
+        </p>
+    </body>
+</html>

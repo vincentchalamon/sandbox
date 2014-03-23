@@ -3,6 +3,10 @@ imports:
     - { resource: security.yml }
     - { resource: "@VinceCmsBundle/Resources/config/config.yml" }
 
+parameters:
+    router.request_context.host: blog.local
+    router.request_context.scheme: http
+
 framework:
     #esi:             ~
     translator:      ~
@@ -34,7 +38,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [MyCmsBundle]
+    bundles:        [MyCmsBundle, MyQuoteBundle]
     filters:
         lessphp:
             file: %kernel.root_dir%/../vendor/leafo/lessphp/lessc.inc.php
@@ -161,6 +165,8 @@ sonata_admin:
     title: Vince CMS
     templates:
         layout: VinceCmsSonataAdminBundle::standard_layout.html.twig
+    options:
+        confirm_exit: false
 
 vince_cms:
     contact:
@@ -176,6 +182,9 @@ vince_cms:
         class: My\Bundle\CmsBundle\Entity\Content
     menu:
         class: My\Bundle\CmsBundle\Entity\Menu
+
+fos_js_routing:
+    routes_to_expose: [redactor-upload]
 
 knp_snappy:
     pdf:

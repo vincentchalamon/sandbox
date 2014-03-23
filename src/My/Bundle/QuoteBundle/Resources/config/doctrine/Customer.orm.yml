@@ -1,6 +1,7 @@
 My\Bundle\QuoteBundle\Entity\Customer:
     type: entity
     table: null
+    repositoryClass: Vince\Bundle\TypeBundle\Entity\Repository\SearchRepository
     id:
         id:
             type: integer
@@ -19,6 +20,10 @@ My\Bundle\QuoteBundle\Entity\Customer:
         city:
             type: string
             length: 255
+        email:
+            type: string
+            length: 255
+            unique: true
     oneToMany:
         quotes:
             targetEntity: My\Bundle\QuoteBundle\Entity\Quote

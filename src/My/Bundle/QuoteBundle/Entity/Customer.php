@@ -44,6 +44,11 @@ class Customer
     private $city;
 
     /**
+     * @var string
+     */
+    private $email;
+
+    /**
      * @var Collection
      */
     private $quotes;
@@ -199,5 +204,29 @@ class Customer
     public function getQuotes()
     {
         return $this->quotes;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Customer
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }
