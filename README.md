@@ -138,15 +138,14 @@ parameters:
 
 ## Blog
 
+* Submit buttons: http://msurguy.github.io/ladda-bootstrap/
 * Devis
     * Theme
-    * Admin
-    * PDF generator: KnpSnappyBundle
-    * Envoyer par e-mail (mailto)
+    X Admin
+    X PDF generator: KnpSnappyBundle
+    X Envoyer par e-mail (mailto)
 * Comments:
     * Front: Disqus
     * Admin: count (link to Disqus)
-* Social: http://www.hongkiat.com/blog/optimizing-social-button/
 * Admin article (realisation) (ajax screen-shot: http://html2canvas.hertzen.com/screenshots.html): KnpSnappyBundle ?
-* Submit buttons: http://msurguy.github.io/ladda-bootstrap/
 * Enable CloudFlare
