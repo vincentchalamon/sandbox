@@ -2,10 +2,14 @@ My\Bundle\CmsBundle\Entity\Content:
     type: entity
     table: content
     id:
-        article:
-          associationKey: true
-        area:
-          associationKey: true
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+        #article:
+          #associationKey: true
+        #area:
+          #associationKey: true
     manyToOne:
         article:
             targetEntity: My\Bundle\CmsBundle\Entity\Article

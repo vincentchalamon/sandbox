@@ -21,7 +21,6 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\ElasticaBundle\FOSElasticaBundle(),
             new Vince\Bundle\CmsBundle\VinceCmsBundle(),
-            new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new My\Bundle\CmsBundle\MyCmsBundle(),
 
             // User

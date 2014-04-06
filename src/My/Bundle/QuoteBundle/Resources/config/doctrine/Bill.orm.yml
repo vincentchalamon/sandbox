@@ -1,6 +1,6 @@
 My\Bundle\QuoteBundle\Entity\Bill:
     type: entity
-    table: null
+    table: bill
     id:
         id:
             type: integer

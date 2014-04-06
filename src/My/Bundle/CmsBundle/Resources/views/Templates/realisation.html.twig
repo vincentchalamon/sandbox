@@ -1,0 +1,24 @@
+{% extends 'MyCmsBundle::base.html.twig' %}
+
+{% block current %}realisations{% endblock %}
+
+{% block article %}
+    {% spaceless %}
+        <a href="{{ path('cms_realisations') }}" title="Retour à la liste" class="back">Retour à la liste</a>
+        <h1>{{ article.title }}</h1>
+        <section class="chapo">
+            {% if article.tags|length %}
+                <ul class="tags">
+                    {% for i, tag in article.tags %}
+                        <li>
+                            <a href="{{ path('cms_search', {'query': tag}) }}" title="{{ tag }}">{{ tag }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </section>
+        <img src="{{ article.screenshot|imagine_filter('show') }}" title="{{ article.title }}" alt="{{ article.title }}" />
+        <a target="_blank" href="{{ article|content('url') }}" title="Symfony 2" class="website">{{ article|content('url') }}</a>
+        <div class="contents">{{ article|content('description')|raw }}</div>
+    {% endspaceless %}
+{% endblock %}

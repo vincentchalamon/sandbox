@@ -1,6 +1,7 @@
 My\Bundle\CmsBundle\Entity\Article:
     type: entity
     table: article
+    repositoryClass: My\Bundle\CmsBundle\Entity\Repository\ArticleRepository
     id:
         id:
             type: integer
@@ -10,6 +11,7 @@ My\Bundle\CmsBundle\Entity\Article:
         metas:
             targetEntity: My\Bundle\CmsBundle\Entity\ArticleMeta
             mappedBy: article
+            orphanRemoval: true
             cascade: [all]
         contents:
             targetEntity: My\Bundle\CmsBundle\Entity\Content

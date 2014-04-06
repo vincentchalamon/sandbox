@@ -1,0 +1,70 @@
+{% block vince_admin_article_contents_template_stylesheet %}
+    {% spaceless %}
+        <style type="text/css">
+            .template-container {
+                position: relative;
+            }
+            .template-container input[type=text] {
+                width: 400px;
+            }
+            .template-container .redactor_box {
+                max-width: 500px;
+            }
+            .template-container .screenshot {
+                position: absolute;
+                top: -30px;
+                right: 10px;
+                max-width: 550px;
+                -moz-box-shadow: 0px 0px 10px 0px #aaa;
+                -webkit-box-shadow: 0px 0px 10px 0px #aaa;
+                -o-box-shadow: 0px 0px 10px 0px #aaa;
+                box-shadow: 0px 0px 10px 0px #aaa;
+                filter:progid:DXImageTransform.Microsoft.Shadow(color=#aaa, Direction=NaN, Strength=10);
+                -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;
+                border-radius: 5px;
+            }
+            .template-container .spinner {
+                margin-left: 30px;
+            }
+        </style>
+    {% endspaceless %}
+{% endblock %}
+
+{% block vince_admin_article_contents_template_javascript %}
+    {% spaceless %}
+        {% for name, child in form if name == 'realisation' %}
+            {% for subname, content in child if subname == 'url' %}
+                <script type="text/javascript">
+                    $(function () {
+                        $('#{{ content.vars.id }}').on('change keyup keydown', function (event) {
+                            if ($.trim($(this).val()) && $.trim($(this).val()).match(/^(?:http|https)\:\/\/(?:www\.)?.*\.(?:com|fr|org)/i)) {
+                                if ($(this).siblings('img.screenshot').length) {
+                                    $(this).siblings('img.screenshot').fadeOut('fast', function () {
+                                        $(this).remove();
+                                    });
+                                }
+                                if (!$(event.target).siblings('img.spinner').length) {
+                                    $('<img>', {src: '{{ asset('bundles/mycms/images/spinner.gif') }}'}).addClass('spinner')
+                                            .insertAfter(event.target).fadeIn();
+                                }
+                                $.get('{{ path('screenshot') }}', {url: $.trim($(event.target).val())}).done(function (path) {
+                                    $('<img>', {src: '{{ path('screenshot') }}?url=' + $.trim($(event.target).val())}).addClass('screenshot')
+                                            .insertAfter(event.target).fadeIn();
+                                }).always(function () {
+                                    $(event.target).siblings('img.spinner').fadeOut('fast', function () {
+                                        $(this).remove();
+                                    });
+                                });
+                            } else if ($(this).siblings('img.screenshot').length) {
+                                $(this).siblings('img.screenshot').fadeOut('fast', function () {
+                                    $(this).remove();
+                                });
+                            }
+                        }).trigger('change');
+                    });
+                </script>
+            {% endfor %}
+        {% endfor %}
+    {% endspaceless %}
+{% endblock %}

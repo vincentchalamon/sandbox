@@ -1,9 +1,57 @@
-{% extends 'VinceCmsBundle::base.html.twig' %}
+{% extends 'MyCmsBundle::base.html.twig' %}
 
 {% block body %}
-    <h1>{{ block('title') }}</h1>
+    {% spaceless %}
+        {% if realisations|length %}
+            <section id="carousel" class="carousel slide container">
+                <ol class="carousel-indicators">
+                    {% for key, realisation in realisations %}
+                        <li data-target="#carousel" data-slide-to="{{ key }}"{% if key == 0 %} class="active"{% endif %}></li>
+                    {% endfor %}
+                </ol>
+                <div class="carousel-inner">
+                    {% for key, realisation in realisations %}
+                        <div class="item{% if key == 0 %} active{% endif %}">
+                            <a href="{{ path(realisation.routeName) }}" title="{{ realisation.title }}">
+                                <img src="{{ realisation.screenshot|imagine_filter('slider') }}" title="{{ realisation.title }}" alt="{{ realisation.title }}" />
+                            </a>
+                            <div class="carousel-caption">
+                                <h2>{{ realisation.title }}</h2>
+                                {{ realisation|content('description') }}
+                                <a href="{{ path(realisation.routeName) }}" title="Lire la suite" class="btn btn-success">Lire la suite</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+        {{ parent() }}
+    {% endspaceless %}
+{% endblock %}
 
-    <div class="contents">{{ article|content('main') }}</div>
-
-    {{ render_block('homepage') }}
+{% block article %}
+    {% spaceless %}
+        {% for billet in billets %}
+            <section class="post">
+                <h2>{{ billet.title }}</h2>
+                <div class="col-md-9">
+                    {{ billet.summary|raw }}
+                    <a href="{{ path(billet.routeName) }}" title="Lire la suite" class="btn btn-success">Lire la suite</a>
+                </div>
+                <div class="col-md-3">
+                    <span>{{ billet.startedAt|localizeddate('full', 'none') }}</span>
+                    {#<a href="{{ path(billet.routeName) }}#commentaires" title="Aucun commentaire">Aucun commentaire</a>#}
+                    {% if billet.tags|length %}
+                        <ul class="tags">
+                            {% for i, tag in billet.tags %}
+                                <li>
+                                    <a href="{{ path('cms_search', {'query': tag}) }}" title="{{ tag }}">{{ tag }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </section>
+        {% endfor %}
+    {% endspaceless %}
 {% endblock %}

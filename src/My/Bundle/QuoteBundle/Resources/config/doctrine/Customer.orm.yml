@@ -1,6 +1,6 @@
 My\Bundle\QuoteBundle\Entity\Customer:
     type: entity
-    table: null
+    table: customer
     repositoryClass: Vince\Bundle\TypeBundle\Entity\Repository\SearchRepository
     id:
         id:

@@ -2,10 +2,14 @@ My\Bundle\CmsBundle\Entity\ArticleMeta:
     type: entity
     table: article_meta
     id:
-        article:
-          associationKey: true
-        meta:
-          associationKey: true
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+        #article:
+          #associationKey: true
+        #meta:
+          #associationKey: true
     manyToOne:
         article:
             targetEntity: My\Bundle\CmsBundle\Entity\Article

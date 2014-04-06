@@ -8,8 +8,8 @@ default_run_options[:pty] = true
 ssh_options[:port] = 22
 
 # Multistaging
-set :stages,      %w(dev)
-set :default_stage, "dev"
+set :stages,      %w(prod)
+set :default_stage, "prod"
 set :stage_dir,   "app/config/deploy"
 require 'capistrano/ext/multistage'
 set :stage_files, false
@@ -35,7 +35,7 @@ end
 # Repository
 set :repository,  "ssh://git@bitbucket.org/vincentchalamon/sandbox.git"
 set :scm,         :git
-set :branch,      "master"
+set :branch,      "blog"
 set :deploy_via,  :remote_cache
 set :keep_releases, 3
 

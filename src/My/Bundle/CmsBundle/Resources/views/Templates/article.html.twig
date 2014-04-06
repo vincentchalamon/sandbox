@@ -1,0 +1,53 @@
+{% extends 'MyCmsBundle::base.html.twig' %}
+
+{% block article %}
+    {% spaceless %}
+        <h1>{{ article.title }}</h1>
+        <section class="chapo">
+            <span>{{ 'text.publication'|trans({'%date%': article.updatedAt|localizeddate('full', 'none')|capitalize}, 'VinceCms') }}</span>
+            {% if article.tags|length %}
+                <ul class="tags">
+                    {% for i, tag in article.tags %}
+                        <li>
+                            <a href="{{ path('cms_search', {'query': tag}) }}" title="{{ tag }}">{{ tag }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </section>
+        <div class="contents">{{ article|content('contents') }}</div>
+        <div class="share">
+            <h3>Partagez cet article sur les réseaux sociaux !</h3>
+            <ul>
+                <li>
+                    <a href="http://twitter.com/share" class="socialite twitter-share" data-text="{{ article.meta('twitter:title').contents }}" data-url="{{ url(article.routeName) }}" data-count="vertical" rel="nofollow" target="_blank">Partager sur Twitter</a>
+                </li>
+                <li>
+                    <a href="https://plus.google.com/share?url={{ url(article.routeName) }}" class="socialite googleplus-one" data-size="tall" data-href="{{ url(article.routeName) }}" rel="nofollow" target="_blank">Partager sur Google+</a>
+                </li>
+                <li>
+                    <a href="http://www.facebook.com/sharer.php?u={{ url(article.routeName) }}&t={{ article.meta('og:title').contents }}" class="socialite facebook-like" data-href="{{ url(article.routeName) }}" data-send="false" data-layout="box_count" data-width="60" data-show-faces="false" rel="nofollow" target="_blank">Partager sur Facebook</a>
+                </li>
+                <li>
+                    <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ url(article.routeName) }}&title={{ article.meta('title').contents }}" class="socialite linkedin-share" data-url="{{ url(article.routeName) }}" data-counter="top" rel="nofollow" target="_blank">Partager sur LinkedIn</a>
+                </li>
+                <li>
+                    <div class="viadeo-share" data-display="btnlight" data-count="top" data-language="fr" data-partner-id="EOdubjbyEgewhdgdIzwvOeqDOc"></div>
+                </li>
+            </ul>
+        </div>
+    {% endspaceless %}
+{% endblock %}
+
+{% block aside %}
+    {% spaceless %}
+        {% if siblings|length %}
+            <h2>Du même sujet</h2>
+            <ul>
+                {% for sibling in siblings %}
+                    <li><a href="{{ path(sibling.routeName) }}" title="{{ sibling.title }}">{{ sibling.title }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}

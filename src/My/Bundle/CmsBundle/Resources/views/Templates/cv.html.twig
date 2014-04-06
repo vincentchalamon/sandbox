@@ -1,0 +1,485 @@
+{% extends 'MyBlogBundle::base.html.twig' %}
+
+{% block current %}curriculum-vitae{% endblock %}
+
+{% block article %}
+    {% spaceless %}
+        <h1>{{ article.title }}</h1>
+        <a href="cv.pdf" title="Télécharger la version PDF" class="pdf">Télécharger la version PDF</a>
+        <div class="timeline-container">
+            <div id="timeline"></div>
+        </div>
+        {# todo-vince Manage skills #}
+        <div class="contents">
+            <div class="skill">
+                <h4>DUT Services et Réseaux de Communication</h4>
+
+                <div class="infos">
+                    Saint-Raphaël, du 1 septembre 2006 au 31 août 2008
+                    -
+                    <a href="http://serecom.univ-tln.fr" title="DUT Services et Réseaux de Communication" target="_blank">http://serecom.univ-tln.fr</a>
+                    <ul class="tags">
+                        <li><a href="recherche.html" title="PHP">PHP</a></li>
+                        <li><a href="recherche.html" title="Symfony">Symfony</a></li>
+                        <li><a href="recherche.html" title="Symfony 1.4">Symfony 1.4</a></li>
+                        <li><a href="recherche.html" title="OVH">OVH</a></li>
+                        <li><a href="recherche.html" title="Capistrano">Capistrano</a></li>
+                        <li><a href="recherche.html" title="Git">Git</a></li>
+                        <li><a href="recherche.html" title="Symfony 2">Symfony 2</a></li>
+                    </ul>
+                </div>
+                <div class="description"><p>Durant ces 2 années de formation, j'ai pu acquérir certaines
+                                            compétences informatiques, telles que la <strong>modélisation et
+                                                                                             conception
+                                                                                             3D</strong>, le
+                        <strong>détourage 2D</strong>, l'<strong>intégration HTML/CSS</strong>, mais également les
+                        <strong>bases de la programmation PHP et JavaScript</strong>.</p>
+
+                    <p>Au cours de la seconde année, j'ai participé à l'élaboration d'un court-métrage 3D :&nbsp;<strong><a title="Iron Framboise" href="http://www.ironframboise.fr/" target="_blank">http://www.ironframboise.fr</a></strong>.
+                       Celui-ci a été récompensé lors du Festival SRC par le prix spécial du jury.</p></div>
+            </div>
+            <div class="skill">
+                <h4>Wacan Communication</h4>
+
+                <div class="infos">
+                    Sophia Antipolis, du 12 mars 2007 au 14 avril 2007
+                    - <a href="http://www.wacan.com" title="Wacan Communication" target="_blank">http://www.wacan.com</a>
+                    <ul class="tags">
+                        <li><a href="recherche.html" title="PHP">PHP</a></li>
+                        <li><a href="recherche.html" title="Symfony">Symfony</a></li>
+                        <li><a href="recherche.html" title="Symfony 1.4">Symfony 1.4</a></li>
+                        <li><a href="recherche.html" title="OVH">OVH</a></li>
+                        <li><a href="recherche.html" title="Capistrano">Capistrano</a></li>
+                        <li><a href="recherche.html" title="Git">Git</a></li>
+                        <li><a href="recherche.html" title="Symfony 2">Symfony 2</a></li>
+                    </ul>
+                </div>
+                <div class="description">
+                    <div>Ce stage avait pour but l'<strong>analyse de la communication interne et
+                                                           externe</strong>&nbsp;d'une entreprise.&nbsp;Au cours
+                         de celui-ci, j'ai été amené à réaliser des sites Internet sur mesure, et à participer à
+                         l'amélioration de leur administration.
+                    </div>
+                    <div>&nbsp;</div>
+                    <div><strong><span style="text-decoration: underline;">Objectifs remplis :</span></strong>
+                    </div>
+                    <ul>
+                        <li>Création de sites Internet</li>
+                        <li>Création et optimisation d'un back-office</li>
+                        <li>Apprentissage du PHP</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="skill">
+                <h4>Nice Matin</h4>
+
+                <div class="infos">
+                    Nice, du 1 juillet 2007 au 31 juillet 2007
+                    - <a href="http://www.nicematin.com" title="Nice Matin" target="_blank">http://www.nicematin.com</a>
+                    <ul class="tags">
+                        <li><a href="recherche.html" title="PHP">PHP</a></li>
+                        <li><a href="recherche.html" title="Symfony">Symfony</a></li>
+                        <li><a href="recherche.html" title="Symfony 1.4">Symfony 1.4</a></li>
+                        <li><a href="recherche.html" title="OVH">OVH</a></li>
+                        <li><a href="recherche.html" title="Capistrano">Capistrano</a></li>
+                        <li><a href="recherche.html" title="Git">Git</a></li>
+                        <li><a href="recherche.html" title="Symfony 2">Symfony 2</a></li>
+                    </ul>
+                </div>
+                <div class="description"><p>Durant ce stage complémentaire d'un mois dans ce journal local, j'ai
+                                            eu l'occasion d'approfondir mes connaissances en <strong>programmation
+                                                                                                     PHP</strong>,
+                                            spécialement orienté objet.</p>
+
+                    <p>Ma principale mission fût le développement d'une <strong>plateforme intranet</strong> au
+                       profit des différents services de la société. Celle-ci permettait l'import et l'export de
+                       fichiers en PHP et MySql.</p></div>
+            </div>
+            <div class="skill">
+                <h4>AureXus</h4>
+
+                <div class="infos">
+                    Pondichéry (Inde), du 14 avril 2008 au 31 juillet 2008
+                    -
+                    <a href="http://www.aurexus.com" title="AureXus" target="_blank">http://www.aurexus.com</a>
+                    <ul class="tags">
+                        <li><a href="recherche.html" title="PHP">PHP</a></li>
+                        <li><a href="recherche.html" title="Symfony">Symfony</a></li>
+                        <li><a href="recherche.html" title="Symfony 1.4">Symfony 1.4</a></li>
+                        <li><a href="recherche.html" title="OVH">OVH</a></li>
+                        <li><a href="recherche.html" title="Capistrano">Capistrano</a></li>
+                        <li><a href="recherche.html" title="Git">Git</a></li>
+                        <li><a href="recherche.html" title="Symfony 2">Symfony 2</a></li>
+                    </ul>
+                </div>
+                <div class="description"><p>Afin de compléter mon expérience professionnelle, j'ai choisi de
+                                            faire ce stage de fin d'IUT SRC à l'étranger : à&nbsp;Pondichéry en
+                                            Inde, dans la société
+                        <a title="AureXus" href="http://www.aurexus.com/" target="_blank">AureXus</a>.</p>
+
+                    <p><a title="AureXus" href="http://www.aurexus.com/" target="_blank">AureXus</a>&nbsp;est
+                                                                                                    une société
+                                                                                                    spécialisée
+                                                                                                    dans le
+                                                                                                    développement
+                                                                                                    d'applications
+                        <a title="e-learning" href="http://fr.wikipedia.org/wiki/Formation_en_ligne" target="_blank">e-learning</a>&nbsp;en
+                                                                                                    Flash.
+                                                                                                    Durant ces 3
+                                                                                                    mois et
+                                                                                                    demi, j'ai
+                                                                                                    donc été en
+                                                                                                    charge de l'<strong>élaboration
+                                                                                                                        du
+                                                                                                                        cahier
+                                                                                                                        des
+                                                                                                                        charges</strong>,
+                                                                                                    du <strong>développement
+                                                                                                               de
+                                                                                                               l'application
+                                                                                                               e-learning
+                                                                                                               multi-supports</strong>,
+                                                                                                    et de la
+                        <strong>formation des développeurs à la technologie ActionScript 3</strong>.</p>
+
+                    <p>Cette application a été mise en place dans un réseau d'ordinateurs et de plateformes
+                       mobiles.</p></div>
+            </div>
+            <div class="skill">
+                <h4>EP Factory</h4>
+
+                <div class="infos">
+                    Lyon, du 1 septembre 2008 au 31 décembre 2011
+                    - <a href="http://www.epfactory.com" title="EP Factory" target="_blank">http://www.epfactory.com</a>
+                    <ul class="tags">
+                        <li><a href="recherche.html" title="PHP">PHP</a></li>
+                        <li><a href="recherche.html" title="Symfony">Symfony</a></li>
+                        <li><a href="recherche.html" title="Symfony 1.4">Symfony 1.4</a></li>
+                        <li><a href="recherche.html" title="OVH">OVH</a></li>
+                        <li><a href="recherche.html" title="Capistrano">Capistrano</a></li>
+                        <li><a href="recherche.html" title="Git">Git</a></li>
+                        <li><a href="recherche.html" title="Symfony 2">Symfony 2</a></li>
+                    </ul>
+                </div>
+                <div class="description"><p>J'ai intégré la
+                                            société&nbsp;<a title="EP Factory" href="http://www.epfactory.com" target="_blank">EP
+                                                                                                                               Factory</a>&nbsp;tout
+                                            d'abord en alternance avec la licence professionnelle Développeur
+                                            Informatique Multi-supports. C'est au cours de cette première année
+                                            que j'ai appris&nbsp;<strong>Symfony 1</strong>, <strong>Symfony
+                                                                                                     2</strong>&nbsp;et
+                                            des&nbsp;CMS couramment utilisés dans le Web : Joomla, Spip,
+                                            WordPress, Magento.</p>
+
+                    <p>Mes principales missions étaient le développement d'applications sur mesure
+                       en&nbsp;<strong>Symfony 1</strong>,&nbsp;<strong>Symfony
+                                                                        2</strong>,&nbsp;<strong>PHP5</strong>
+                       et&nbsp;<strong>Ruby on Rails</strong>, et le développement de plugins et bundles
+                       génériques&nbsp;Symfony.</p>
+
+                    <p><strong>Principaux projets réalisés :</strong></p>
+                    <ul>
+                        <li><a title="Spread Research" href="http://www.spreadresearch.com/" target="_blank">Spread
+                                                                                                             Research</a>&nbsp;:
+                                                                                                                         cette
+                                                                                                                         application
+                                                                                                                         réalisée
+                                                                                                                         en
+                            <strong>Symfony 1.4</strong>,&nbsp;permet à ses utilisateurs de générer des
+                                                                                                                         documents
+                                                                                                                         boursiers
+                                                                                                                         sous
+                                                                                                                         format
+                                                                                                                         PDF.
+                                                                                                                         J'ai
+                                                                                                                         participé
+                                                                                                                         intégralement
+                                                                                                                         à
+                                                                                                                         ce
+                                                                                                                         projet.
+                        </li>
+                        <li><a title="Yalil" href="http://www.yalil.fr/" target="_blank">Yalil</a> : ce moteur
+                                                                                                   de recherche
+                                                                                                   développé en
+                            <strong>Symfony 1.4</strong>,&nbsp;recense les meilleurs restaurants Halal,
+                                                                                                   établissements
+                                                                                                   de soirées et
+                                                                                                   organisateurs
+                                                                                                   de mariage
+                                                                                                   oriental de
+                                                                                                   France. J'ai
+                                                                                                   participé
+                                                                                                   intégralement
+                                                                                                   à ce projet.
+                        </li>
+                        <li><a title="Artilinki" href="http://www.artilinki.com/" target="_blank">Artilinki</a>&nbsp;:
+                                                                                                               ce
+                                                                                                               réseau
+                                                                                                               social
+                                                                                                               met
+                                                                                                               en
+                                                                                                               relation
+                                                                                                               les
+                                                                                                               artistes
+                                                                                                               et
+                                                                                                               leurs
+                                                                                                               fans.
+                                                                                                               Il
+                                                                                                               permet
+                                                                                                               la
+                                                                                                               publication
+                                                                                                               de
+                                                                                                               leurs
+                                                                                                               oeuvres
+                                                                                                               à
+                                                                                                               travers
+                                                                                                               un
+                                                                                                               lecteur
+                                                                                                               multi-supports
+                                                                                                               (textes,
+                                                                                                               vidéos,
+                                                                                                               images,
+                                                                                                               sons).
+                                                                                                               Ce
+                                                                                                               projet
+                                                                                                               a
+                                                                                                               été
+                                                                                                               développé
+                                                                                                               en&nbsp;<strong>Symfony
+                                                                                                                               1.4</strong>
+                                                                                                               et
+                                                                                                               possède
+                                                                                                               une&nbsp;<em>MarketPlace</em>
+                                                                                                               développé
+                                                                                                               sous&nbsp;<strong>Ruby
+                                                                                                                                 on
+                                                                                                                                 Rails</strong>.
+                                                                                                               J'ai
+                                                                                                               participé
+                                                                                                               aux
+                                                                                                               développements
+                                                                                                               de
+                                                                                                               plugins
+                                                                                                               additionnels
+                                                                                                               de
+                                                                                                               l'application
+                                                                                                               principale,
+                                                                                                               ainsi
+                                                                                                               qu'aux
+                                                                                                               développements
+                                                                                                               de
+                                                                                                               la&nbsp;<em>MarketPlace</em>.
+                        </li>
+                        <li>
+                            <a title="Duterne Racing Parts" href="http://www.duterneracingparts.com/" target="_blank">Duterne
+                                                                                                                      Racing
+                                                                                                                      Parts</a>&nbsp;:
+                                                                                                                               ce
+                                                                                                                               site
+                                                                                                                               de
+                                                                                                                               vente
+                                                                                                                               en
+                                                                                                                               ligne
+                                                                                                                               d'articles
+                                                                                                                               de
+                                                                                                                               moto
+                                                                                                                               a
+                                                                                                                               été
+                                                                                                                               mis
+                                                                                                                               en
+                                                                                                                               place
+                                                                                                                               sous&nbsp;<strong>Magento</strong>.
+                                                                                                                               J'ai
+                                                                                                                               participé
+                                                                                                                               intégralement
+                                                                                                                               à
+                                                                                                                               ce
+                                                                                                                               projet,
+                                                                                                                               constituant
+                                                                                                                               ma
+                                                                                                                               première
+                                                                                                                               boutique
+                                                                                                                               sous&nbsp;<strong>Magento</strong>.
+                        </li>
+                        <li>B.O.S.S. : <em>Boîte à Outils pour Site Salon</em>, il s'agit d'un générateur de
+                            site Internet développé en <strong>Symfony 1.4</strong>&nbsp;pour
+                            <a title="GL Events" href="http://www.gl-events.com" target="_blank">GL Events</a>,
+                            organisateur de congrès et salons. J'ai participé à la conception de cet outil, puis
+                            à son amélioration au fil de ses créations.
+                        </li>
+                    </ul>
+                    <p>&nbsp;</p></div>
+            </div>
+            <div class="skill">
+                <h4>Licence professionnelle Développement Informatique Multi-supports</h4>
+
+                <div class="infos">
+                    Annecy, du 1 septembre 2008 au 31 août 2009
+                    -
+                    <a href="http://www.haute-savoie.cci.fr/se-former/nos-formations/formation-multimedia/licence-dim.html" title="Licence professionnelle Développement Informatique Multi-supports" target="_blank">http://www.haute-savoie.cci.fr/se-former/nos-formations/formation-multimedia/licence-dim.html</a>
+                    <ul class="tags">
+                        <li><a href="recherche.html" title="PHP">PHP</a></li>
+                        <li><a href="recherche.html" title="Symfony">Symfony</a></li>
+                        <li><a href="recherche.html" title="Symfony 1.4">Symfony 1.4</a></li>
+                        <li><a href="recherche.html" title="OVH">OVH</a></li>
+                        <li><a href="recherche.html" title="Capistrano">Capistrano</a></li>
+                        <li><a href="recherche.html" title="Git">Git</a></li>
+                        <li><a href="recherche.html" title="Symfony 2">Symfony 2</a></li>
+                    </ul>
+                </div>
+                <div class="description"><p>La licence professionnelle Développeur Informatique Multi-supports
+                                            propose une formation en alternance sur les <strong>technologies de
+                                                                                                développement
+                                                                                                multi-plateformes</strong>.
+                                            C'est au cours de cette année que j'ai acquis des compétences tels
+                                            que Flex, Java mobile, C++, etc...</p>
+
+                    <p><strong><span style="text-decoration: underline;">Projets réalisés :</span></strong></p>
+                    <ul>
+                        <li><em>Concevoir une application Web</em> : le choix s'est porté sur la conception d'un
+                                                                   site permettant de créer ses propres pizzas
+                                                                   en ligne. Les technologies utilisées sont&nbsp;<strong>Symfony
+                                                                                                                          1.2</strong>
+                                                                   et&nbsp;<strong>jQuery</strong>.
+                        </li>
+                        <li><em>Réaliser une application multi-supports multi-plateformes</em> : au sein d'une
+                                                                                               équipe de 3
+                                                                                               personnes, nous
+                                                                                               avons conçu un
+                                                                                               site rencontre
+                                                                                               basé sur le
+                                                                                               principe du Speed
+                                                                                               Dating. Les
+                                                                                               technologies
+                                                                                               utilisées sont&nbsp;<strong>Symfony
+                                                                                                                           1.2</strong>,&nbsp;<strong>jQuery</strong>
+                                                                                               et&nbsp;<strong>Flex</strong>.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="skill">
+                <h4>PL Com</h4>
+
+                <div class="infos">
+                    Lyon, du 1 janvier 2012 au 30 novembre 2012
+                    - <a href="http://www.pl-com.fr" title="PL Com" target="_blank">http://www.pl-com.fr</a>
+                    <ul class="tags">
+                        <li><a href="recherche.html" title="PHP">PHP</a></li>
+                        <li><a href="recherche.html" title="Symfony">Symfony</a></li>
+                        <li><a href="recherche.html" title="Symfony 1.4">Symfony 1.4</a></li>
+                        <li><a href="recherche.html" title="OVH">OVH</a></li>
+                        <li><a href="recherche.html" title="Capistrano">Capistrano</a></li>
+                        <li><a href="recherche.html" title="Git">Git</a></li>
+                        <li><a href="recherche.html" title="Symfony 2">Symfony 2</a></li>
+                    </ul>
+                </div>
+                <div class="description"><p><a title="PL Com" href="http://www.pl-com.fr" target="_blank">PL
+                                                                                                          Com</a>&nbsp;est
+                                                                                                                 une
+                                                                                                                 société
+                                                                                                                 spécialisée
+                                                                                                                 dans
+                                                                                                                 la
+                                                                                                                 communication,
+                                                                                                                 qui
+                                                                                                                 a
+                                                                                                                 fusionné
+                                                                                                                 avec&nbsp;<a title="EP Factory" href="http://www.epfactory.com" target="_blank">EP
+                                                                                                                                                                                                 Factory</a>.
+                                                                                                                 Au
+                                                                                                                 sein
+                                                                                                                 de
+                                                                                                                 cette
+                                                                                                                 société,
+                                                                                                                 j'ai
+                                                                                                                 été
+                                                                                                                 amené
+                                                                                                                 à
+                                                                                                                 m'auto-former
+                                                                                                                 à
+                        <strong>Symfony 2</strong>, afin de&nbsp;réaliser des bundles génériques.</p>
+
+                    <p>Dans le cadre de la réalisation du projet
+                        <a title="Les Maisons de Katy et Jacques" href="http://www.les-maisons-de-katy-et-jacques.com/" target="_blank">Les
+                                                                                                                                        Maisons
+                                                                                                                                        de
+                                                                                                                                        Katy
+                                                                                                                                        et
+                                                                                                                                        Jacques</a>,
+                       j'ai participé aux développement d'un <strong>CMS</strong> et autres outils<strong>
+                            Symfony 2</strong> tels qu'un <strong>générateur d'administration</strong> (<em>Admin
+                                                                                                            Generator</em>)&nbsp;ou
+                       un <strong>bundle de formulaire</strong>.</p>
+
+                    <p>Par la suite, j'ai contribué aux développements d'un bundle générique&nbsp;<strong>générateur
+                                                                                                          de
+                                                                                                          formulaires</strong>
+                       en ajax à travers les technologies&nbsp;<strong>Symfony 2</strong>
+                       et&nbsp;<strong>jQuery</strong>.</p>
+
+                    <p>Enfin, afin d'optimiser la gestion de projet interne et externe, j'ai participé à
+                       l'amélioration d'un projet&nbsp;<em>Open Source</em> développé sous&nbsp;<strong>Ruby on
+                                                                                                        Rails</strong>&nbsp;:
+                        <a title="Redmine" href="http://www.redmine.org/" target="_blank">Redmine</a>. Hormis
+                       diverses modifications de fonctionnement, j'y ai développé un plugin
+                       de&nbsp;<em>Burndown</em>&nbsp;sous&nbsp;<strong>jQuery</strong>.</p></div>
+            </div>
+            <div class="skill">
+                <h4>Mayflower</h4>
+
+                <div class="infos">
+                    Lyon, du 1 décembre 2012 au 31 mars 2013
+                    - <a href="http://www.agencemayflower.com" title="Mayflower" target="_blank">http://www.agencemayflower.com</a>
+                    <ul class="tags">
+                        <li><a href="recherche.html" title="PHP">PHP</a></li>
+                        <li><a href="recherche.html" title="Symfony">Symfony</a></li>
+                        <li><a href="recherche.html" title="Symfony 1.4">Symfony 1.4</a></li>
+                        <li><a href="recherche.html" title="OVH">OVH</a></li>
+                        <li><a href="recherche.html" title="Capistrano">Capistrano</a></li>
+                        <li><a href="recherche.html" title="Git">Git</a></li>
+                        <li><a href="recherche.html" title="Symfony 2">Symfony 2</a></li>
+                    </ul>
+                </div>
+                <div class="description"><p>
+                        L'<a title="Agence Mayflower" href="http://www.agencemayflower.com/" target="_blank">Agence
+                                                                                                             Mayflower</a>&nbsp;est
+                        la nouvelle marque créée suite à la fusion
+                        d'<a title="EP Factory" href="http://www.epfactory.com" target="_blank">EP Factory</a>&nbsp;et&nbsp;<a title="PL Com" href="http://www.pl-com.fr/" target="_blank">PL
+                                                                                                                                                                                           Com</a>.<br>Au
+                        cours de mon expérience au sein du Mayflower, je suis amené à travailler sur des projets en&nbsp;<strong>Symfony
+                                                                                                                                 1.4</strong>,&nbsp;<strong>Symfony
+                                                                                                                                                            2</strong>&nbsp;ainsi
+                        qu'en&nbsp;<strong>Ruby On Rails</strong>. Parmis ces projets se
+                        retrouvent&nbsp;<a title="Redmine" href="http://www.redmine.org/" target="_blank">Redmine</a>&nbsp;(pour
+                        un usage interne) ainsi que plusieurs sites du
+                        groupe&nbsp;<a title="GL Events" href="http://www.gl-events.com/" target="_blank">GL
+                                                                                                          Events</a>.
+                    </p>
+
+                    <p>Ma motivation m'ayant poussé à explorer&nbsp;<strong>Symfony 2</strong>&nbsp;depuis sa
+                       sortie, je suis très vite devenu&nbsp;<strong>référent technique</strong>&nbsp;en Symfony
+                       au sein
+                       du&nbsp;<a title="Mayflower" href="http://www.agencemayflower.com/" target="_blank"><strong>Mayflower</strong></a>.
+                    </p></div>
+            </div>
+            <div class="skill" style="display: block;">
+                <h4>Ylyad</h4>
+
+                <div class="infos">
+                    Lille, du 1 avril 2013 à aujourd'hui
+                    - <a href="http://www.ylly.fr/" title="Ylly" target="_blank">http://www.ylly.fr/</a>
+                </div>
+                <div class="description"><p><a title="Ylly" href="http://www.ylly.fr/" target="_blank">Ylly</a>
+                        est une agence de création de sites Internet basée sur Paris. Elle réalise principalement
+                        ses projets grâce à <strong>Symfony 2.</strong></p>
+
+                    <p>J'ai pu intégrer son bureau de développement à Lille afin de partager mon expertise et
+                       mon exérience en&nbsp;<strong>Symfony 2</strong>,&nbsp;<strong>jQuery</strong>&nbsp;et&nbsp;<strong>Ruby
+                                                                                                                           On
+                                                                                                                           Rails</strong>.
+                    </p></div>
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock %}

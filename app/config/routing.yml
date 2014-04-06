@@ -48,4 +48,10 @@ fos_js_routing:
 
 my_quote:
     resource: "@MyQuoteBundle/Resources/config/routing.yml"
-    prefix:   /
+
+my_cms:
+    resource: "@MyCmsBundle/Resources/config/routing_admin.yml"
+
+_imagine:
+    resource: .
+    type:     imagine

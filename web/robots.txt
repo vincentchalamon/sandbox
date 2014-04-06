@@ -1,3 +1,7 @@
 User-agent: *
-Disallow: /bundles/
-Disallow: /admin/
+Disallow: /bundles
+Disallow: /admin
+Disallow: /media
+Disallow: /uploads
+Disallow: /css
+Disallow: /js

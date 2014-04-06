@@ -1,0 +1,3 @@
+screenshot:
+    pattern: /screenshot.jpg
+    defaults: { _controller: MyCmsBundle:Screenshot:generate }

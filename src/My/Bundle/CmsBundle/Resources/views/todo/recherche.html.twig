@@ -1,0 +1,33 @@
+{% extends 'MyCmsBundle::base.html.twig' %}
+
+{% block body %}
+    {% spaceless %}
+        <h1>{{ query }}</h1>
+        {% if results|length %}
+            {% for result in results %}
+                <section class="post">
+                    <h2>{{ result.title }}</h2>
+                    <div class="col-md-9">
+                        {{ result.summary|raw }}
+                        <a href="{{ path(result.routeName) }}" title="Lire la suite" class="btn btn-success">Lire la suite</a>
+                    </div>
+                    <div class="col-md-3">
+                        <span>{{ result.startedAt|localizeddate('long', 'none')|capitalize }}</span>
+                        {#<a href="{{ path(result.routeName) }}#commentaires" title="Aucun commentaire">Aucun commentaire</a>#}
+                        {% if result.tags|length %}
+                            <ul class="tags">
+                                {% for i, tag in result.tags %}
+                                    <li>
+                                        <a href="{{ path('cms_search', {'query': tag}) }}" title="{{ tag }}">{{ tag }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </section>
+            {% endfor %}
+        {% else %}
+            <p class="empty">Votre recherche n'a remonté aucun résultat.</p>
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}

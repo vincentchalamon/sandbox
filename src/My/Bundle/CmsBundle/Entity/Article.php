@@ -29,10 +29,24 @@ class Article extends BaseArticle
      */
     protected $categories;
 
+    /**
+     * {@inheritdoc}
+     */
     public function __construct()
     {
         parent::__construct();
         $this->categories = new ArrayCollection();
+    }
+
+    /**
+     * Get screenshot filename
+     *
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
+     * @return string
+     */
+    public function getScreenshot()
+    {
+        return sprintf('/uploads/screenshots/%s.jpg', rtrim(preg_replace('/\-{2,}/i', '-', preg_replace('/[^A-z\d\-_]+/i', '-', $this->getContent('url'))), '-'));
     }
 
     /**

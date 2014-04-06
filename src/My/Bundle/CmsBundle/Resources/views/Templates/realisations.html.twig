@@ -1,0 +1,31 @@
+{% extends 'MyCmsBundle::base.html.twig' %}
+
+{% block current %}realisations{% endblock %}
+
+{% block article %}
+    {% spaceless %}
+        {% for realisation in realisations %}
+            <section class="post">
+                <h2><a href="{{ path(realisation.routeName) }}" title="{{ realisation.title }}">{{ realisation.title }}</a></h2>
+                <div class="col-md-9">
+                    <img src="{{ realisation.screenshot|imagine_filter('list') }}" title="{{ realisation.title }}" alt="{{ realisation.title }}" />
+                    <div class="description">
+                        {{ realisation|content('description')|raw }}
+                        <a href="{{ path(realisation.routeName) }}" title="Lire la suite" class="btn btn-success">Lire la suite</a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    {% if article.tags|length %}
+                        <ul class="tags">
+                            {% for i, tag in article.tags %}
+                                <li>
+                                    <a href="{{ path('cms_search', {'query': tag}) }}" title="{{ tag }}">{{ tag }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </section>
+        {% endfor %}
+    {% endspaceless %}
+{% endblock %}

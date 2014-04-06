@@ -91,9 +91,6 @@
 
         "elasticsearch/binaries": "1.*",
         "jquery/jquery-ui": "1.*",
-        "braincrafted/bootstrap-bundle": "v2.0.0",
-        "leafo/lessphp": "0.4.0",
-        "twbs/bootstrap": "3.0.0",
         "nervo/yuicompressor": "2.4.8",
 
         "friendsofsymfony/user-bundle": "1.3.*",
@@ -104,9 +101,10 @@
         "vince/cms-sonata-admin-bundle": "1.*",
 
         "friendsofsymfony/jsrouting-bundle": "1.5.*",
-        "liip/imagine-bundle": "v0.20.1",
+        "liip/imagine-bundle": "v0.21.1",
         "knplabs/knp-snappy-bundle": "v1.1",
-        "h4cc/wkhtmltopdf-amd64": "0.11.0-RC1"
+        "h4cc/wkhtmltopdf-amd64": "0.11.0-RC1",
+        "h4cc/wkhtmltoimage-amd64": "0.12.0"
     },
     "scripts": {
         "post-install-cmd": [
@@ -115,8 +113,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Vince\\Bundle\\CmsBundle\\Composer\\ScriptHandler::installJavaScripts",
-            "Braincrafted\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::install"
+            "Vince\\Bundle\\CmsBundle\\Composer\\ScriptHandler::installJavaScripts"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
@@ -124,8 +121,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Vince\\Bundle\\CmsBundle\\Composer\\ScriptHandler::installJavaScripts",
-            "Braincrafted\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::install"
+            "Vince\\Bundle\\CmsBundle\\Composer\\ScriptHandler::installJavaScripts"
         ]
     },
     "config": {

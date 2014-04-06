@@ -1,6 +1,6 @@
 My\Bundle\QuoteBundle\Entity\Delivery:
     type: entity
-    table: null
+    table: delivery
     id:
         id:
             type: integer

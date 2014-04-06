@@ -1,6 +1,6 @@
 My\Bundle\QuoteBundle\Entity\Quote:
     type: entity
-    table: null
+    table: quote
     id:
         id:
             type: integer

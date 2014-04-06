@@ -1,0 +1,33 @@
+Vince\Bundle\CmsBundle\Entity\Template:
+    article:
+        title: Article
+        path: MyCmsBundle:Templates:article.html.twig
+        areas:
+            contents:
+                title: Contenu
+                name: contents
+                type: redactor
+                required: true
+    realisation:
+        title: Réalisation
+        path: MyCmsBundle:Templates:realisation.html.twig
+        areas:
+            url:
+                title: Url
+                name: url
+                type: text
+                required: true
+            description:
+                title: Description
+                name: description
+                type: redactor
+                required: true
+    realisations:
+        title: Réalisations
+        path: MyCmsBundle:Templates:realisations.html.twig
+    cv:
+        title: Curriculum Vitae
+        path: MyCmsBundle:Templates:cv.html.twig
+    recherche:
+        title: Recherche
+        path: MyCmsBundle:Templates:search.html.twig
