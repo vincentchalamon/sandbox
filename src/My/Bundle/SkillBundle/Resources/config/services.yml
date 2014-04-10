@@ -1,0 +1,12 @@
+services:
+    my.admin.skill:
+        class: My\Bundle\SkillBundle\Admin\Entity\SkillAdmin
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: skill
+              label_catalogue: SonataAdminBundle
+              label: Compétences
+        arguments: [ ~, My\Bundle\SkillBundle\Entity\Skill, ~ ]
+        calls:
+            - [ setTranslationDomain, [ 'SonataAdminBundle' ] ]

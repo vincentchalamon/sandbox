@@ -68,7 +68,7 @@ class ArticleAdmin extends Admin
      */
     public function getFormTheme()
     {
-        return array_merge(parent::getFormTheme(), array('MyCmsBundle:Admin:form_theme.html.twig'));
+        return array_merge(array('MyCmsBundle:Admin:form_theme.html.twig'), parent::getFormTheme());
     }
 
     /**

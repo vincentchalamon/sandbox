@@ -1,13 +1,15 @@
 {% extends 'VinceTypeBundle:Form:form_div_layout.html.twig' %}
 
-{% block form_root_javascript %}
+{% block form_javascripts %}
     {% spaceless %}
+        {% if form._token is defined %}
+            {% javascripts 'bundles/fosjsrouting/js/router.js'
+                           'js/fos_js_routes.js'
+                           '@MyQuoteBundle/Resources/public/js/*' filter='?yui_js' %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endif %}
         {{ parent() }}
-        {% javascripts 'bundles/fosjsrouting/js/router.js'
-                       'js/fos_js_routes.js'
-                       '@MyQuoteBundle/Resources/public/js/*' filter='?yui_js' %}
-            <script type="text/javascript" src="{{ asset_url }}"></script>
-        {% endjavascripts %}
     {% endspaceless %}
 {% endblock %}
 

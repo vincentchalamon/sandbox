@@ -8,9 +8,11 @@
  */
 namespace My\Bundle\CmsBundle\Listener;
 
+use Doctrine\ORM\EntityRepository;
 use My\Bundle\CmsBundle\Entity\Repository\ArticleRepository;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Vince\Bundle\CmsBundle\Event\CmsEvent;
 use My\Bundle\CmsBundle\Form\Type\ContactType;
 
@@ -27,7 +29,14 @@ class CmsListener
      *
      * @var ArticleRepository
      */
-    protected $repository;
+    protected $articleRepository;
+
+    /**
+     * Skill repository
+     *
+     * @var EntityRepository
+     */
+    protected $skillRepository;
 
     /**
      * Factory
@@ -45,7 +54,19 @@ class CmsListener
      */
     public function setArticleRepository(ArticleRepository $repository)
     {
-        $this->repository = $repository;
+        $this->articleRepository = $repository;
+    }
+
+    /**
+     * Set Skill repository
+     *
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
+     *
+     * @param EntityRepository $repository
+     */
+    public function setSkillRepository(EntityRepository $repository)
+    {
+        $this->skillRepository = $repository;
     }
 
     /**
@@ -69,8 +90,8 @@ class CmsListener
      */
     public function onLoadHomepage(CmsEvent $event)
     {
-        $event->addOption('realisations', $this->repository->findAllPublishedByCategory('Réalisation'));
-        $event->addOption('billets', $this->repository->findAllPublishedByCategory('Accueil', 0, 10));
+        $event->addOption('realisations', $this->articleRepository->findAllPublishedByCategory('Réalisation'));
+        $event->addOption('billets', $this->articleRepository->findAllPublishedByCategory('Accueil', 0, 10));
     }
 
     /**
@@ -82,7 +103,7 @@ class CmsListener
      */
     public function onLoadRealisations(CmsEvent $event)
     {
-        $event->addOption('realisations', $this->repository->findAllPublishedByCategory('Réalisation'));
+        $event->addOption('realisations', $this->articleRepository->findAllPublishedByCategory('Réalisation'));
     }
 
     /**
@@ -94,7 +115,7 @@ class CmsListener
      */
     public function onLoadCV(CmsEvent $event)
     {
-        //$event->addOption('billets', $this->repository->findAllPublishedOrderedLimited(0, 10));
+        $event->addOption('skills', $this->skillRepository->findAll());
     }
 
     /**
@@ -107,7 +128,7 @@ class CmsListener
     public function onLoad(CmsEvent $event)
     {
         $event->addOption('contactForm', $this->factory->create(new ContactType())->createView());
-        //$event->addOption('siblings', $this->repository->findSiblings($event->getArticle()));
+        //$event->addOption('siblings', $this->articleRepository->findSiblings($event->getArticle()));
         $event->addOption('siblings', array());
     }
 

@@ -44,6 +44,7 @@ class AppKernel extends Kernel
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new My\Bundle\QuoteBundle\MyQuoteBundle(),
+            new My\Bundle\SkillBundle\MySkillBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -14,7 +14,6 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
 use My\Bundle\QuoteBundle\Entity\Delivery;
 use My\Bundle\QuoteBundle\Entity\Quote;
-use My\Bundle\QuoteBundle\Form\Transformer\DeliveriesTransformer;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -75,7 +74,7 @@ class QuoteAdmin extends Admin
      */
     public function getFormTheme()
     {
-        return array_merge(parent::getFormTheme(), array('MyQuoteBundle:Form:form_theme.html.twig'));
+        return array_merge(array('MyQuoteBundle:Form:form_theme.html.twig'), parent::getFormTheme());
     }
 
     /**

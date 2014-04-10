@@ -4,40 +4,41 @@
 
 {% block article %}
     {% spaceless %}
-        <h1>{{ article.title }}</h1>
-        <a href="cv.pdf" title="Télécharger la version PDF" class="pdf">Télécharger la version PDF</a>
         <div class="timeline-container">
             <div id="timeline"></div>
         </div>
-        {# todo-vince Manage skills #}
+        <h1>{{ article.title }}</h1>
+        {# todo-vince Manage PDF #}
+        <a href="cv.pdf" title="Télécharger la version PDF" class="pdf">Télécharger la version PDF</a>
         <div class="contents">
-            <div class="skill">
-                <h4>DUT Services et Réseaux de Communication</h4>
+            {% for skill in skills %}
+                <div class="skill">
+                    <h4>{{ skill.title }}</h4>
+                    <div class="infos">
+                        Saint-Raphaël, du 1 septembre 2006 au 31 août 2008
+                        -
+                        <a href="http://serecom.univ-tln.fr" title="DUT Services et Réseaux de Communication" target="_blank">http://serecom.univ-tln.fr</a>
+                        <ul class="tags">
+                            <li><a href="recherche.html" title="PHP">PHP</a></li>
+                            <li><a href="recherche.html" title="Symfony">Symfony</a></li>
+                            <li><a href="recherche.html" title="Symfony 1.4">Symfony 1.4</a></li>
+                            <li><a href="recherche.html" title="OVH">OVH</a></li>
+                            <li><a href="recherche.html" title="Capistrano">Capistrano</a></li>
+                            <li><a href="recherche.html" title="Git">Git</a></li>
+                            <li><a href="recherche.html" title="Symfony 2">Symfony 2</a></li>
+                        </ul>
+                    </div>
+                    <div class="description"><p>Durant ces 2 années de formation, j'ai pu acquérir certaines
+                                                compétences informatiques, telles que la <strong>modélisation et
+                                                                                                 conception
+                                                                                                 3D</strong>, le
+                            <strong>détourage 2D</strong>, l'<strong>intégration HTML/CSS</strong>, mais également les
+                            <strong>bases de la programmation PHP et JavaScript</strong>.</p>
 
-                <div class="infos">
-                    Saint-Raphaël, du 1 septembre 2006 au 31 août 2008
-                    -
-                    <a href="http://serecom.univ-tln.fr" title="DUT Services et Réseaux de Communication" target="_blank">http://serecom.univ-tln.fr</a>
-                    <ul class="tags">
-                        <li><a href="recherche.html" title="PHP">PHP</a></li>
-                        <li><a href="recherche.html" title="Symfony">Symfony</a></li>
-                        <li><a href="recherche.html" title="Symfony 1.4">Symfony 1.4</a></li>
-                        <li><a href="recherche.html" title="OVH">OVH</a></li>
-                        <li><a href="recherche.html" title="Capistrano">Capistrano</a></li>
-                        <li><a href="recherche.html" title="Git">Git</a></li>
-                        <li><a href="recherche.html" title="Symfony 2">Symfony 2</a></li>
-                    </ul>
+                        <p>Au cours de la seconde année, j'ai participé à l'élaboration d'un court-métrage 3D :&nbsp;<strong><a title="Iron Framboise" href="http://www.ironframboise.fr/" target="_blank">http://www.ironframboise.fr</a></strong>.
+                           Celui-ci a été récompensé lors du Festival SRC par le prix spécial du jury.</p></div>
                 </div>
-                <div class="description"><p>Durant ces 2 années de formation, j'ai pu acquérir certaines
-                                            compétences informatiques, telles que la <strong>modélisation et
-                                                                                             conception
-                                                                                             3D</strong>, le
-                        <strong>détourage 2D</strong>, l'<strong>intégration HTML/CSS</strong>, mais également les
-                        <strong>bases de la programmation PHP et JavaScript</strong>.</p>
-
-                    <p>Au cours de la seconde année, j'ai participé à l'élaboration d'un court-métrage 3D :&nbsp;<strong><a title="Iron Framboise" href="http://www.ironframboise.fr/" target="_blank">http://www.ironframboise.fr</a></strong>.
-                       Celui-ci a été récompensé lors du Festival SRC par le prix spécial du jury.</p></div>
-            </div>
+            {% endfor %}
             <div class="skill">
                 <h4>Wacan Communication</h4>
 

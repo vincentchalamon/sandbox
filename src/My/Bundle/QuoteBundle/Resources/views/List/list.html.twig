@@ -28,6 +28,9 @@
         {{ parent() }}
         {% for object in admin.datagrid.results %}
             <div id="sendQuote{{ object.id }}" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-header">
+                    <span class="recipient"><i class="icon-user"></i> {{ object.customer.name }} ({{ object.customer.email }})</span>
+                </div>
                 <div class="modal-body">
                     <form action="{{ path('send_quote', {'numero': object.numero}) }}" method="post">
                         {{ render(path('send_quote', {'numero': object.numero})) }}
@@ -39,10 +42,13 @@
                         {{ object.numero }}.pdf
                     </a>
                     <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
-                    <button class="btn btn-primary">Envoyer</button>
+                    <button class="btn btn-primary ladda-button" data-style="expand-left">Envoyer</button>
                 </div>
             </div>
             <div id="sendBill{{ object.id }}" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-header">
+                    <span class="recipient"><i class="icon-user"></i> {{ object.customer.name }} ({{ object.customer.email }})</span>
+                </div>
                 <div class="modal-body">
                     <form action="{{ path('send_bill', {'numero': object.numero|slice(0, -1)}) }}" method="post">
                         {{ render(path('send_bill', {'numero': object.numero|slice(0, -1)})) }}
@@ -54,7 +60,7 @@
                         {{ object.numero|slice(0, -1) }}.pdf
                     </a>
                     <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
-                    <button class="btn btn-primary">Envoyer</button>
+                    <button class="btn btn-primary ladda-button" data-style="expand-left">Envoyer</button>
                 </div>
             </div>
         {% endfor %}

@@ -1,0 +1,15 @@
+My\Bundle\SkillBundle\Entity\Skill:
+    properties:
+        title:
+            - NotBlank: ~
+        location:
+            - NotBlank: ~
+        startedAt:
+            - NotBlank: ~
+            - Date: ~
+        endedAt:
+            - Date: ~
+        website:
+            - Url: ~
+        description:
+            - NotBlank: ~

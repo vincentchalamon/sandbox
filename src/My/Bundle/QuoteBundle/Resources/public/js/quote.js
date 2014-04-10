@@ -16,6 +16,8 @@ $(function () {
     var length = $('#quote table:first tbody tr').length;
     $('#quote table:first').on('click', '.remove-delivery', function (event) {
         event.preventDefault();
+        $(':input[name*=price]', $(this).closest('tr')).val('');
+        $('tfoot span:last', $(this).closest('table')).trigger('calculate');
         $(this).closest('tr').remove();
     }).on('init', 'tr', function () {
         $('textarea', $(this)).redactor({
@@ -49,19 +51,21 @@ $(function () {
         $('input', $(this)).numeric();
     }).on('click', 'tfoot a', function (event) {
         event.preventDefault();
-        $('<tr></tr>').html($(this).attr('data-prototype').replace(/__name__/g, length))
+        $('<tr>').html($(this).attr('data-prototype').replace(/__name__/g, length))
                       .appendTo($('tbody', $(this).closest('table'))).trigger('init');
         length++;
     }).on('change keyup', ':input[name*=price]', function () {
-        $('span', $(this).closest('td').prev('td')).text($(this).val() ? $(this).val().toString().numberFormat() : '');
+        $('span', $(this).closest('td').prev('td')).text(($(this).val() ? $(this).val() : 0).toString().numberFormat());
+        $('tfoot span:last', $(this).closest('table')).trigger('calculate');
+    }).on('calculate', 'tfoot span:last', function () {
         var total = 0;
-        $(':input[name*=price]', $(this).closest('tbody')).each(function () {
+        $('tbody :input[name*=price]', $(this).closest('table')).each(function () {
             if ($(this).val()) {
                 total += parseFloat($(this).val());
             }
         });
-        $('tfoot span:last', $(this).closest('table')).text(total.toString().numberFormat());
+        $(this).text(total.toString().numberFormat());
     });
     $('#quote table:first tbody tr').trigger('init');
-    $('#quote :input[name*=price]').trigger('change');
+    $('#quote tfoot span:last').trigger('calculate');
 });

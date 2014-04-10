@@ -9,7 +9,14 @@ services:
             - { name: kernel.event_listener, event: kernel.response, method: onLoadResponse }
         calls:
             - [ setArticleRepository, [ @vince.repository.article ] ]
+            - [ setSkillRepository, [ @my.repository.skill ] ]
             - [ setFormFactory, [ @form.factory ] ]
+
+    my.repository.skill:
+        class: Doctrine\ORM\EntityRepository
+        arguments: [ My\Bundle\SkillBundle\Entity\Skill ]
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
 
     my.processor.contact:
         class: My\Bundle\CmsBundle\Processor\ContactProcessor

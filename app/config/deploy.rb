@@ -35,7 +35,12 @@ end
 # Repository
 set :repository,  "ssh://git@bitbucket.org/vincentchalamon/sandbox.git"
 set :scm,         :git
-set :branch,      "blog"
+﻿set :branch do
+    default_tag = `git tag`.split("\n").last
+    tag = Capistrano::CLI.ui.ask "Version to deploy (#{default_tag}): "
+    tag = default_tag if tag.empty?
+    tag
+end
 set :deploy_via,  :remote_cache
 set :keep_releases, 3
 

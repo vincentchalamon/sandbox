@@ -1,4 +1,13 @@
 Vince\Bundle\CmsBundle\Entity\Template:
+    error:
+        title: Erreur
+        path: MyCmsBundle:Templates:error.html.twig
+        areas:
+            contents:
+                title: Contenu
+                name: contents
+                type: redactor
+                required: true
     article:
         title: Article
         path: MyCmsBundle:Templates:article.html.twig
@@ -31,3 +40,25 @@ Vince\Bundle\CmsBundle\Entity\Template:
     recherche:
         title: Recherche
         path: MyCmsBundle:Templates:search.html.twig
+
+My\Bundle\CmsBundle\Entity\Article:
+    error-404:
+        title: Page introuvable
+        slug: error-404
+        summary: La page demandée est introuvable
+        template: error
+    error:
+        title: Une erreur est survenue
+        slug: error
+        summary: Une erreur est survenue dans l'application
+        template: error
+
+My\Bundle\CmsBundle\Entity\Content:
+    error-404:
+        article: error-404
+        area: Vince\Bundle\CmsBundle\Entity\Area-contents
+        contents: La page demandée est introuvable.
+    error:
+        article: error
+        area: Vince\Bundle\CmsBundle\Entity\Area-contents
+        contents: Une erreur est survenue dans l'application.

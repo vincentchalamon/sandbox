@@ -1,0 +1,21 @@
+{% extends 'VinceTypeBundle:Form:form_div_layout.html.twig' %}
+
+{% block form_root_javascript %}
+    {% spaceless %}
+        {{ parent() }}
+        {% javascripts 'http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places'
+                       '@MySkillBundle/Resources/public/js/*' filter='?yui_js' %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endspaceless %}
+{% endblock %}
+
+{% block my_admin_skill_location_text_javascript %}
+    {% spaceless %}
+        <script type="text/javascript">
+            $(function () {
+                $('#{{ id }}').geocomplete();
+            });
+        </script>
+    {% endspaceless %}
+{% endblock %}

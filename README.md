@@ -35,7 +35,7 @@ php app/console fos:elastica:populate
 
 This sandbox has already been capified. Before your first deploy, you must update configuration file:
 ```ruby
-# File: app/config/deploy/dev.rb
+# File: app/config/deploy/prod.rb
 ...
 set :domain, "1.2.3.4"
 set :user,   "user"
@@ -45,9 +45,11 @@ Note : it's not recommended to set user password, prefer use [RSA key](https://h
 
 You can now deploy through the following commands:
 ```shell
-cap dev deploy:setup
-cap dev deploy
+cap prod deploy:setup
+cap prod deploy
 ```
+
+On deploy, capifony will ask you which version you want to deploy, by default the last tag.
 
 ## Developers
 
@@ -118,8 +120,6 @@ parameters:
 
 ## Nice to have
 
-* Image loader: http://luis-almeida.github.io/unveil/
-* Image resizer: LiipImageBundle
 * Cache:
     * Doctrine
     * HTTP
@@ -138,14 +138,9 @@ parameters:
 
 ## Blog
 
-* Submit buttons: http://msurguy.github.io/ladda-bootstrap/
 * Devis
     * Theme
-    X Admin
-    X PDF generator: KnpSnappyBundle
-    X Envoyer par e-mail (mailto)
 * Comments:
     * Front: Disqus
     * Admin: count (link to Disqus)
-* Admin article (realisation) (ajax screen-shot: http://html2canvas.hertzen.com/screenshots.html): KnpSnappyBundle ?
 * Enable CloudFlare
