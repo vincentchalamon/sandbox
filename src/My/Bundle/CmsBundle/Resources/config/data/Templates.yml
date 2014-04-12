@@ -31,12 +31,6 @@ Vince\Bundle\CmsBundle\Entity\Template:
                 name: description
                 type: redactor
                 required: true
-    realisations:
-        title: Réalisations
-        path: MyCmsBundle:Templates:realisations.html.twig
-    cv:
-        title: Curriculum Vitae
-        path: MyCmsBundle:Templates:cv.html.twig
     recherche:
         title: Recherche
         path: MyCmsBundle:Templates:search.html.twig

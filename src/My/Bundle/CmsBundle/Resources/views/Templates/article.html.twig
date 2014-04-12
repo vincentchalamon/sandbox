@@ -5,7 +5,7 @@
         <h1>{{ article.title }}</h1>
         <section class="chapo">
             <span>{{ 'text.publication'|trans({'%date%': article.updatedAt|localizeddate('full', 'none')|capitalize}, 'VinceCms') }}</span>
-            {% if article.tags|length %}
+            {#% if article.tags|length %}
                 <ul class="tags">
                     {% for i, tag in article.tags %}
                         <li>
@@ -13,7 +13,7 @@
                         </li>
                     {% endfor %}
                 </ul>
-            {% endif %}
+            {% endif %#}
         </section>
         <div class="contents">{{ article|content('contents') }}</div>
         <div class="share">

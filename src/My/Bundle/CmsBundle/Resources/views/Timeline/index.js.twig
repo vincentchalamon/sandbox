@@ -1,0 +1,17 @@
+$(function () {
+    $('#timeline').timeline({
+        elements: {{ elements|raw }},
+        onSelect: function(event, index){
+            if (!$('.skill:eq(' + index + '):visible').length) {
+                if ($('.skill:visible').length) {
+                    $('.skill:visible').fadeOut('fast', function () {
+                        $('.skill:eq(' + index + ')').fadeIn('fast');
+                    });
+                } else {
+                    $('.skill:eq(' + index + ')').fadeIn('fast');
+                }
+            }
+        }
+    });
+    $('.jquery-timeline-item').tipsy();
+});

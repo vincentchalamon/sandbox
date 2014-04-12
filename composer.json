@@ -19,25 +19,11 @@
         {
             "type": "package",
             "package": {
-                "name": "jquery/jquery-map",
-                "version": "1.11.0",
-                "dist": {
-                    "url": "http://code.jquery.com/jquery-1.11.0.min.map",
-                    "type": "file"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
                 "name": "jquery/jquery",
                 "version": "1.11.0",
                 "dist": {
                     "url": "http://code.jquery.com/jquery-1.11.0.min.js",
                     "type": "file"
-                },
-                "require": {
-                    "jquery/jquery-map": "1.11.0"
                 }
             }
         },
@@ -112,16 +98,14 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Vince\\Bundle\\CmsBundle\\Composer\\ScriptHandler::installJavaScripts"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Vince\\Bundle\\CmsBundle\\Composer\\ScriptHandler::installJavaScripts"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ]
     },
     "config": {
@@ -135,9 +119,6 @@
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         },
-        "javascripts": [
-            "vendor/jquery/jquery-map/jquery-1.11.0.min.map"
-        ],
         "branch-alias": {
             "dev-master": "1.0-dev"
         }

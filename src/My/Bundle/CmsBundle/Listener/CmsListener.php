@@ -115,7 +115,7 @@ class CmsListener
      */
     public function onLoadCV(CmsEvent $event)
     {
-        $event->addOption('skills', $this->skillRepository->findAll());
+        $event->addOption('skills', $this->skillRepository->findAllOrdered('startedAt', 'ASC'));
     }
 
     /**

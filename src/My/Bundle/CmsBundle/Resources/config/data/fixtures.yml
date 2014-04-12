@@ -21,14 +21,26 @@ My\Bundle\CmsBundle\Entity\Menu:
                         title: Accueil
                         path: MyCmsBundle:Templates:homepage.html.twig
                 startedAt: '2013-01-01'
-#            realisations:
-#                title: Réalisations
-#                article: realisations
-#                startedAt: '2013-01-01'
-#            cv:
-#                title: Curriculum Vitae
-#                article: cv
-#                startedAt: '2013-01-01'
+            realisations:
+                title: Réalisations
+                article:
+                    title: Réalisations
+                    summary: Réalisations
+                    template:
+                        title: Réalisations
+                        path: MyCmsBundle:Templates:realisations.html.twig
+                startedAt: '2013-01-01'
+            cv:
+                title: Curriculum Vitae
+                article:
+                    title: Curriculum Vitae
+                    slug: cv
+                    summary: Curriculum Vitae
+                    url: /curriculum-vitae
+                    template:
+                        title: Curriculum Vitae
+                        path: MyCmsBundle:Templates:cv.html.twig
+                startedAt: '2013-01-01'
             contact:
                 title: Contact
                 url: "#contact"

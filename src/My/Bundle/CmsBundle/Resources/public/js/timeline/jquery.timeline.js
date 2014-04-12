@@ -182,7 +182,7 @@ Date.prototype.eve = function () {
             }
 
             /* Enable last element */
-            $('jquery-timeline-item:last', $self).trigger('click');
+            $('.jquery-timeline-item:last', $self).trigger('click');
 
             /* Fix container position on window resize */
             $(window).resize(function () {

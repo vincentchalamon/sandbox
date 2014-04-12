@@ -35,18 +35,22 @@ php app/console fos:elastica:populate
 
 This sandbox has already been capified. Before your first deploy, you must update configuration file:
 ```ruby
-# File: app/config/deploy/prod.rb
+# File: app/config/deploy/production.rb
 ...
 set :domain, "1.2.3.4"
 set :user,   "user"
 ```
 
-Note : it's not recommended to set user password, prefer use [RSA key](https://help.github.com/articles/generating-ssh-keys).
+Note: it's not recommended to set user password, prefer use [RSA key](https://help.github.com/articles/generating-ssh-keys).
 
-You can now deploy through the following commands:
+You can now configure your server through the following command:
 ```shell
-cap prod deploy:setup
-cap prod deploy
+cap production deploy:setup
+```
+
+Then deploy with the following command:
+```shell
+cap production deploy
 ```
 
 On deploy, capifony will ask you which version you want to deploy, by default the last tag.
@@ -138,9 +142,10 @@ parameters:
 
 ## Blog
 
-* Devis
-    * Theme
+* Themes:
+    * Devis/facture
+    * CV pdf
 * Comments:
     * Front: Disqus
-    * Admin: count (link to Disqus)
+    * Admin: count (link to Disqus ?)
 * Enable CloudFlare

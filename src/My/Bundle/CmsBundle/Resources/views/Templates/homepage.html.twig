@@ -41,7 +41,7 @@
                 <div class="col-md-3">
                     <span>{{ billet.startedAt|localizeddate('full', 'none') }}</span>
                     {#<a href="{{ path(billet.routeName) }}#commentaires" title="Aucun commentaire">Aucun commentaire</a>#}
-                    {% if billet.tags|length %}
+                    {#% if billet.tags|length %}
                         <ul class="tags">
                             {% for i, tag in billet.tags %}
                                 <li>
@@ -49,7 +49,7 @@
                                 </li>
                             {% endfor %}
                         </ul>
-                    {% endif %}
+                    {% endif %#}
                 </div>
             </section>
         {% endfor %}

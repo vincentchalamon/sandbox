@@ -50,7 +50,7 @@ my_quote:
     resource: "@MyQuoteBundle/Resources/config/routing.yml"
 
 my_cms:
-    resource: "@MyCmsBundle/Resources/config/routing_admin.yml"
+    resource: "@MyCmsBundle/Resources/config/routing_blog.yml"
 
 _imagine:
     resource: .

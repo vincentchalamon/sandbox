@@ -1,6 +1,7 @@
 My\Bundle\SkillBundle\Entity\Skill:
     type: entity
     table: skill
+    repositoryClass: My\Bundle\SkillBundle\Entity\Repository\SkillRepository
     id:
         id:
             type: integer

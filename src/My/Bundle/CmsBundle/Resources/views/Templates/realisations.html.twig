@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    {% if article.tags|length %}
+                    {#% if article.tags|length %}
                         <ul class="tags">
                             {% for i, tag in article.tags %}
                                 <li>
@@ -23,7 +23,7 @@
                                 </li>
                             {% endfor %}
                         </ul>
-                    {% endif %}
+                    {% endif %#}
                 </div>
             </section>
         {% endfor %}
