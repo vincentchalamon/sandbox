@@ -45,6 +45,9 @@ class ContactTest extends WebTestCase
         /** @var ConstraintViolationList $errors */
         $errors = $validator->validate($contact);
         $this->assertCount(3, $errors);
+        $this->assertEquals('name', $errors->get(0)->getPropertyPath());
+        $this->assertEquals('email', $errors->get(1)->getPropertyPath());
+        $this->assertEquals('message', $errors->get(2)->getPropertyPath());
 
         $contact->setName('DOE');
         $contact->setEmail('test@gmail.com');

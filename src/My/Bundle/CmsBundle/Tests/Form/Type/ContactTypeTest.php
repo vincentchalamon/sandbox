@@ -27,18 +27,24 @@ class ContactTypeTest extends TypeTestCase
      */
     public function testSubmitContact()
     {
-        $type    = new ContactType();
-        $form    = $this->factory->create($type);
         $contact = new Contact();
         $contact->setName('John DOE');
         $contact->setEmail('test@gmail.com');
-        $contact->setMessage('Hello World !');
+        $contact->setMessage('Hello World!');
+
+        $form = $this->factory->create(new ContactType());
+        $this->assertEquals(null, $form->createView()->vars['value']);
         $form->submit(array(
                 'name' => 'John DOE',
                 'email' => 'test@gmail.com',
-                'message' => 'Hello World !'
-            ));
+                'message' => 'Hello World!'
+            )
+        );
+        $this->assertTrue($form->isSynchronized());
+        $this->assertEquals($contact, $form->getData());
 
+        $form = $this->factory->create(new ContactType(), $contact);
+        $this->assertEquals($contact, $form->createView()->vars['value']);
         $this->assertTrue($form->isSynchronized());
         $this->assertEquals($contact, $form->getData());
     }

@@ -142,6 +142,7 @@ parameters:
 
 ## Blog
 
+* Better favicon
 * Themes:
     * Devis/facture
     * CV pdf
