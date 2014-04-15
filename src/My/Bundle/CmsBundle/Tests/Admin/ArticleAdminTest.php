@@ -29,7 +29,7 @@ class ArticleAdminTest extends WebTestCase
         $this->loadFixtures(array('My\Bundle\CmsBundle\Tests\Fixtures\TestData'));
 
         // Must be authenticated
-        $client = $this->makeClient(false);
+        $client = $this->makeClient(false, array('HTTP_HOST' => 'blog.local'));
         $client->request('GET', '/admin/articles/list');
         $this->assertTrue($client->getResponse()->isRedirect($this->getUrl('sonata_user_admin_security_login', array(), true)));
 
@@ -69,11 +69,11 @@ class ArticleAdminTest extends WebTestCase
     }
 
     /**
-     * Test delete Article
+     * Test delete
      *
      * @author Vincent Chalamon <vincentchalamon@gmail.com>
      */
-    public function testDeleteArticle()
+    public function testDelete()
     {
         $this->loadFixtures(array('My\Bundle\CmsBundle\Tests\Fixtures\TestData'));
 
@@ -81,7 +81,7 @@ class ArticleAdminTest extends WebTestCase
         $client = $this->makeClient(array(
                 'username' => 'admin',
                 'password' => '4dm1n'
-            )
+            ), array('HTTP_HOST' => 'blog.local')
         );
         $crawler = $client->request('GET', '/admin/articles/list');
 
@@ -100,17 +100,17 @@ class ArticleAdminTest extends WebTestCase
         $crawler = $client->followRedirect();
 
         // Check updated list
-        $this->assertRegExp('/^http\:\/\/blog.local\/admin\/articles\/list/', $client->getRequest()->getUri());
+        $this->assertRegExp('/^http\:\/\/blog\.local\/admin\/articles\/list/', $client->getRequest()->getUri());
         $this->assertCount(1, $crawler->filter('.alert-success'));
         $this->assertCount(1, $crawler->filter('table.table.table-bordered.table-striped tbody tr'), $client->getResponse()->getContent());
     }
 
     /**
-     * Test publish Article
+     * Test publish
      *
      * @author Vincent Chalamon <vincentchalamon@gmail.com>
      */
-    public function testPublishArticle()
+    public function testPublish()
     {
         $this->loadFixtures(array('My\Bundle\CmsBundle\Tests\Fixtures\TestData'));
 
@@ -118,7 +118,7 @@ class ArticleAdminTest extends WebTestCase
         $client = $this->makeClient(array(
                 'username' => 'admin',
                 'password' => '4dm1n'
-            )
+            ), array('HTTP_HOST' => 'blog.local')
         );
         $crawler = $client->request('GET', '/admin/articles/list');
 
@@ -140,7 +140,7 @@ class ArticleAdminTest extends WebTestCase
         $crawler = $client->followRedirect();
 
         // Check updated list
-        $this->assertRegExp('/^http\:\/\/blog.local\/admin\/articles\/list/', $client->getRequest()->getUri());
+        $this->assertRegExp('/^http\:\/\/blog\.local\/admin\/articles\/list/', $client->getRequest()->getUri());
         $this->assertCount(1, $crawler->filter('.alert-success'));
         $this->assertCount(2, $crawler->filter('table.table.table-bordered.table-striped tbody tr'), $client->getResponse()->getContent());
         $this->assertEquals('Publié', trim($crawler->filter('table.table.table-bordered.table-striped tbody tr')->first()->filter('td')->eq(3)->text()));
@@ -148,11 +148,11 @@ class ArticleAdminTest extends WebTestCase
     }
 
     /**
-     * Test unpublish Article
+     * Test unpublish
      *
      * @author Vincent Chalamon <vincentchalamon@gmail.com>
      */
-    public function testUnpublishArticle()
+    public function testUnpublish()
     {
         $this->loadFixtures(array('My\Bundle\CmsBundle\Tests\Fixtures\TestData'));
 
@@ -160,7 +160,7 @@ class ArticleAdminTest extends WebTestCase
         $client = $this->makeClient(array(
                 'username' => 'admin',
                 'password' => '4dm1n'
-            )
+            ), array('HTTP_HOST' => 'blog.local')
         );
         $crawler = $client->request('GET', '/admin/articles/list');
 
@@ -182,7 +182,7 @@ class ArticleAdminTest extends WebTestCase
         $crawler = $client->followRedirect();
 
         // Check updated list
-        $this->assertRegExp('/^http\:\/\/blog.local\/admin\/articles\/list/', $client->getRequest()->getUri());
+        $this->assertRegExp('/^http\:\/\/blog\.local\/admin\/articles\/list/', $client->getRequest()->getUri());
         $this->assertCount(1, $crawler->filter('.alert-success'));
         $this->assertCount(2, $crawler->filter('table.table.table-bordered.table-striped tbody tr'), $client->getResponse()->getContent());
         $this->assertEquals('Publié', trim($crawler->filter('table.table.table-bordered.table-striped tbody tr')->first()->filter('td')->eq(3)->text()));
@@ -217,11 +217,11 @@ class ArticleAdminTest extends WebTestCase
     }
 
     /**
-     * Test Article form
+     * Test form
      *
      * @author Vincent Chalamon <vincentchalamon@gmail.com>
      */
-    public function testArticleForm()
+    public function testForm()
     {
         $this->loadFixtures(array(
                 'Vince\Bundle\CmsBundle\DataFixtures\ORM\CmsData',
@@ -233,7 +233,7 @@ class ArticleAdminTest extends WebTestCase
         $client = $this->makeClient(array(
                 'username' => 'admin',
                 'password' => '4dm1n'
-            )
+            ), array('HTTP_HOST' => 'blog.local')
         );
         $crawler = $client->request('GET', '/admin/articles/create');
         $this->isSuccessful($client->getResponse());
@@ -296,13 +296,5 @@ class ArticleAdminTest extends WebTestCase
         }
 
         return $return;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function makeClient($authentication = false, array $params = array())
-    {
-        return parent::makeClient($authentication, array_merge($params, array('HTTP_HOST' => 'blog.local')));
     }
 }
