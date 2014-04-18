@@ -11,7 +11,8 @@ install:
 
 before_script:
     - composer install --dev --prefer-dist --no-interaction
-    - mysql -e 'create database sandbox_test;'
+    - php app/console doctrine:database:create --env=test
+    - php app/console doctrine:schema:update --force --env=test
 
 script: phpunit -c app --coverage-text
 
