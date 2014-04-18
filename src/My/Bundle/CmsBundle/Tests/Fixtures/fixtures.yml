@@ -6,16 +6,14 @@ My\Bundle\UserBundle\Entity\User:
             admin:
                 name: Admin
                 roles: [ROLE_ADMIN]
-        email: vincentchalamon@gmail.com
+        email: myself@sandbox.com
         gender: m
-        firstname: Vincent
-        lastname: CHALAMON
-        phone: +33 (0)7 51 69 06 46
-        address: 38 rue Jules Guesde
+        firstname: John
+        lastname: DOE
+        phone: +33 (0)1 23 45 67 89
+        address: Hello World!
         zipcode: 59000
         city: Lille
-        siret: 79512765300017
-        ape: 6201Z
 
 My\Bundle\CmsBundle\Entity\Article:
     homepage:

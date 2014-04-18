@@ -1,7 +1,6 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: "@VinceCmsBundle/Resources/config/config.yml" }
 
 parameters:
     router.request_context.host: blog.local
@@ -25,7 +24,7 @@ framework:
     session:
         handler_id: session.handler.native_file
         save_path: "%kernel.root_dir%/sessions"
-        name: SF2VINCECMS
+        name: SANDBOX
     fragments:       ~
     http_method_override: true
 
@@ -33,12 +32,14 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    globals:
+        ga_tracking:  %ga_tracking%
 
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [MyCmsBundle, MyQuoteBundle, MySkillBundle]
+    bundles:        [MyCmsBundle]
     filters:
         cssrewrite: ~
         yui_css:
@@ -96,8 +97,8 @@ fos_user:
     group:
         group_class: My\Bundle\UserBundle\Entity\Group
     from_email:
-        address: no-reply@vincent-chalamon.fr
-        sender_name: Blog
+        address: no-reply@sandbox.fr
+        sender_name: Sandbox
 
 # Admin
 sonata_block:
@@ -145,7 +146,7 @@ sonata_doctrine_orm_admin:
                 html: VinceCmsSonataAdminBundle:Show:html.html.twig
 
 sonata_admin:
-    title: Vince CMS
+    title: Sandbox
     templates:
         layout: VinceCmsSonataAdminBundle::standard_layout.html.twig
     options:
@@ -154,7 +155,6 @@ sonata_admin:
 vince_cms:
     article:
         class: My\Bundle\CmsBundle\Entity\Article
-        repository: My\Bundle\CmsBundle\Entity\Repository\ArticleRepository
     block:
         class: My\Bundle\CmsBundle\Entity\Block
     articleMeta:
@@ -163,41 +163,3 @@ vince_cms:
         class: My\Bundle\CmsBundle\Entity\Content
     menu:
         class: My\Bundle\CmsBundle\Entity\Menu
-
-vince_cms_sonata_admin:
-    article: My\Bundle\CmsBundle\Admin\Entity\ArticleAdmin
-
-fos_js_routing:
-    routes_to_expose: [redactor-upload]
-
-knp_snappy:
-    pdf:
-        enabled: true
-        binary:  %kernel.root_dir%/../bin/wkhtmltopdf
-        options: []
-    image:
-        enabled: true
-        binary:  %kernel.root_dir%/../bin/wkhtmltoimage
-        options:
-            disable_smart_width: true
-            width: 1024
-            crop_h: 1024
-            quality: 100
-
-liip_imagine:
-    filter_sets:
-        slider:
-            filters:
-                thumbnail:
-                    size: [558, 300]
-                    mode: outbound
-        show:
-            filters:
-                thumbnail:
-                    size: [580, 580]
-                    mode: outbound
-        list:
-            filters:
-                thumbnail:
-                    size: [413, 296]
-                    mode: outbound

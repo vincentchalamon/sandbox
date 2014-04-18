@@ -6,13 +6,7 @@ My\Bundle\UserBundle\Entity\User:
             admin:
                 name: Admin
                 roles: [ROLE_ADMIN]
-        email: vincentchalamon@gmail.com
+        email: admin@menicon.fr
         gender: m
-        firstname: Vincent
-        lastname: CHALAMON
-        phone: +33 (0)7 51 69 06 46
-        address: 38 rue Jules Guesde
-        zipcode: 59000
-        city: Lille
-        siret: 79512765300017
-        ape: 6201Z
+        firstname: Damien
+        lastname: PARTENSKY

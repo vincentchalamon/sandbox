@@ -18,16 +18,6 @@ My\Bundle\UserBundle\Entity\User:
             type: string
             length: 255
             nullable: true
-        siret:
-            type: string
-            length: 15
-            nullable: true
-            unique: true
-        ape:
-            type: string
-            length: 5
-            nullable: true
-            unique: true
     manyToMany:
         groups:
             targetEntity: My\Bundle\UserBundle\Entity\Group

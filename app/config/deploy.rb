@@ -33,7 +33,7 @@ task :upload_parameters do
 end
 
 # Repository
-set :repository,  "ssh://git@bitbucket.org/vincentchalamon/sandbox.git"
+set :repository,  "git@github.com:myself/myrepository.git"
 set :scm,         :git
 ﻿set :branch do
     default_tag = `git tag`.split("\n").last
@@ -58,7 +58,6 @@ set :interactive_mode, false
 after "deploy", "deploy:cleanup" # Clean old releases at the end
 after "deploy:setup", "upload_parameters" # Upload parameters file on setup server
 before "symfony:cache:warmup", "database:dump:remote" # Backup remote database to local
-before "symfony:cache:warmup", "symfony:doctrine:migrations:migrate" # Execute migrations
-#before "symfony:cache:warmup", "symfony:doctrine:schema:update" # Update remote database
+#before "symfony:cache:warmup", "symfony:doctrine:migrations:migrate" # Execute migrations
 
 logger.level = Logger::MAX_LEVEL

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the MyCms bundle.
+ * This file is part of the Sandbox package.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -65,7 +65,6 @@ class ArticleAdminTest extends WebTestCase
         $this->assertRegExp('/^\/admin\/articles\/\d+\/edit$/', $row->filter('td')->eq(1)->filter('a')->attr('href'));
         $this->assertEquals('/', trim($row->filter('td')->eq(2)->text()));
         $this->assertEquals('Publié', trim($row->filter('td')->eq(3)->text()));
-        $this->assertEmpty(trim($row->filter('td')->eq(4)->text()));
     }
 
     /**
@@ -252,7 +251,7 @@ class ArticleAdminTest extends WebTestCase
         $this->assertEquals('fr', $seo->filter('input[id$=_language]')->attr('value'));
         $this->assertEquals('article', $seo->filter('input[id$=type]')->attr('value'));
         $this->assertEquals('summary', $seo->filter('input[id$=card]')->attr('value'));
-        $this->assertEquals('Vincent CHALAMON', $seo->filter('input[id$=_author]')->attr('value'));
+        $this->assertEquals('John DOE', $seo->filter('input[id$=_author]')->attr('value'));
         $this->assertEmpty($seo->filter('input[id$=creator]')->attr('value'));
 
         // Test displayed error messages

@@ -44,16 +44,6 @@ class User extends BaseUser
     protected $city;
 
     /**
-     * @var string
-     */
-    protected $siret;
-
-    /**
-     * @var string
-     */
-    protected $ape;
-
-    /**
      * {@inheritdoc}
      */
     public function __construct()
@@ -132,65 +122,5 @@ class User extends BaseUser
     public function getZipcode()
     {
         return $this->zipcode;
-    }
-
-    /**
-     * Set Ape
-     *
-     * @param string $ape
-     *
-     * @return User
-     */
-    public function setApe($ape)
-    {
-        $this->ape = $ape;
-
-        return $this;
-    }
-
-    /**
-     * Get Ape
-     *
-     * @return string
-     */
-    public function getApe()
-    {
-        return $this->ape;
-    }
-
-    /**
-     * Set Siret
-     *
-     * @param string $siret
-     *
-     * @return User
-     */
-    public function setSiret($siret)
-    {
-        $this->siret = $siret;
-
-        return $this;
-    }
-
-    /**
-     * Get Siret
-     *
-     * @return string
-     */
-    public function getSiret()
-    {
-        return $this->siret;
-    }
-
-    /**
-     * Get formatted siret
-     *
-     * @author Vincent Chalamon <vincentchalamon@gmail.com>
-     *
-     * @return string
-     */
-    public function getFormattedSiret()
-    {
-        return preg_replace('/^(\d{3})(\d{3})(\d{3})(\d{5})$/i', '$1 $2 $3 $4', $this->siret);
     }
 }

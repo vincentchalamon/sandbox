@@ -16,25 +16,10 @@ monolog:
         main:
             type: fingers_crossed
             action_level: error
-            handler: grouped
-        grouped:
-            type: group
-            members: [streamed, swiftylly, swiftantargaz]
+            handler: streamed
         streamed:
             type: stream
             path: "%kernel.logs_dir%/%kernel.environment%.log"
-            level: debug
-        swiftylly:
-            type: swift_mailer
-            from_email: no-reply@antargaz.fr
-            to_email: vincent@ylly.fr
-            subject: "Oops : une erreur est survenue dans l'application Antargaz"
-            level: debug
-        swiftantargaz:
-            type: swift_mailer
-            from_email: no-reply@antargaz.fr
-            to_email: julien.pranville@antargaz.fr
-            subject: "Oops : une erreur est survenue dans l'application Antargaz"
             level: debug
         login:
             type: stream

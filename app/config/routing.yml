@@ -41,17 +41,3 @@ _sonata_admin:
     resource: .
     type:     sonata_admin
     prefix:   /admin
-
-# Blog
-fos_js_routing:
-    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
-
-my_quote:
-    resource: "@MyQuoteBundle/Resources/config/routing.yml"
-
-my_cms:
-    resource: "@MyCmsBundle/Resources/config/routing_blog.yml"
-
-_imagine:
-    resource: .
-    type:     imagine

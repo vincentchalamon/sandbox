@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the MyCms bundle.
+ * This file is part of the Sandbox package.
  *
  * (c) Vincent Chalamon <vincentchalamon@gmail.com>
  *
@@ -56,9 +56,9 @@ class ContactProcessor extends Processor
         if ($form->isValid()) {
             $message = \Swift_Message::newInstance()
                         ->setSubject('Demande de contact')
-                        ->setFrom(array('noreply@vincent-chalamon.fr' => 'Blog'))
+                        ->setFrom(array('no-reply@sandbox.fr' => 'Sandbox'))
                         ->setReplyTo($form->get('email')->getData(), $form->get('name')->getData())
-                        ->setTo(array('vincentchalamon@gmail.com' => 'Vincent CHALAMON'))
+                        ->setTo(array('myself@example.com'))
                         ->setContentType('text/html')
             ;
             $body = $this->templating->render('MyCmsBundle::mail.html.twig', array(

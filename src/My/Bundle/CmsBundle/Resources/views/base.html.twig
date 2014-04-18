@@ -15,9 +15,6 @@
         {% block stylesheets %}
             {% spaceless %}
                 {% stylesheets 'bundles/mycms/css/bootstrap.min.css'
-                               'bundles/mycms/js/totop/ui.totop.css'
-                               'bundles/mycms/js/dist/ladda-themeless.min.css'
-                               'bundles/mycms/css/animate.min.css'
                                'bundles/mycms/css/app.css'
                                filter="?yui_css,cssrewrite" %}
                     <link type="text/css" rel="stylesheet" media="screen" href="{{ asset_url }}" />
@@ -31,21 +28,23 @@
             <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
         <![endif]-->
-        <script type="text/javascript">
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-            ga('create', 'UA-36266524-1', 'vincent-chalamon.fr');
-            ga('send', 'pageview');
-        </script>
+        {% if ga_tracking is defined and ga_tracking is not empty %}
+            <script>
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', '{{ ga_tracking }}']);
+                _gaq.push(['_trackPageview']);
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+                {% block ga %}{% endblock %}
+            </script>
+        {% endif %}
     </head>
     <body>
         <header class="container">
-            <a href="{{ path('homepage') }}" title="Vincent Chalamon" class="sitename col-md-5">
-                Vincent Chalamon
-                <span>Développeur multimédia</span>
-            </a>
+            <a href="{{ path('homepage') }}" title="Sandbox" class="sitename col-md-5">Sandbox</a>
             <nav class="col-md-7 navbar navbar-default" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -61,61 +60,20 @@
             </nav>
         </header>
 
-        {% block body %}{% endblock %}
-
         <section id="article" class="container">
-            <article class="col-md-8">
+            <article>
                 {% block article %}{% endblock %}
             </article>
-
-            <aside class="col-md-4">
-                {# todo-vince Manage search form (GET ? POST ? CSRF ?) #}
-                {#<form role="search">
-                    <div class="input-group">
-                        <input class="form-control" type="search" name="query" title="Rechercher" alt="Rechercher" placeholder="Saisissez votre recherche..." />
-                        <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                        </div>
-                    </div>
-                </form>#}
-                {% block aside %}{% endblock %}
-                <h2>Suivez-moi</h2>
-                {{ render_menu('follow', 'MyCmsBundle:Component:Menu/follow.html.twig') }}
-                <h2>A propos</h2>
-                {{ render_menu('about', 'MyCmsBundle:Component:Menu/about.html.twig') }}
-            </aside>
         </section>
 
         <footer>
-            <p>Copyright &copy; {{ 'now'|date('Y') }} Vincent Chalamon • Tous droits réservés</p>
-            <p>Graphisme : <a href="http://www.oxymore-creation.com" target="_blank" title="Oxymore Création">Oxymore Création</a></p>
+            <p>Copyright &copy; {{ 'now'|date('Y') }} Sandbox • {{ 'All rights reserved'|trans({}, 'MyCms') }}</p>
         </footer>
 
-        <div class="fork">
-            <a href="https://github.com/vincentchalamon" title="Fork me on GitHub !" target="_blank">Fork me on GitHub !</a>
-        </div>
-
-        <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="Contact" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h2 class="modal-title"><span class="glyphicon glyphicon-envelope"></span>Contact</h2>
-                    </div>
-                    {% include 'MyCmsBundle:Component:contact.html.twig' with {'form': contactForm} %}
-                </div>
-            </div>
-        </div>
         {% block javascripts %}
             {% spaceless %}
                 {% javascripts '@jquery'
                                '@MyCmsBundle/Resources/public/js/bootstrap.min.js'
-                               '@MyCmsBundle/Resources/public/js/totop/jquery.easing.1.3.js'
-                               '@MyCmsBundle/Resources/public/js/totop/jquery.ui.totop.min.js'
-                               '@MyCmsBundle/Resources/public/js/jquery.emoticons.js'
-                               '@MyCmsBundle/Resources/public/js/dist/spin.min.js'
-                               '@MyCmsBundle/Resources/public/js/dist/ladda.min.js'
-                               '@MyCmsBundle/Resources/public/js/jquery.lazyload.min.js'
                                '@MyCmsBundle/Resources/public/js/jquery.autosize.min.js'
                                '@MyCmsBundle/Resources/public/js/app.js'
                                filter="?yui_js" %}

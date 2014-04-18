@@ -1,17 +1,4 @@
 services:
-    my.cms.load.listener:
-        class: My\Bundle\CmsBundle\Listener\CmsListener
-        tags:
-            - { name: kernel.event_listener, event: vince.cms.load, method: onLoad }
-            - { name: kernel.event_listener, event: vince.cms.homepage.load, method: onLoadHomepage }
-            - { name: kernel.event_listener, event: vince.cms.cv.load, method: onLoadCV }
-            - { name: kernel.event_listener, event: vince.cms.realisations.load, method: onLoadRealisations }
-            - { name: kernel.event_listener, event: kernel.response, method: onLoadResponse }
-        calls:
-            - [ setArticleRepository, [ @vince.repository.article ] ]
-            - [ setSkillRepository, [ @my.repository.skill ] ]
-            - [ setFormFactory, [ @form.factory ] ]
-
     my.processor.contact:
         class: My\Bundle\CmsBundle\Processor\ContactProcessor
         parent: vince.processor

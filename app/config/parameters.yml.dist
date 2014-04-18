@@ -3,7 +3,7 @@ parameters:
     database_driver:        pdo_mysql
     database_host:          127.0.0.1
     database_port:          ~
-    database_name:          blog
+    database_name:          sandbox
     database_user:          root
     database_password:      ~
     database_path:          ~
@@ -11,7 +11,7 @@ parameters:
     database_test_driver:   pdo_mysql
     database_test_host:     localhost
     database_test_port:     null
-    database_test_name:     blog-test
+    database_test_name:     sandbox-test
     database_test_user:     root
     database_test_password: null
     database_test_path:     ~
@@ -23,3 +23,4 @@ parameters:
 
     locale:                 fr
     secret:                 a149c3le9kw08w804gs0wkc4c8ogk4k
+    ga_tracking:            ~

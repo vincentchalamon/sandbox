@@ -26,7 +26,7 @@ php app/console doctrine:schema:update --force
 php app/console doctrine:fixtures:load -n
 ```
 
-You sould index your articles to elasticsearch:
+If you have installed elasticsearch, you sould index your articles to it:
 ```shell
 php app/console fos:elastica:populate
 ```
@@ -70,12 +70,9 @@ parameters:
 * Search:
     * Configuration
     * Pager: KnpPaginatorBundle + ajax
-* Google Analytics tracking code
 * Themes
     * Default theme
-    * Admin theme
     * Documentation theme: http://mojotech.github.io/stickymojo/
-    * Mail theme: http://templates.indextwo.com/e-mail/elegance/
 * Check each theme responsive (mail include)
 * Documentation:
     * Install sandbox:
@@ -134,19 +131,7 @@ parameters:
 
 * jQuery Chosen (http://davidwalsh.name/jquery-chosen)
 * Switch (http://www.inserthtml.com/demos/css/radio-buttons/)
-* Autosize (https://github.com/jackmoore/autosize)
 * FileUpload (http://blueimp.github.io/jQuery-File-Upload/basic.html)
 * Dropzone (http://www.dropzonejs.com/)
 * Autocomplete (http://jqueryui.com/autocomplete/)
 * jQuery image cropper (http://tympanus.net/codrops/2009/11/04/jquery-image-cropper-with-uploader-v1-1/)
-
-## Blog
-
-* Better favicon
-* Themes:
-    * Devis/facture
-    * CV pdf
-* Comments:
-    * Front: Disqus
-    * Admin: count (link to Disqus ?)
-* Enable CloudFlare

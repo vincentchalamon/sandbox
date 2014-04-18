@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the MyCms bundle.
+ * This file is part of the Sandbox package.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -26,11 +26,6 @@ class OverrideServiceCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        // Override Article admin
-        $definition = $container->getDefinition('vince.admin.article');
-        $definition->addMethodCall('setWebDir', array($container->getParameter('kernel.web_dir')));
-        $definition->addMethodCall('setSnappy', array($container->getDefinition('knp_snappy.image')));
-
         // Add validations
         if (!$container->hasParameter('validator.mapping.loader.yaml_files_loader.mapping_files')) {
             return;

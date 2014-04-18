@@ -8,32 +8,6 @@ Vince\Bundle\CmsBundle\Entity\Template:
                 name: contents
                 type: redactor
                 required: true
-    article:
-        title: Article
-        path: MyCmsBundle:Templates:article.html.twig
-        areas:
-            contents:
-                title: Contenu
-                name: contents
-                type: redactor
-                required: true
-    realisation:
-        title: Réalisation
-        path: MyCmsBundle:Templates:realisation.html.twig
-        areas:
-            url:
-                title: Url
-                name: url
-                type: text
-                required: true
-            description:
-                title: Description
-                name: description
-                type: redactor
-                required: true
-    recherche:
-        title: Recherche
-        path: MyCmsBundle:Templates:search.html.twig
 
 My\Bundle\CmsBundle\Entity\Article:
     error-404:

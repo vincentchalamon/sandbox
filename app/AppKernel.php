@@ -19,7 +19,6 @@ class AppKernel extends Kernel
 
             // CMS
             new JMS\SerializerBundle\JMSSerializerBundle(),
-            new FOS\ElasticaBundle\FOSElasticaBundle(),
             new Vince\Bundle\CmsBundle\VinceCmsBundle(),
             new My\Bundle\CmsBundle\MyCmsBundle(),
 
@@ -37,14 +36,7 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new Vince\Bundle\CmsSonataAdminBundle\VinceCmsSonataAdminBundle(),
-            new Vince\Bundle\TypeBundle\VinceTypeBundle(),
-
-            // Blog
-            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-            new Liip\ImagineBundle\LiipImagineBundle(),
-            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
-            new My\Bundle\QuoteBundle\MyQuoteBundle(),
-            new My\Bundle\SkillBundle\MySkillBundle(),
+            new Vince\Bundle\TypeBundle\VinceTypeBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

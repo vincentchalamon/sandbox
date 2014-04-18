@@ -1,7 +1,6 @@
 My\Bundle\CmsBundle\Entity\Article:
     type: entity
     table: article
-    repositoryClass: My\Bundle\CmsBundle\Entity\Repository\ArticleRepository
     id:
         id:
             type: integer
@@ -21,18 +20,3 @@ My\Bundle\CmsBundle\Entity\Article:
             targetEntity: My\Bundle\CmsBundle\Entity\Menu
             mappedBy: article
             cascade: [persist]
-    manyToMany:
-        categories:
-            targetEntity: My\Bundle\CmsBundle\Entity\Category
-            cascade: [persist]
-            joinTable:
-                name: article_category
-                joinColumns:
-                    article_id:
-                        referencedColumnName: id
-                inverseJoinColumns:
-                    category_id:
-                        referencedColumnName: id
-            uniqueConstraints:
-                event_user_idx:
-                    columns: article_id, category_id
