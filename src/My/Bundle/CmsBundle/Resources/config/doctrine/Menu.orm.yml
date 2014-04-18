@@ -4,6 +4,7 @@ My\Bundle\CmsBundle\Entity\Menu:
     id:
         id:
             type: integer
+            id: true
             generator:
                 strategy: AUTO
     manyToOne:

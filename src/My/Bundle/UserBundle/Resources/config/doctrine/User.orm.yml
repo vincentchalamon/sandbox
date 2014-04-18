@@ -4,6 +4,7 @@ My\Bundle\UserBundle\Entity\User:
     id:
         id:
             type: integer
+            id: true
             generator:
                 strategy: AUTO
     fields:
