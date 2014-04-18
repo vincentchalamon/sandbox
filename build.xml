@@ -36,6 +36,17 @@
         <mkdir dir="${builddir}/coverage"/>
         <mkdir dir="${builddir}/logs"/>
         <mkdir dir="${builddir}/pdepend"/>
+        <exec executable="php">
+            <arg path="app/console"/>
+            <arg value="doctrine:database:create"/>
+            <arg value="--env=test"/>
+        </exec>
+        <exec executable="php">
+            <arg path="app/console"/>
+            <arg value="doctrine:schema:update"/>
+            <arg value="--force"/>
+            <arg value="--env=test"/>
+        </exec>
     </target>
 
     <target name="lint" description="Perform syntax check of sourcecode files">
