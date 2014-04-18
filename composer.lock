@@ -3313,12 +3313,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vincentchalamon/VinceCmsBundle.git",
-                "reference": "4db8502bfabd0925317ae0b21fe059d0b957d428"
+                "reference": "53d85690d3726dabbc7df2d78ccbcb5c80eaa4a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsBundle/zipball/4db8502bfabd0925317ae0b21fe059d0b957d428",
-                "reference": "4db8502bfabd0925317ae0b21fe059d0b957d428",
+                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsBundle/zipball/53d85690d3726dabbc7df2d78ccbcb5c80eaa4a3",
+                "reference": "53d85690d3726dabbc7df2d78ccbcb5c80eaa4a3",
                 "shasum": ""
             },
             "require": {
@@ -3365,7 +3365,7 @@
                 "Vince",
                 "cms"
             ],
-            "time": "2014-03-21 11:23:58"
+            "time": "2014-04-18 08:38:14"
         },
         {
             "name": "vince/cms-sonata-admin-bundle",
@@ -3374,12 +3374,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vincentchalamon/VinceCmsSonataAdminBundle.git",
-                "reference": "2b5b29e5a05e86649cdf2a3921ccebd7003f3449"
+                "reference": "4ec766ea539a119751b87b825742caa70b20928b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsSonataAdminBundle/zipball/2b5b29e5a05e86649cdf2a3921ccebd7003f3449",
-                "reference": "2b5b29e5a05e86649cdf2a3921ccebd7003f3449",
+                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsSonataAdminBundle/zipball/4ec766ea539a119751b87b825742caa70b20928b",
+                "reference": "4ec766ea539a119751b87b825742caa70b20928b",
                 "shasum": ""
             },
             "require": {
@@ -3410,7 +3410,7 @@
                 "Vince",
                 "cms"
             ],
-            "time": "2014-03-21 11:24:07"
+            "time": "2014-04-18 07:30:34"
         },
         {
             "name": "vince/type-bundle",
@@ -3419,18 +3419,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vincentchalamon/VinceTypeBundle.git",
-                "reference": "f2c2139f735276bbb12f5d525d3eef506dc3efb5"
+                "reference": "cebbdf351dece7ec0fddd4e6d071e46c29a45eb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vincentchalamon/VinceTypeBundle/zipball/f2c2139f735276bbb12f5d525d3eef506dc3efb5",
-                "reference": "f2c2139f735276bbb12f5d525d3eef506dc3efb5",
+                "url": "https://api.github.com/repos/vincentchalamon/VinceTypeBundle/zipball/cebbdf351dece7ec0fddd4e6d071e46c29a45eb1",
+                "reference": "cebbdf351dece7ec0fddd4e6d071e46c29a45eb1",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
                 "sensio/framework-extra-bundle": "~2.3",
                 "symfony/symfony": ">=2.3"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "dev-master"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -3454,7 +3457,7 @@
             "keywords": [
                 "form"
             ],
-            "time": "2014-03-21 09:41:17"
+            "time": "2014-04-18 07:30:59"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
