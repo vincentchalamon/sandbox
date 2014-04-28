@@ -24,11 +24,11 @@ monolog:
         login:
             type: stream
             path: "%kernel.logs_dir%/auth.log"
-            level: debug
+            level: error
             channels: security
         firephp:
             type:  firephp
-            level: debug
+            level: error
         chromephp:
             type:  chromephp
-            level: debug
+            level: error
