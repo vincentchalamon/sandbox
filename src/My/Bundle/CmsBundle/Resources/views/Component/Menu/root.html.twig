@@ -1,9 +1,8 @@
 <ul class="nav navbar-nav">
     {% for child in menu.children if child.isPublished %}
         <li{% if current and child.slug == current %} class="active"{% endif %}>
-            <a href="{% if child.isUrl %}{{ child.url }}{% else %}{{ path(child.article.routeName) }}{% endif %}"
-               title="{{ child }}"{% if child.isUrl %} target="{{ child.target }}"{% endif %}
-               {% if child.url == '#contact' %} data-toggle="modal"{% endif %}>
+            <a href="{% if child.isUrl %}{{ child.url }}" target="{{ child.target }}{% else %}{{ path(child.article.routeName) }}{% endif %}"
+               title="{{ child }}">
                 {% if child.isImage %}
                     <img src="{{ asset(child.path) }}" alt="{{ child }}" title="{{ child }}" />
                 {% else %}
