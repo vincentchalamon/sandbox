@@ -11,8 +11,6 @@
 namespace My\Bundle\CmsBundle\Entity;
 
 use Vince\Bundle\CmsBundle\Entity\Article as BaseArticle;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * This entity provides features to manage an Article.

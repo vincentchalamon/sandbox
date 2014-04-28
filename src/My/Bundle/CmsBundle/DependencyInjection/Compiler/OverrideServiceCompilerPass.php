@@ -30,8 +30,10 @@ class OverrideServiceCompilerPass implements CompilerPassInterface
         if (!$container->hasParameter('validator.mapping.loader.yaml_files_loader.mapping_files')) {
             return;
         }
-        $files = $container->getParameter('validator.mapping.loader.yaml_files_loader.mapping_files');
-        foreach (Finder::create()->files()->in(__DIR__.'/../../Resources/config/validation') as $file) {
+        $files   = $container->getParameter('validator.mapping.loader.yaml_files_loader.mapping_files');
+        $r       = new \ReflectionObject($this);
+        $dirname = str_replace('\\', '/', dirname($r->getFileName())).'/../../Resources/config/validation';
+        foreach (Finder::create()->files()->in($dirname) as $file) {
             /** @var \SplFileInfo $file */
             $files[] = $file->__toString();
             $container->addResource(new FileResource($file->__toString()));
