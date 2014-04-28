@@ -24,11 +24,11 @@ doctrine:
         user:     %database_test_user%
         password: %database_test_password%
 
-liip_functional_test: ~
-
 security:
     firewalls:
         main:
             http_basic: ~
         admin:
             http_basic: ~
+
+liip_functional_test: ~
