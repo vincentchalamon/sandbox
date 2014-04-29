@@ -6,7 +6,7 @@ My\Bundle\UserBundle\Entity\User:
             admin:
                 name: Admin
                 roles: [ROLE_ADMIN]
-        email: admin@menicon.fr
+        email: admin@sandbox.fr
         gender: m
-        firstname: Damien
-        lastname: PARTENSKY
+        firstname: John
+        lastname: DOE

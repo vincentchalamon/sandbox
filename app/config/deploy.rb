@@ -1,5 +1,5 @@
 # Server
-set :application, "Menicon"
+set :application, "Sandbox"
 set :use_sudo,    false
 set :webserver_user, "www-data"
 set :use_set_permissions, true
@@ -33,7 +33,7 @@ task :upload_parameters do
 end
 
 # Repository
-set :repository,  "git@github.com:ylly/sf_menicon.git"
+set :repository,  "git@github.com:vincentchalamon/sandbox.git"
 set :scm,         :git
 set :branch do
     default_tag = `git tag`.split("\n").last
@@ -55,15 +55,30 @@ set :shared_files, ["#{app_path}/config/parameters.yml"]
 set :shared_children, ["#{app_path}/logs", "#{app_path}/sessions", "#{web_path}/uploads", "vendor"]
 set :interactive_mode, false
 
+﻿namespace :symfony do
+    namespace :doctrine do
+        namespace :migrations do
+            desc "Migrate down database"
+            task :down do
+                default_version = `ls app/DoctrineMigrations`.split("\n")[-2].gsub("Version", "").gsub(".php", "")
+                version = Capistrano::CLI.ui.ask "Target version (#{default_version}): "
+                version = default_version if version.empty?
+                run "cd #{current_release} && php app/console doctrine:migrations:migrate #{version}"
+            end
+        end
+    end
+end
+
 logger.level = Logger::MAX_LEVEL
+
+# Backup remote database to local
+#before "symfony:doctrine:migrations:down", "database:dump:remote"
+#before "symfony:doctrine:migrations:migrate", "database:dump:remote"
+#before "deploy:rollback:revision", "database:dump:remote"
+
+# Migrate remote database
+#before "symfony:cache:warmup", "symfony:doctrine:migrations:migrate"
 
 # Run deployment
 after "deploy", "deploy:cleanup" # Clean old releases at the end
 after "deploy:setup", "upload_parameters" # Upload parameters file on setup server
-
-# Backup remote database to local
-before "symfony:doctrine:migrations:migrate", "database:dump:remote"
-before "deploy:rollback:revision", "database:dump:remote"
-
-# Migrate remote database
-before "symfony:cache:warmup", "symfony:doctrine:migrations:migrate"
