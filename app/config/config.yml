@@ -19,6 +19,7 @@ framework:
     templating:
         engines: ['twig']
         #assets_version: SomeVersionScheme
+        assets_base_urls: http://blog.local/
     default_locale:  "%locale%"
     trusted_proxies: ~
     session:
