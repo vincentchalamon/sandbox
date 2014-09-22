@@ -27,7 +27,7 @@ php app/console doctrine:schema:update --force
 php app/console doctrine:fixtures:load -n
 ```
 
-If you have installed elasticsearch, you sould index your articles to it:
+You sould index your articles to elasticsearch:
 ```shell
 php app/console fos:elastica:populate
 ```
@@ -66,73 +66,73 @@ parameters:
     mailer_host: localhost:1025
 ```
 
-## Todo
+## Sandbox
 
-* Search:
-    * Configuration
-    * Pager: KnpPaginatorBundle + ajax
-* Themes
-    * Default theme
-    * Documentation theme: http://mojotech.github.io/stickymojo/
-* Check each theme responsive (mail include)
-* Documentation:
-    * Install sandbox:
-        * Download with composer
-        * Launch elastic search
-        * Create database
-        * Load fixtures
-    * Configure sandbox:
-        * Contact: no-reply, recipient
-        * Analytics:
-            * Sitemap url
-            * Configure Google Analytics tracking code
-* How to:
-    * For developers:
-        * Catch mail on dev (Mailcatcher)
-        * Deploy
-        * Override entities
-        * Override controller
-        * Inject object in template (loader)
-        * Create forms:
-            * Types (link to VinceTypeBundle documentation)
-            * Processor
-        * Create fixtures:
-            * Fixtures in YAML
-            * Create Template & Areas (link to designer documentation)
-            * Create Article:
-                * Link Contents through Template areas
-                * Add Metas
-            * Menus:
-                * Article or url
-                * Tree (parent, children)
-        * PHPDoc
-    * For designers:
-        * Create theme
-            * Create template:
-                * Create twig file
-                * Register template & its areas in fixtures (link to developer documentation)
-            * Assetic:
-                * Bootstrap installed with Less
-                * YUI compressor installer
-            * Twig helpers:
-                * render_menu
-                * render_block
-                * render_metas
-                * localizeddate
+[ ] Cache doctrine
+[ ] Cache HTTP
+[ ] Cache APC
+[ ] Initialization command
+[ ] Search pager: KnpPaginatorBundle
+[ ] Search ajax pager
+[ ] Search configuration (elasticSearch)
+[ ] Google Analytics tracking code (bundle configuration)
+[ ] Default theme
+[ ] Documentation theme (http://mojotech.github.io/stickymojo/)
+[ ] Mail theme (http://templates.indextwo.com/e-mail/elegance/)
+[ ] Check each theme responsive (default, sonata, documentation, mail)
+[ ] Write documentation
 
-## Nice to have
+## Documentation
 
-* Cache:
-    * Doctrine
-    * HTTP
-    * APC
-* Newsletter
+### Installation
 
-## Type
+[ ] Download with composer
+[ ] Launch elastic search daemon
+[ ] Create database
+[ ] Load fixtures
 
-* jQuery Chosen (http://davidwalsh.name/jquery-chosen)
-* Switch (http://www.inserthtml.com/demos/css/radio-buttons/)
-* FileUpload (http://blueimp.github.io/jQuery-File-Upload/basic.html)
-* Dropzone (http://www.dropzonejs.com/)
-* Autocomplete (http://jqueryui.com/autocomplete/)
-* jQuery image cropper (http://tympanus.net/codrops/2009/11/04/jquery-image-cropper-with-uploader-v1-1/)
+### Configuration
+
+[ ] Contact: no-reply, recipient
+[ ] Sitemap url
+[ ] Google Analytics tracking code
+
+## How to
+
+### Developers
+
+[ ] Catch mail on dev (Mailcatcher)
+[ ] Deploy (capifony)
+[ ] Override entities
+[ ] Override controller
+[ ] Inject object in template (loaders)
+[ ] Create forms (processors)
+[ ] Create Template & Area fixtures
+[ ] Create Article fixtures (Contents, Metas)
+[ ] Create Menu fixtures (Article or url, parent, children)
+[ ] Create Block fixtures
+[ ] PHPDoc
+
+### Designers
+
+* Create template:
+    * Create twig file
+    * Register template & its areas in fixtures (link to developer documentation)
+* Assetic:
+    * Bootstrap installed with Less
+    * YUI compressor installer
+* Twig helpers:
+    * render_menu
+    * render_block
+    * render_metas
+    * localizeddate
+
+## Form types
+
+[ ] jQuery Chosen (http://davidwalsh.name/jquery-chosen)
+[ ] Switch (http://www.inserthtml.com/demos/css/radio-buttons/)
+[ ] Autosize (https://github.com/jackmoore/autosize)
+[ ] FileUpload (http://blueimp.github.io/jQuery-File-Upload/basic.html)
+[ ] Dropzone (http://www.dropzonejs.com/)
+[ ] Autocomplete (http://jqueryui.com/autocomplete/)
+[ ] jQuery image cropper (http://tympanus.net/codrops/2009/11/04/jquery-image-cropper-with-uploader-v1-1/)
