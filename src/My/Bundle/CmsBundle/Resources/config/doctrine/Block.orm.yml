@@ -4,6 +4,5 @@ My\Bundle\CmsBundle\Entity\Block:
     id:
         id:
             type: integer
-            id: true
             generator:
                 strategy: AUTO

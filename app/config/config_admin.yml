@@ -1,0 +1,82 @@
+imports:
+    - { resource: config.yml }
+    - { resource: security_admin.yml }
+
+parameters:
+    router.request_context.host: admin.sandbox.fr
+
+framework:
+    router:
+        resource: "%kernel.root_dir%/config/routing_admin.yml"
+
+sonata_user:
+    impersonating:
+        route: homepage
+    admin:
+        user:
+            class:       My\Bundle\UserBundle\Admin\Entity\UserAdmin
+            controller:  SonataAdminBundle:CRUD
+            translation: SonataUserBundle
+        group:
+            class:       My\Bundle\UserBundle\Admin\Entity\GroupAdmin
+            controller:  SonataAdminBundle:CRUD
+            translation: SonataUserBundle
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:  [admin]
+        sonata.block.service.text: ~
+        sonata.block.service.action: ~
+        sonata.block.service.rss: ~
+        sonata.admin.block.search_result: ~
+
+sonata_admin:
+    title: Administration
+    title_logo: /bundles/mycms/images/icon.png
+    options:
+        confirm_exit: false
+    templates:
+        layout: MyUserBundle::standard_layout.html.twig
+    dashboard:
+        groups:
+            cms:
+                icon: <i class="fa fa-pencil"></i>
+            sonata_user:
+                icon: <i class="fa fa-group"></i>
+            quote:
+                icon: <i class="fa fa-euro"></i>
+            skill:
+                icon: <i class="fa fa-trophy"></i>
+
+monolog:
+    handlers:
+        main:
+            type: fingers_crossed
+            action_level: error
+            handler: grouped
+        grouped:
+            type: group
+            members: [streamed, swift]
+        streamed:
+            type: stream
+            path: "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug
+        swift:
+            type: swift_mailer
+            from_email: %email_no_reply%
+            to_email: %email_contact%
+            subject: "Oops : une erreur est survenue"
+            level: debug
+        login:
+            type: stream
+            path: "%kernel.logs_dir%/auth.log"
+            level: info
+            channels: security
+        firephp:
+            type:  firephp
+            level: info
+        chromephp:
+            type:  chromephp
+            level: info

@@ -15,7 +15,6 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
             // CMS
@@ -26,19 +25,20 @@ class AppKernel extends Kernel
             // User
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
-            new My\Bundle\UserBundle\MyUserBundle(),
-
-            // Admin
-            new Sonata\CoreBundle\SonataCoreBundle(),
-            new Sonata\BlockBundle\SonataBlockBundle(),
-            new Sonata\jQueryBundle\SonatajQueryBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
-            new Sonata\AdminBundle\SonataAdminBundle(),
-            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
-            new Vince\Bundle\CmsSonataAdminBundle\VinceCmsSonataAdminBundle(),
-            new Vince\Bundle\TypeBundle\VinceTypeBundle()
+            new My\Bundle\UserBundle\MyUserBundle(),
         );
+
+        // Admin
+        if ($this->getEnvironment() == 'admin') {
+            $bundles[] = new Sonata\CoreBundle\SonataCoreBundle();
+            $bundles[] = new Sonata\BlockBundle\SonataBlockBundle();
+            $bundles[] = new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle();
+            $bundles[] = new Sonata\AdminBundle\SonataAdminBundle();
+            $bundles[] = new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle();
+            $bundles[] = new Vince\Bundle\CmsSonataAdminBundle\VinceCmsSonataAdminBundle();
+            $bundles[] = new Vince\Bundle\TypeBundle\VinceTypeBundle();
+        }
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <title>Sandbox</title>
-    <subtitle>{{ 'Last tickets'|trans({}, 'MyCms') }}</subtitle>
+    <title>{{ sitename }}</title>
     <link href="{{ url('homepage') }}" />
     {% if articles|length %}
         <updated>{{ articles[0].updatedAt.format(constant('DATE_ATOM')) }}</updated>
     {% endif %}
     <author>
         <name>John DOE</name>
-        <email>contact@sandbox.fr</email>
+        <email>{{ email_contact }}</email>
     </author>
     {% for article in articles %}
         <entry>

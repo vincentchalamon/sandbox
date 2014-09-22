@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ 'title_user_authentication'|trans({}, 'SonataUserBundle') }}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block stylesheets %}
+            {% spaceless %}
+                {% stylesheets  'bundles/mycms/css/bootstrap.min.css'
+                                'bundles/mycms/css/ladda-themeless.min.css'
+                                'bundles/myuser/css/login.css'
+                                filter="?yui_css,cssrewrite" %}
+                    <link type="text/css" rel="stylesheet" media="screen" href="{{ asset_url }}" />
+                {% endstylesheets %}
+            {% endspaceless %}
+        {% endblock %}
+        <!--[if lt IE 9]>
+        {% javascripts  '@MyCmsBundle/Resources/public/js/html5shiv.js'
+                        '@MyCmsBundle/Resources/public/js/respond.min.js'
+                        filter="?yui_js" %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <![endif]-->
+    </head>
+    <body>
+        {% block article %}
+            {% spaceless %}
+                <div class="container">
+                    {% if 'single_text' == admin_pool.getOption('title_mode') or 'both' == admin_pool.getOption('title_mode') %}
+                        {% if 'single_image' == admin_pool.getOption('title_mode') or 'both' == admin_pool.getOption('title_mode') %}
+                            <h1 style="background-image:url('{{ asset(admin_pool.titlelogo) }}')" class="image">{{ admin_pool.title }}</h1>
+                        {% else %}
+                            <h1>{{ admin_pool.title }}</h1>
+                        {% endif %}
+                    {% endif %}
+                    <form action="{{ path("sonata_user_admin_security_check") }}" method="post" role="form">
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        {% if error %}
+                            <div class="alert alert-danger alert-error">{{ error|trans({}, 'FOSUserBundle') }}</div>
+                        {% endif %}
+                        <input type="text" class="form-control" id="username" name="_username" placeholder="{{ 'security.login.username'|trans({}, 'SonataAdminBundle') }}" value="{{ last_username }}" required autofocus />
+                        <input type="password" class="form-control" id="password" name="_password" placeholder="{{ 'security.login.password'|trans({}, 'SonataAdminBundle') }}" required />
+                        <div class="footer">
+                            <label for="remember_me">
+                                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                                {{ 'security.login.remember_me'|trans({}, 'SonataAdminBundle') }}
+                            </label>
+                            <button name="_submit" id="_submit" type="submit" class="btn btn-primary btn-block ladda-button" data-style="expand-right" data-size="l">
+                                {{ 'security.login.submit'|trans({}, 'SonataAdminBundle') }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            {% endspaceless %}
+        {% endblock %}
+        {% block javascripts %}
+            {% spaceless %}
+                {% javascripts  '@jquery'
+                                '@MyCmsBundle/Resources/public/js/bootstrap.min.js'
+                                '@MyCmsBundle/Resources/public/js/spin.min.js'
+                                '@MyCmsBundle/Resources/public/js/ladda.min.js'
+                                '@MyUserBundle/Resources/public/js/login.js'
+                                filter="?yui_js" %}
+                    <script type="text/javascript" src="{{ asset_url }}"></script>
+                {% endjavascripts %}
+            {% endspaceless %}
+        {% endblock %}
+    </body>
+</html>

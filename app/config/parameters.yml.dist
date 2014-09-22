@@ -9,7 +9,7 @@ parameters:
     database_path:          ~
 
     database_test_driver:   pdo_mysql
-    database_test_host:     127.0.0.1
+    database_test_host:     localhost
     database_test_port:     null
     database_test_name:     sandbox_test
     database_test_user:     root
@@ -17,10 +17,14 @@ parameters:
     database_test_path:     ~
 
     mailer_transport:       smtp
-    mailer_host:            127.0.0.1
+    mailer_host:            localhost
     mailer_user:            ~
     mailer_password:        ~
 
     locale:                 fr
     secret:                 a149c3le9kw08w804gs0wkc4c8ogk4k
     ga_tracking:            ~
+    domain:                 www.sandbox.fr
+    sitename:               Sandbox
+    email_no_reply:         no-reply@sandbox.fr
+    email_contact:          contact@sandbox.fr

@@ -1,10 +1,18 @@
 services:
+    my.cms.load.listener:
+        class: My\Bundle\CmsBundle\Listener\CmsListener
+        tags:
+            - { name: kernel.event_listener, event: vince.cms.contact.load, method: onLoadContact }
+        calls:
+            - [ setFormFactory, [ @form.factory ] ]
+
     my.processor.contact:
         class: My\Bundle\CmsBundle\Processor\ContactProcessor
         parent: vince.processor
         tags:
             -  { name: vince.processor, alias: contact }
         calls:
-            - [ setMailer, [ @mailer ] ]
+            - [ setMailer, [ @mailer, %email_no_reply%, %email_contact%, %sitename% ] ]
             - [ setTemplating, [ @templating ] ]
             - [ setSession, [ @session ] ]
+            - [ setWebDir, [ %kernel.web_dir% ] ]

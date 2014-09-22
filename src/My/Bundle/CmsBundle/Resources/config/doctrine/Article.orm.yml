@@ -4,7 +4,6 @@ My\Bundle\CmsBundle\Entity\Article:
     id:
         id:
             type: integer
-            id: true
             generator:
                 strategy: AUTO
     oneToMany:

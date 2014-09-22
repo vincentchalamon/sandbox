@@ -53,6 +53,18 @@ class User extends BaseUser
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function setEmail($email)
+    {
+        $this->setUsername($email);
+        $this->setUsernameCanonical($email);
+        $this->setEmailCanonical($email);
+
+        return parent::setEmail($email);
+    }
+
+    /**
      * Set Address
      *
      * @param string $address

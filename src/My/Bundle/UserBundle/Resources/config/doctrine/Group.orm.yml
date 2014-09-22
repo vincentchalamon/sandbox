@@ -4,6 +4,5 @@ My\Bundle\UserBundle\Entity\Group:
     id:
         id:
             type: integer
-            id: true
             generator:
                 strategy: AUTO

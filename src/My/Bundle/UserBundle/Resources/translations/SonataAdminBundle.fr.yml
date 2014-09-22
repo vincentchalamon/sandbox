@@ -3,3 +3,10 @@ sonata_user: Utilisateurs
 User List: Utilisateurs
 Password: Mot de passe
 Confirmation: Confirmation
+Back to front: Retour au site
+security:
+    login:
+        username: Adresse e-mail
+        password: Mot de passe
+        remember_me: Se souvenir de moi
+        submit: Connexion

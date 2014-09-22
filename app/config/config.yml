@@ -1,9 +1,8 @@
 imports:
     - { resource: parameters.yml }
-    - { resource: security.yml }
 
 parameters:
-    router.request_context.host: blog.local
+    router.request_context.host: %domain%
     router.request_context.scheme: http
 
 framework:
@@ -19,7 +18,7 @@ framework:
     templating:
         engines: ['twig']
         #assets_version: SomeVersionScheme
-        assets_base_urls: http://blog.local/
+        assets_base_urls: %router.request_context.scheme%://%router.request_context.host%
     default_locale:  "%locale%"
     trusted_proxies: ~
     session:
@@ -34,13 +33,16 @@ twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
     globals:
-        ga_tracking:  %ga_tracking%
+        ga_tracking:    %ga_tracking%
+        sitename:       %sitename%
+        email_no_reply: %email_no_reply%
+        email_contact:  %email_contact%
 
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [MyCmsBundle]
+    bundles:        [MyCmsBundle, SonataUserBundle]
     filters:
         cssrewrite: ~
         yui_css:
@@ -50,12 +52,7 @@ assetic:
     assets:
         jquery:
             inputs:
-                - %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.11.0.min.js
-            output: js/jquery.min.js
-        jquery_ui:
-            inputs:
-                - %kernel.root_dir%/../vendor/jquery/jquery-ui/jquery-ui.min.js
-            output: js/jquery-ui.min.js
+                - %kernel.root_dir%/../vendor/sonata-project/admin-bundle/Resources/public/vendor/jquery/dist/jquery.min.js
 
 # Doctrine Configuration
 doctrine:
@@ -67,20 +64,11 @@ doctrine:
         user:     %database_user%
         password: %database_password%
         charset:  UTF8
-        # if using pdo_sqlite as your database driver, add the path in parameters.yml
-        # e.g. database_path: %kernel.root_dir%/data/data.db3
-        # path:     %database_path%
         types:
             json: Sonata\Doctrine\Types\JsonType
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
-        mappings:
-            tree:
-                type: annotation
-                alias: Gedmo
-                prefix: Gedmo\Tree\Entity
-                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -91,6 +79,13 @@ swiftmailer:
     spool:     { type: memory }
 
 # User
+sonata_user:
+    security_acl: false
+    manager_type: orm
+    class:
+        user: My\Bundle\UserBundle\Entity\User
+        group: My\Bundle\UserBundle\Entity\Group
+
 fos_user:
     db_driver: orm
     firewall_name: main
@@ -98,61 +93,10 @@ fos_user:
     group:
         group_class: My\Bundle\UserBundle\Entity\Group
     from_email:
-        address: no-reply@sandbox.fr
-        sender_name: Sandbox
+        address: %email_no_reply%
+        sender_name: %sitename%
 
-# Admin
-sonata_block:
-    default_contexts: [cms]
-    blocks:
-        sonata.admin.block.admin_list:
-            contexts:  [admin]
-        sonata.block.service.text: ~
-        sonata.block.service.action: ~
-        sonata.block.service.rss: ~
-        sonata.admin.block.search_result: ~
-
-sonata_user:
-    security_acl: false
-    manager_type: orm
-    impersonating:
-        route: homepage
-    class:
-        user: My\Bundle\UserBundle\Entity\User
-        group: My\Bundle\UserBundle\Entity\Group
-    admin:
-        user:
-            class:       My\Bundle\UserBundle\Admin\Entity\UserAdmin
-            controller:  SonataAdminBundle:CRUD
-            translation: SonataUserBundle
-        group:
-            class:       My\Bundle\UserBundle\Admin\Entity\GroupAdmin
-            controller:  SonataAdminBundle:CRUD
-            translation: SonataUserBundle
-
-sonata_doctrine_orm_admin:
-    templates:
-        types:
-            list:
-                localizeddate: VinceCmsSonataAdminBundle:List:localizeddate.html.twig
-                array: VinceCmsSonataAdminBundle:List:array.html.twig
-                url: VinceCmsSonataAdminBundle:List:url.html.twig
-                html: VinceCmsSonataAdminBundle:List:html.html.twig
-                field_tree_up: VinceCmsSonataAdminBundle:List:field_tree_up.html.twig
-                field_tree_down: VinceCmsSonataAdminBundle:List:field_tree_down.html.twig
-            show:
-                localizeddate: VinceCmsSonataAdminBundle:Show:localizeddate.html.twig
-                array: VinceCmsSonataAdminBundle:Show:array.html.twig
-                url: VinceCmsSonataAdminBundle:Show:url.html.twig
-                html: VinceCmsSonataAdminBundle:Show:html.html.twig
-
-sonata_admin:
-    title: Sandbox
-    templates:
-        layout: VinceCmsSonataAdminBundle::standard_layout.html.twig
-    options:
-        confirm_exit: false
-
+# CMS
 vince_cms:
     article:
         class: My\Bundle\CmsBundle\Entity\Article

@@ -1,30 +1,114 @@
-My\Bundle\CmsBundle\Entity\Block:
-    test:
-        name: test
-        title: Test
-        contents: Hello World!
-        type: text
+Vince\Bundle\CmsBundle\Entity\Template:
+    error:
+        title: Erreur
+        path: MyCmsBundle:Templates:error.html.twig
+        areas:
+            error-contents:
+                title: Contents
+                name: contents
+                type: redactor
+                required: true
+    article:
+        title: Article
+        path: MyCmsBundle:Templates:article.html.twig
+        areas:
+            article-contents:
+                title: Contents
+                name: contents
+                type: redactor
+                required: true
+    aside:
+        title: 1 column left
+        path: MyCmsBundle:Templates:asideLeft.html.twig
+        areas:
+            aside-contents:
+                title: Contents
+                name: contents
+                type: redactor
+                required: true
+            aside-aside:
+                title: Column
+                name: aside
+                type: redactor
+                required: true
+
+My\Bundle\CmsBundle\Entity\Article:
+    error-404:
+        title: Page introuvable
+        slug: error-404
+        summary: <p>La page demandée est introuvable.</p>
+        template: error
+        metas:
+            error-404-robots:
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
+                contents: noindex,nofollow
+            error-404-title:
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-title
+                contents: La page demandée est introuvable
+        contents:
+            error-404-contents:
+                area: Vince\Bundle\CmsBundle\Entity\Area-error-contents
+                contents: La page demandée est introuvable.
+    error:
+        title: Une erreur est survenue
+        slug: error
+        summary: <p>Une erreur est survenue dans l'application.</p>
+        template: error
+        metas:
+            error-robots:
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
+                contents: noindex,nofollow
+            error-title:
+                meta: Vince\Bundle\CmsBundle\Entity\Meta-title
+                contents: Une erreur est survenue
+        contents:
+            error-contents:
+                area: Vince\Bundle\CmsBundle\Entity\Area-error-contents
+                contents: Une erreur est survenue dans l'application.
 
 My\Bundle\CmsBundle\Entity\Menu:
     root:
         title: Menu principal
         slug: root
-        startedAt: '2013-01-01'
+        startedAt: '2014-01-01'
         children:
             homepage:
                 title: Accueil
+                startedAt: '2014-01-01'
                 article:
                     title: Accueil
                     slug: homepage
                     summary: Accueil
                     url: /
+                    template: article
+                    metas:
+                        homepage-robots:
+                            meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
+                            contents: index,follow
+                        homepage-title:
+                            meta: Vince\Bundle\CmsBundle\Entity\Meta-title
+                            contents: Sandbox
+            contact:
+                title: Contact
+                startedAt: '2014-01-01'
+                article:
+                    title: Contact
+                    summary: Contact
+                    startedAt: '2014-01-01'
                     template:
-                        title: Article
-                        path: MyCmsBundle:Templates:article.html.twig
-                        areas:
-                            contents:
-                                title: Contenu
-                                name: contents
-                                type: redactor
-                                required: true
-                startedAt: '2013-01-01'
+                        title: Contact
+                        path: MyCmsBundle:Templates:contact.html.twig
+                    metas:
+                        cv-robots:
+                            meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
+                            contents: index,follow
+                        cv-title:
+                            meta: Vince\Bundle\CmsBundle\Entity\Meta-title
+                            contents: Contact
+            rss:
+                title: RSS
+                url: /rss.atom
+                image: true
+                path: /uploads/rss.png
+                target: _blank
+                startedAt: '2014-01-01'

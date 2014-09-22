@@ -1,0 +1,4 @@
+form:
+    label_address: Adresse
+    label_zipcode: Code postal
+    label_city: Ville

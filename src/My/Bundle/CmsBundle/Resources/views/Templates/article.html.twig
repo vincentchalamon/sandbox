@@ -2,10 +2,12 @@
 
 {% block article %}
     {% spaceless %}
-        <h1>{{ article.title }}</h1>
-        <section class="chapo">
-            <span>{{ 'text.publication'|trans({'%date%': article.updatedAt|localizeddate('full', 'none')|capitalize}, 'VinceCms') }}</span>
-        </section>
-        <div class="contents">{{ article|content('contents') }}</div>
+        <article>
+            <h1>{{ article.title }}</h1>
+            <section class="chapo">
+                <span>{{ 'Published on %date%'|trans({'%date%': article.updatedAt|localizeddate('full', 'none')|capitalize}, 'VinceCms') }}</span>
+            </section>
+            <div class="contents">{{ article|content('contents') }}</div>
+        </article>
     {% endspaceless %}
 {% endblock %}

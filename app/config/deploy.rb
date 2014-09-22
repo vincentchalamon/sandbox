@@ -8,8 +8,8 @@ default_run_options[:pty] = true
 ssh_options[:port] = 22
 
 # Multistaging
-set :stages,      %w(production)
-set :default_stage, "production"
+set :stages,      %w(development production)
+set :default_stage, "development"
 set :stage_dir,   "app/config/deploy"
 require 'capistrano/ext/multistage'
 set :stage_files, false
@@ -37,6 +37,7 @@ set :repository,  "git@github.com:vincentchalamon/sandbox.git"
 set :scm,         :git
 set :branch do
     default_tag = `git tag`.split("\n").last
+    default_tag = 'master' if default_tag.nil?
     tag = Capistrano::CLI.ui.ask "Version to deploy (#{default_tag}): "
     tag = default_tag if tag.empty?
     tag
@@ -47,15 +48,16 @@ set :keep_releases, 3
 # Symfony
 set :symfony_env_prod, "prod"
 set :assets_symlinks, true
+set :dump_assetic_assets, true
 set :use_composer, true
 set :app_path,    "app"
 set :web_path,    "web"
 set :model_manager, "doctrine"
 set :shared_files, ["#{app_path}/config/parameters.yml"]
-set :shared_children, ["#{app_path}/logs", "#{app_path}/sessions", "#{web_path}/uploads", "vendor"]
+set :shared_children, ["#{app_path}/logs", "#{app_path}/sessions", "#{app_path}/spool", "bin", "#{web_path}/uploads", "vendor"]
 set :interactive_mode, false
 
-﻿namespace :symfony do
+namespace :symfony do
     namespace :doctrine do
         namespace :migrations do
             desc "Migrate down database"
@@ -67,18 +69,41 @@ set :interactive_mode, false
             end
         end
     end
+
+    namespace :fos do
+        namespace :routing do
+            desc "Dump routing"
+            task :dump do
+                run "cd #{current_release} && php app/console fos:js-routing:dump"
+            end
+        end
+    end
+
+    desc "Reset database"
+    task :reset do
+        run "cd #{current_release} && php app/console doctrine:database:drop --force"
+        run "cd #{current_release} && php app/console doctrine:database:create"
+        run "cd #{current_release} && php app/console doctrine:schema:update --force"
+        run "cd #{current_release} && php app/console doctrine:fixtures:load -n"
+    end
 end
 
 logger.level = Logger::MAX_LEVEL
 
 # Backup remote database to local
-#before "symfony:doctrine:migrations:down", "database:dump:remote"
-#before "symfony:doctrine:migrations:migrate", "database:dump:remote"
-#before "deploy:rollback:revision", "database:dump:remote"
+before "symfony:doctrine:migrations:down", "database:dump:remote"
+before "symfony:doctrine:migrations:migrate", "database:dump:remote"
+before "deploy:rollback:revision", "database:dump:remote"
 
 # Migrate remote database
 #before "symfony:cache:warmup", "symfony:doctrine:migrations:migrate"
 
+# Dump routing
+before "symfony:assetic:dump", "symfony:fos:routing:dump"
+
 # Run deployment
 after "deploy", "deploy:cleanup" # Clean old releases at the end
 after "deploy:setup", "upload_parameters" # Upload parameters file on setup server
+
+# Install project on first deploy
+#before "symfony:cache:warmup", "symfony:reset"

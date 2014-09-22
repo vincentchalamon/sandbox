@@ -10,3 +10,7 @@ My\Bundle\UserBundle\Entity\User:
         gender: m
         firstname: John
         lastname: DOE
+        phone: +33 (0)1 23 45 67 89
+        address: 8 rue Titon
+        zipcode: 75011
+        city: Paris

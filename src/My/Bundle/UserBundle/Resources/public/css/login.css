@@ -1,0 +1,49 @@
+body {
+    background: url('../images/body.png');
+}
+
+.container {
+    width: 360px;
+    margin: 120px auto;
+    padding: 35px;
+    box-shadow: 0 0 1px 0 #262e30;
+    border: solid 1px #586366;
+    border-radius: 3px;
+    background: url('../images/container.png');
+}
+
+.container h1 {
+    font-size: 2em;
+    margin: 0 0 30px;
+    color: #ccc;
+    text-shadow: 2px 2px 2px #363d3f;
+    font-weight: normal;
+}
+
+.container h1.image {
+    padding-left: 40px;
+    background-repeat: no-repeat;
+    background-size: 30px;
+}
+
+.container input[type=text], .container input[type=password] {
+    margin-bottom: 15px;
+}
+
+.container .footer {
+    overflow: hidden;
+}
+
+.container .footer label {
+    float: left;
+    font-size: 0.9em;
+    color: #ccc;
+    text-shadow: 1px 1px 1px #363d3f;
+    font-weight: normal;
+    line-height: 34px;
+}
+
+.container .footer .btn-primary {
+    float: right;
+    width: 50%;
+}

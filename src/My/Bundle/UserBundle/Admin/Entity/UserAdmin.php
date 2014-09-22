@@ -13,7 +13,7 @@ namespace My\Bundle\UserBundle\Admin\Entity;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\UserBundle\Admin\Entity\UserAdmin as BaseAdmin;
 
 /**
@@ -32,6 +32,14 @@ class UserAdmin extends BaseAdmin
     /**
      * {@inheritdoc}
      */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('show');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getTemplate($name)
     {
         return $name == 'base_show_field' ? 'SonataAdminBundle:CRUD:base_show_field.html.twig' : parent::getTemplate($name);
@@ -43,9 +51,9 @@ class UserAdmin extends BaseAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         parent::configureListFields($listMapper);
-        $listMapper->remove('createdAt')
-                   ->add('createdAt', 'localizeddate')
-                   ->reorder(array('username', 'email', 'groups', 'enabled', 'locked', 'createdAt'));
+        $listMapper->remove('username')->remove('createdAt')->remove('impersonating')->remove('locked')
+                   ->addIdentifier('fullname', null, array('label' => 'Nom'))
+                   ->reorder(array('fullname', 'email', 'groups'));
     }
 
     /**
@@ -60,52 +68,46 @@ class UserAdmin extends BaseAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureShowFields(ShowMapper $showMapper)
-    {
-        parent::configureShowFields($showMapper);
-        $showMapper->remove('dateOfBirth')
-                   ->with('Profile')
-                       ->add('dateOfBirth', 'localizeddate')
-                   ->end();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        parent::configureFormFields($formMapper);
         $formMapper
-            ->with('General')
+            ->with('General', array('class' => 'col-md-6'))
+                ->add('email')
                 ->add('plainPassword', 'repeated', array(
                         'type' => 'password',
                         'translation_domain' => 'SonataAdminBundle',
                         'required' => !$this->getSubject() || is_null($this->getSubject()->getId()),
                         'first_options' => array(
-                            'label' => 'Password'
+                            'label' => 'Mot de passe'
                         ),
                         'second_options' => array(
-                            'label' => 'Confirmation'
+                            'label' => 'Confirmation du mot de passe'
                         )
                     )
                 )
-            ->end()
-            ->with('Profile')
-                ->add('dateOfBirth', 'datepicker', array(
-                        'required' => false
-                    )
-                )
-                ->add('gender', 'sonata_user_gender', array(
-                        'required' => true,
+                ->add('enabled', null, array('required' => false))
+                ->add('roles', 'choice', array(
+                        'label'    => 'Rôles',
                         'expanded' => true,
-                        'translation_domain' => $this->getTranslationDomain()
-                    )
-                )
-                ->add('phone', 'masked', array(
+                        'multiple' => true,
                         'required' => false,
-                        'mask' => '09 99 99 99 99'
+                        'choices'  => array('ROLE_MEMBER' => 'Membre', 'ROLE_ADMIN' => 'Administrateur')
                     )
                 )
+            ->end()
+            ->with('Profile', array('class' => 'col-md-6'))
+                ->add('gender', 'choice', array(
+                        'choices'  => array('m' => 'M.', 'f' => 'Mme'),
+                        'required' => true,
+                        'expanded' => true
+                    )
+                )
+                ->add('firstname')
+                ->add('lastname')
+                ->add('phone', 'masked', array('mask' => '+33 (0)9 99 99 99 99'))
+                ->add('address')
+                ->add('zipcode', 'masked', array('mask' => 99999))
+                ->add('city')
             ->end()
         ;
     }

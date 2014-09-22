@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sandbox package.
+ * This file is part of the MyCms bundle.
  *
  * (c) Vincent Chalamon <vincentchalamon@gmail.com>
  *
@@ -33,6 +33,27 @@ class ContactProcessor extends Processor
     protected $mailer;
 
     /**
+     * No-reply email address
+     *
+     * @var string
+     */
+    protected $noreply;
+
+    /**
+     * Sitename
+     *
+     * @var string
+     */
+    protected $sitename;
+
+    /**
+     * Contact email address
+     *
+     * @var string
+     */
+    protected $contact;
+
+    /**
      * Templating
      *
      * @var EngineInterface
@@ -47,18 +68,25 @@ class ContactProcessor extends Processor
     protected $session;
 
     /**
+     * Web dir
+     *
+     * @var string
+     */
+    protected $webDir;
+
+    /**
      * {@inheritdoc}
      */
     public function process(Request $request)
     {
         $form = $this->createForm(new ContactType());
-        $form->submit($request);
+        $form->handleRequest($request);
         if ($form->isValid()) {
             $message = \Swift_Message::newInstance()
                         ->setSubject('Demande de contact')
-                        ->setFrom(array('no-reply@sandbox.fr' => 'Sandbox'))
+                        ->setFrom(array($this->noreply => $this->sitename))
                         ->setReplyTo($form->get('email')->getData(), $form->get('name')->getData())
-                        ->setTo(array('myself@example.com'))
+                        ->setTo(array($this->contact))
                         ->setContentType('text/html')
             ;
             $body = $this->templating->render('MyCmsBundle::mail.html.twig', array(
@@ -69,7 +97,7 @@ class ContactProcessor extends Processor
             );
             if (preg_match_all('/<img([^>]+)src="(\/[^"]+)"([^>]+)?>/i', $body, $matches)) {
                 foreach ($matches[0] as $key => $match) {
-                    $body = str_ireplace($match, sprintf('<img%ssrc="%s"%s>', $matches[1][$key], $message->embed(\Swift_Image::fromPath('/var/www/blog/web'.$matches[2][$key])), $matches[3][$key]), $body);
+                    $body = str_ireplace($match, sprintf('<img%ssrc="%s"%s>', $matches[1][$key], $message->embed(\Swift_Image::fromPath($this->webDir.$matches[2][$key])), $matches[3][$key]), $body);
                 }
             }
             $message->setBody($body);
@@ -110,10 +138,16 @@ class ContactProcessor extends Processor
      * @author Vincent Chalamon <vincentchalamon@gmail.com>
      *
      * @param \Swift_Mailer $mailer
+     * @param string        $noreply
+     * @param string        $sitename
+     * @param string        $contact
      */
-    public function setMailer(\Swift_Mailer $mailer)
+    public function setMailer(\Swift_Mailer $mailer, $noreply, $sitename, $contact)
     {
-        $this->mailer = $mailer;
+        $this->mailer   = $mailer;
+        $this->noreply  = $noreply;
+        $this->sitename = $sitename;
+        $this->contact  = $contact;
     }
 
     /**
@@ -126,5 +160,17 @@ class ContactProcessor extends Processor
     public function setTemplating(EngineInterface $templating)
     {
         $this->templating = $templating;
+    }
+
+    /**
+     * Set web dir
+     *
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
+     *
+     * @param string $webDir
+     */
+    public function setWebDir($webDir)
+    {
+        $this->webDir = $webDir;
     }
 }

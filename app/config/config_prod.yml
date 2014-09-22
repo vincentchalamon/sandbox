@@ -1,5 +1,6 @@
 imports:
     - { resource: config.yml }
+    - { resource: security.yml }
 
 #framework:
 #    validation:
@@ -16,19 +17,28 @@ monolog:
         main:
             type: fingers_crossed
             action_level: error
-            handler: streamed
+            handler: grouped
+        grouped:
+            type: group
+            members: [streamed, swift]
         streamed:
             type: stream
             path: "%kernel.logs_dir%/%kernel.environment%.log"
             level: debug
+        swift:
+            type: swift_mailer
+            from_email: %email_no_reply%
+            to_email: %email_contact%
+            subject: "Oops : une erreur est survenue"
+            level: debug
         login:
             type: stream
             path: "%kernel.logs_dir%/auth.log"
-            level: error
+            level: info
             channels: security
         firephp:
             type:  firephp
-            level: error
+            level: info
         chromephp:
             type:  chromephp
-            level: error
+            level: info

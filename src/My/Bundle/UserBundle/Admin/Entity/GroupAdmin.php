@@ -11,6 +11,7 @@
 namespace My\Bundle\UserBundle\Admin\Entity;
 
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\UserBundle\Admin\Entity\GroupAdmin as BaseAdmin;
 
 /**
@@ -33,5 +34,26 @@ class GroupAdmin extends BaseAdmin
     {
         parent::configureListFields($mapper);
         $mapper->get('roles')->setType('array');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+        $formMapper
+            ->with('General', array('class' => 'col-md-6'))
+                ->add('name')
+            ->end()
+            ->with('Rôles', array('class' => 'col-md-6'))
+                ->add('roles', 'sonata_security_roles', array(
+                        'expanded' => true,
+                        'multiple' => true,
+                        'required' => false,
+                        'label' => false
+                    )
+                )
+            ->end()
+        ;
     }
 }

@@ -4,21 +4,17 @@ My\Bundle\UserBundle\Entity\User:
     id:
         id:
             type: integer
-            id: true
             generator:
                 strategy: AUTO
     fields:
         address:
             type: text
-            nullable: true
         zipcode:
             type: string
             length: 5
-            nullable: true
         city:
             type: string
             length: 255
-            nullable: true
     manyToMany:
         groups:
             targetEntity: My\Bundle\UserBundle\Entity\Group

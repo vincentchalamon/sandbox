@@ -1,10 +1,1 @@
 All rights reserved: Tous droits réservés
-Last tickets: Derniers billets
-contact:
-    required:
-        name: Veuillez saisir votre nom
-        email: Veuillez saisir votre adresse e-mail
-        message: Veuillez saisir votre message
-    invalid:
-        email: Veuillez saisir une adresse e-mail valide
-    send: Envoyer
