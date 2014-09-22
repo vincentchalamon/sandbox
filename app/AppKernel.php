@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Vince\Bundle\CmsBundle\VinceCmsBundle(),
             new My\Bundle\CmsBundle\MyCmsBundle(),
+            new Vince\Bundle\TypeBundle\VinceTypeBundle(),
 
             // User
             new FOS\UserBundle\FOSUserBundle(),
@@ -37,7 +38,6 @@ class AppKernel extends Kernel
             $bundles[] = new Sonata\AdminBundle\SonataAdminBundle();
             $bundles[] = new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle();
             $bundles[] = new Vince\Bundle\CmsSonataAdminBundle\VinceCmsSonataAdminBundle();
-            $bundles[] = new Vince\Bundle\TypeBundle\VinceTypeBundle();
         }
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
