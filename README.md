@@ -115,17 +115,17 @@ parameters:
 
 ### Designers
 
-* Create template:
-    * Create twig file
-    * Register template & its areas in fixtures (link to developer documentation)
-* Assetic:
-    * Bootstrap installed with Less
-    * YUI compressor installer
-* Twig helpers:
-    * render_menu
-    * render_block
-    * render_metas
-    * localizeddate
+[ ] Create template
+    [ ] Create twig file
+    [ ] Register template & its areas in fixtures (link to developer documentation)
+[ ] Assetic
+    [ ] Bootstrap installed with Less
+    [ ] YUI compressor installer
+[ ] Twig helpers
+    [ ] render_menu
+    [ ] render_block
+    [ ] render_metas
+    [ ] localizeddate
 
 ## Form types
 
