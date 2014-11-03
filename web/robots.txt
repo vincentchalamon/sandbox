@@ -1,7 +1,6 @@
 User-agent: *
-Disallow: /admin
+Disallow: /assetic
 Disallow: /bundles
 Disallow: /css
 Disallow: /js
-Disallow: /media
 Disallow: /uploads

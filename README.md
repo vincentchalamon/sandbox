@@ -32,11 +32,21 @@ You sould index your articles to elasticsearch:
 php app/console fos:elastica:populate
 ```
 
+You can also prepare assetic:
+```shell
+php app/console assets:install --symlink web
+php app/console assetic:dump
+php app/console assets:install --symlink web
+php app/console assetic:dump --env=prod --no-debug
+php app/console assets:install --symlink --env=admin admin
+php app/console assetic:dump --no-debug --env=admin admin
+```
+
 ## Deploy
 
 This sandbox has already been capified. Before your first deploy, you must update configuration file:
 ```ruby
-# File: app/config/deploy/production.rb
+# File: app/config/deploy/development.rb
 ...
 set :domain, "1.2.3.4"
 set :user,   "user"
@@ -68,71 +78,71 @@ parameters:
 
 ## Sandbox
 
-[ ] Cache doctrine
-[ ] Cache HTTP
-[ ] Cache APC
-[ ] Initialization command
-[ ] Search pager: KnpPaginatorBundle
-[ ] Search ajax pager
-[ ] Search configuration (elasticSearch)
-[ ] Google Analytics tracking code (bundle configuration)
-[ ] Default theme
-[ ] Documentation theme (http://mojotech.github.io/stickymojo/)
-[ ] Mail theme (http://templates.indextwo.com/e-mail/elegance/)
-[ ] Check each theme responsive (default, sonata, documentation, mail)
-[ ] Write documentation
+- [x] Cache APC
+- [ ] Cache doctrine
+- [ ] Cache HTTP
+- [ ] Initialization command
+- [ ] Search pager: KnpPaginatorBundle
+- [ ] Search ajax pager
+- [ ] Search configuration (elasticSearch)
+- [ ] Google Analytics tracking code (bundle configuration)
+- [ ] Default theme
+- [ ] Documentation theme (http://mojotech.github.io/stickymojo/)
+- [ ] Mail theme (http://templates.indextwo.com/e-mail/elegance/)
+- [ ] Check each theme responsive (default, sonata, documentation, mail)
+- [ ] Write documentation
 
 ## Documentation
 
 ### Installation
 
-[ ] Download with composer
-[ ] Launch elastic search daemon
-[ ] Create database
-[ ] Load fixtures
+- [ ] Download with composer
+- [ ] Launch elastic search daemon
+- [ ] Create database
+- [ ] Load fixtures
 
 ### Configuration
 
-[ ] Contact: no-reply, recipient
-[ ] Sitemap url
-[ ] Google Analytics tracking code
+- [ ] Contact: no-reply, recipient
+- [ ] Sitemap url
+- [ ] Google Analytics tracking code
 
 ## How to
 
 ### Developers
 
-[ ] Catch mail on dev (Mailcatcher)
-[ ] Deploy (capifony)
-[ ] Override entities
-[ ] Override controller
-[ ] Inject object in template (loaders)
-[ ] Create forms (processors)
-[ ] Create Template & Area fixtures
-[ ] Create Article fixtures (Contents, Metas)
-[ ] Create Menu fixtures (Article or url, parent, children)
-[ ] Create Block fixtures
-[ ] PHPDoc
+- [ ] Catch mail on dev (Mailcatcher)
+- [ ] Deploy (capifony)
+- [ ] Override entities
+- [ ] Override controller
+- [ ] Inject object in template (loaders)
+- [ ] Create forms (processors)
+- [ ] Create Template & Area fixtures
+- [ ] Create Article fixtures (Contents, Metas)
+- [ ] Create Menu fixtures (Article or url, parent, children)
+- [ ] Create Block fixtures
+- [ ] PHPDoc
 
 ### Designers
 
-[ ] Create template
-    [ ] Create twig file
-    [ ] Register template & its areas in fixtures (link to developer documentation)
-[ ] Assetic
-    [ ] Bootstrap installed with Less
-    [ ] YUI compressor installer
-[ ] Twig helpers
-    [ ] render_menu
-    [ ] render_block
-    [ ] render_metas
-    [ ] localizeddate
+- [ ] Create template
+    - [ ] Create twig file
+    - [ ] Register template & its areas in fixtures (link to developer documentation)
+- [ ] Assetic
+    - [ ] Bootstrap installed with Less
+    - [ ] YUI compressor installer
+- [ ] Twig helpers
+    - [ ] render_menu
+    - [ ] render_block
+    - [ ] render_metas
+    - [ ] localizeddate
 
 ## Form types
 
-[ ] jQuery Chosen (http://davidwalsh.name/jquery-chosen)
-[ ] Switch (http://www.inserthtml.com/demos/css/radio-buttons/)
-[ ] Autosize (https://github.com/jackmoore/autosize)
-[ ] FileUpload (http://blueimp.github.io/jQuery-File-Upload/basic.html)
-[ ] Dropzone (http://www.dropzonejs.com/)
-[ ] Autocomplete (http://jqueryui.com/autocomplete/)
-[ ] jQuery image cropper (http://tympanus.net/codrops/2009/11/04/jquery-image-cropper-with-uploader-v1-1/)
+- [ ] jQuery Chosen (http://davidwalsh.name/jquery-chosen)
+- [ ] Switch (http://www.inserthtml.com/demos/css/radio-buttons/)
+- [ ] Autosize (https://github.com/jackmoore/autosize)
+- [ ] FileUpload (http://blueimp.github.io/jQuery-File-Upload/basic.html)
+- [ ] Dropzone (http://www.dropzonejs.com/)
+- [ ] Autocomplete (http://jqueryui.com/autocomplete/)
+- [ ] jQuery image cropper (http://tympanus.net/codrops/2009/11/04/jquery-image-cropper-with-uploader-v1-1/)

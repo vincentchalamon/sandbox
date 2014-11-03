@@ -42,7 +42,7 @@ class CmsData extends AbstractFixture implements OrderedFixtureInterface, Contai
 
     /**
      * Load fixtures files
-     * 
+     *
      * @author Vincent CHALAMON <vincentchalamon@gmail.com>
      * @param ObjectManager $manager
      */

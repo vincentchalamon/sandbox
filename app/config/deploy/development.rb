@@ -1,4 +1,4 @@
-set :stage_files, ["app/config/parameters.production.yml"]
+set :stage_files, ["app/config/parameters.development.yml"]
 set :deploy_to, "/path/to/sandbox"
 set :domain, "1.2.3.4"
 set :user, "user"

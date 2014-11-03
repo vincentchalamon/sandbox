@@ -58,23 +58,22 @@ set :shared_children, ["#{app_path}/logs", "#{app_path}/sessions", "#{app_path}/
 set :interactive_mode, false
 
 namespace :symfony do
-    namespace :doctrine do
-        namespace :migrations do
-            desc "Migrate down database"
-            task :down do
-                default_version = `ls app/DoctrineMigrations`.split("\n")[-2].gsub("Version", "").gsub(".php", "")
-                version = Capistrano::CLI.ui.ask "Target version (#{default_version}): "
-                version = default_version if version.empty?
-                run "cd #{current_release} && php app/console doctrine:migrations:migrate #{version}"
-            end
-        end
-    end
-
     namespace :fos do
         namespace :routing do
             desc "Dump routing"
             task :dump do
                 run "cd #{current_release} && php app/console fos:js-routing:dump"
+            end
+        end
+    end
+
+    namespace :assetic do
+        namespace :admin do
+            desc "Dump assetic for admin env"
+            task :dump do
+                run "cd #{current_release} && php app/console assets:install --symlink --env=admin admin"
+                run "cd #{current_release} && php app/console assetic:dump --no-debug --env=admin admin"
+                run "ln -s #{shared_path}/web/uploads #{current_release}/admin/uploads"
             end
         end
     end
@@ -100,10 +99,11 @@ before "deploy:rollback:revision", "database:dump:remote"
 
 # Dump routing
 before "symfony:assetic:dump", "symfony:fos:routing:dump"
+after "symfony:assetic:dump", "symfony:assetic:admin:dump"
 
 # Run deployment
 after "deploy", "deploy:cleanup" # Clean old releases at the end
 after "deploy:setup", "upload_parameters" # Upload parameters file on setup server
 
 # Install project on first deploy
-#before "symfony:cache:warmup", "symfony:reset"
+before "symfony:cache:warmup", "symfony:reset"

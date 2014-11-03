@@ -20,7 +20,7 @@ use My\Bundle\UserBundle\Entity\User;
 
 /**
  * Load fixtures from yml
- * 
+ *
  * @author Vincent CHALAMON <vincentchalamon@gmail.com>
  */
 class UserData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
@@ -43,7 +43,7 @@ class UserData extends AbstractFixture implements OrderedFixtureInterface, Conta
 
     /**
      * Load fixtures files
-     * 
+     *
      * @author Vincent CHALAMON <vincentchalamon@gmail.com>
      * @param ObjectManager $manager
      */
