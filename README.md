@@ -191,6 +191,7 @@ Documentation
 ## todo-vince VinceCmsSonataAdminBundle
 
 - [ ] Documentation
+- [ ] Languages on article list
 
 Documentation
 =============

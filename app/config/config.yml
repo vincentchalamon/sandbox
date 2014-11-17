@@ -2,7 +2,7 @@ imports:
     - { resource: parameters.yml }
 
 parameters:
-    #router.request_context.host: %vince.cms.domain%
+    router.request_context.host: %domain%
     router.request_context.scheme: http
 
 framework:
@@ -32,6 +32,12 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    globals:
+        tracking_code: %tracking_code%
+        sitename: %sitename%
+        domain: %domain%
+        email_no_reply: %email_no_reply%
+        email_contact: %email_contact%
 
 # Assetic Configuration
 assetic:
@@ -84,24 +90,18 @@ fos_user:
     group:
         group_class: My\Bundle\UserBundle\Entity\Group
     from_email:
-        address: %vince.cms.no_reply%
-        sender_name: %vince.cms.sitename%
+        address: %email_no_reply%
+        sender_name: %sitename%
 
 # CMS
 vince_cms:
-    domain: www.sandbox.com
-    sitename: Sandbox
-    tracking_code: %tracking_code%
-    #no_reply: no-reply@sandbox.com
-    #contact: contact@sandbox.com
-    model:
-        article:
-            class: My\Bundle\CmsBundle\Entity\Article
-        block:
-            class: My\Bundle\CmsBundle\Entity\Block
-        articleMeta:
-            class: My\Bundle\CmsBundle\Entity\ArticleMeta
-        content:
-            class: My\Bundle\CmsBundle\Entity\Content
-        menu:
-            class: My\Bundle\CmsBundle\Entity\Menu
+    article:
+        class: My\Bundle\CmsBundle\Entity\Article
+    block:
+        class: My\Bundle\CmsBundle\Entity\Block
+    articleMeta:
+        class: My\Bundle\CmsBundle\Entity\ArticleMeta
+    content:
+        class: My\Bundle\CmsBundle\Entity\Content
+    menu:
+        class: My\Bundle\CmsBundle\Entity\Menu

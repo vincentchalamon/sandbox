@@ -4,7 +4,9 @@
         <title>{% block title %}{% if article is defined %}{{ article.meta('title') }}{% endif %}{% endblock %}</title>
         {% block metas %}
             {% if article is defined %}
-                {{ render_metas(article) }}
+                {% for meta in article.metas %}
+                    {{ render_meta(meta) }}
+                {% endfor %}
             {% endif %}
         {% endblock %}
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -33,10 +35,10 @@
             <script type="text/javascript" src="{{ asset(asset_url) }}"></script>
         {% endjavascripts %}
         <![endif]-->
-        {% if vince.cms.tracking_code is defined and vince.cms.tracking_code is not empty %}
+        {% if tracking_code is defined and tracking_code is not empty %}
             <script>
                 var _gaq = _gaq || [];
-                _gaq.push(['_setAccount', '{{ vince.cms.tracking_code }}']);
+                _gaq.push(['_setAccount', '{{ tracking_code }}']);
                 _gaq.push(['_trackPageview']);
                 (function () {
                     var ga = document.createElement('script');
@@ -54,7 +56,7 @@
         <div class="container">
             <!-- Header -->
             <header>
-                <h1><a href="{{ path('homepage') }}" title="{{ vince.cms.sitename }}">{{ vince.cms.sitename }}</a></h1>
+                <h1><a href="{{ path('homepage') }}" title="{{ sitename }}">{{ sitename }}</a></h1>
                 <nav role="navigation">
                     {{ render_menu('root', 'MyCmsBundle:Component:Menu/root.html.twig', {'current': block('current')}) }}
                 </nav>
@@ -78,7 +80,7 @@
             </div>
             <!-- Footer -->
             <footer>
-                <p>&copy; {{ 'now'|date('Y') }} {{ vince.cms.sitename }} • {{ 'All rights reserved'|trans({}, 'MyCms') }}</p>
+                <p>&copy; {{ 'now'|date('Y') }} {{ sitename }} • {{ 'All rights reserved'|trans({}, 'MyCms') }}</p>
             </footer>
             <!-- End footer -->
         </div>

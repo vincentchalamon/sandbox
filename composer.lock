@@ -3499,17 +3499,17 @@
         },
         {
             "name": "vince/type-bundle",
-            "version": "1.0.18",
+            "version": "1.0.20",
             "target-dir": "Vince/Bundle/TypeBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vincentchalamon/VinceTypeBundle.git",
-                "reference": "20f5eb6b9bf2b93096b2ec2a2181e625b87fd5d8"
+                "reference": "fe6cc7ba0a2451a5c7279aa7d1baf6709afbd7bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vincentchalamon/VinceTypeBundle/zipball/20f5eb6b9bf2b93096b2ec2a2181e625b87fd5d8",
-                "reference": "20f5eb6b9bf2b93096b2ec2a2181e625b87fd5d8",
+                "url": "https://api.github.com/repos/vincentchalamon/VinceTypeBundle/zipball/fe6cc7ba0a2451a5c7279aa7d1baf6709afbd7bf",
+                "reference": "fe6cc7ba0a2451a5c7279aa7d1baf6709afbd7bf",
                 "shasum": ""
             },
             "require": {
@@ -3542,7 +3542,7 @@
             "keywords": [
                 "form"
             ],
-            "time": "2014-11-03 12:32:52"
+            "time": "2014-11-17 18:12:12"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
