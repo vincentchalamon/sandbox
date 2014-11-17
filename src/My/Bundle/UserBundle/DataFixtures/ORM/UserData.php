@@ -51,12 +51,7 @@ class UserData extends AbstractFixture implements OrderedFixtureInterface, Conta
     {
         $loader = new Loader();
         $loader->addDirectory(__DIR__.'/../../Resources/config/data');
-        $loader->load($manager, function ($name, $object) {
-                if ($object instanceof User) {
-                    $object->setUsername($name);
-                    $object->setUsernameCanonical($name);
-                }
-            });
+        $loader->load($manager, null, $this);
     }
 
     /**

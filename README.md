@@ -16,30 +16,21 @@ php composer.phar create-project vince/sandbox path/ -s dev
 
 ## Configuration
 
-Run the following command to launch elasticsearch:
+Run the following command to launch ElasticSearch:
 ```shell
 vendor/elasticsearch/binaries/bin/elasticsearch -f
 ```
 
-Once you've created your database, run the following commands to build database with default fixtures:
+Once you've created your database, run the following command to build database with default fixtures:
 ```shell
-php app/console doctrine:schema:update --force
-php app/console doctrine:fixtures:load -n
+php app/console project:reset
 ```
 
-You sould index your articles to elasticsearch:
+This command also publish assets for different project environments.
+
+You should index your articles to ElasticSearch:
 ```shell
 php app/console fos:elastica:populate
-```
-
-You can also prepare assetic:
-```shell
-php app/console assets:install --symlink web
-php app/console assetic:dump
-php app/console assets:install --symlink web
-php app/console assetic:dump --env=prod --no-debug
-php app/console assets:install --symlink --env=admin admin
-php app/console assetic:dump --no-debug --env=admin admin
 ```
 
 ## Deploy
@@ -76,73 +67,154 @@ parameters:
     mailer_host: localhost:1025
 ```
 
-## Sandbox
+## todo-vince Sandbox
 
-- [x] Cache APC
-- [ ] Cache doctrine
-- [ ] Cache HTTP
-- [ ] Initialization command
-- [ ] Search pager: KnpPaginatorBundle
-- [ ] Search ajax pager
-- [ ] Search configuration (elasticSearch)
-- [ ] Google Analytics tracking code (bundle configuration)
-- [ ] Default theme
-- [ ] Documentation theme (http://mojotech.github.io/stickymojo/)
-- [ ] Mail theme (http://templates.indextwo.com/e-mail/elegance/)
-- [ ] Check each theme responsive (default, sonata, documentation, mail)
-- [ ] Write documentation
+- [x] Initialization command
+- [x] Google Analytics tracking code (bundle configuration)
+- [x] Default theme
+- [x] Mail theme
+- [ ] Documentation (README + PHPDoc + GitHub pages)
 
-## Documentation
+Documentation
+=============
 
 ### Installation
 
-- [ ] Download with composer
-- [ ] Launch elastic search daemon
+- [ ] Install with composer
+<!-- [ ] Launch elastic search daemon-->
 - [ ] Create database
-- [ ] Load fixtures
+- [ ] Run _php app/console project:reset_
+- [ ] Access to admin (url, login, password)
 
 ### Configuration
 
-- [ ] Contact: no-reply, recipient
-- [ ] Sitemap url
-- [ ] Google Analytics tracking code
+- [ ] Update config.yml: domain, sitename, tracking_code, no_reply, contact
 
-## How to
+### How to
 
-### Developers
+#### Developers
 
-- [ ] Catch mail on dev (Mailcatcher)
-- [ ] Deploy (capifony)
-- [ ] Override entities
-- [ ] Override controller
-- [ ] Inject object in template (loaders)
-- [ ] Create forms (processors)
-- [ ] Create Template & Area fixtures
-- [ ] Create Article fixtures (Contents, Metas)
-- [ ] Create Menu fixtures (Article or url, parent, children)
-- [ ] Create Block fixtures
-- [ ] PHPDoc
+- [ ] Fixtures
+    - [ ] Create fixtures in YML
+    - [ ] Create templates (& areas)
+    - [ ] Create articles (& contents & metas)
+    - [ ] Create menus (=> article or url, parent, children)
+    - [ ] Create blocks
+- [ ] Deploy (Capifony)
+- [ ] Inject objects in template (listeners)
+- [ ] Process forms (processors)
+- [ ] Advanced
+    - [ ] Override entities
+    - [ ] Override controllers
+    - [ ] Override admin
+    - [ ] Catch mail on dev (MailCatcher)
+    - [ ] PHPDoc
 
-### Designers
+#### Designers
 
 - [ ] Create template
     - [ ] Create twig file
-    - [ ] Register template & its areas in fixtures (link to developer documentation)
+    - [ ] Twig helpers
+        - [ ] `vince` configuration
+        - [ ] render_metas
+        - [ ] render_meta
+        - [ ] render_menu
+        - [ ] render_block
+        - [ ] localizeddate
 - [ ] Assetic
-    - [ ] Bootstrap installed with Less
-    - [ ] YUI compressor installer
-- [ ] Twig helpers
-    - [ ] render_menu
-    - [ ] render_block
-    - [ ] render_metas
-    - [ ] localizeddate
+    - [ ] Bootstrap
+    - [ ] Ladda
+    - [ ] Autosize
+    - [ ] YUI compressor
 
-## Form types
+## todo-vince VinceCmsBundle
 
-- [ ] jQuery Chosen (http://davidwalsh.name/jquery-chosen)
+- [ ] I18n
+- [ ] Cache APC
+- [ ] Cache doctrine
+- [ ] Cache HTTP
+- [ ] Documentation (README + PHPDoc + GitHub pages)
+- [ ] Search configuration (Symfony + ElasticSearch)
+- [ ] Search pager: KnpPaginatorBundle
+- [ ] Search ajax pager
+
+Search
+======
+
+* Ne dois pas remonter :
+    * Système : homepage, accueil, search, rechercher
+    * Non publié : vincent
+    * Pré publié : jordan
+    * Pré publié temp : samuel
+    * Dépublié : franck
+* Doit remonter :
+    * Publié : yannick
+    * Publié aujourd'hui : benoit
+    * Publié jusqu'à aujourd'hui : gilles
+    * Publié temporairement : adrien
+
+Documentation
+=============
+
+### Installation
+
+- [ ] Install bundle with composer
+- [ ] Update AppKernel
+<!-- [ ] Install ElasticSearch with composer-->
+<!-- [ ] Launch ElasticSearch-->
+
+### Configuration
+
+- [ ] Create override bundle (MyCmsBundle)
+- [ ] Create override entities: Article, ArticleMeta, Block, Content, Menu
+- [ ] Update config.yml: domain, sitename, tracking_code, model, no_reply, contact
+
+### Fixtures
+
+- [ ] Create fixtures in YML
+- [ ] Create templates
+- [ ] Create articles
+- [ ] Create menus
+- [ ] Create blocks
+
+### CMS injection
+
+- [ ] Inject objects (& forms) in template (listeners)
+- [ ] Process forms (processors)
+
+### Advanced
+
+- [ ] Override controllers
+- [ ] Catch mail on dev (MailCatcher)
+- [ ] PHPDoc
+
+## todo-vince VinceCmsSonataAdminBundle
+
+- [ ] Documentation
+
+Documentation
+=============
+
+### Installation
+
+- [ ] Install bundle with composer
+- [ ] Update AppKernel
+
+### Configuration
+
+- [ ] Override admin
+
+## todo-vince VinceTypeBundle
+
 - [ ] Switch (http://www.inserthtml.com/demos/css/radio-buttons/)
-- [ ] Autosize (https://github.com/jackmoore/autosize)
+- [ ] Autocomplete (https://github.com/bassjobsen/Bootstrap-3-Typeahead)
 - [ ] FileUpload (http://blueimp.github.io/jQuery-File-Upload/basic.html)
-- [ ] Dropzone (http://www.dropzonejs.com/)
-- [ ] Autocomplete (http://jqueryui.com/autocomplete/)
+- [ ] Dropzone (http://www.dropzonejs.com/):
+    * Hérite du champ text
+    * Au chargement : taille standard si vide, sinon taille agrandie
+    * Animation d'agrandissement au drag'n'drop (si taille standard)
+    * Animation de réduction à la suppression si vide
 - [ ] jQuery image cropper (http://tympanus.net/codrops/2009/11/04/jquery-image-cropper-with-uploader-v1-1/)
+- [ ] ColorPicker
+- [ ] Documentation (README + PHPdoc + GitHub pages)
+

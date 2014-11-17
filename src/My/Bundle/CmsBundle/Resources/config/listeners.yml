@@ -12,7 +12,7 @@ services:
         tags:
             -  { name: vince.processor, alias: contact }
         calls:
-            - [ setMailer, [ @mailer, %email_no_reply%, %email_contact%, %sitename% ] ]
+            - [ setMailer, [ @mailer, %vince.cms.no_reply%, %vince.cms.contact%, %vince.cms.sitename% ] ]
             - [ setTemplating, [ @templating ] ]
             - [ setSession, [ @session ] ]
             - [ setWebDir, [ %kernel.web_dir% ] ]

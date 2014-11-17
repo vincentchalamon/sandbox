@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{% block title %}{{ article.meta('title') }}{% endblock %}</title>
+        <title>{% block title %}{% if article is defined %}{{ article.meta('title') }}{% endif %}{% endblock %}</title>
         {% block metas %}
-            {% for meta in article.metas %}
-                {{ render_meta(meta) }}
-            {% endfor %}
+            {% if article is defined %}
+                {{ render_metas(article) }}
+            {% endif %}
         {% endblock %}
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ path('cms_feed') }}" />
         <link rel="sitemap" type="application/xml" title="{{ 'Sitemap'|trans({}, 'VinceCms') }}" href="{{ path('cms_sitemap') }}" />
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -16,11 +17,9 @@
             {% spaceless %}
                 {% stylesheets 'bundles/mycms/css/bootstrap.min.css'
                                'bundles/mycms/css/ladda-themeless.min.css'
-                               'bundles/mycms/css/ui.totop.css'
-                               'bundles/mycms/css/tipsy.css'
                                'bundles/mycms/css/app.css'
                                filter='?yui_css,cssrewrite' %}
-                    <link type="text/css" rel="stylesheet" media="screen" href="{{ asset(asset_url) }}" />
+                    <link type="text/css" rel="stylesheet" href="{{ asset(asset_url) }}" />
                 {% endstylesheets %}
                 {% if form is defined %}
                     {{ form_stylesheets(form) }}
@@ -28,16 +27,16 @@
             {% endspaceless %}
         {% endblock %}
         <!--[if lt IE 9]>
-        {% javascripts '@MyCmsBundle/Resources/public/js/html5shiv.js'
+        {% javascripts '@MyCmsBundle/Resources/public/js/html5shiv.min.js'
                        '@MyCmsBundle/Resources/public/js/respond.min.js'
                        filter='?yui_js' %}
             <script type="text/javascript" src="{{ asset(asset_url) }}"></script>
         {% endjavascripts %}
         <![endif]-->
-        {% if ga_tracking is defined and ga_tracking is not empty %}
+        {% if vince.cms.tracking_code is defined and vince.cms.tracking_code is not empty %}
             <script>
                 var _gaq = _gaq || [];
-                _gaq.push(['_setAccount', '{{ ga_tracking }}']);
+                _gaq.push(['_setAccount', '{{ vince.cms.tracking_code }}']);
                 _gaq.push(['_trackPageview']);
                 (function () {
                     var ga = document.createElement('script');
@@ -52,41 +51,44 @@
         {% endif %}
     </head>
     <body>
-        <header class="container">
-            <a href="{{ path('homepage') }}" title="{{ sitename }}" class="sitename col-md-5">{{ sitename }}</a>
-            <nav class="col-md-7 navbar navbar-default" role="navigation">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <div class="container">
+            <!-- Header -->
+            <header>
+                <h1><a href="{{ path('homepage') }}" title="{{ vince.cms.sitename }}">{{ vince.cms.sitename }}</a></h1>
+                <nav role="navigation">
                     {{ render_menu('root', 'MyCmsBundle:Component:Menu/root.html.twig', {'current': block('current')}) }}
+                </nav>
+            </header>
+            <!-- End header -->
+            <div class="row">
+                <!-- Contents -->
+                <div class="col-sm-8">
+                    {% block body %}{% endblock %}
                 </div>
-            </nav>
-        </header>
-
-        <section id="article" class="container">
-            {% block article %}{% endblock %}
-        </section>
-
-        <footer>
-            <p>&copy; {{ 'now'|date('Y') }} {{ sitename }} • {{ 'All rights reserved'|trans({}, 'MyCms') }}</p>
-        </footer>
-
+                <!-- End contents -->
+                <!-- Aside -->
+                <div class="col-sm-3 col-sm-offset-1">
+                    <aside>
+                        <h4>About</h4>
+                        {{ render_menu('about') }}
+                    </aside>
+                    {% block aside %}{% endblock %}
+                </div>
+                <!-- End aside -->
+            </div>
+            <!-- Footer -->
+            <footer>
+                <p>&copy; {{ 'now'|date('Y') }} {{ vince.cms.sitename }} • {{ 'All rights reserved'|trans({}, 'MyCms') }}</p>
+            </footer>
+            <!-- End footer -->
+        </div>
         {% block javascripts %}
             {% spaceless %}
-                {% javascripts '@jquery'
+                {% javascripts '@MyCmsBundle/Resources/public/js/jquery.min.js'
                                '@MyCmsBundle/Resources/public/js/bootstrap.min.js'
-                               '@MyCmsBundle/Resources/public/js/jquery.easing.1.3.js'
-                               '@MyCmsBundle/Resources/public/js/jquery.ui.totop.min.js'
-                               '@MyCmsBundle/Resources/public/js/jquery.tipsy.js'
+                               '@VinceTypeBundle/Resources/public/autosize/jquery.autosize.min.js'
                                '@MyCmsBundle/Resources/public/js/spin.min.js'
                                '@MyCmsBundle/Resources/public/js/ladda.min.js'
-                               '@MyCmsBundle/Resources/public/js/jquery.autosize.min.js'
                                '@MyCmsBundle/Resources/public/js/app.js'
                                filter="?yui_js" %}
                     <script type="text/javascript" src="{{ asset(asset_url) }}"></script>

@@ -1,13 +1,16 @@
 {% extends 'MyCmsBundle::base.html.twig' %}
 
-{% block article %}
+{% block current %}{{ article.slug }}{% endblock %}
+
+{% block body %}
     {% spaceless %}
         <article>
-            <h1>{{ article.title }}</h1>
-            <section class="chapo">
-                <span>{{ 'Published on %date%'|trans({'%date%': article.updatedAt|localizeddate('full', 'none')|capitalize}, 'VinceCms') }}</span>
-            </section>
-            <div class="contents">{{ article|content('contents') }}</div>
+            <header>
+                <h1>{{ article.title }}</h1>
+                <small>{{ 'Published on %date%'|trans({'%date%': article.updatedAt|localizeddate('full', 'none')|capitalize}, 'VinceCms') }}</small>
+                {# todo-vince Include tags links #}
+            </header>
+            {{ article|content('contents') }}
         </article>
     {% endspaceless %}
 {% endblock %}

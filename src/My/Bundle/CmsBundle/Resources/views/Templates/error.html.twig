@@ -1,8 +1,12 @@
 {% extends 'MyCmsBundle::base.html.twig' %}
 
-{% block article %}
+{% block body %}
     {% spaceless %}
-        <h1>{{ article.title }}</h1>
-        <div class="contents">{{ article|content('contents') }}</div>
+        <article>
+            <header>
+                <h1>{{ article.title }}</h1>
+            </header>
+            {{ article|content('contents') }}
+        </article>
     {% endspaceless %}
 {% endblock %}

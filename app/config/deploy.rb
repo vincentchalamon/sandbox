@@ -8,9 +8,15 @@ default_run_options[:pty] = true
 ssh_options[:port] = 22
 
 # Multistaging
-set :stages,      %w(development production)
+set :stage_dir, "app/config/deploy"
+set :stages do
+    names = []
+    for filename in Dir["#{stage_dir}/*.rb"]
+        names << File.basename(filename, ".rb")
+    end
+    names
+end
 set :default_stage, "development"
-set :stage_dir,   "app/config/deploy"
 require 'capistrano/ext/multistage'
 set :stage_files, false
 
