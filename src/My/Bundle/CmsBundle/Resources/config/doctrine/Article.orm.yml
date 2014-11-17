@@ -20,15 +20,3 @@ My\Bundle\CmsBundle\Entity\Article:
             targetEntity: My\Bundle\CmsBundle\Entity\Menu
             mappedBy: article
             cascade: [persist]
-#    manyToMany:
-#        translations:
-#            targetEntity: My\Bundle\CmsBundle\Entity\Article
-#            joinTable:
-#                name: articles_translations
-#            joinColumns:
-#                article_id:
-#                    referencedColumnName: id
-#            inverseJoinColumns:
-#                translation_id:
-#                    referencedColumnName: id
-#                    unique: true
