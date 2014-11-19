@@ -7,7 +7,6 @@ Vince\Bundle\CmsBundle\Entity\Template:
                 title: Contents
                 name: contents
                 type: redactor
-                options: {plugins: [filemanager, fontcolor, fontfamily, fontsize, imagemanager, table]}
                 required: true
     article:
         title: Article
@@ -17,7 +16,6 @@ Vince\Bundle\CmsBundle\Entity\Template:
                 title: Contents
                 name: contents
                 type: redactor
-                options: {plugins: [filemanager, fontcolor, fontfamily, fontsize, imagemanager, table]}
                 required: true
 
 My\Bundle\CmsBundle\Entity\Article:
