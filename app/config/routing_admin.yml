@@ -1,5 +1,5 @@
 main:
-    resource: routing.yml
+    resource: routing_dev.yml
 
 vince_type:
     resource: "@VinceTypeBundle/Resources/config/routing.yml"

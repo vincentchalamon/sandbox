@@ -59,11 +59,13 @@ My\Bundle\CmsBundle\Entity\Article:
 My\Bundle\CmsBundle\Entity\Menu:
     root:
         title: Menu principal
+        language: fr
         slug: root
         startedAt: '2014-01-01'
         children:
             homepage:
                 title: Accueil
+                language: fr
                 slug: homepage
                 startedAt: '2014-01-01'
                 article:
@@ -98,6 +100,7 @@ My\Bundle\CmsBundle\Entity\Menu:
                                 iaculis pharetra ut sed sapien.
             sample:
                 title: Exemple
+                language: fr
                 startedAt: '2014-01-01'
                 article:
                     language: fr
@@ -145,11 +148,13 @@ My\Bundle\CmsBundle\Entity\Menu:
                                 <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
     about:
         title: A propos
+        language: fr
         slug: about
         startedAt: '2014-01-01'
         children:
             ylly:
                 title: Ylly
+                language: fr
                 startedAt: '2014-01-01'
                 target: _blank
                 url: http://www.ylly.fr

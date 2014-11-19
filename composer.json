@@ -65,7 +65,7 @@
         "sonata-project/admin-bundle": "~2.2",
         "sonata-project/user-bundle": "~2.2",
         "sonata-project/doctrine-orm-admin-bundle": "~2.2",
-        "vince/cms-sonata-admin-bundle": "~1"
+        "vince/cms-sonata-admin-bundle": "dev-i18n"
     },
     "scripts": {
         "post-root-package-install": [

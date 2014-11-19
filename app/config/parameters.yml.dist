@@ -17,6 +17,3 @@ parameters:
     secret:                 a149c3le9kw08w804gs0wkc4c8ogk4k
     tracking_code:          ~
     domain:                 www.sandbox.fr
-    sitename:               Sandbox
-    email_no_reply:         no-reply@sandbox.fr
-    email_contact:          contact@sandbox.fr

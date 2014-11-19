@@ -6,3 +6,16 @@ My\Bundle\CmsBundle\Entity\Block:
             type: integer
             generator:
                 strategy: AUTO
+    manyToOne:
+        original:
+            targetEntity: My\Bundle\CmsBundle\Entity\Block
+            inversedBy: translations
+            joinColumn:
+                name: original_id
+                referencedColumnName: id
+                nullable: true
+    oneToMany:
+        translations:
+            targetEntity: My\Bundle\CmsBundle\Entity\Block
+            mappedBy: original
+            cascade: [persist]

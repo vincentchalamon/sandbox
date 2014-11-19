@@ -32,12 +32,6 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
-    globals:
-        tracking_code: %tracking_code%
-        sitename: %sitename%
-        domain: %domain%
-        email_no_reply: %email_no_reply%
-        email_contact: %email_contact%
 
 # Assetic Configuration
 assetic:
@@ -90,18 +84,25 @@ fos_user:
     group:
         group_class: My\Bundle\UserBundle\Entity\Group
     from_email:
-        address: %email_no_reply%
-        sender_name: %sitename%
+        address: %vince.cms.no_reply%
+        sender_name: %vince.cms.sitename%
 
 # CMS
 vince_cms:
-    article:
-        class: My\Bundle\CmsBundle\Entity\Article
-    block:
-        class: My\Bundle\CmsBundle\Entity\Block
-    articleMeta:
-        class: My\Bundle\CmsBundle\Entity\ArticleMeta
-    content:
-        class: My\Bundle\CmsBundle\Entity\Content
-    menu:
-        class: My\Bundle\CmsBundle\Entity\Menu
+    tracking_code: %tracking_code%
+    sitename: Sandbox
+    domain: %domain%
+    languages: [fr, en, de, it, es, ru]
+    #no_reply: no-reply@sandbox.fr
+    #contact: contact@sandbox.fr
+    model:
+        article:
+            class: My\Bundle\CmsBundle\Entity\Article
+        block:
+            class: My\Bundle\CmsBundle\Entity\Block
+        articleMeta:
+            class: My\Bundle\CmsBundle\Entity\ArticleMeta
+        content:
+            class: My\Bundle\CmsBundle\Entity\Content
+        menu:
+            class: My\Bundle\CmsBundle\Entity\Menu

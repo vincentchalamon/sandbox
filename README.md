@@ -190,8 +190,9 @@ Documentation
 
 ## todo-vince VinceCmsSonataAdminBundle
 
+- [ ] How to manage menu translations ?
 - [ ] Documentation
-- [ ] Languages on article list
+- [x] Languages on article list
 
 Documentation
 =============
