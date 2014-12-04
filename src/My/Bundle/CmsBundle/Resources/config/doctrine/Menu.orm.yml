@@ -27,13 +27,6 @@ My\Bundle\CmsBundle\Entity\Menu:
                 referencedColumnName: id
                 nullable: true
                 onDelete: SET NULL
-        original:
-            targetEntity: My\Bundle\CmsBundle\Entity\Menu
-            inversedBy: translations
-            joinColumn:
-                name: original_id
-                referencedColumnName: id
-                nullable: true
     oneToMany:
         children:
             targetEntity: My\Bundle\CmsBundle\Entity\Menu
@@ -41,7 +34,3 @@ My\Bundle\CmsBundle\Entity\Menu:
             cascade: [persist]
             orderBy:
                 lft: ASC
-        translations:
-            targetEntity: My\Bundle\CmsBundle\Entity\Menu
-            mappedBy: original
-            cascade: [persist]

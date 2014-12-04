@@ -1,14 +1,12 @@
+My\Bundle\CmsBundle\Entity\Block:
+    sample:
+        title: Exemple
+        name: sample
+        locale: fr
+        contents: |
+            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+
 Vince\Bundle\CmsBundle\Entity\Template:
-    error:
-        title: Erreur
-        path: MyCmsBundle:Templates:error.html.twig
-        areas:
-            error-contents:
-                title: Contents
-                name: contents
-                type: redactor
-                options: {plugins: [filemanager, fontcolor, fontfamily, fontsize, imagemanager, table]}
-                required: true
     article:
         title: Article
         path: MyCmsBundle:Templates:article.html.twig
@@ -19,10 +17,20 @@ Vince\Bundle\CmsBundle\Entity\Template:
                 type: redactor
                 options: {plugins: [filemanager, fontcolor, fontfamily, fontsize, imagemanager, table]}
                 required: true
+    error:
+        title: Erreur
+        path: MyCmsBundle:Templates:error.html.twig
+        areas:
+            error-contents:
+                title: Contents
+                name: contents
+                type: redactor
+                options: {plugins: [filemanager, fontcolor, fontfamily, fontsize, imagemanager, table]}
+                required: true
 
 My\Bundle\CmsBundle\Entity\Article:
     error-404:
-        language: fr
+        locale: fr
         title: Page introuvable
         slug: error-404
         summary: <p>La page demandée est introuvable.</p>
@@ -39,7 +47,7 @@ My\Bundle\CmsBundle\Entity\Article:
                 area: Vince\Bundle\CmsBundle\Entity\Area-error-contents
                 contents: La page demandée est introuvable.
     error:
-        language: fr
+        locale: fr
         title: Une erreur est survenue
         slug: error
         summary: <p>Une erreur est survenue dans l'application.</p>
@@ -59,18 +67,18 @@ My\Bundle\CmsBundle\Entity\Article:
 My\Bundle\CmsBundle\Entity\Menu:
     root:
         title: Menu principal
-        language: fr
+        locale: fr
         slug: root
         startedAt: '2014-01-01'
         children:
             homepage:
                 title: Accueil
-                language: fr
+                locale: fr
                 slug: homepage
                 startedAt: '2014-01-01'
                 article:
-                    language: fr
                     title: Accueil
+                    locale: fr
                     slug: homepage
                     summary: Accueil
                     url: /
@@ -100,11 +108,11 @@ My\Bundle\CmsBundle\Entity\Menu:
                                 iaculis pharetra ut sed sapien.
             sample:
                 title: Exemple
-                language: fr
+                locale: fr
                 startedAt: '2014-01-01'
                 article:
-                    language: fr
                     title: Exemple
+                    locale: fr
                     summary: Exemple d'article
                     startedAt: '2014-01-01'
                     template: article
@@ -148,13 +156,13 @@ My\Bundle\CmsBundle\Entity\Menu:
                                 <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
     about:
         title: A propos
-        language: fr
+        locale: fr
         slug: about
         startedAt: '2014-01-01'
         children:
-            ylly:
-                title: Ylly
-                language: fr
+            google:
+                title: Google
+                locale: fr
                 startedAt: '2014-01-01'
                 target: _blank
-                url: http://www.ylly.fr
+                url: http://www.google.com

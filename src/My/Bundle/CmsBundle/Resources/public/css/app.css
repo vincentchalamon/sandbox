@@ -63,6 +63,19 @@ img {
     font-size: 26px;
     margin-top: 30px;
     margin-bottom: 20px;
+    float: left;
+}
+
+.container .locales {
+    list-style: none;
+    padding: 0;
+    overflow: hidden;
+    float: right;
+    margin-top: 37px;
+}
+
+.container .locales li {
+    float: left;
 }
 
 @media (min-width: 460px) {
@@ -81,6 +94,7 @@ img {
 
 /** Navigation **/
 .container > header nav {
+    clear: both;
     margin-top: 30px;
     margin-bottom: 50px;
     border-top: thin solid #ededed;

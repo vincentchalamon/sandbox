@@ -92,7 +92,7 @@ vince_cms:
     tracking_code: %tracking_code%
     sitename: Sandbox
     domain: %domain%
-    languages: [fr, en, de, it, es, ru]
+    locales: [fr, en, de, it, es, ru]
     #no_reply: no-reply@sandbox.fr
     #contact: contact@sandbox.fr
     model:

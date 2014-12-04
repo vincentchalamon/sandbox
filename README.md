@@ -67,80 +67,32 @@ parameters:
     mailer_host: localhost:1025
 ```
 
+## todo-vince Blog
+
+- [ ] Publier sur Google+ & Twitter (on create)
+
 ## todo-vince Sandbox
 
 - [x] Initialization command
 - [x] Google Analytics tracking code (bundle configuration)
 - [x] Default theme
 - [x] Mail theme
+- [x] I18n
 - [ ] Documentation (README + PHPDoc + GitHub pages)
-
-Documentation
-=============
-
-### Installation
-
-- [ ] Install with composer
-<!-- [ ] Launch elastic search daemon-->
-- [ ] Create database
-- [ ] Run _php app/console project:reset_
-- [ ] Access to admin (url, login, password)
-
-### Configuration
-
-- [ ] Update config.yml: domain, sitename, tracking_code, no_reply, contact
-
-### How to
-
-#### Developers
-
-- [ ] Fixtures
-    - [ ] Create fixtures in YML
-    - [ ] Create templates (& areas)
-    - [ ] Create articles (& contents & metas)
-    - [ ] Create menus (=> article or url, parent, children)
-    - [ ] Create blocks
-- [ ] Deploy (Capifony)
-- [ ] Inject objects in template (listeners)
-- [ ] Process forms (processors)
-- [ ] Advanced
-    - [ ] Override entities
-    - [ ] Override controllers
-    - [ ] Override admin
-    - [ ] Catch mail on dev (MailCatcher)
-    - [ ] PHPDoc
-
-#### Designers
-
-- [ ] Create template
-    - [ ] Create twig file
-    - [ ] Twig helpers
-        - [ ] `vince` configuration
-        - [ ] render_metas
-        - [ ] render_meta
-        - [ ] render_menu
-        - [ ] render_block
-        - [ ] localizeddate
-- [ ] Assetic
-    - [ ] Bootstrap
-    - [ ] Ladda
-    - [ ] Autosize
-    - [ ] YUI compressor
 
 ## todo-vince VinceCmsBundle
 
-- [ ] I18n
+- [x] I18n
 - [ ] Cache APC
 - [ ] Cache doctrine
 - [ ] Cache HTTP
 - [ ] Documentation (README + PHPDoc + GitHub pages)
+
+## todo-vince Search
+
 - [ ] Search configuration (Symfony + ElasticSearch)
 - [ ] Search pager: KnpPaginatorBundle
 - [ ] Search ajax pager
-
-Search
-======
-
 * Ne dois pas remonter :
     * Système : homepage, accueil, search, rechercher
     * Non publié : vincent
@@ -153,61 +105,14 @@ Search
     * Publié jusqu'à aujourd'hui : gilles
     * Publié temporairement : adrien
 
-Documentation
-=============
-
-### Installation
-
-- [ ] Install bundle with composer
-- [ ] Update AppKernel
-<!-- [ ] Install ElasticSearch with composer-->
-<!-- [ ] Launch ElasticSearch-->
-
-### Configuration
-
-- [ ] Create override bundle (MyCmsBundle)
-- [ ] Create override entities: Article, ArticleMeta, Block, Content, Menu
-- [ ] Update config.yml: domain, sitename, tracking_code, model, no_reply, contact
-
-### Fixtures
-
-- [ ] Create fixtures in YML
-- [ ] Create templates
-- [ ] Create articles
-- [ ] Create menus
-- [ ] Create blocks
-
-### CMS injection
-
-- [ ] Inject objects (& forms) in template (listeners)
-- [ ] Process forms (processors)
-
-### Advanced
-
-- [ ] Override controllers
-- [ ] Catch mail on dev (MailCatcher)
-- [ ] PHPDoc
-
 ## todo-vince VinceCmsSonataAdminBundle
 
-- [ ] How to manage menu translations ?
-- [ ] Documentation
 - [x] Languages on article list
-
-Documentation
-=============
-
-### Installation
-
-- [ ] Install bundle with composer
-- [ ] Update AppKernel
-
-### Configuration
-
-- [ ] Override admin
+- [ ] Documentation (README + PHPDoc + GitHub pages)
 
 ## todo-vince VinceTypeBundle
 
+- [ ] Refactoriser le DocumentType
 - [ ] Switch (http://www.inserthtml.com/demos/css/radio-buttons/)
 - [ ] Autocomplete (https://github.com/bassjobsen/Bootstrap-3-Typeahead)
 - [ ] FileUpload (http://blueimp.github.io/jQuery-File-Upload/basic.html)
@@ -218,5 +123,4 @@ Documentation
     * Animation de réduction à la suppression si vide
 - [ ] jQuery image cropper (http://tympanus.net/codrops/2009/11/04/jquery-image-cropper-with-uploader-v1-1/)
 - [ ] ColorPicker
-- [ ] Documentation (README + PHPdoc + GitHub pages)
-
+- [ ] Documentation (README + PHPDoc + GitHub pages)

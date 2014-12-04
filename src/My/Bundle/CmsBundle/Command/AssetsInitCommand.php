@@ -19,7 +19,7 @@ use Symfony\Component\Console\Input\ArrayInput;
 /**
  * Init assets
  *
- * @author Vincent Chalamon <vincent@ylly.fr>
+ * @author Vincent Chalamon <vincentchalamon@gmail.com>
  */
 class AssetsInitCommand extends DoctrineCommand
 {
@@ -48,7 +48,7 @@ class AssetsInitCommand extends DoctrineCommand
     /**
      * Run Symfony command
      *
-     * @author Vincent Chalamon <vincent@ylly.fr>
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
      *
      * @param string          $name    Command name
      * @param OutputInterface $output  Output interface
