@@ -11,3 +11,5 @@ My\Bundle\CmsBundle\Form\Data\Contact:
             - NotBlank: ~
             - Length:
                 max: 1000
+        captcha:
+            - EWZ\Bundle\RecaptchaBundle\Validator\Constraints\True: ~

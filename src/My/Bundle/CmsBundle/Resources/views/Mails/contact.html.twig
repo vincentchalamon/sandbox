@@ -1,0 +1,12 @@
+{% extends 'MyCmsBundle::mail.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    {% spaceless %}
+        <p>Bonjour,</p><br/>
+        <p><i>{{ name }} ({{ email }})</i> vous envoie le message suivant :</p><br/>
+        <p style="text-align:center" class="lead">{{ message }}</p><br />
+        <p>Cliquez sur <i>répondre</i> pour lui écrire.</p>
+    {% endspaceless %}
+{% endblock %}

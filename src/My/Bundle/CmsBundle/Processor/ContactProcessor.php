@@ -10,8 +10,7 @@
  */
 namespace My\Bundle\CmsBundle\Processor;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 use Symfony\Component\Templating\EngineInterface;
 use Vince\Bundle\CmsBundle\Component\Processor\Processor;
 use My\Bundle\CmsBundle\Form\Type\ContactType;
@@ -61,11 +60,11 @@ class ContactProcessor extends Processor
     protected $templating;
 
     /**
-     * Session
+     * Flash bag
      *
-     * @var Session
+     * @var FlashBag
      */
-    protected $session;
+    protected $flashBag;
 
     /**
      * Web dir
@@ -86,50 +85,33 @@ class ContactProcessor extends Processor
                         ->setSubject('Demande de contact')
                         ->setFrom(array($this->noreply => $this->sitename))
                         ->setReplyTo($form->get('email')->getData(), $form->get('name')->getData())
-                        ->setTo(array($this->contact))
+                        ->setTo($this->contact)
                         ->setContentType('text/html')
             ;
-            $body = $this->templating->render('MyCmsBundle::mail.html.twig', array(
+            $body = $this->templating->render('MyCmsBundle:Mails:contact.html.twig', array(
                     'message' => $form->get('message')->getData(),
                     'name' => $form->get('name')->getData(),
+                    'email' => $form->get('email')->getData(),
                     'title' => 'Demande de contact'
                 )
             );
             if (preg_match_all('/<img([^>]+)src="(\/[^"]+)"([^>]+)?>/i', $body, $matches)) {
                 foreach ($matches[0] as $key => $match) {
-                    $body = str_ireplace($match, sprintf('<img%ssrc="%s"%s>', $matches[1][$key], $message->embed(\Swift_Image::fromPath($this->webDir.$matches[2][$key])), $matches[3][$key]), $body);
+                    if (is_file($this->webDir.$matches[2][$key])) {
+                        $body = str_ireplace($match, sprintf('<img%ssrc="%s"%s>', $matches[1][$key], $message->embed(\Swift_Image::fromPath($this->webDir.$matches[2][$key])), $matches[3][$key]), $body);
+                    }
                 }
             }
             $message->setBody($body);
             $this->mailer->send($message);
 
-            return new JsonResponse(array(
-                    'code' => 'success',
-                    'message' => 'Votre message a bien été envoyé.'
-                )
-            );
+            $this->flashBag->add('success', 'Votre message a bien été envoyé');
+
+            return true;
         }
+        $this->flashBag->add('danger', 'Le formulaire contient des erreurs');
 
-        return new JsonResponse(array(
-                'code' => 'error',
-                'form' => $this->templating->render('MyCmsBundle:Component:contact.html.twig', array(
-                            'form' => $form->createView()
-                        )
-                    )
-            )
-        );
-    }
-
-    /**
-     * Set Session
-     *
-     * @author Vincent Chalamon <vincentchalamon@gmail.com>
-     *
-     * @param Session $session
-     */
-    public function setSession(Session $session)
-    {
-        $this->session = $session;
+        return $form;
     }
 
     /**
@@ -139,15 +121,15 @@ class ContactProcessor extends Processor
      *
      * @param \Swift_Mailer $mailer
      * @param string        $noreply
-     * @param string        $sitename
      * @param string        $contact
+     * @param string        $sitename
      */
-    public function setMailer(\Swift_Mailer $mailer, $noreply, $sitename, $contact)
+    public function setMailer(\Swift_Mailer $mailer, $noreply, $contact, $sitename)
     {
         $this->mailer   = $mailer;
         $this->noreply  = $noreply;
-        $this->sitename = $sitename;
         $this->contact  = $contact;
+        $this->sitename = $sitename;
     }
 
     /**
@@ -172,5 +154,17 @@ class ContactProcessor extends Processor
     public function setWebDir($webDir)
     {
         $this->webDir = $webDir;
+    }
+
+    /**
+     * Set flashBag
+     *
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
+     *
+     * @param FlashBag $flashBag
+     */
+    public function setFlashBag($flashBag)
+    {
+        $this->flashBag = $flashBag;
     }
 }

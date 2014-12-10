@@ -1,0 +1,62 @@
+{% extends 'VinceTypeBundle:Form:form_div_layout.html.twig' %}
+
+{% block form_row %}
+    {% spaceless %}
+        <div class="form-group{% if errors|length %} has-error{% endif %}">
+            {{ form_label(form) }}
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+            {{ form_help(form) }}
+        </div>
+    {% endspaceless %}
+{% endblock %}
+
+{% block label %}
+    {% spaceless %}
+        {% if label is not sameas(false) %}
+            {% if label is empty %}
+                {% set label = name|humanize %}
+            {% endif %}
+            {% if required %}
+                {% set label = label|trans({}, translation_domain) ~ ' *' %}
+            {% endif %}
+            {{ label|trans({}, translation_domain) }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
+
+{% block form_label %}
+    {% spaceless %}
+        {% set label = block('label')|trim %}
+        {% set label_attr = label_attr|merge({'class': label_attr.class is defined ? (label_attr.class ~ ' control-label')|trim : 'control-label'}) %}
+        {{ parent() }}
+    {% endspaceless %}
+{% endblock form_label %}
+
+{% block form_widget_simple %}
+    {% spaceless %}
+        {% if attr.placeholder is not defined and block('label') %}
+            {% set attr = attr|merge({'placeholder': block('label')|trim}) %}
+        {% endif %}
+        {% set attr = attr|merge({'class': attr.class is defined ? (attr.class ~ ' form-control')|trim : 'form-control'}) %}
+        {{ parent() }}
+    {% endspaceless %}
+{% endblock form_widget_simple %}
+
+{% block textarea_widget %}
+    {% if attr.placeholder is not defined and block('label') %}
+        {% set attr = attr|merge({'placeholder': block('label')|trim}) %}
+    {% endif %}
+    {% set attr = attr|merge({'class': attr.class is defined ? (attr.class ~ ' form-control')|trim : 'form-control'}) %}
+    {{ parent() }}
+{% endblock textarea_widget %}
+
+{% block form_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+            {% for error in errors %}
+                <span class="help-block text-danger">{{ error.message }}</span>
+            {% endfor %}
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_errors %}

@@ -430,7 +430,7 @@ body.modal-open {
     -khtml-border-radius-bottomright: 3px;
 }
 
-#contact .modal-header span {
+/*#contact .modal-header span {
     font-size: 0.7em;
     top: 0;
     margin-right: 10px;
@@ -454,7 +454,7 @@ body.modal-open {
 #contact textarea:valid, #contact input:valid {
     padding-right: 40px;
     border-color: rgba(131, 194, 41, 0.8);
-    /*box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);*/
+    /*box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
 }
 
 #contact .input-group {

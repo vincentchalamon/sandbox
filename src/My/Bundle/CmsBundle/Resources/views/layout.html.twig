@@ -46,6 +46,15 @@
             <div class="row">
                 <!-- Contents -->
                 <div class="col-sm-8">
+                    {% for class, messages in app.session.flashbag.all %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ class }}">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                <span class="sr-only">{{ class|upper }}:</span>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
                     {% block article %}{% endblock %}
                 </div>
                 <!-- End contents -->

@@ -17,6 +17,9 @@ Vince\Bundle\CmsBundle\Entity\Template:
                 type: redactor
                 options: {plugins: [filemanager, fontcolor, fontfamily, fontsize, imagemanager, table]}
                 required: true
+    contact:
+        title: Contact
+        path: MyCmsBundle:Templates:contact.html.twig
     error:
         title: Erreur
         path: MyCmsBundle:Templates:error.html.twig
@@ -166,3 +169,20 @@ My\Bundle\CmsBundle\Entity\Menu:
                 startedAt: '2014-01-01'
                 target: _blank
                 url: http://www.google.com
+            contact:
+                title: Contactez-moi
+                locale: fr
+                startedAt: '2014-01-01'
+                article:
+                    title: Contact
+                    locale: fr
+                    summary: Contact
+                    startedAt: '2014-01-01'
+                    template: contact
+                    metas:
+                        contact-robots:
+                            meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
+                            contents: index,follow
+                        contact-title:
+                            meta: Vince\Bundle\CmsBundle\Entity\Meta-title
+                            contents: Contact

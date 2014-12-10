@@ -106,3 +106,7 @@ vince_cms:
             class: My\Bundle\CmsBundle\Entity\Content
         menu:
             class: My\Bundle\CmsBundle\Entity\Menu
+
+ewz_recaptcha:
+    public_key: FILL-ME
+    private_key: FILL-ME

@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Vince\Bundle\CmsBundle\VinceCmsBundle(),
             new My\Bundle\CmsBundle\MyCmsBundle(),
             new Vince\Bundle\TypeBundle\VinceTypeBundle(),
+            new EWZ\Bundle\RecaptchaBundle\EWZRecaptchaBundle(),
 
             // User
             new FOS\UserBundle\FOSUserBundle(),

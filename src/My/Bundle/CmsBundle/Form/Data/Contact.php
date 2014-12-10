@@ -38,6 +38,13 @@ class Contact
     protected $message;
 
     /**
+     * Captcha
+     *
+     * @var string
+     */
+    protected $captcha;
+
+    /**
      * Set Email
      *
      * @author Vincent Chalamon <vincentchalamon@gmail.com>
@@ -119,5 +126,33 @@ class Contact
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Get captcha
+     *
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
+     *
+     * @return string
+     */
+    public function getCaptcha()
+    {
+        return $this->captcha;
+    }
+
+    /**
+     * Set captcha
+     *
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
+     *
+     * @param string $captcha
+     *
+     * @return Contact
+     */
+    public function setCaptcha($captcha)
+    {
+        $this->captcha = $captcha;
+
+        return $this;
     }
 }

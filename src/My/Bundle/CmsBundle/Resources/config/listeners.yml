@@ -1,11 +1,4 @@
 services:
-    my.cms.load.listener:
-        class: My\Bundle\CmsBundle\Listener\CmsListener
-        tags:
-            - { name: kernel.event_listener, event: vince.cms.contact.load, method: onLoadContact }
-        calls:
-            - [ setFormFactory, [ @form.factory ] ]
-
     my.processor.contact:
         class: My\Bundle\CmsBundle\Processor\ContactProcessor
         parent: vince.processor
@@ -14,5 +7,12 @@ services:
         calls:
             - [ setMailer, [ @mailer, %vince.cms.no_reply%, %vince.cms.contact%, %vince.cms.sitename% ] ]
             - [ setTemplating, [ @templating ] ]
-            - [ setSession, [ @session ] ]
+            - [ setFlashBag, [ @session.flash_bag ] ]
             - [ setWebDir, [ %kernel.web_dir% ] ]
+
+    my.cms.load.listener:
+        class: My\Bundle\CmsBundle\Listener\CmsListener
+        tags:
+            - { name: kernel.event_listener, event: vince.cms.contact.load, method: onLoadContact }
+        calls:
+            - [ setFormFactory, [ @form.factory ] ]

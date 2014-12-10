@@ -83,6 +83,7 @@ parameters:
 ## todo-vince VinceCmsBundle
 
 - [x] I18n
+- [ ] Update form process (form as service, inject form dynamically, etc)
 - [ ] Cache APC
 - [ ] Cache doctrine
 - [ ] Cache HTTP

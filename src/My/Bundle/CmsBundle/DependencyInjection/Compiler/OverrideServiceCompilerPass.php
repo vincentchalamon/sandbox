@@ -28,18 +28,37 @@ class OverrideServiceCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        // Add validations
-        if (!$container->hasParameter('validator.mapping.loader.yaml_files_loader.mapping_files')) {
-            return;
-        }
-        $files   = $container->getParameter('validator.mapping.loader.yaml_files_loader.mapping_files');
         $r       = new \ReflectionObject($this);
         $dirname = str_replace('\\', '/', dirname($r->getFileName())).'/../../Resources/config/validation';
         foreach (Finder::create()->files()->in($dirname) as $file) {
-            /** @var \SplFileInfo $file */
-            $files[] = $file->__toString();
-            $container->addResource(new FileResource($file->__toString()));
+            $this->addValidationFile($file, $container);
         }
+    }
+
+    /**
+     * Load validation file
+     *
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
+     * @param \SplFileInfo $file
+     * @param ContainerBuilder $container
+     */
+    protected function addValidationFile(\SplFileInfo $file, ContainerBuilder $container)
+    {
+        if ($container->hasDefinition('validator.builder')) {
+            // Symfony 2.5+
+            $container->getDefinition('validator.builder')
+                      ->addMethodCall('addYamlMapping', array($file->__toString()));
+
+            return;
+        }
+
+        // Old method of loading validation
+        if (!$container->hasParameter('validator.mapping.loader.yaml_files_loader.mapping_files')) {
+            return;
+        }
+        $files = $container->getParameter('validator.mapping.loader.yaml_files_loader.mapping_files');
+        $files[] = realpath($file->__toString());
+        $container->addResource(new FileResource($file->__toString()));
         $container->setParameter('validator.mapping.loader.yaml_files_loader.mapping_files', $files);
     }
 }
