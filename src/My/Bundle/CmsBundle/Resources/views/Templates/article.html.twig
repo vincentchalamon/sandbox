@@ -1,6 +1,6 @@
 {% extends 'MyCmsBundle::layout.html.twig' %}
 
-{% block current %}blog{% endblock %}
+{% block current %}{{ article.slug }}{% endblock %}
 
 {% block article %}
     {% spaceless %}

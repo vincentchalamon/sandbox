@@ -4,6 +4,7 @@ User List: Utilisateurs
 Password: Mot de passe
 Confirmation: Confirmation
 Back to front: Retour au site
+Category List: Catégories
 security:
     login:
         username: Adresse e-mail

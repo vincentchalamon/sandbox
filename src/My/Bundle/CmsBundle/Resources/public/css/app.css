@@ -25,6 +25,7 @@ body {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     font-weight: bold;
     font-size: 2rem;
+    font-family: "Asap", Georgia, serif;
     margin: 0;
 }
 
@@ -60,22 +61,25 @@ img {
 }
 
 .container > header h1 {
-    font-size: 26px;
+    font-size: 40px;
+    font-family: "Lato", Georgia, serif;
     margin-top: 30px;
-    margin-bottom: 20px;
-    float: left;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #21759b;
+    text-shadow: -1px 1px 0 #333;
 }
 
-.container .locales {
-    list-style: none;
-    padding: 0;
-    overflow: hidden;
-    float: right;
-    margin-top: 37px;
+.container > header h1 span {
+    color: #21759b;
+    text-shadow: -1px 1px 0 #333333;
 }
 
-.container .locales li {
-    float: left;
+@media (min-width: 768px) {
+    .container > header h1 {
+        float: left;
+        text-align: left;
+    }
 }
 
 @media (min-width: 460px) {
@@ -121,9 +125,10 @@ img {
     background: none;
 }
 
-.container > header nav li a:hover, .container > header nav li.active a:hover {
-    color: #202020;
-    background: none;
+.container > header nav li a:hover, .container > header nav li.active a:hover,
+.container > header nav li a:focus, .container > header nav li.active a:focus {
+    color: #202020 !important;
+    background: none !important;
 }
 /** End navigation **/
 
@@ -226,3 +231,17 @@ aside ul {
     }
 }
 /** End share **/
+
+/** Contact **/
+#contact textarea {
+    min-height: 100px;
+    vertical-align: top;
+    transition: height 0.2s;
+    -webkit-transition: height 0.2s;
+    -moz-transition: height 0.2s;
+}
+
+#contact label {
+    display: none;
+}
+/** End Contact **/

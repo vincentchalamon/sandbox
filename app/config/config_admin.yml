@@ -52,6 +52,8 @@ sonata_admin:
                 icon: <i class="fa fa-pencil"></i>
             sonata_user:
                 icon: <i class="fa fa-group"></i>
+                items:
+                    - sonata.user.admin.user
 
 monolog:
     handlers:

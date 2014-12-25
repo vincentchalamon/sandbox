@@ -35,4 +35,37 @@ class Article extends BaseArticle
         parent::__construct();
         $this->categories = new ArrayCollection();
     }
+
+    /**
+     * Add category
+     *
+     * @param Category category
+     * @return Article
+     */
+    public function addCategory(Category $category)
+    {
+        $this->categories[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param Category $category
+     */
+    public function removeCategory(Category $category)
+    {
+        $this->categories->removeElement($category);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return ArrayCollection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
 }

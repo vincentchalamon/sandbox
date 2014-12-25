@@ -103,6 +103,9 @@ My\Bundle\CmsBundle\Entity\Menu:
                     summary: Exemple d'article
                     startedAt: '2014-01-01'
                     template: article
+                    categories:
+                        article:
+                            name: Article
                     metas:
                         sample-robots:
                             meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
