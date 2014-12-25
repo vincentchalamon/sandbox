@@ -64,7 +64,7 @@
         "sonata-project/admin-bundle": "2.3.*",
         "sonata-project/user-bundle": "2.2.*",
         "sonata-project/doctrine-orm-admin-bundle": "2.3.*",
-        "vince/cms-sonata-admin-bundle": "@stable",
+        "vince/cms-sonata-admin-bundle": "2.*",
         "excelwebzone/recaptcha-bundle": "@stable"
     },
     "scripts": {

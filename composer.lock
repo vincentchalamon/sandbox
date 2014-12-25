@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d6d547c83e4d42630d1ca7e3a9728caf",
+    "hash": "7260d21bab6ce5ff0de45a83502e5dcf",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -3539,17 +3539,17 @@
         },
         {
             "name": "vince/cms-bundle",
-            "version": "1.0.12",
+            "version": "2.0.0",
             "target-dir": "Vince/Bundle/CmsBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vincentchalamon/VinceCmsBundle.git",
-                "reference": "cb3d9277c1d1f4a3ad95b946d8f57ea92fb57331"
+                "reference": "0a5897c569cfcd4f4711cadfad6befc642f1b10d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsBundle/zipball/cb3d9277c1d1f4a3ad95b946d8f57ea92fb57331",
-                "reference": "cb3d9277c1d1f4a3ad95b946d8f57ea92fb57331",
+                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsBundle/zipball/0a5897c569cfcd4f4711cadfad6befc642f1b10d",
+                "reference": "0a5897c569cfcd4f4711cadfad6befc642f1b10d",
                 "shasum": ""
             },
             "require": {
@@ -3589,33 +3589,33 @@
                     "email": "vincentchalamon@gmail.com"
                 }
             ],
-            "description": "Basic CMS features for Symfony 2.3+",
+            "description": "Basic CMS features for Symfony 2.5+",
             "homepage": "http://vincentchalamon.github.io/VinceCmsBundle/",
             "keywords": [
                 "Vince",
                 "cms"
             ],
-            "time": "2014-10-14 08:04:45"
+            "time": "2014-12-25 23:05:45"
         },
         {
             "name": "vince/cms-sonata-admin-bundle",
-            "version": "1.0.13",
+            "version": "2.0.0",
             "target-dir": "Vince/Bundle/CmsSonataAdminBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vincentchalamon/VinceCmsSonataAdminBundle.git",
-                "reference": "4b0796534bd1dc988f2e0db2da821029794f4d97"
+                "reference": "81d4a639bf02b0ba2bac848eb51691e60dabfa29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsSonataAdminBundle/zipball/4b0796534bd1dc988f2e0db2da821029794f4d97",
-                "reference": "4b0796534bd1dc988f2e0db2da821029794f4d97",
+                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsSonataAdminBundle/zipball/81d4a639bf02b0ba2bac848eb51691e60dabfa29",
+                "reference": "81d4a639bf02b0ba2bac848eb51691e60dabfa29",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "vince/cms-bundle": "~1.0",
-                "vince/type-bundle": "~1.0,>=1.0.1"
+                "vince/cms-bundle": "2.*",
+                "vince/type-bundle": "@stable"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -3639,7 +3639,7 @@
                 "Vince",
                 "cms"
             ],
-            "time": "2014-10-07 07:45:51"
+            "time": "2014-12-25 23:08:15"
         },
         {
             "name": "vince/type-bundle",
@@ -3842,7 +3842,6 @@
     "stability-flags": {
         "doctrine/migrations": 20,
         "doctrine/doctrine-migrations-bundle": 20,
-        "vince/cms-sonata-admin-bundle": 0,
         "excelwebzone/recaptcha-bundle": 0,
         "sensiolabs/security-checker": 0
     },
