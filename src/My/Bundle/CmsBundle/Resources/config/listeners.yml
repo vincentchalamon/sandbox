@@ -11,20 +11,20 @@ services:
         calls:
             - [ setTranslationDomain, [ 'SonataAdminBundle' ] ]
 
-    my.processor.contact:
+    my_cms.processor.contact:
         class: My\Bundle\CmsBundle\Processor\ContactProcessor
-        parent: vince.processor
+        parent: vince_cms.processor
         tags:
-            -  { name: vince.processor, alias: contact }
+            -  { name: vince_cms.processor, alias: contact }
         calls:
-            - [ setMailer, [ @mailer, %vince.cms.no_reply%, %vince.cms.contact%, %vince.cms.sitename% ] ]
+            - [ setMailer, [ @mailer, %vince_cms.no_reply%, %vince_cms.contact%, %vince_cms.sitename% ] ]
             - [ setTemplating, [ @templating ] ]
             - [ setFlashBag, [ @session.flash_bag ] ]
             - [ setWebDir, [ %kernel.web_dir% ] ]
 
-    my.cms.load.listener:
+    my_cms.listener:
         class: My\Bundle\CmsBundle\Listener\CmsListener
         tags:
-            - { name: kernel.event_listener, event: vince.cms.contact.load, method: onLoadContact }
+            - { name: kernel.event_listener, event: vince_cms.event.load.contact, method: onLoadContact }
         calls:
             - [ setFormFactory, [ @form.factory ] ]

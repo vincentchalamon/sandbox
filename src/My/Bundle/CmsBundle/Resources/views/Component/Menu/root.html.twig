@@ -6,7 +6,7 @@
                     {% if child.url|slice(0, 1) == '#' %}
                         data-toggle="modal"
                     {% endif %}
-                {% else %}
+                {% elseif child.article %}
                     href="{{ path(child.article.routeName) }}"
                 {% endif %}
                 target="{{ child.target }}"

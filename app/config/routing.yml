@@ -1,2 +1,2 @@
-cms:
+vince_cms:
     resource: "@VinceCmsBundle/Resources/config/routing.yml"

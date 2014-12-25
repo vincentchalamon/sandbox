@@ -8,6 +8,9 @@
  */
 namespace My\Bundle\CmsBundle\Form\Data;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\True as Recaptcha;
+
 /**
  * Object for ContactType
  *
@@ -19,6 +22,8 @@ class Contact
      * Name
      *
      * @var string
+     *
+     * @Assert\NotBlank
      */
     protected $name;
 
@@ -26,6 +31,9 @@ class Contact
      * Email
      *
      * @var string
+     *
+     * @Assert\NotBlank
+     * @Assert\Email(checkHost=true, checkMX=true)
      */
     protected $email;
 
@@ -33,6 +41,9 @@ class Contact
      * Message
      *
      * @var string
+     *
+     * @Assert\NotBlank
+     * @Assert\Length(max="100")
      */
     protected $message;
 
@@ -40,6 +51,8 @@ class Contact
      * Captcha
      *
      * @var string
+     *
+     * @Recaptcha
      */
     protected $captcha;
 

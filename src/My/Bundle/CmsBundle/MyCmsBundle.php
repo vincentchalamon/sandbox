@@ -10,8 +10,6 @@
  */
 namespace My\Bundle\CmsBundle;
 
-use My\Bundle\CmsBundle\DependencyInjection\Compiler\OverrideServiceCompilerPass;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -28,14 +26,5 @@ class MyCmsBundle extends Bundle
     public function getParent()
     {
         return 'VinceCmsBundle';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function build(ContainerBuilder $container)
-    {
-        parent::build($container);
-        $container->addCompilerPass(new OverrideServiceCompilerPass());
     }
 }

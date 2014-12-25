@@ -12,34 +12,57 @@ namespace My\Bundle\UserBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Sonata\UserBundle\Entity\BaseUser;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * User
+ *
+ * @ORM\Entity
+ * @ORM\Table(name="fos_user")
  */
 class User extends BaseUser
 {
     /**
      * @var integer
+     *
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /**
      * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="My\Bundle\UserBundle\Entity\Group", cascade={"persist"})
+     * @ORM\JoinTable(name="fos_user_group")
      */
     protected $groups;
 
     /**
      * @var string
+     *
+     * @ORM\Column(type="text")
+     *
+     * todo-vince Assert ?
      */
     protected $address;
 
     /**
      * @var string
+     *
+     * @ORM\Column(type="string", length=5)
+     *
+     * todo-vince Assert ?
      */
     protected $zipcode;
 
     /**
      * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     *
+     * todo-vince Assert ?
      */
     protected $city;
 

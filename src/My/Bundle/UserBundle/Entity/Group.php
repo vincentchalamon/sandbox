@@ -11,14 +11,22 @@
 namespace My\Bundle\UserBundle\Entity;
 
 use Sonata\UserBundle\Entity\BaseGroup;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Group
+ *
+ * @ORM\Entity
+ * @ORM\Table(name="fos_group")
  */
 class Group extends BaseGroup
 {
     /**
      * @var integer
+     *
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 

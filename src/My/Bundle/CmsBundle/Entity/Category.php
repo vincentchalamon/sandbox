@@ -10,20 +10,32 @@
  */
 namespace My\Bundle\CmsBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * This entity provides features to manage a Category.
  *
- * @author Vincent Chalamon <vincentchalamon@gmail.com>
+ * @ORM\Entity
+ * @ORM\Table(name="category")
  */
 class Category
 {
     /**
      * @var integer
+     *
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\NotBlank
      */
     private $name;
 

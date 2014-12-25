@@ -4,6 +4,7 @@ imports:
 
 parameters:
     kernel.web_dir: %kernel.root_dir%/../admin
+    kernel.upload_dir: %kernel.root_dir%/../admin/uploads
     router.request_context.host: %admin_domain%
 
 framework:

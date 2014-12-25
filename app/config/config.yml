@@ -88,8 +88,8 @@ fos_user:
     group:
         group_class: My\Bundle\UserBundle\Entity\Group
     from_email:
-        address: %vince.cms.no_reply%
-        sender_name: %vince.cms.sitename%
+        address: %vince_cms.no_reply%
+        sender_name: %vince_cms.sitename%
 
 # CMS
 vince_cms:
