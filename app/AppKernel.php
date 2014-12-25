@@ -41,7 +41,7 @@ class AppKernel extends Kernel
             $bundles[] = new Vince\Bundle\CmsSonataAdminBundle\VinceCmsSonataAdminBundle();
         }
 
-        if (in_array($this->getEnvironment(), array('dev', 'test', 'admin'))) {
+        if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();

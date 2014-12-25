@@ -22,7 +22,6 @@ use Symfony\Component\Console\Input\ArrayInput;
  */
 class ResetCommand extends DoctrineCommand
 {
-
     /**
      * {@inheritdoc}
      */

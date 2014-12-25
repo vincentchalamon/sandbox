@@ -60,7 +60,7 @@ set :app_path,    "app"
 set :web_path,    "web"
 set :model_manager, "doctrine"
 set :shared_files, ["#{app_path}/config/parameters.yml"]
-set :shared_children, ["#{app_path}/logs", "#{app_path}/sessions", "#{app_path}/spool", "bin", "#{web_path}/uploads", "vendor"]
+set :shared_children, ["#{app_path}/logs", "#{app_path}/sessions", "#{app_path}/spool", "#{web_path}/uploads", "vendor"]
 set :interactive_mode, false
 
 namespace :symfony do
@@ -77,8 +77,7 @@ namespace :symfony do
         namespace :admin do
             desc "Dump assetic for admin env"
             task :dump do
-                run "cd #{current_release} && php app/console assets:install --symlink --env=admin admin"
-                run "cd #{current_release} && php app/console assetic:dump --no-debug --env=admin admin"
+                run "cd #{current_release} && php app/console project:assets:init --env=admin admin"
                 run "ln -s #{shared_path}/web/uploads #{current_release}/admin/uploads"
             end
         end
@@ -103,13 +102,12 @@ before "deploy:rollback:revision", "database:dump:remote"
 # Migrate remote database
 #before "symfony:cache:warmup", "symfony:doctrine:migrations:migrate"
 
+# Reset project
+before "symfony:assetic:dump", "symfony:reset"
+
 # Dump routing
-before "symfony:assetic:dump", "symfony:fos:routing:dump"
 after "symfony:assetic:dump", "symfony:assetic:admin:dump"
 
 # Run deployment
 after "deploy", "deploy:cleanup" # Clean old releases at the end
 after "deploy:setup", "upload_parameters" # Upload parameters file on setup server
-
-# Install project on first deploy
-before "symfony:cache:warmup", "symfony:reset"

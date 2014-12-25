@@ -78,11 +78,13 @@ parameters:
 - [x] Default theme
 - [x] Mail theme
 - [x] I18n
+- [ ] Article category
 - [ ] Documentation (README + PHPDoc + GitHub pages)
 
 ## todo-vince VinceCmsBundle
 
 - [x] I18n
+- [ ] Disable all locales except fr + en
 - [ ] Update form process (form as service, inject form dynamically, etc)
 - [ ] Cache APC
 - [ ] Cache doctrine
@@ -109,6 +111,7 @@ parameters:
 ## todo-vince VinceCmsSonataAdminBundle
 
 - [x] Languages on article list
+- [ ] Update i18n if 1 locale only
 - [ ] Documentation (README + PHPDoc + GitHub pages)
 
 ## todo-vince VinceTypeBundle

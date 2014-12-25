@@ -23,7 +23,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ContactProcessor extends Processor
 {
-
     /**
      * Mailer
      *
@@ -92,7 +91,7 @@ class ContactProcessor extends Processor
                     'message' => $form->get('message')->getData(),
                     'name' => $form->get('name')->getData(),
                     'email' => $form->get('email')->getData(),
-                    'title' => 'Demande de contact'
+                    'title' => 'Demande de contact',
                 )
             );
             if (preg_match_all('/<img([^>]+)src="(\/[^"]+)"([^>]+)?>/i', $body, $matches)) {

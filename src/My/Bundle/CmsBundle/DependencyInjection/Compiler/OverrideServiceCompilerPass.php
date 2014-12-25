@@ -22,7 +22,6 @@ use Symfony\Component\Finder\Finder;
  */
 class OverrideServiceCompilerPass implements CompilerPassInterface
 {
-
     /**
      * {@inheritdoc}
      */
@@ -39,7 +38,7 @@ class OverrideServiceCompilerPass implements CompilerPassInterface
      * Load validation file
      *
      * @author Vincent Chalamon <vincentchalamon@gmail.com>
-     * @param \SplFileInfo $file
+     * @param \SplFileInfo     $file
      * @param ContainerBuilder $container
      */
     protected function addValidationFile(\SplFileInfo $file, ContainerBuilder $container)

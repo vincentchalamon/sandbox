@@ -23,7 +23,6 @@ use Symfony\Component\Console\Input\ArrayInput;
  */
 class AssetsInitCommand extends DoctrineCommand
 {
-
     /**
      * {@inheritdoc}
      */
@@ -42,6 +41,9 @@ class AssetsInitCommand extends DoctrineCommand
     {
         // Install assets
         $this->runCommand('assets:install', $output, array('--symlink' => true, 'target' => $input->getArgument('target'), '--env' => $input->getOption('env')));
+        if ($input->getOption('env') == 'admin') {
+            $this->runCommand('fos:js-routing:dump', $output, array('--target' => $input->getArgument('target').'/js/fos_js_routes.js', '--env' => $input->getOption('env')));
+        }
         $this->runCommand('assetic:dump', $output, array('write_to' => $input->getArgument('target'), '--env' => $input->getOption('env')));
     }
 

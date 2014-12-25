@@ -12,8 +12,13 @@ parameters:
     mailer_host:            localhost
     mailer_user:            ~
     mailer_password:        ~
+    mailer_port:            ~
+    mailer_encryption:      ~
 
     locale:                 fr
     secret:                 a149c3le9kw08w804gs0wkc4c8ogk4k
+
+    admin_domain:           admin.sandbox.fr
+
     tracking_code:          ~
     domain:                 www.sandbox.fr

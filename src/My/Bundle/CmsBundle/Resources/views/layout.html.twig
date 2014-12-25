@@ -1,8 +1,11 @@
 {% extends 'VinceCmsBundle::base.html.twig' %}
 
+{% block title %}{{ vince.cms.sitename }} - {{ parent() }}{% endblock %}
+
 {% block head %}
     {% spaceless %}
         {{ parent() }}
+        <meta name="msapplication-config" content="none" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -11,12 +14,14 @@
 
 {% block stylesheets %}
     {% spaceless %}
+        <link href="//fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css" media="all" />
+        <link href="//fonts.googleapis.com/css?family=Lato%3A700%2C400&amp;ver=1418386962" rel="stylesheet" type="text/css" media="all" />
         {% stylesheets  'bundles/vincecms/css/locales.css'
                         'bundles/mycms/css/bootstrap.min.css'
                         'bundles/mycms/css/ladda-themeless.min.css'
                         'bundles/mycms/css/app.css'
                         filter='?yui_css,cssrewrite' %}
-            <link type="text/css" rel="stylesheet" href="{{ asset(asset_url) }}" />
+            <link type="text/css" rel="stylesheet" href="{{ asset(asset_url) }}" media="all" />
         {% endstylesheets %}
         {% if form is defined %}
             {{ form_stylesheets(form) }}
@@ -68,6 +73,7 @@
                 </div>
                 <!-- End aside -->
             </div>
+
             <!-- Footer -->
             <footer>
                 <p>&copy; {{ 'now'|date('Y') }} {{ vince.cms.sitename }} • {{ 'All rights reserved'|trans({}, 'MyCms') }}</p>

@@ -24,7 +24,6 @@ use Vince\Bundle\CmsBundle\Component\YamlFixturesLoader as Loader;
  */
 class UserData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
-
     /**
      * Container
      *

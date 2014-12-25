@@ -14,7 +14,9 @@ $(function () {
     });
 
     // Google Analytics on submit contact form
-    $('form[role=contact]').on('submit', function () {
-        _gaq.push(['_trackEvent', 'Contact', 'Envoyer']);
-    });
+    if (typeof _gaq != 'undefined') {
+        $('form[role=contact]').on('submit', function () {
+            _gaq.push(['_trackEvent', 'Contact', 'Envoyer']);
+        });
+    }
 });

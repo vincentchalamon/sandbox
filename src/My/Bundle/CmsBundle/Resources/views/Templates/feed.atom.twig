@@ -6,7 +6,7 @@
         <updated>{{ articles[0].updatedAt.format(constant('DATE_ATOM')) }}</updated>
     {% endif %}
     <author>
-        <name>John DOE</name>
+        <name>{{ vince.cms.sitename }}</name>
         <email>{{ vince.cms.contact }}</email>
     </author>
     {% for article in articles %}

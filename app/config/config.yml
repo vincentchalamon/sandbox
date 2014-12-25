@@ -4,6 +4,7 @@ imports:
 parameters:
     router.request_context.host: %domain%
     router.request_context.scheme: http
+    kernel.web_dir: %kernel.root_dir%/web
 
 framework:
     #esi:             ~
@@ -18,7 +19,7 @@ framework:
     templating:
         engines: ['twig']
         #assets_version: SomeVersionScheme
-        #assets_base_urls: %router.request_context.scheme%://%router.request_context.host%
+        assets_base_urls: %router.request_context.scheme%://%router.request_context.host%
     default_locale:  "%locale%"
     trusted_proxies: ~
     session:
@@ -38,6 +39,7 @@ assetic:
     debug:          %kernel.debug%
     use_controller: false
     bundles:        [MyCmsBundle, SonataUserBundle]
+    read_from:      %kernel.web_dir%
     filters:
         cssrewrite: ~
         yui_css:
@@ -63,10 +65,12 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: %mailer_transport%
-    host:      %mailer_host%
-    username:  %mailer_user%
-    password:  %mailer_password%
+    transport:  %mailer_transport%
+    host:       %mailer_host%
+    username:   %mailer_user%
+    password:   %mailer_password%
+    port:       %mailer_port%
+    encryption: %mailer_encryption%
     spool:     { type: memory }
 
 # User
@@ -92,7 +96,7 @@ vince_cms:
     tracking_code: %tracking_code%
     sitename: Sandbox
     domain: %domain%
-    locales: [fr, en, de, it, es, ru]
+    locales: [fr]
     #no_reply: no-reply@sandbox.fr
     #contact: contact@sandbox.fr
     model:

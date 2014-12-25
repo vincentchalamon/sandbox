@@ -18,7 +18,6 @@
 /app/spool/
 !app/spool/.gitkeep
 
-/web/assetic/
 /web/bundles/
 /web/css/
 /web/fonts/
@@ -26,7 +25,6 @@
 /web/uploads/
 !web/uploads/.gitkeep
 
-/admin/assetic/
 /admin/bundles/
 /admin/css/
 /admin/fonts/

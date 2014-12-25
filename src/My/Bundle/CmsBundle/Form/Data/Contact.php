@@ -15,7 +15,6 @@ namespace My\Bundle\CmsBundle\Form\Data;
  */
 class Contact
 {
-
     /**
      * Name
      *

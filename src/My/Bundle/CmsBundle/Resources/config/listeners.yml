@@ -1,4 +1,16 @@
 services:
+    my_cms.admin.category:
+        class: My\Bundle\CmsBundle\Admin\Entity\CategoryAdmin
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: cms
+              label_catalogue: SonataAdminBundle
+              label: Catégories
+        arguments: [ ~, My\Bundle\CmsBundle\Entity\Category, ~ ]
+        calls:
+            - [ setTranslationDomain, [ 'SonataAdminBundle' ] ]
+
     my.processor.contact:
         class: My\Bundle\CmsBundle\Processor\ContactProcessor
         parent: vince.processor

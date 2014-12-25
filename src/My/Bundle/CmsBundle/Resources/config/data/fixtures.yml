@@ -4,7 +4,8 @@ My\Bundle\CmsBundle\Entity\Block:
         name: sample
         locale: fr
         contents: |
-            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet
+               fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
 
 Vince\Bundle\CmsBundle\Entity\Template:
     article:
@@ -97,8 +98,8 @@ My\Bundle\CmsBundle\Entity\Menu:
                         homepage-contents:
                             area: Vince\Bundle\CmsBundle\Entity\Area-article-contents
                             contents: |
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum elit ut leo
-                                pretium, in vulputate erat eleifend. Vestibulum at nisi sollicitudin, lobortis massa
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum elit ut
+                                leo pretium, in vulputate erat eleifend. Vestibulum at nisi sollicitudin, lobortis massa
                                 vel, feugiat tortor. In quis diam commodo, lacinia purus eget, mattis turpis.
                                 Vestibulum a turpis eget urna pellentesque faucibus in ac lectus. Vivamus at maximus
                                 odio. Pellentesque dapibus dapibus nunc, sit amet sollicitudin risus suscipit quis.
@@ -108,7 +109,7 @@ My\Bundle\CmsBundle\Entity\Menu:
                                 aliquam, urna ante suscipit ante, cursus pellentesque justo massa eget nunc. Etiam
                                 faucibus dignissim magna sagittis tincidunt. Vestibulum id aliquet risus, id
                                 condimentum orci. Nulla et gravida augue. In in pulvinar est. Morbi eu purus ut turpis
-                                iaculis pharetra ut sed sapien.
+                                iaculis pharetra ut sed sapien.</p>
             sample:
                 title: Exemple
                 locale: fr

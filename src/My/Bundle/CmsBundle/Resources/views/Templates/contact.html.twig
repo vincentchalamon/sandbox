@@ -10,7 +10,7 @@
             <header>
                 <h1>{{ article.title }}</h1>
             </header>
-            <form action="{{ path(article.routeName) }}" method="post" {{ form_enctype(form) }} novalidate>
+            <form action="{{ path(article.routeName) }}" method="post" {{ form_enctype(form) }}>
                 {{ form_widget(form) }}
                 <button type="submit" class="btn btn-success ladda-button" data-style="expand-left">
                     <span class="ladda-label">Envoyer</span>

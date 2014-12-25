@@ -19,7 +19,6 @@ use My\Bundle\CmsBundle\Form\Type\ContactType;
  */
 class CmsListener
 {
-
     /**
      * Factory
      *

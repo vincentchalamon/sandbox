@@ -22,7 +22,6 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class MyCmsBundle extends Bundle
 {
-
     /**
      * {@inheritdoc}
      */

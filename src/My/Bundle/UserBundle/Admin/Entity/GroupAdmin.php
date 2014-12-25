@@ -21,7 +21,6 @@ use Sonata\UserBundle\Admin\Entity\GroupAdmin as BaseAdmin;
  */
 class GroupAdmin extends BaseAdmin
 {
-
     /**
      * {@inheritdoc}
      */
@@ -50,7 +49,7 @@ class GroupAdmin extends BaseAdmin
                         'expanded' => true,
                         'multiple' => true,
                         'required' => false,
-                        'label' => false
+                        'label' => false,
                     )
                 )
             ->end()

@@ -21,7 +21,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class ContactType extends AbstractType
 {
-
     /**
      * {@inheritdoc}
      */
@@ -41,7 +40,7 @@ class ContactType extends AbstractType
     {
         $resolver->setDefaults(array(
                 'data_class' => 'My\Bundle\CmsBundle\Form\Data\Contact',
-                'intention'  => 'contact'
+                'intention'  => 'contact',
             )
         );
     }
