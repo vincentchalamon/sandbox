@@ -1,13 +1,12 @@
+My\Bundle\CmsBundle\Entity\Block:
+    sample:
+        title: Exemple
+        name: sample
+        contents: |
+            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet
+               fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+
 Vince\Bundle\CmsBundle\Entity\Template:
-    error:
-        title: Erreur
-        path: MyCmsBundle:Templates:error.html.twig
-        areas:
-            error-contents:
-                title: Contents
-                name: contents
-                type: redactor
-                required: true
     article:
         title: Article
         path: MyCmsBundle:Templates:article.html.twig
@@ -16,11 +15,24 @@ Vince\Bundle\CmsBundle\Entity\Template:
                 title: Contents
                 name: contents
                 type: redactor
+                options: {plugins: [filemanager, fontcolor, fontfamily, fontsize, imagemanager, table]}
+                required: true
+    contact:
+        title: Contact
+        path: MyCmsBundle:Templates:contact.html.twig
+    error:
+        title: Erreur
+        path: MyCmsBundle:Templates:error.html.twig
+        areas:
+            error-contents:
+                title: Contents
+                name: contents
+                type: redactor
+                options: {plugins: [filemanager, fontcolor, fontfamily, fontsize, imagemanager, table]}
                 required: true
 
 My\Bundle\CmsBundle\Entity\Article:
     error-404:
-        language: fr
         title: Page introuvable
         slug: error-404
         summary: <p>La page demandée est introuvable.</p>
@@ -29,15 +41,11 @@ My\Bundle\CmsBundle\Entity\Article:
             error-404-robots:
                 meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
                 contents: noindex,nofollow
-            error-404-title:
-                meta: Vince\Bundle\CmsBundle\Entity\Meta-title
-                contents: La page demandée est introuvable
         contents:
             error-404-contents:
                 area: Vince\Bundle\CmsBundle\Entity\Area-error-contents
                 contents: La page demandée est introuvable.
     error:
-        language: fr
         title: Une erreur est survenue
         slug: error
         summary: <p>Une erreur est survenue dans l'application.</p>
@@ -46,9 +54,6 @@ My\Bundle\CmsBundle\Entity\Article:
             error-robots:
                 meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
                 contents: noindex,nofollow
-            error-title:
-                meta: Vince\Bundle\CmsBundle\Entity\Meta-title
-                contents: Une erreur est survenue
         contents:
             error-contents:
                 area: Vince\Bundle\CmsBundle\Entity\Area-error-contents
@@ -65,7 +70,6 @@ My\Bundle\CmsBundle\Entity\Menu:
                 slug: homepage
                 startedAt: '2014-01-01'
                 article:
-                    language: fr
                     title: Accueil
                     slug: homepage
                     summary: Accueil
@@ -75,15 +79,12 @@ My\Bundle\CmsBundle\Entity\Menu:
                         homepage-robots:
                             meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
                             contents: index,follow
-                        homepage-title:
-                            meta: Vince\Bundle\CmsBundle\Entity\Meta-title
-                            contents: Sandbox
                     contents:
                         homepage-contents:
                             area: Vince\Bundle\CmsBundle\Entity\Area-article-contents
                             contents: |
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum elit ut leo
-                                pretium, in vulputate erat eleifend. Vestibulum at nisi sollicitudin, lobortis massa
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum elit ut
+                                leo pretium, in vulputate erat eleifend. Vestibulum at nisi sollicitudin, lobortis massa
                                 vel, feugiat tortor. In quis diam commodo, lacinia purus eget, mattis turpis.
                                 Vestibulum a turpis eget urna pellentesque faucibus in ac lectus. Vivamus at maximus
                                 odio. Pellentesque dapibus dapibus nunc, sit amet sollicitudin risus suscipit quis.
@@ -93,12 +94,11 @@ My\Bundle\CmsBundle\Entity\Menu:
                                 aliquam, urna ante suscipit ante, cursus pellentesque justo massa eget nunc. Etiam
                                 faucibus dignissim magna sagittis tincidunt. Vestibulum id aliquet risus, id
                                 condimentum orci. Nulla et gravida augue. In in pulvinar est. Morbi eu purus ut turpis
-                                iaculis pharetra ut sed sapien.
+                                iaculis pharetra ut sed sapien.</p>
             sample:
                 title: Exemple
                 startedAt: '2014-01-01'
                 article:
-                    language: fr
                     title: Exemple
                     summary: Exemple d'article
                     startedAt: '2014-01-01'
@@ -107,9 +107,6 @@ My\Bundle\CmsBundle\Entity\Menu:
                         sample-robots:
                             meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
                             contents: index,follow
-                        sample-title:
-                            meta: Vince\Bundle\CmsBundle\Entity\Meta-title
-                            contents: Exemple
                     contents:
                         sample-contents:
                             area: Vince\Bundle\CmsBundle\Entity\Area-article-contents
@@ -146,8 +143,20 @@ My\Bundle\CmsBundle\Entity\Menu:
         slug: about
         startedAt: '2014-01-01'
         children:
-            ylly:
-                title: Ylly
+            google:
+                title: Google
                 startedAt: '2014-01-01'
                 target: _blank
-                url: http://www.ylly.fr
+                url: http://www.google.com
+            contact:
+                title: Contactez-moi
+                startedAt: '2014-01-01'
+                article:
+                    title: Contact
+                    summary: Contact
+                    startedAt: '2014-01-01'
+                    template: contact
+                    metas:
+                        contact-robots:
+                            meta: Vince\Bundle\CmsBundle\Entity\Meta-robots
+                            contents: index,follow

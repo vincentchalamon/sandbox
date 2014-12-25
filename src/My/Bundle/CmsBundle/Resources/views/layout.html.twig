@@ -1,0 +1,99 @@
+{% extends 'VinceCmsBundle::base.html.twig' %}
+
+{% block title %}{{ vince.cms.sitename }} - {{ parent() }}{% endblock %}
+
+{% block head %}
+    {% spaceless %}
+        {{ parent() }}
+        <meta name="msapplication-config" content="none" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    {% endspaceless %}
+{% endblock %}
+
+{% block stylesheets %}
+    {% spaceless %}
+        <link href="//fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css" media="all" />
+        <link href="//fonts.googleapis.com/css?family=Lato%3A700%2C400&amp;ver=1418386962" rel="stylesheet" type="text/css" media="all" />
+        {% stylesheets  'bundles/mycms/css/bootstrap.min.css'
+                        'bundles/mycms/css/ladda-themeless.min.css'
+                        'bundles/mycms/css/app.css'
+                        filter='?yui_css,cssrewrite' %}
+            <link type="text/css" rel="stylesheet" href="{{ asset(asset_url) }}" media="all" />
+        {% endstylesheets %}
+        {% if form is defined %}
+            {{ form_stylesheets(form) }}
+        {% endif %}
+        <!--[if lt IE 9]>
+        {% javascripts  '@MyCmsBundle/Resources/public/js/html5shiv.min.js'
+                        '@MyCmsBundle/Resources/public/js/respond.min.js'
+                        filter='?yui_js' %}
+            <script type="text/javascript" src="{{ asset(asset_url) }}"></script>
+        {% endjavascripts %}
+        <![endif]-->
+    {% endspaceless %}
+{% endblock %}
+
+{% block body %}
+    {% spaceless %}
+        <div class="container">
+            <!-- Header -->
+            <header>
+                <h1><a href="{{ path('homepage') }}" title="{{ vince.cms.sitename }}">{{ vince.cms.sitename }}</a></h1>
+                <nav role="navigation">
+                    {{ render_menu('root', 'MyCmsBundle:Component:Menu/root.html.twig', {'current': block('current')}) }}
+                </nav>
+            </header>
+            <!-- End header -->
+            <div class="row">
+                <!-- Contents -->
+                <div class="col-sm-8">
+                    {% for class, messages in app.session.flashbag.all %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ class }}">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                <span class="sr-only">{{ class|upper }}:</span>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% block article %}{% endblock %}
+                </div>
+                <!-- End contents -->
+                <!-- Aside -->
+                <div class="col-sm-3 col-sm-offset-1">
+                    <aside>
+                        <h4>About</h4>
+                        {{ render_menu('about') }}
+                    </aside>
+                    {% block aside %}{% endblock %}
+                </div>
+                <!-- End aside -->
+            </div>
+
+            <!-- Footer -->
+            <footer>
+                <p>&copy; {{ 'now'|date('Y') }} {{ vince.cms.sitename }} • {{ 'All rights reserved'|trans({}, 'MyCms') }}</p>
+            </footer>
+            <!-- End footer -->
+        </div>
+    {% endspaceless %}
+{% endblock %}
+
+{% block javascripts %}
+    {% spaceless %}
+        {% javascripts  '@MyCmsBundle/Resources/public/js/jquery.min.js'
+                        '@MyCmsBundle/Resources/public/js/bootstrap.min.js'
+                        '@VinceTypeBundle/Resources/public/autosize/jquery.autosize.min.js'
+                        '@MyCmsBundle/Resources/public/js/spin.min.js'
+                        '@MyCmsBundle/Resources/public/js/ladda.min.js'
+                        '@MyCmsBundle/Resources/public/js/app.js'
+                        filter="?yui_js" %}
+            <script type="text/javascript" src="{{ asset(asset_url) }}"></script>
+        {% endjavascripts %}
+        {% if form is defined %}
+            {{ form_javascripts(form) }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}

@@ -10,6 +10,7 @@
  */
 namespace My\Bundle\CmsBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Vince\Bundle\CmsBundle\Entity\Article as BaseArticle;
 
 /**
@@ -21,4 +22,17 @@ use Vince\Bundle\CmsBundle\Entity\Article as BaseArticle;
  */
 class Article extends BaseArticle
 {
+    /**
+     * @var ArrayCollection
+     */
+    protected $categories;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->categories = new ArrayCollection();
+    }
 }

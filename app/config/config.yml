@@ -4,6 +4,7 @@ imports:
 parameters:
     router.request_context.host: %domain%
     router.request_context.scheme: http
+    kernel.web_dir: %kernel.root_dir%/../web
 
 framework:
     #esi:             ~
@@ -18,7 +19,7 @@ framework:
     templating:
         engines: ['twig']
         #assets_version: SomeVersionScheme
-        #assets_base_urls: %router.request_context.scheme%://%router.request_context.host%
+        assets_base_urls: %router.request_context.scheme%://%router.request_context.host%
     default_locale:  "%locale%"
     trusted_proxies: ~
     session:
@@ -32,18 +33,13 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
-    globals:
-        tracking_code: %tracking_code%
-        sitename: %sitename%
-        domain: %domain%
-        email_no_reply: %email_no_reply%
-        email_contact: %email_contact%
 
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%
     use_controller: false
     bundles:        [MyCmsBundle, SonataUserBundle]
+    read_from:      %kernel.web_dir%
     filters:
         cssrewrite: ~
         yui_css:
@@ -69,10 +65,12 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: %mailer_transport%
-    host:      %mailer_host%
-    username:  %mailer_user%
-    password:  %mailer_password%
+    transport:  %mailer_transport%
+    host:       %mailer_host%
+    username:   %mailer_user%
+    password:   %mailer_password%
+    port:       %mailer_port%
+    encryption: %mailer_encryption%
     spool:     { type: memory }
 
 # User
@@ -90,18 +88,29 @@ fos_user:
     group:
         group_class: My\Bundle\UserBundle\Entity\Group
     from_email:
-        address: %email_no_reply%
-        sender_name: %sitename%
+        address: %vince.cms.no_reply%
+        sender_name: %vince.cms.sitename%
 
 # CMS
 vince_cms:
-    article:
-        class: My\Bundle\CmsBundle\Entity\Article
-    block:
-        class: My\Bundle\CmsBundle\Entity\Block
-    articleMeta:
-        class: My\Bundle\CmsBundle\Entity\ArticleMeta
-    content:
-        class: My\Bundle\CmsBundle\Entity\Content
-    menu:
-        class: My\Bundle\CmsBundle\Entity\Menu
+    tracking_code: %tracking_code%
+    sitename: Sandbox
+    domain: %domain%
+    #no_reply: no-reply@sandbox.fr
+    #contact: contact@sandbox.fr
+    model:
+        article:
+            class: My\Bundle\CmsBundle\Entity\Article
+            repository: My\Bundle\CmsBundle\Entity\Repository\ArticleRepository
+        block:
+            class: My\Bundle\CmsBundle\Entity\Block
+        articleMeta:
+            class: My\Bundle\CmsBundle\Entity\ArticleMeta
+        content:
+            class: My\Bundle\CmsBundle\Entity\Content
+        menu:
+            class: My\Bundle\CmsBundle\Entity\Menu
+
+ewz_recaptcha:
+    public_key: FILL-ME
+    private_key: FILL-ME

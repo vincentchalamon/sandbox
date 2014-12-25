@@ -23,7 +23,6 @@ use Sonata\UserBundle\Admin\Entity\UserAdmin as BaseAdmin;
  */
 class UserAdmin extends BaseAdmin
 {
-
     /**
      * {@inheritdoc}
      */
@@ -78,11 +77,11 @@ class UserAdmin extends BaseAdmin
                         'translation_domain' => 'SonataAdminBundle',
                         'required' => !$this->getSubject() || is_null($this->getSubject()->getId()),
                         'first_options' => array(
-                            'label' => 'Mot de passe'
+                            'label' => 'Mot de passe',
                         ),
                         'second_options' => array(
-                            'label' => 'Confirmation du mot de passe'
-                        )
+                            'label' => 'Confirmation du mot de passe',
+                        ),
                     )
                 )
                 ->add('enabled', null, array('required' => false))
@@ -91,7 +90,7 @@ class UserAdmin extends BaseAdmin
                         'expanded' => true,
                         'multiple' => true,
                         'required' => false,
-                        'choices'  => array('ROLE_MEMBER' => 'Membre', 'ROLE_ADMIN' => 'Administrateur')
+                        'choices'  => array('ROLE_MEMBER' => 'Membre', 'ROLE_ADMIN' => 'Administrateur'),
                     )
                 )
             ->end()
@@ -99,7 +98,7 @@ class UserAdmin extends BaseAdmin
                 ->add('gender', 'choice', array(
                         'choices'  => array('m' => 'M.', 'f' => 'Mme'),
                         'required' => true,
-                        'expanded' => true
+                        'expanded' => true,
                     )
                 )
                 ->add('firstname')

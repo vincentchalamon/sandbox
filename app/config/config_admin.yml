@@ -3,11 +3,18 @@ imports:
     - { resource: security_admin.yml }
 
 parameters:
-    router.request_context.host: admin.sandbox.fr
+    kernel.web_dir: %kernel.root_dir%/../admin
+    router.request_context.host: %admin_domain%
 
 framework:
     router:
         resource: "%kernel.root_dir%/config/routing_admin.yml"
+
+assetic:
+    bundles: [MyCmsBundle, SonataUserBundle]
+
+vince_cms_sonata_admin:
+    article: My\Bundle\CmsBundle\Admin\Entity\ArticleAdmin
 
 sonata_user:
     impersonating:
@@ -45,10 +52,6 @@ sonata_admin:
                 icon: <i class="fa fa-pencil"></i>
             sonata_user:
                 icon: <i class="fa fa-group"></i>
-            quote:
-                icon: <i class="fa fa-euro"></i>
-            skill:
-                icon: <i class="fa fa-trophy"></i>
 
 monolog:
     handlers:
@@ -56,6 +59,8 @@ monolog:
             type: fingers_crossed
             action_level: error
             handler: grouped
+            #excluded_404s:
+                #- ^/
         grouped:
             type: group
             members: [streamed, swift]
@@ -65,10 +70,10 @@ monolog:
             level: debug
         swift:
             type: swift_mailer
-            from_email: %email_no_reply%
-            to_email: %email_contact%
-            subject: "Oops : une erreur est survenue"
-            level: debug
+            from_email: no-reply@vincent-chalamon.fr
+            to_email: vincentchalamon@gmail.com
+            subject: "Oops : une erreur est survenue sur l'administration"
+            level: error
         login:
             type: stream
             path: "%kernel.logs_dir%/auth.log"

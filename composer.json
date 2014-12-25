@@ -37,35 +37,35 @@
         }
     ],
     "require-dev": {
-        "liip/functional-test-bundle": "~1.0",
-        "sensio/generator-bundle": "~2.4",
+        "liip/functional-test-bundle": "1.0.*",
+        "sensio/generator-bundle": "2.4.*",
         "sensiolabs/security-checker": "@stable"
     },
     "require": {
         "php": ">=5.4",
         "symfony/symfony": "2.5.*",
-        "symfony/assetic-bundle": "~2.3",
-        "symfony/swiftmailer-bundle": "~2.3",
-        "symfony/monolog-bundle": "~2.4",
+        "symfony/assetic-bundle": "2.5.*",
+        "symfony/swiftmailer-bundle": "2.3.*",
+        "symfony/monolog-bundle": "2.6.*",
 
-        "sensio/distribution-bundle": "~3.0",
-        "sensio/framework-extra-bundle": "~3.0",
+        "sensio/distribution-bundle": "3.0.*",
+        "sensio/framework-extra-bundle": "3.0.*",
 
         "doctrine/orm": "~2.2,>=2.2.3",
-        "doctrine/doctrine-bundle": "~1.2",
+        "doctrine/doctrine-bundle": "1.3.*",
         "doctrine/migrations": "1.0.*@dev",
         "doctrine/doctrine-migrations-bundle": "2.1.*@dev",
 
-        "twig/extensions": "~1.0",
-        "incenteev/composer-parameter-handler": "~2.0",
-        "nervo/yuicompressor": "~2.4",
+        "twig/extensions": "1.2.*",
+        "incenteev/composer-parameter-handler": "2.1.*",
+        "nervo/yuicompressor": "2.4.*",
 
         "friendsofsymfony/user-bundle": "1.3.*",
-        "sonata-project/core-bundle": "~2.2",
-        "sonata-project/admin-bundle": "~2.2",
-        "sonata-project/user-bundle": "~2.2",
-        "sonata-project/doctrine-orm-admin-bundle": "~2.2",
-        "vince/cms-sonata-admin-bundle": "~1"
+        "sonata-project/admin-bundle": "2.3.*",
+        "sonata-project/user-bundle": "2.2.*",
+        "sonata-project/doctrine-orm-admin-bundle": "2.3.*",
+        "vince/cms-sonata-admin-bundle": "@stable",
+        "excelwebzone/recaptcha-bundle": "@stable"
     },
     "scripts": {
         "post-root-package-install": [

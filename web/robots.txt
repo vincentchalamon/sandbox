@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /assetic
 Disallow: /bundles
 Disallow: /css
 Disallow: /js

@@ -1,10 +1,15 @@
 services:
-    my.cms.load.listener:
-        class: My\Bundle\CmsBundle\Listener\CmsListener
+    my_cms.admin.category:
+        class: My\Bundle\CmsBundle\Admin\Entity\CategoryAdmin
         tags:
-            - { name: kernel.event_listener, event: vince.cms.contact.load, method: onLoadContact }
+            - name: sonata.admin
+              manager_type: orm
+              group: cms
+              label_catalogue: SonataAdminBundle
+              label: Catégories
+        arguments: [ ~, My\Bundle\CmsBundle\Entity\Category, ~ ]
         calls:
-            - [ setFormFactory, [ @form.factory ] ]
+            - [ setTranslationDomain, [ 'SonataAdminBundle' ] ]
 
     my.processor.contact:
         class: My\Bundle\CmsBundle\Processor\ContactProcessor
@@ -12,7 +17,14 @@ services:
         tags:
             -  { name: vince.processor, alias: contact }
         calls:
-            - [ setMailer, [ @mailer, %email_no_reply%, %email_contact%, %sitename% ] ]
+            - [ setMailer, [ @mailer, %vince.cms.no_reply%, %vince.cms.contact%, %vince.cms.sitename% ] ]
             - [ setTemplating, [ @templating ] ]
-            - [ setSession, [ @session ] ]
+            - [ setFlashBag, [ @session.flash_bag ] ]
             - [ setWebDir, [ %kernel.web_dir% ] ]
+
+    my.cms.load.listener:
+        class: My\Bundle\CmsBundle\Listener\CmsListener
+        tags:
+            - { name: kernel.event_listener, event: vince.cms.contact.load, method: onLoadContact }
+        calls:
+            - [ setFormFactory, [ @form.factory ] ]

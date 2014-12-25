@@ -8,6 +8,7 @@ imports:
 
 #doctrine:
 #    orm:
+#        auto_mapping: true
 #        metadata_cache_driver: apc
 #        result_cache_driver: apc
 #        query_cache_driver: apc
@@ -18,6 +19,8 @@ monolog:
             type: fingers_crossed
             action_level: error
             handler: grouped
+            #excluded_404s:
+                #- ^/
         grouped:
             type: group
             members: [streamed, swift]
@@ -27,10 +30,10 @@ monolog:
             level: debug
         swift:
             type: swift_mailer
-            from_email: %email_no_reply%
-            to_email: %email_contact%
-            subject: "Oops : une erreur est survenue"
-            level: debug
+            from_email: no-reply@vincent-chalamon.fr
+            to_email: vincentchalamon@gmail.com
+            subject: "Oops : une erreur est survenue sur le site"
+            level: error
         login:
             type: stream
             path: "%kernel.logs_dir%/auth.log"

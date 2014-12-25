@@ -15,7 +15,6 @@ namespace My\Bundle\CmsBundle\Form\Data;
  */
 class Contact
 {
-
     /**
      * Name
      *
@@ -36,6 +35,13 @@ class Contact
      * @var string
      */
     protected $message;
+
+    /**
+     * Captcha
+     *
+     * @var string
+     */
+    protected $captcha;
 
     /**
      * Set Email
@@ -119,5 +125,33 @@ class Contact
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Get captcha
+     *
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
+     *
+     * @return string
+     */
+    public function getCaptcha()
+    {
+        return $this->captcha;
+    }
+
+    /**
+     * Set captcha
+     *
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
+     *
+     * @param string $captcha
+     *
+     * @return Contact
+     */
+    public function setCaptcha($captcha)
+    {
+        $this->captcha = $captcha;
+
+        return $this;
     }
 }

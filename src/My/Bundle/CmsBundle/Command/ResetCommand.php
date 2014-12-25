@@ -18,11 +18,10 @@ use Symfony\Component\Console\Input\ArrayInput;
 /**
  * Reset project
  *
- * @author Vincent Chalamon <vincent@ylly.fr>
+ * @author Vincent Chalamon <vincentchalamon@gmail.com>
  */
 class ResetCommand extends DoctrineCommand
 {
-
     /**
      * {@inheritdoc}
      */
@@ -49,7 +48,7 @@ class ResetCommand extends DoctrineCommand
     /**
      * Run Symfony command
      *
-     * @author Vincent Chalamon <vincent@ylly.fr>
+     * @author Vincent Chalamon <vincentchalamon@gmail.com>
      *
      * @param string          $name    Command name
      * @param OutputInterface $output  Output interface

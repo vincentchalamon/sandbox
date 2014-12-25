@@ -1,18 +1,16 @@
 <ul class="nav nav-pills">
     {% for child in menu.children if child.isPublished %}
         <li{% if current and child.slug == current %} class="active"{% endif %}>
-            <a href="
-                {% if child.isUrl %}
-                    {{ child.url }}"
+            <a  {% if child.isUrl %}
+                    href="{{ child.url }}"
                     {% if child.url|slice(0, 1) == '#' %}
                         data-toggle="modal"
-                    {% else %}
-                        target="{{ child.target }}
                     {% endif %}
                 {% else %}
-                    {{ path(child.article.routeName) }}
-                {% endif %}"
-               title="{{ child }}">
+                    href="{{ path(child.article.routeName) }}"
+                {% endif %}
+                target="{{ child.target }}"
+                title="{{ child }}">
                 {% if child.isImage %}
                     <img src="{{ asset(child.path) }}" alt="{{ child }}" title="{{ child }}" />
                 {% else %}

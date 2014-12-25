@@ -21,16 +21,16 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class ContactType extends AbstractType
 {
-
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, array('label' => 'Votre nom'))
+            ->add('name', 'text', array('label' => 'Votre nom'))
             ->add('email', 'email', array('label' => 'Votre e-mail'))
-            ->add('message', 'textarea', array('label' => 'Votre message'));
+            ->add('message', 'textarea', array('label' => 'Votre message'))
+            ->add('captcha', 'ewz_recaptcha');
     }
 
     /**
@@ -40,7 +40,7 @@ class ContactType extends AbstractType
     {
         $resolver->setDefaults(array(
                 'data_class' => 'My\Bundle\CmsBundle\Form\Data\Contact',
-                'intention'  => 'contact'
+                'intention'  => 'contact',
             )
         );
     }
