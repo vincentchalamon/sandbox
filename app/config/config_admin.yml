@@ -73,8 +73,8 @@ monolog:
             level: debug
         swift:
             type: swift_mailer
-            from_email: no-reply@vincent-chalamon.fr
-            to_email: vincentchalamon@gmail.com
+            from_email: no-reply@sandbox.com
+            to_email: contact@sandbox.com
             subject: "Oops : une erreur est survenue sur l'administration"
             level: error
         login:

@@ -6,7 +6,7 @@ My\Bundle\UserBundle\Entity\User:
             admin:
                 name: Admin
                 roles: [ROLE_ADMIN]
-        email: admin@sandbox.fr
+        email: admin@sandbox.com
         gender: m
         firstname: John
         lastname: DOE
@@ -14,4 +14,4 @@ My\Bundle\UserBundle\Entity\User:
         address: 38 rue Jules Guesde
         zipcode: 75010
         city: Paris
-        website: http://www.sandbox.fr
+        website: http://www.sandbox.com

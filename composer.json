@@ -3,7 +3,6 @@
     "type": "project",
     "license": "MIT",
     "description": "The \"Vince Cms\" sandbox",
-    "version": "1.0-dev",
     "keywords": ["CMS", "Vince"],
     "homepage": "http://vincentchalamon.github.io/sandbox/",
     "autoload": {
@@ -39,7 +38,12 @@
     "require-dev": {
         "liip/functional-test-bundle": "1.0.*",
         "sensio/generator-bundle": "2.4.*",
-        "sensiolabs/security-checker": "@stable"
+        "sensiolabs/security-checker": "@stable",
+
+        "behat/symfony2-extension": "@stable",
+        "behat/mink-extension": "@stable",
+        "behat/mink-browserkit-driver": "@stable",
+        "behat/mink-selenium2-driver": "@stable"
     },
     "require": {
         "php": ">=5.4",

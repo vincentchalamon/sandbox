@@ -5,18 +5,15 @@ framework:
     test: ~
     session:
         storage_id: session.storage.filesystem
-    profiler:
-        collect: false
-
-web_profiler:
-    toolbar: false
-    intercept_redirects: false
-
-swiftmailer:
-    disable_delivery: true
 
 doctrine:
     dbal:
-        dbname:   %database_name%_test
+        dbname: %database_name%_test
 
 liip_functional_test: ~
+
+ewz_recaptcha:
+    enabled: false
+
+swiftmailer:
+    disable_delivery: true

@@ -22,7 +22,6 @@ use Sonata\AdminBundle\Form\FormMapper;
  */
 class ArticleAdmin extends Admin
 {
-
     /**
      * {@inheritdoc}
      */

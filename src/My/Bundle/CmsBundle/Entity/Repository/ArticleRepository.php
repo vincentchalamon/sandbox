@@ -2,7 +2,6 @@
 
 namespace My\Bundle\CmsBundle\Entity\Repository;
 
-use Doctrine\ORM\Query\Expr\Join;
 use Vince\Bundle\CmsBundle\Entity\Repository\ArticleRepository as BaseRepository;
 
 /**

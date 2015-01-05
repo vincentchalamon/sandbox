@@ -96,8 +96,8 @@ vince_cms:
     tracking_code: %tracking_code%
     sitename: Sandbox
     domain: %domain%
-    #no_reply: no-reply@sandbox.fr
-    #contact: contact@sandbox.fr
+    #no_reply: no-reply@sandbox.com
+    #contact: contact@sandbox.com
     model:
         article:
             class: My\Bundle\CmsBundle\Entity\Article
@@ -112,5 +112,6 @@ vince_cms:
             class: My\Bundle\CmsBundle\Entity\Menu
 
 ewz_recaptcha:
+    enabled: false
     public_key: FILL-ME
     private_key: FILL-ME

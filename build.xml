@@ -44,8 +44,7 @@
         </exec>
         <exec executable="php">
             <arg path="app/console"/>
-            <arg value="doctrine:schema:update"/>
-            <arg value="--force"/>
+            <arg value="project:reset"/>
             <arg value="--env=test"/>
         </exec>
     </target>
@@ -168,10 +167,9 @@
         </exec>
         <exec executable="${composer.path}" failonerror="true">
             <arg value="install"/>
+            <arg value="--dev"/>
             <arg value="--no-interaction"/>
-            <arg value="--verbose"/>
             <arg value="--prefer-dist"/>
-            <arg value="--optimize-autoloader"/>
         </exec>
     </target>
 

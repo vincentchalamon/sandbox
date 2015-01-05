@@ -73,6 +73,8 @@ parameters:
 - [x] Google Analytics tracking code (bundle configuration)
 - [x] Default theme
 - [x] Mail theme
+- [ ] Behat
+- [ ] Update travis configuration
 - [ ] Documentation (README + PHPDoc + GitHub pages)
 
 Documentation

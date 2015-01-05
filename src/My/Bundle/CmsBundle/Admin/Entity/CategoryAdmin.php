@@ -3,7 +3,7 @@
 /*
  * This file is part of the MyCms bundle.
  *
- * (c) Vincent Chalamon <vincent@ylly.fr>
+ * (c) Vincent Chalamon <vincentchalamon@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,7 +17,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 /**
  * Category admin
  *
- * @author Vincent Chalamon <vincent@ylly.fr>
+ * @author Vincent Chalamon <vincentchalamon@gmail.com>
  */
 class CategoryAdmin extends Admin
 {

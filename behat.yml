@@ -1,0 +1,14 @@
+default:
+    suites:
+        my_cms_bundle_suite:
+            type: symfony_bundle
+            bundle: MyCmsBundle
+    extensions:
+        Behat\Symfony2Extension: ~
+        Behat\MinkExtension:
+            base_url: http://www.sandbox.local/app_test.php/
+            browser_name: chrome
+            selenium2: ~
+            sessions:
+                symfony2:
+                    symfony2: ~

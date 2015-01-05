@@ -3,7 +3,7 @@ parameters:
     database_driver:        pdo_mysql
     database_host:          127.0.0.1
     database_port:          ~
-    database_name:          vincent
+    database_name:          sandbox
     database_user:          root
     database_password:      ~
     database_path:          ~
@@ -18,7 +18,7 @@ parameters:
     locale:                 fr
     secret:                 a149c3le9kw08w804gs0wkc4c8ogk4k
 
-    admin_domain:           admin.vincent-chalamon.fr
+    admin_domain:           admin.sandbox.com
 
     tracking_code:          ~
-    domain:                 www.vincent-chalamon.fr
+    domain:                 www.sandbox.com
