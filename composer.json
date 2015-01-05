@@ -14,27 +14,6 @@
             "email": "vincentchalamon@gmail.com"
         }
     ],
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "elasticsearch/binaries",
-                "version": "1.0.1",
-                "dist": {
-                    "url": "https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.0.1.zip",
-                    "type": "zip"
-                },
-                "source": {
-                    "url": "https://github.com/elasticsearch/elasticsearch.git",
-                    "type": "git",
-                    "reference": "v1.0.1"
-                },
-                "require": {
-                    "friendsofsymfony/elastica-bundle": "2.1.*"
-                }
-            }
-        }
-    ],
     "require-dev": {
         "liip/functional-test-bundle": "1.0.*",
         "sensio/generator-bundle": "2.4.*",

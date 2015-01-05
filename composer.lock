@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2ce632777e51eca1638725bc72fe6578",
+    "hash": "a7bcda4ce5fe1ae45ff06d6067005c97",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -767,22 +767,27 @@
         },
         {
             "name": "doctrine/lexer",
-            "version": "v1.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/lexer.git",
-                "reference": "2f708a85bb3aab5d99dab8be435abd73e0b18acb"
+                "reference": "83893c552fd2045dd78aef794c31e694c37c0b8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/2f708a85bb3aab5d99dab8be435abd73e0b18acb",
-                "reference": "2f708a85bb3aab5d99dab8be435abd73e0b18acb",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/83893c552fd2045dd78aef794c31e694c37c0b8c",
+                "reference": "83893c552fd2045dd78aef794c31e694c37c0b8c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Doctrine\\Common\\Lexer\\": "lib/"
@@ -794,19 +799,16 @@
             ],
             "authors": [
                 {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com",
-                    "homepage": "http://www.instaclick.com"
-                },
-                {
                     "name": "Roman Borschel",
                     "email": "roman@code-factory.org"
                 },
                 {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
                     "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
-                    "role": "Developer of wrapped JMSSerializerBundle"
+                    "email": "schmittjoh@gmail.com"
                 }
             ],
             "description": "Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.",
@@ -815,7 +817,7 @@
                 "lexer",
                 "parser"
             ],
-            "time": "2013-01-12 18:59:04"
+            "time": "2014-09-09 13:34:57"
         },
         {
             "name": "doctrine/migrations",
@@ -2462,16 +2464,16 @@
         },
         {
             "name": "sonata-project/admin-bundle",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "68a836e5dbcb89a9bec36586186d4fdf3fedf6f5"
+                "reference": "1f08176f996a325e3bf5ccebeaf7c76be7f3d472"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/68a836e5dbcb89a9bec36586186d4fdf3fedf6f5",
-                "reference": "68a836e5dbcb89a9bec36586186d4fdf3fedf6f5",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/1f08176f996a325e3bf5ccebeaf7c76be7f3d472",
+                "reference": "1f08176f996a325e3bf5ccebeaf7c76be7f3d472",
                 "shasum": ""
             },
             "require": {
@@ -2537,7 +2539,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2014-09-09 13:52:07"
+            "time": "2015-01-05 10:15:28"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -3539,17 +3541,17 @@
         },
         {
             "name": "vince/cms-bundle",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "target-dir": "Vince/Bundle/CmsBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vincentchalamon/VinceCmsBundle.git",
-                "reference": "0a5897c569cfcd4f4711cadfad6befc642f1b10d"
+                "reference": "12fe03d89cbc3292b595e013725899eaff52a57b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsBundle/zipball/0a5897c569cfcd4f4711cadfad6befc642f1b10d",
-                "reference": "0a5897c569cfcd4f4711cadfad6befc642f1b10d",
+                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsBundle/zipball/12fe03d89cbc3292b595e013725899eaff52a57b",
+                "reference": "12fe03d89cbc3292b595e013725899eaff52a57b",
                 "shasum": ""
             },
             "require": {
@@ -3595,21 +3597,21 @@
                 "Vince",
                 "cms"
             ],
-            "time": "2014-12-25 23:05:45"
+            "time": "2015-01-05 18:51:21"
         },
         {
             "name": "vince/cms-sonata-admin-bundle",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "target-dir": "Vince/Bundle/CmsSonataAdminBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vincentchalamon/VinceCmsSonataAdminBundle.git",
-                "reference": "81d4a639bf02b0ba2bac848eb51691e60dabfa29"
+                "reference": "df8df6ff989f401f51b464e3a741834d9b59d8a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsSonataAdminBundle/zipball/81d4a639bf02b0ba2bac848eb51691e60dabfa29",
-                "reference": "81d4a639bf02b0ba2bac848eb51691e60dabfa29",
+                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsSonataAdminBundle/zipball/df8df6ff989f401f51b464e3a741834d9b59d8a3",
+                "reference": "df8df6ff989f401f51b464e3a741834d9b59d8a3",
                 "shasum": ""
             },
             "require": {
@@ -3639,21 +3641,21 @@
                 "Vince",
                 "cms"
             ],
-            "time": "2014-12-25 23:08:15"
+            "time": "2015-01-05 19:10:03"
         },
         {
             "name": "vince/type-bundle",
-            "version": "1.0.21",
+            "version": "1.1.0",
             "target-dir": "Vince/Bundle/TypeBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vincentchalamon/VinceTypeBundle.git",
-                "reference": "dc60a2b04307e7ac384b3948f94501b5063fd910"
+                "reference": "f92531b8cc310df68eed3730a10c34aae09f5206"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vincentchalamon/VinceTypeBundle/zipball/dc60a2b04307e7ac384b3948f94501b5063fd910",
-                "reference": "dc60a2b04307e7ac384b3948f94501b5063fd910",
+                "url": "https://api.github.com/repos/vincentchalamon/VinceTypeBundle/zipball/f92531b8cc310df68eed3730a10c34aae09f5206",
+                "reference": "f92531b8cc310df68eed3730a10c34aae09f5206",
                 "shasum": ""
             },
             "require": {
@@ -3686,7 +3688,7 @@
             "keywords": [
                 "form"
             ],
-            "time": "2014-12-16 17:55:19"
+            "time": "2015-01-05 19:45:09"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
@@ -4088,58 +4090,6 @@
             "time": "2014-09-23 10:59:27"
         },
         {
-            "name": "behat/mink-goutte-driver",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Behat/MinkGoutteDriver.git",
-                "reference": "2bf327b4166694ecaa8ae7f956cb6ae252ecf03e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkGoutteDriver/zipball/2bf327b4166694ecaa8ae7f956cb6ae252ecf03e",
-                "reference": "2bf327b4166694ecaa8ae7f956cb6ae252ecf03e",
-                "shasum": ""
-            },
-            "require": {
-                "behat/mink": "~1.6@dev",
-                "behat/mink-browserkit-driver": "~1.2@dev",
-                "fabpot/goutte": "~1.0.4|~2.0",
-                "php": ">=5.3.1"
-            },
-            "type": "mink-driver",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Behat\\Mink\\Driver": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Konstantin Kudryashov",
-                    "email": "ever.zet@gmail.com",
-                    "homepage": "http://everzet.com"
-                }
-            ],
-            "description": "Goutte driver for Mink framework",
-            "homepage": "http://mink.behat.org/",
-            "keywords": [
-                "browser",
-                "goutte",
-                "headless",
-                "testing"
-            ],
-            "time": "2014-10-09 09:21:12"
-        },
-        {
             "name": "behat/mink-selenium2-driver",
             "version": "v1.2.0",
             "source": {
@@ -4298,173 +4248,6 @@
             "time": "2014-05-15 22:08:22"
         },
         {
-            "name": "fabpot/goutte",
-            "version": "v2.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/FriendsOfPHP/Goutte.git",
-                "reference": "b12c3f7ec68d8814b50444cfe142fd0a056557f9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/Goutte/zipball/b12c3f7ec68d8814b50444cfe142fd0a056557f9",
-                "reference": "b12c3f7ec68d8814b50444cfe142fd0a056557f9",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "4.*",
-                "php": ">=5.4.0",
-                "symfony/browser-kit": "~2.1",
-                "symfony/css-selector": "~2.1",
-                "symfony/dom-crawler": "~2.1"
-            },
-            "type": "application",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Goutte": "."
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "A simple PHP Web Scraper",
-            "homepage": "https://github.com/fabpot/Goutte",
-            "keywords": [
-                "scraper"
-            ],
-            "time": "2014-07-22 13:24:11"
-        },
-        {
-            "name": "guzzlehttp/guzzle",
-            "version": "4.2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "66fd916e9f9130bc22c51450476823391cb2f67c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/66fd916e9f9130bc22c51450476823391cb2f67c",
-                "reference": "66fd916e9f9130bc22c51450476823391cb2f67c",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "guzzlehttp/streams": "~2.1",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "ext-curl": "*",
-                "phpunit/phpunit": "~4.0",
-                "psr/log": "~1.0"
-            },
-            "suggest": {
-                "ext-curl": "Guzzle will use specific adapters if cURL is present"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Guzzle is a PHP HTTP client library and framework for building RESTful web service clients",
-            "homepage": "http://guzzlephp.org/",
-            "keywords": [
-                "client",
-                "curl",
-                "framework",
-                "http",
-                "http client",
-                "rest",
-                "web service"
-            ],
-            "time": "2014-10-05 19:29:14"
-        },
-        {
-            "name": "guzzlehttp/streams",
-            "version": "2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/streams.git",
-                "reference": "f91b721d73f0e561410903b3b3c90a5d0e40b534"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/streams/zipball/f91b721d73f0e561410903b3b3c90a5d0e40b534",
-                "reference": "f91b721d73f0e561410903b3b3c90a5d0e40b534",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Stream\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Provides a simple abstraction over streams of data (Guzzle 4+)",
-            "homepage": "http://guzzlephp.org/",
-            "keywords": [
-                "Guzzle",
-                "stream"
-            ],
-            "time": "2014-08-17 21:15:53"
-        },
-        {
             "name": "instaclick/php-webdriver",
             "version": "1.4.1",
             "source": {
@@ -4590,10 +4373,10 @@
         "behat/symfony2-extension": 0,
         "behat/mink-extension": 0,
         "behat/mink-browserkit-driver": 0,
-        "behat/mink-goutte-driver": 0,
         "behat/mink-selenium2-driver": 0
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "php": ">=5.4"
     },
