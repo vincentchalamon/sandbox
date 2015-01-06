@@ -21,3 +21,7 @@ exclude_patterns:
     - app/check.php
     - app/SymfonyRequirements.php
     - web/app_*.php
+
+rules:
+    symfony.application_not_bootable:
+        enabled: true
