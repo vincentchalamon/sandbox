@@ -57,6 +57,7 @@ doctrine:
         user:     %database_user%
         password: %database_password%
         charset:  UTF8
+        unix_socket: /var/tmp/mysql.sock
         types:
             json: Sonata\Doctrine\Types\JsonType
     orm:
