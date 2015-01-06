@@ -1,10 +1,9 @@
 parameters:
     doctrine.orm.metadata.driver_chain.class: Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain
-    doctrine.server_version: 5.6
     database_driver:        pdo_mysql
     database_host:          127.0.0.1
     database_port:          ~
-    database_name:          sandbox
+    database_name:          symfony
     database_user:          root
     database_password:      ~
     database_path:          ~
