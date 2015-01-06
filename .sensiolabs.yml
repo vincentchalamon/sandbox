@@ -21,3 +21,5 @@ exclude_patterns:
     - app/autoload.php
     - app/check.php
     - app/SymfonyRequirements.php
+    - web/app_dev.php
+    - web/app_test.php
