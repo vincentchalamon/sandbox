@@ -2263,17 +2263,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.14",
+            "version": "v3.0.15",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "dc20d5ab3251587b047859ca2fc06c1b88a38d00"
+                "reference": "0692cd6a8fcf645abce8ea45f7cbbd1942e2b23c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/dc20d5ab3251587b047859ca2fc06c1b88a38d00",
-                "reference": "dc20d5ab3251587b047859ca2fc06c1b88a38d00",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/0692cd6a8fcf645abce8ea45f7cbbd1942e2b23c",
+                "reference": "0692cd6a8fcf645abce8ea45f7cbbd1942e2b23c",
                 "shasum": ""
             },
             "require": {
@@ -2312,7 +2312,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2014-12-30 08:41:47"
+            "time": "2015-01-07 07:13:43"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -3319,23 +3319,23 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.5.8",
+            "version": "v2.5.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "00da57005c9c76773670f4d958dd95e9f4ae72f6"
+                "reference": "e082a9f28edfd5a081b60e009889b30c04979924"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/00da57005c9c76773670f4d958dd95e9f4ae72f6",
-                "reference": "00da57005c9c76773670f4d958dd95e9f4ae72f6",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/e082a9f28edfd5a081b60e009889b30c04979924",
+                "reference": "e082a9f28edfd5a081b60e009889b30c04979924",
                 "shasum": ""
             },
             "require": {
-                "doctrine/common": "~2.2",
+                "doctrine/common": "~2.3",
                 "php": ">=5.3.3",
                 "psr/log": "~1.0",
-                "twig/twig": "~1.12"
+                "twig/twig": "~1.12,>=1.12.3"
             },
             "replace": {
                 "symfony/browser-kit": "self.version",
@@ -3388,7 +3388,7 @@
                 "egulias/email-validator": "~1.2",
                 "ircmaxell/password-compat": "~1.0",
                 "monolog/monolog": "~1.3",
-                "ocramius/proxy-manager": ">=0.3.1,<0.6-dev",
+                "ocramius/proxy-manager": "~0.4|~1.0",
                 "propel/propel1": "~1.6"
             },
             "type": "library",
@@ -3428,7 +3428,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-12-03 14:18:17"
+            "time": "2015-01-07 12:32:08"
         },
         {
             "name": "twig/extensions",
@@ -3541,17 +3541,17 @@
         },
         {
             "name": "vince/cms-bundle",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "target-dir": "Vince/Bundle/CmsBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vincentchalamon/VinceCmsBundle.git",
-                "reference": "12fe03d89cbc3292b595e013725899eaff52a57b"
+                "reference": "ced77a48973c20cb102ec370755e89d4cf3ef376"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsBundle/zipball/12fe03d89cbc3292b595e013725899eaff52a57b",
-                "reference": "12fe03d89cbc3292b595e013725899eaff52a57b",
+                "url": "https://api.github.com/repos/vincentchalamon/VinceCmsBundle/zipball/ced77a48973c20cb102ec370755e89d4cf3ef376",
+                "reference": "ced77a48973c20cb102ec370755e89d4cf3ef376",
                 "shasum": ""
             },
             "require": {
@@ -3597,7 +3597,7 @@
                 "Vince",
                 "cms"
             ],
-            "time": "2015-01-05 18:51:21"
+            "time": "2015-01-07 13:25:44"
         },
         {
             "name": "vince/cms-sonata-admin-bundle",
