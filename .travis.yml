@@ -6,14 +6,38 @@ php:
   - 5.6
 
 before_script:
+    # Enable required libraries
+    - sudo apt-get update > /dev/null
+    - sudo apt-get install -y --force-yes apache2 libapache2-mod-php5 php5-curl php5-mysql php5-intl
+
+    # Update apache2 configuration
+    - sudo sed -i -e "s,/var/www,$(pwd)/web,g" /etc/apache2/sites-available/default
+    - sudo sed -i -e "/DocumentRoot/i\ServerName www.sandbox.com" /etc/apache2/sites-available/default
+    - echo "127.0.0.1 www.sandbox.com admin.sandbox.com" | sudo tee -a /etc/hosts
+    - sudo /etc/init.d/apache2 restart
+
+    # Install vendors
     - composer self-update
     - composer install --dev --prefer-dist --no-interaction
+
+    # Install project
     - php app/console doctrine:database:create --env=test --quiet
     - php app/console project:reset --env=test
+    - chmod -R 777 app/cache app/logs
+    - app/console --env=test cache:warmup
+    - chmod -R 777 app/cache app/logs
+
+    # Enable selenium (just in case for future tests)
+    - "sh -e /etc/init.d/xvfb start"
+    - "export DISPLAY=:99.0"
+    - "wget http://selenium.googlecode.com/files/selenium-server-standalone-2.31.0.jar"
+    - "java -jar selenium-server-standalone-2.31.0.jar > /dev/null &"
+    - sleep 5
 
 script:
     - mkdir -p build/logs
     - phpunit -c app --coverage-clover build/logs/clover.xml
+    - bin/behat
 
 after_script:
     - php vendor/bin/coveralls -v
