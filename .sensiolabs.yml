@@ -8,7 +8,7 @@ pre_composer_script: |
 
     cp app/config/parameters.yml.dist app/config/parameters.yml
     sed -i -e "s/database_user:.*/database_user: root/" app/config/parameters.yml
-    sed -i -e "s/database_password:.*/database_password: Secr3t/" app/config/parameters.yml
+    #sed -i -e "s/database_password:.*/database_password: Secr3t/" app/config/parameters.yml
 
 post_composer_script: |
     #!/bin/bash
@@ -21,7 +21,3 @@ exclude_patterns:
     - app/check.php
     - app/SymfonyRequirements.php
     - web/app_*.php
-
-rules:
-    symfony.application_not_bootable:
-        enabled: true
