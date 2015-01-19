@@ -25,6 +25,6 @@ services:
     my_cms.listener:
         class: My\Bundle\CmsBundle\Listener\CmsListener
         tags:
-            - { name: kernel.event_listener, event: vince_cms.event.load.contact, method: onLoadContact }
+            - { name: kernel.event_listener, event: vince_cms.event.load.template.contact, method: onLoadContact }
         calls:
             - [ setFormFactory, [ @form.factory ] ]
