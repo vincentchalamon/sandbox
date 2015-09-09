@@ -1,3 +1,5 @@
+**THIS PROJECT IS NOT MAINTAINED ANYMORE !**
+
 Sandbox for VinceCms
 ====================
 
